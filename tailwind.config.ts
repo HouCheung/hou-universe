@@ -75,8 +75,12 @@ const config: Config = {
           "50%": { transform: "translateY(-10px)" },
         },
         "glow-pulse": {
-          "0%, 100%": { boxShadow: "0 0 20px rgba(59,130,246,0.3)" },
-          "50%": { boxShadow: "0 0 40px rgba(59,130,246,0.5)" },
+          "0%, 100%": { boxShadow: "0 0 20px rgba(100,116,139,0.3)" },
+          "50%": { boxShadow: "0 0 40px rgba(100,116,139,0.5)" },
+        },
+        "ripple": {
+          from: { transform: "scale(0)", opacity: "0.5" },
+          to: { transform: "scale(4)", opacity: "0" },
         },
         "grow-line": {
           from: { transform: "scaleX(0)" },

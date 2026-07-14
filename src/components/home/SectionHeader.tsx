@@ -25,11 +25,11 @@ export function SectionHeader({ enTitle, zhTitle }: SectionHeaderProps) {
       viewport={{ once: true, margin: "-80px" }}
       variants={headerVariants}
     >
-      {/* Vertical accent line */}
-      <div className="h-10 w-1 shrink-0 rounded-full bg-gradient-to-b from-blue-400 via-blue-500 to-purple-500" />
+      {/* Vertical accent line — muted slate */}
+      <div className="h-10 w-1 shrink-0 rounded-full bg-gradient-to-b from-slate-500 via-slate-400 to-slate-600" />
 
       <div className="flex flex-col gap-0.5">
-        <span className="font-mono text-[0.65rem] uppercase tracking-[0.25em] text-blue-300/40 sm:text-xs">
+        <span className="font-mono text-[0.65rem] uppercase tracking-[0.25em] text-slate-400/40 sm:text-xs">
           {enTitle}
         </span>
         <h2 className="text-2xl font-bold tracking-tight text-foreground sm:text-3xl lg:text-4xl">

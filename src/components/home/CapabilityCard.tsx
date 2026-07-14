@@ -39,16 +39,16 @@ export function CapabilityCard({
       className="group/cap glass-card-hover flex flex-col items-start gap-5 rounded-2xl p-6 sm:p-8"
     >
       {/* Icon container */}
-      <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl border border-white/[0.06] bg-white/[0.04] transition-colors duration-300 group-hover/cap:border-blue-400/30 group-hover/cap:bg-blue-400/8">
+      <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl border border-white/[0.06] bg-white/[0.04] transition-colors duration-300 group-hover/cap:border-slate-400/30 group-hover/cap:bg-slate-400/8">
         <Icon
           size={22}
           strokeWidth={1.5}
-          className="text-blue-400 transition-colors duration-300 group-hover/cap:text-blue-300"
+          className="text-slate-400 transition-colors duration-300 group-hover/cap:text-slate-300"
         />
       </div>
 
       {/* Title */}
-      <h3 className="text-lg font-semibold tracking-tight text-foreground transition-colors duration-300 group-hover/cap:text-blue-100">
+      <h3 className="text-lg font-semibold tracking-tight text-foreground transition-colors duration-300 group-hover/cap:text-slate-200">
         {title}
       </h3>
 

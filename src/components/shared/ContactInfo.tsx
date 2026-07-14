@@ -51,7 +51,7 @@ export function ContactInfo() {
             className="glass-card-hover overflow-hidden"
           >
             <CardContent className="flex items-start gap-4 p-5">
-              <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-blue-400/10 text-blue-300">
+              <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-slate-400/10 text-slate-300">
                 <Icon className="size-5" />
               </div>
               <div className="flex min-w-0 flex-col gap-0.5">
@@ -63,7 +63,7 @@ export function ContactInfo() {
                     href={item.href}
                     target={item.external ? "_blank" : undefined}
                     rel={item.external ? "noopener noreferrer" : undefined}
-                    className="truncate text-sm text-muted-foreground transition-colors hover:text-blue-300"
+                    className="truncate text-sm text-muted-foreground transition-colors hover:text-slate-300"
                   >
                     {item.value}
                   </a>

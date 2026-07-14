@@ -19,7 +19,7 @@ export default function GuestbookPage() {
         <div className="mx-auto max-w-3xl px-4 py-20 sm:px-6 sm:py-28 lg:px-8 lg:py-36">
           {/* Page header */}
           <header className="mb-16 text-center sm:mb-24">
-            <p className="mb-3 font-mono text-sm tracking-[0.25em] text-blue-300/60 uppercase">
+            <p className="mb-3 font-mono text-sm tracking-[0.25em] text-slate-400/60 uppercase">
               留言墙
             </p>
             <h1 className="text-4xl font-bold tracking-tight text-foreground sm:text-5xl lg:text-6xl">
@@ -34,11 +34,11 @@ export default function GuestbookPage() {
           {/* Submit form */}
           <section className="mb-16 sm:mb-20">
             <div className="mb-8 flex items-center gap-4">
-              <div className="h-7 w-1 shrink-0 rounded-full bg-gradient-to-b from-blue-400 via-indigo-400 to-purple-500" />
-              <h2 className="shrink-0 font-mono text-sm tracking-[0.2em] text-blue-300/70 uppercase">
+              <div className="h-7 w-1 shrink-0 rounded-full bg-gradient-to-b from-slate-500 via-slate-400 to-slate-600" />
+              <h2 className="shrink-0 font-mono text-sm tracking-[0.2em] text-slate-400/70 uppercase">
                 写留言
               </h2>
-              <span className="h-px flex-1 bg-gradient-to-r from-blue-400/20 via-blue-400/10 to-transparent" />
+              <span className="h-px flex-1 bg-gradient-to-r from-slate-400/20 via-slate-400/10 to-transparent" />
             </div>
             <GuestbookForm />
           </section>
@@ -46,11 +46,11 @@ export default function GuestbookPage() {
           {/* Messages */}
           <section>
             <div className="mb-8 flex items-center gap-4">
-              <div className="h-7 w-1 shrink-0 rounded-full bg-gradient-to-b from-blue-400 via-indigo-400 to-purple-500" />
-              <h2 className="shrink-0 font-mono text-sm tracking-[0.2em] text-blue-300/70 uppercase">
+              <div className="h-7 w-1 shrink-0 rounded-full bg-gradient-to-b from-slate-500 via-slate-400 to-slate-600" />
+              <h2 className="shrink-0 font-mono text-sm tracking-[0.2em] text-slate-400/70 uppercase">
                 到访足迹
               </h2>
-              <span className="h-px flex-1 bg-gradient-to-r from-blue-400/20 via-blue-400/10 to-transparent" />
+              <span className="h-px flex-1 bg-gradient-to-r from-slate-400/20 via-slate-400/10 to-transparent" />
             </div>
             <div className="flex flex-col gap-4">
               {sampleMessages.map((message, index) => (

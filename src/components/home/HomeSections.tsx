@@ -123,7 +123,7 @@ export function HomeSections() {
               <Badge
                 key={skillName}
                 variant="secondary"
-                className="border-white/[0.06] bg-white/[0.03] px-3 py-1 text-xs transition-all duration-300 hover:border-blue-400/30 hover:bg-blue-400/6 hover:text-blue-200"
+                className="border-white/[0.06] bg-white/[0.03] px-3 py-1 text-xs transition-all duration-300 hover:border-slate-400/30 hover:bg-slate-400/6 hover:text-slate-200"
               >
                 {skillName}
               </Badge>

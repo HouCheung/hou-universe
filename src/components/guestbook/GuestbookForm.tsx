@@ -118,7 +118,7 @@ export function GuestbookForm() {
           onChange={(e) =>
             handleChange("nickname", (e.target as HTMLInputElement).value)
           }
-          className="focus-visible:border-blue-400 focus-visible:ring-blue-400/30"
+          className="focus-visible:border-slate-400 focus-visible:ring-slate-400/30"
           aria-invalid={!!errors.nickname}
         />
         {errors.nickname && (
@@ -148,7 +148,7 @@ export function GuestbookForm() {
           onChange={(e) =>
             handleChange("content", (e.target as HTMLTextAreaElement).value)
           }
-          className="focus-visible:border-blue-400 focus-visible:ring-blue-400/30"
+          className="focus-visible:border-slate-400 focus-visible:ring-slate-400/30"
           aria-invalid={!!errors.content}
         />
         {errors.content && (

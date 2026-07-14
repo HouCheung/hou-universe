@@ -32,10 +32,10 @@ export function ToolCard({ tool, index }: ToolCardProps) {
       className="group/card glass-card-hover flex flex-col rounded-2xl p-5"
     >
       <div className="mb-2 flex items-start justify-between gap-2">
-        <h3 className="text-base font-semibold text-foreground transition-colors group-hover/card:text-blue-200">
+        <h3 className="text-base font-semibold text-foreground transition-colors group-hover/card:text-slate-200">
           {tool.name}
         </h3>
-        <ExternalLink className="mt-0.5 h-4 w-4 shrink-0 text-muted-foreground transition-colors group-hover/card:text-blue-300/70" />
+        <ExternalLink className="mt-0.5 h-4 w-4 shrink-0 text-muted-foreground transition-colors group-hover/card:text-slate-300/70" />
       </div>
       <p className="text-sm leading-relaxed text-muted-foreground">
         {tool.description}

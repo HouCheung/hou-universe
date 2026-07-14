@@ -59,21 +59,16 @@ const campusActivities = [
     period: "2024.09 — 2026.07",
     desc: "统筹两院联合歌手大赛全流程，负责选手筛选、评委邀约与现场分工；牵头组织 4 场「课后一首歌」专场活动；建立班级信息传达机制，保障通知全覆盖。",
   },
-  {
-    title: "大数据专业生涯人物访谈活动 · 主持人",
-    period: "2025.05",
-    desc: "设计 13 个核心访谈问题，主导访谈全流程，邀请腾讯高级算法工程师作为嘉宾，访谈成果整理为专业生涯指导资料。",
-  },
 ];
 
 function SectionDivider({ label, icon, enLabel }: { label: string; icon: string; enLabel?: string }) {
   return (
     <div className="mb-10 flex items-center gap-4 sm:mb-14">
       {/* Vertical gradient accent line */}
-      <div className="h-8 w-1 shrink-0 rounded-full bg-gradient-to-b from-blue-400 via-indigo-400 to-purple-500" />
+      <div className="h-8 w-1 shrink-0 rounded-full bg-gradient-to-b from-slate-500 via-slate-400 to-slate-600" />
       <div className="flex flex-col gap-0.5">
         {enLabel && (
-          <span className="font-mono text-[0.6rem] uppercase tracking-[0.22em] text-blue-300/30 sm:text-[0.65rem]">
+          <span className="font-mono text-[0.6rem] uppercase tracking-[0.22em] text-slate-400/30 sm:text-[0.65rem]">
             {enLabel}
           </span>
         )}
@@ -84,7 +79,7 @@ function SectionDivider({ label, icon, enLabel }: { label: string; icon: string;
           {label}
         </h2>
       </div>
-      <span className="ml-auto h-px flex-1 bg-gradient-to-r from-blue-400/20 via-blue-400/10 to-transparent" />
+      <span className="ml-auto h-px flex-1 bg-gradient-to-r from-slate-400/20 via-slate-400/10 to-transparent" />
     </div>
   );
 }
@@ -95,7 +90,7 @@ export default function AboutPage() {
       <div className="mx-auto max-w-4xl px-4 py-20 sm:px-6 sm:py-28 lg:px-8 lg:py-36">
         {/* Page header */}
         <header className="mb-16 text-center sm:mb-24">
-          <p className="mb-3 font-mono text-sm tracking-[0.25em] text-blue-300/60 uppercase">
+          <p className="mb-3 font-mono text-sm tracking-[0.25em] text-slate-400/60 uppercase">
             关于
           </p>
           <h1 className="text-4xl font-bold tracking-tight text-foreground sm:text-5xl lg:text-6xl">
@@ -117,11 +112,11 @@ export default function AboutPage() {
                 <h3 className="text-xl font-semibold text-foreground">
                   广东技术师范大学
                 </h3>
-                <p className="mt-1 text-base text-blue-200/80">
+                <p className="mt-1 text-base text-slate-300/80">
                   数据科学与大数据技术 · 本科
                 </p>
               </div>
-              <span className="inline-block shrink-0 rounded-full bg-blue-400/10 px-4 py-1.5 font-mono text-sm font-medium text-blue-300/90 sm:self-start">
+              <span className="inline-block shrink-0 rounded-full bg-slate-400/10 px-4 py-1.5 font-mono text-sm font-medium text-slate-300/90 sm:self-start">
                 2024.09 — 2028.06
               </span>
             </div>
@@ -134,7 +129,7 @@ export default function AboutPage() {
                 {courses.map((course) => (
                   <span
                     key={course}
-                    className="inline-flex items-center rounded-lg border border-border/50 bg-secondary/50 px-3 py-1.5 text-sm text-foreground transition-all duration-200 hover:border-blue-400/40 hover:bg-blue-400/8 hover:shadow-[0_0_12px_rgba(96,165,250,0.10)]"
+                    className="inline-flex items-center rounded-lg border border-border/50 bg-secondary/50 px-3 py-1.5 text-sm text-foreground transition-all duration-200 hover:border-slate-400/40 hover:bg-slate-400/8 hover:shadow-[0_0_12px_rgba(100,116,139,0.10)]"
                   >
                     {course}
                   </span>
@@ -159,15 +154,15 @@ export default function AboutPage() {
                   className="relative flex gap-5 pl-10 sm:gap-6 sm:pl-14"
                 >
                   {/* Timeline dot */}
-                  <div className="absolute left-[11px] top-2 h-2.5 w-2.5 rounded-full border-2 border-blue-400 bg-background ring-4 ring-background sm:left-[15px]" />
+                  <div className="absolute left-[11px] top-2 h-2.5 w-2.5 rounded-full border-2 border-slate-400 bg-background ring-4 ring-background sm:left-[15px]" />
 
                   {/* Card */}
                   <div className="glass-card-hover flex-1 rounded-2xl p-5 sm:p-6">
                     <div className="mb-2 flex flex-wrap items-center gap-x-3 gap-y-1">
-                      <span className="rounded-full bg-blue-400/10 px-2.5 py-0.5 font-mono text-xs font-medium text-blue-300/90">
+                      <span className="rounded-full bg-slate-400/10 px-2.5 py-0.5 font-mono text-xs font-medium text-slate-300/90">
                         {project.period}
                       </span>
-                      <span className="text-xs font-medium text-blue-200/60">
+                      <span className="text-xs font-medium text-slate-300/60">
                         {project.role}
                       </span>
                     </div>
@@ -194,7 +189,7 @@ export default function AboutPage() {
                 key={index}
                 className="glass-card-hover rounded-2xl p-6"
               >
-                <div className="mb-3 flex h-10 w-10 items-center justify-center rounded-lg bg-blue-400/10 text-blue-300">
+                <div className="mb-3 flex h-10 w-10 items-center justify-center rounded-lg bg-slate-400/10 text-slate-300">
                   <span className="text-lg font-bold" aria-hidden="true">
                     {index === 0 ? "🔧" : index === 1 ? "🧠" : "📐"}
                   </span>
@@ -221,7 +216,7 @@ export default function AboutPage() {
                   <h3 className="text-lg font-semibold text-foreground">
                     {activity.title}
                   </h3>
-                  <span className="rounded-full bg-blue-400/10 px-2.5 py-0.5 font-mono text-xs font-medium text-blue-300/90">
+                  <span className="rounded-full bg-slate-400/10 px-2.5 py-0.5 font-mono text-xs font-medium text-slate-300/90">
                     {activity.period}
                   </span>
                 </div>

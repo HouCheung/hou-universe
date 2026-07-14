@@ -64,7 +64,7 @@ export function SkillTree({ categories }: SkillTreeProps) {
           <button
             type="button"
             onClick={() => toggleCategory(category.id)}
-            className="flex w-full items-center justify-between px-5 py-4 text-left transition-colors hover:bg-blue-400/5 sm:px-6"
+            className="flex w-full items-center justify-between px-5 py-4 text-left transition-colors hover:bg-slate-400/5 sm:px-6"
             aria-expanded={isExpanded(category.id)}
           >
             <div className="flex items-center gap-3">
@@ -74,7 +74,7 @@ export function SkillTree({ categories }: SkillTreeProps) {
               <h3 className="text-lg font-semibold text-foreground">
                 {category.title}
               </h3>
-              <span className="rounded-full bg-blue-400/10 px-2 py-0.5 text-xs font-medium text-blue-300/80">
+              <span className="rounded-full bg-slate-400/10 px-2 py-0.5 text-xs font-medium text-slate-300/80">
                 {category.skills.length}
               </span>
             </div>
@@ -105,13 +105,13 @@ export function SkillTree({ categories }: SkillTreeProps) {
                         key={skill.name}
                         className={cn(
                           'group/skill inline-flex items-center gap-2 rounded-lg border border-border/50 bg-secondary/50 px-3 py-1.5 text-sm transition-all duration-200',
-                          'hover:border-blue-400/40 hover:bg-blue-400/8 hover:shadow-[0_0_12px_rgba(96,165,250,0.10)]'
+                          'hover:border-slate-400/40 hover:bg-slate-400/8 hover:shadow-[0_0_12px_rgba(100,116,139,0.10)]'
                         )}
                       >
-                        <span className="text-foreground transition-colors group-hover/skill:text-blue-200">
+                        <span className="text-foreground transition-colors group-hover/skill:text-slate-200">
                           {skill.name}
                         </span>
-                        <span className="rounded-full bg-blue-400/10 px-2 py-px text-xs font-medium text-blue-300/70 transition-colors group-hover/skill:text-blue-300">
+                        <span className="rounded-full bg-slate-400/10 px-2 py-px text-xs font-medium text-slate-300/70 transition-colors group-hover/skill:text-slate-300">
                           {skill.label}
                         </span>
                       </span>

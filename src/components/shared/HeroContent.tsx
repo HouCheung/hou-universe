@@ -39,7 +39,7 @@ export function HeroContent() {
       {/* Micro label */}
       <motion.p
         variants={itemFadeIn}
-        className="mb-3 font-mono text-xs tracking-[0.35em] text-blue-300/50 uppercase sm:text-sm"
+        className="mb-3 font-mono text-xs tracking-[0.35em] text-slate-400/50 uppercase sm:text-sm"
       >
         你好，世界
       </motion.p>
@@ -82,10 +82,10 @@ export function HeroContent() {
         variants={itemFadeIn}
         className="mt-12 flex flex-wrap items-center justify-center gap-4"
       >
-        {/* Primary CTA — gradient fill */}
+        {/* Primary CTA — solid deep gray-blue */}
         <Link
           href="/projects"
-          className="group inline-flex items-center gap-2.5 rounded-xl bg-gradient-to-r from-blue-500 to-purple-500 px-7 py-3.5 text-sm font-semibold text-white shadow-lg shadow-blue-500/20 transition-all duration-300 ease-out hover:-translate-y-1 hover:shadow-xl hover:shadow-blue-500/30 sm:px-9 sm:py-4 sm:text-base"
+          className="group inline-flex items-center gap-2.5 rounded-lg bg-[#1e293b] px-7 py-3.5 text-sm font-medium text-white shadow-sm transition-all duration-200 ease-out hover:-translate-y-0.5 hover:bg-[#334155] hover:shadow-md sm:px-9 sm:py-4 sm:text-base"
         >
           <ArrowRight className="size-4 transition-transform duration-300 group-hover:translate-x-0.5 sm:size-5" />
           查看项目
@@ -94,7 +94,7 @@ export function HeroContent() {
         {/* Secondary CTA — outline */}
         <Link
           href="/contact"
-          className="group inline-flex items-center gap-2.5 rounded-xl border border-white/[0.12] bg-transparent px-7 py-3.5 text-sm font-semibold text-slate-300 transition-all duration-300 ease-out hover:-translate-y-1 hover:border-white/[0.25] hover:bg-white/[0.04] hover:text-foreground sm:px-9 sm:py-4 sm:text-base"
+          className="group inline-flex items-center gap-2.5 rounded-lg border border-white/[0.12] bg-transparent px-7 py-3.5 text-sm font-medium text-slate-300 transition-all duration-200 ease-out hover:-translate-y-0.5 hover:border-slate-400/30 hover:bg-white/[0.05] hover:text-foreground sm:px-9 sm:py-4 sm:text-base"
         >
           <Mail className="size-4 sm:size-5" />
           联系我

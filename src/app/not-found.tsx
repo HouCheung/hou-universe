@@ -19,7 +19,7 @@ export default function NotFound() {
           initial={{ scale: 0.8, opacity: 0 }}
           animate={{ scale: 1, opacity: 1 }}
           transition={{ delay: 0.1, duration: 0.5, ease: "easeOut" }}
-          className="font-mono text-[8rem] font-bold leading-none tracking-tighter text-blue-300/20 sm:text-[10rem]"
+          className="font-mono text-[8rem] font-bold leading-none tracking-tighter text-slate-300/20 sm:text-[10rem]"
           aria-hidden="true"
         >
           404

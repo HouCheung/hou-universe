@@ -16,7 +16,6 @@ export function MouseGlow() {
       return;
     }
 
-    // Smooth lerp towards target
     posRef.current.x += (targetRef.current.x - posRef.current.x) * 0.06;
     posRef.current.y += (targetRef.current.y - posRef.current.y) * 0.06;
 
@@ -60,7 +59,7 @@ export function MouseGlow() {
         height: '700px',
         borderRadius: '50%',
         background:
-          'radial-gradient(circle, rgba(99,140,255,0.12) 0%, rgba(90,130,240,0.06) 28%, rgba(50,90,210,0.02) 52%, rgba(0,0,0,0) 78%)',
+          'radial-gradient(circle, rgba(100,116,139,0.1) 0%, rgba(71,85,105,0.05) 28%, rgba(51,65,85,0.02) 52%, rgba(0,0,0,0) 78%)',
         transform: 'translate(-350px, -350px)',
         willChange: 'transform',
       }}

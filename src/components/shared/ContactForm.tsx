@@ -22,7 +22,7 @@ interface FormErrors {
 const EMAIL_REGEX = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
 const INPUT_FOCUS_CLASS =
-  "focus-visible:border-blue-400 focus-visible:ring-blue-400/30";
+  "focus-visible:border-slate-400 focus-visible:ring-slate-400/30";
 
 const INITIAL_VALUES: FormValues = { name: "", email: "", description: "" };
 
@@ -240,8 +240,8 @@ export function ContactForm() {
             onChange={handleFileChange}
             className="absolute inset-0 cursor-pointer opacity-0"
           />
-          <div className="flex items-center gap-3 rounded-lg border border-border bg-input/50 px-4 py-2.5 text-sm text-muted-foreground transition-all duration-200 hover:border-blue-400/30 hover:bg-input/70 cursor-pointer">
-            <Paperclip className="size-4 shrink-0 text-blue-300/70" />
+          <div className="flex items-center gap-3 rounded-lg border border-border bg-input/50 px-4 py-2.5 text-sm text-muted-foreground transition-all duration-200 hover:border-slate-400/30 hover:bg-input/70 cursor-pointer">
+            <Paperclip className="size-4 shrink-0 text-slate-300/70" />
             <span className={fileName ? "text-foreground" : ""}>
               {fileName || "支持图片、文档、压缩包（选填）"}
             </span>

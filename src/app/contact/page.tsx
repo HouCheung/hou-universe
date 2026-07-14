@@ -13,7 +13,7 @@ export default function ContactPage() {
       <div className="mx-auto max-w-6xl px-4 py-20 sm:px-6 sm:py-28 lg:px-8 lg:py-36">
         {/* Page header */}
         <header className="mb-16 text-center sm:mb-24">
-          <p className="mb-3 font-mono text-sm tracking-[0.25em] text-blue-300/60 uppercase">
+          <p className="mb-3 font-mono text-sm tracking-[0.25em] text-slate-400/60 uppercase">
             联系
           </p>
           <h1 className="text-4xl font-bold tracking-tight text-foreground sm:text-5xl lg:text-6xl">

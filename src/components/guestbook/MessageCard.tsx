@@ -28,7 +28,7 @@ export function MessageCard({ message, index }: MessageCardProps) {
       variants={cardVariants}
       className="glass-card-hover flex gap-4 rounded-2xl p-5"
     >
-      <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-blue-400/10 text-blue-300">
+      <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-slate-400/10 text-slate-300">
         <User className="h-5 w-5" />
       </div>
       <div className="min-w-0 flex-1">

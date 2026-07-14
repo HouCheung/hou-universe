@@ -41,7 +41,7 @@ export function NavBar() {
         {/* Logo */}
         <Link
           href="/"
-          className="relative z-10 text-lg font-bold tracking-tight text-foreground transition-colors duration-300 hover:text-blue-200 sm:text-xl"
+          className="relative z-10 text-lg font-bold tracking-tight text-foreground transition-colors duration-300 hover:text-slate-300 sm:text-xl"
         >
           HOU Universe
         </Link>
@@ -69,7 +69,7 @@ export function NavBar() {
                   {/* Animated underline */}
                   <span
                     className={cn(
-                      "absolute bottom-0 left-1/2 h-[2px] -translate-x-1/2 rounded-full bg-gradient-to-r from-blue-400/70 to-purple-400/70 transition-all duration-300 ease-out",
+                      "absolute bottom-0 left-1/2 h-[2px] -translate-x-1/2 rounded-full bg-gradient-to-r from-slate-400/70 to-slate-500/70 transition-all duration-300 ease-out",
                       isActive ? "w-3/4" : "w-0 group-hover:w-3/4"
                     )}
                   />

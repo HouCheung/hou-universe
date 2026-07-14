@@ -45,7 +45,7 @@ export function ProjectCard({ project, index }: ProjectCardProps) {
       {/* Cover image */}
       <Link
         href={`/projects/${project.id}`}
-        className="relative block h-44 overflow-hidden rounded-t-2xl bg-gradient-to-br from-blue-950/50 via-indigo-950/30 to-background sm:h-48"
+        className="relative block h-44 overflow-hidden rounded-t-2xl bg-gradient-to-br from-slate-900/50 via-slate-800/30 to-background sm:h-48"
       >
         {project.coverImage && !imgError ? (
           <>
@@ -57,27 +57,23 @@ export function ProjectCard({ project, index }: ProjectCardProps) {
               onError={() => setImgError(true)}
               sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
             />
-            {/* Gradient overlay for text readability */}
             <div className="absolute inset-0 bg-gradient-to-t from-background/80 via-background/20 to-transparent" />
           </>
         ) : (
           <>
-            {/* Decorative grid pattern */}
             <div
               className="absolute inset-0 opacity-[0.06]"
               style={{
                 backgroundImage:
-                  "linear-gradient(rgba(148,163,255,0.3) 1px, transparent 1px), linear-gradient(90deg, rgba(148,163,255,0.3) 1px, transparent 1px)",
+                  "linear-gradient(rgba(148,163,184,0.3) 1px, transparent 1px), linear-gradient(90deg, rgba(148,163,184,0.3) 1px, transparent 1px)",
                 backgroundSize: "24px 24px",
               }}
             />
-            {/* Center icon fallback */}
             <div className="absolute inset-0 flex items-center justify-center">
-              <div className="flex h-12 w-12 items-center justify-center rounded-full border border-blue-400/20 bg-blue-400/5 text-blue-300/50 text-2xl font-bold tracking-wider">
+              <div className="flex h-12 w-12 items-center justify-center rounded-full border border-slate-400/20 bg-slate-400/5 text-slate-300/50 text-2xl font-bold tracking-wider">
                 {project.title.charAt(0)}
               </div>
             </div>
-            {/* Gradient overlay for consistency */}
             <div className="absolute inset-0 bg-gradient-to-t from-background/80 via-transparent to-transparent" />
           </>
         )}
@@ -86,7 +82,7 @@ export function ProjectCard({ project, index }: ProjectCardProps) {
       {/* Card body */}
       <div className="flex flex-1 flex-col gap-3 p-5 sm:p-6">
         <Link href={`/projects/${project.id}`} className="group/title">
-          <h3 className="text-lg font-semibold tracking-tight text-foreground transition-colors duration-300 group-hover/title:text-blue-200">
+          <h3 className="text-lg font-semibold tracking-tight text-foreground transition-colors duration-300 group-hover/title:text-slate-200">
             {project.title}
           </h3>
         </Link>
@@ -123,7 +119,7 @@ export function ProjectCard({ project, index }: ProjectCardProps) {
             }
             variant="default"
             size="sm"
-            className="transition-all duration-300 hover:scale-[1.03] hover:shadow-[0_0_20px_rgba(96,165,250,0.25)]"
+            className="transition-all duration-200"
           >
             <Download className="mr-1.5 size-3.5" />
             下载作品

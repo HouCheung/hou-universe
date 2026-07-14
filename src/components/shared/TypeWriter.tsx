@@ -98,7 +98,7 @@ export function TypeWriter({
       <motion.span
         animate={{ opacity: cursorVisible ? 0.9 : 0.2 }}
         transition={{ duration: 0.15 }}
-        className="ml-0.5 inline-block w-[2px] h-[1em] bg-blue-300 align-middle -translate-y-[0.05em]"
+        className="ml-0.5 inline-block w-[2px] h-[1em] bg-slate-300 align-middle -translate-y-[0.05em]"
         aria-hidden="true"
       />
     </span>

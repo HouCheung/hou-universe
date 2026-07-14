@@ -56,10 +56,10 @@ export default async function ProjectDetailPage({ params }: ProjectPageProps) {
           </Link>
 
           {/* Hero cover area */}
-          <div className="mb-8 overflow-hidden rounded-xl border border-border/40 bg-gradient-to-br from-blue-950/60 via-indigo-950/40 to-background sm:mb-10">
+          <div className="mb-8 overflow-hidden rounded-xl border border-border/40 bg-gradient-to-br from-slate-900/60 via-slate-800/40 to-background sm:mb-10">
             <div className="flex items-center justify-center py-16 sm:py-20">
               <div className="text-center">
-                <span className="mb-4 inline-flex h-16 w-16 items-center justify-center rounded-full bg-blue-400/10 text-3xl font-bold text-blue-300 sm:h-20 sm:w-20 sm:text-4xl">
+                <span className="mb-4 inline-flex h-16 w-16 items-center justify-center rounded-full bg-slate-400/10 text-3xl font-bold text-slate-300 sm:h-20 sm:w-20 sm:text-4xl">
                   {project.title.charAt(0)}
                 </span>
               </div>
@@ -132,11 +132,11 @@ export default async function ProjectDetailPage({ params }: ProjectPageProps) {
           {/* Full description */}
           <section className="mb-10 sm:mb-14">
             <div className="mb-6 flex items-center gap-3">
-              <span className="h-px w-8 bg-blue-400/40" />
-              <h2 className="font-mono text-sm tracking-[0.2em] text-blue-300/70 uppercase">
+              <span className="h-px w-8 bg-slate-400/40" />
+              <h2 className="font-mono text-sm tracking-[0.2em] text-slate-400/70 uppercase">
                 关于项目
               </h2>
-              <span className="h-px flex-1 bg-gradient-to-r from-blue-400/30 to-transparent" />
+              <span className="h-px flex-1 bg-gradient-to-r from-slate-400/30 to-transparent" />
             </div>
             <div className="space-y-4 text-base leading-relaxed text-muted-foreground sm:text-lg">
               {project.fullDescription
@@ -154,11 +154,11 @@ export default async function ProjectDetailPage({ params }: ProjectPageProps) {
               {/* 项目背景 */}
               <section className="mb-10 sm:mb-14">
                 <div className="mb-6 flex items-center gap-3">
-                  <Lightbulb className="h-4 w-4 text-blue-300/70" />
-                  <h2 className="font-mono text-sm tracking-[0.2em] text-blue-300/70 uppercase">
+                  <Lightbulb className="h-4 w-4 text-slate-300/70" />
+                  <h2 className="font-mono text-sm tracking-[0.2em] text-slate-400/70 uppercase">
                     项目背景
                   </h2>
-                  <span className="h-px flex-1 bg-gradient-to-r from-blue-400/30 to-transparent" />
+                  <span className="h-px flex-1 bg-gradient-to-r from-slate-400/30 to-transparent" />
                 </div>
                 <p className="text-base leading-relaxed text-muted-foreground sm:text-lg">
                   {project.detail.background}
@@ -168,19 +168,19 @@ export default async function ProjectDetailPage({ params }: ProjectPageProps) {
               {/* 核心功能 */}
               <section className="mb-10 sm:mb-14">
                 <div className="mb-6 flex items-center gap-3">
-                  <Star className="h-4 w-4 text-blue-300/70" />
-                  <h2 className="font-mono text-sm tracking-[0.2em] text-blue-300/70 uppercase">
+                  <Star className="h-4 w-4 text-slate-300/70" />
+                  <h2 className="font-mono text-sm tracking-[0.2em] text-slate-400/70 uppercase">
                     核心功能
                   </h2>
-                  <span className="h-px flex-1 bg-gradient-to-r from-blue-400/30 to-transparent" />
+                  <span className="h-px flex-1 bg-gradient-to-r from-slate-400/30 to-transparent" />
                 </div>
                 <div className="grid gap-3 sm:grid-cols-2">
                   {project.detail.coreFeatures.map((feature, i) => (
                     <div
                       key={i}
-                      className="flex items-start gap-3 rounded-lg border border-border/40 bg-card/50 p-4 transition-all duration-200 hover:border-blue-400/25 hover:bg-card"
+                      className="flex items-start gap-3 rounded-lg border border-border/40 bg-card/50 p-4 transition-all duration-200 hover:border-slate-400/25 hover:bg-card"
                     >
-                      <CheckCircle2 className="mt-0.5 h-4 w-4 shrink-0 text-blue-400/60" />
+                      <CheckCircle2 className="mt-0.5 h-4 w-4 shrink-0 text-slate-400/60" />
                       <span className="text-sm leading-relaxed text-muted-foreground">
                         {feature}
                       </span>
@@ -192,11 +192,11 @@ export default async function ProjectDetailPage({ params }: ProjectPageProps) {
               {/* 技术方案 */}
               <section className="mb-10 sm:mb-14">
                 <div className="mb-6 flex items-center gap-3">
-                  <Cpu className="h-4 w-4 text-blue-300/70" />
-                  <h2 className="font-mono text-sm tracking-[0.2em] text-blue-300/70 uppercase">
+                  <Cpu className="h-4 w-4 text-slate-300/70" />
+                  <h2 className="font-mono text-sm tracking-[0.2em] text-slate-400/70 uppercase">
                     技术方案
                   </h2>
-                  <span className="h-px flex-1 bg-gradient-to-r from-blue-400/30 to-transparent" />
+                  <span className="h-px flex-1 bg-gradient-to-r from-slate-400/30 to-transparent" />
                 </div>
                 <p className="text-base leading-relaxed text-muted-foreground sm:text-lg">
                   {project.detail.techSolution}
@@ -206,19 +206,19 @@ export default async function ProjectDetailPage({ params }: ProjectPageProps) {
               {/* 亮点成果 */}
               <section className="mb-10 sm:mb-14">
                 <div className="mb-6 flex items-center gap-3">
-                  <span className="h-px w-8 bg-blue-400/40" />
-                  <h2 className="font-mono text-sm tracking-[0.2em] text-blue-300/70 uppercase">
+                  <span className="h-px w-8 bg-slate-400/40" />
+                  <h2 className="font-mono text-sm tracking-[0.2em] text-slate-400/70 uppercase">
                     亮点成果
                   </h2>
-                  <span className="h-px flex-1 bg-gradient-to-r from-blue-400/30 to-transparent" />
+                  <span className="h-px flex-1 bg-gradient-to-r from-slate-400/30 to-transparent" />
                 </div>
                 <div className="grid gap-4">
                   {project.detail.highlights.map((highlight, i) => (
                     <div
                       key={i}
-                      className="flex items-start gap-4 rounded-lg border border-border/40 bg-card/50 p-5 transition-all duration-200 hover:border-blue-400/25 hover:bg-card"
+                      className="flex items-start gap-4 rounded-lg border border-border/40 bg-card/50 p-5 transition-all duration-200 hover:border-slate-400/25 hover:bg-card"
                     >
-                      <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-blue-400/10 text-sm font-bold text-blue-300">
+                      <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-slate-400/10 text-sm font-bold text-slate-300">
                         {i + 1}
                       </span>
                       <p className="text-sm leading-relaxed text-muted-foreground">
@@ -234,19 +234,19 @@ export default async function ProjectDetailPage({ params }: ProjectPageProps) {
           {/* Tech stack */}
           <section className="mb-10 sm:mb-14">
             <div className="mb-6 flex items-center gap-3">
-              <span className="h-px w-8 bg-blue-400/40" />
-              <h2 className="font-mono text-sm tracking-[0.2em] text-blue-300/70 uppercase">
+              <span className="h-px w-8 bg-slate-400/40" />
+              <h2 className="font-mono text-sm tracking-[0.2em] text-slate-400/70 uppercase">
                 技术栈
               </h2>
-              <span className="h-px flex-1 bg-gradient-to-r from-blue-400/30 to-transparent" />
+              <span className="h-px flex-1 bg-gradient-to-r from-slate-400/30 to-transparent" />
             </div>
             <div className="grid gap-2 sm:grid-cols-2">
               {project.techStack.map((tech) => (
                 <div
                   key={tech}
-                  className="flex items-center gap-3 rounded-lg border border-border/40 bg-card/50 px-4 py-3 text-sm text-foreground transition-all duration-200 hover:border-blue-400/25 hover:bg-card"
+                  className="flex items-center gap-3 rounded-lg border border-border/40 bg-card/50 px-4 py-3 text-sm text-foreground transition-all duration-200 hover:border-slate-400/25 hover:bg-card"
                 >
-                  <span className="h-1.5 w-1.5 shrink-0 rounded-full bg-blue-400/50" />
+                  <span className="h-1.5 w-1.5 shrink-0 rounded-full bg-slate-400/50" />
                   {tech}
                 </div>
               ))}
@@ -256,11 +256,11 @@ export default async function ProjectDetailPage({ params }: ProjectPageProps) {
           {/* Update log */}
           <section className="mb-10 sm:mb-14">
             <div className="mb-6 flex items-center gap-3">
-              <span className="h-px w-8 bg-blue-400/40" />
-              <h2 className="font-mono text-sm tracking-[0.2em] text-blue-300/70 uppercase">
+              <span className="h-px w-8 bg-slate-400/40" />
+              <h2 className="font-mono text-sm tracking-[0.2em] text-slate-400/70 uppercase">
                 更新日志
               </h2>
-              <span className="h-px flex-1 bg-gradient-to-r from-blue-400/30 to-transparent" />
+              <span className="h-px flex-1 bg-gradient-to-r from-slate-400/30 to-transparent" />
             </div>
             <UpdateLogTimeline entries={project.updateLog} />
           </section>

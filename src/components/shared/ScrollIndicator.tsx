@@ -19,7 +19,7 @@ export function ScrollIndicator({ targetId }: ScrollIndicatorProps) {
     <motion.button
       onClick={handleClick}
       aria-label="向下滚动查看内容"
-      className="absolute bottom-10 left-1/2 -translate-x-1/2 cursor-pointer text-slate-500/60 transition-colors duration-300 hover:text-blue-300/80"
+      className="absolute bottom-10 left-1/2 -translate-x-1/2 cursor-pointer text-slate-500/60 transition-colors duration-300 hover:text-slate-300/80"
       initial={{ opacity: 0, y: -10 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ delay: 2.8, duration: 0.6 }}

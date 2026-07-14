@@ -68,9 +68,9 @@ export function StarField() {
       for (let i = 0; i < layer.count; i++) {
         const x = Math.random() * width;
         const y = Math.random() * height;
-        // Distribute tints: 60% white, 25% blue, 15% purple
+        // Distribute tints: 75% white, 20% blue, 5% purple-pink (subtler palette)
         const tintRand = Math.random();
-        const tint: Star["tint"] = tintRand < 0.6 ? "white" : tintRand < 0.85 ? "blue" : "purple";
+        const tint: Star["tint"] = tintRand < 0.75 ? "white" : tintRand < 0.95 ? "blue" : "purple";
         // Bright drifting stars: all blue/purple tinted
         const finalTint = l === 3 ? (Math.random() < 0.5 ? "blue" : "purple") : tint;
 

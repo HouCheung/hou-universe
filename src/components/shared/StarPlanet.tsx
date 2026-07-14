@@ -18,7 +18,7 @@ export function StarPlanet() {
     return (
       <div
         aria-hidden="true"
-        className="pointer-events-none absolute right-0 bottom-0 h-48 w-48 rounded-full bg-[radial-gradient(ellipse,rgba(96,165,250,0.15)_0%,rgba(37,99,235,0.06)_50%,transparent_70%)] blur-3xl sm:h-56 sm:w-56"
+        className="pointer-events-none absolute right-0 bottom-0 h-48 w-48 rounded-full bg-[radial-gradient(ellipse,rgba(100,116,139,0.12)_0%,rgba(71,85,105,0.05)_50%,transparent_70%)] blur-3xl sm:h-56 sm:w-56"
       />
     );
   }
@@ -28,7 +28,7 @@ export function StarPlanet() {
       fallback={
         <div
           aria-hidden="true"
-          className="pointer-events-none absolute right-[3%] bottom-[8%] h-80 w-80 rounded-full bg-[radial-gradient(ellipse,rgba(96,165,250,0.15)_0%,rgba(37,99,235,0.06)_50%,transparent_70%)] blur-3xl"
+          className="pointer-events-none absolute right-[3%] bottom-[8%] h-80 w-80 rounded-full bg-[radial-gradient(ellipse,rgba(100,116,139,0.12)_0%,rgba(71,85,105,0.05)_50%,transparent_70%)] blur-3xl"
         />
       }
     >

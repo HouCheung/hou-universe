@@ -35,7 +35,7 @@ export function NoteCard({ note, index }: NoteCardProps) {
       </div>
 
       <Link href={`/notes/${note.slug}`} className="group/title">
-        <h3 className="mb-2 text-lg font-semibold text-foreground transition-colors group-hover/title:text-blue-200">
+        <h3 className="mb-2 text-lg font-semibold text-foreground transition-colors group-hover/title:text-slate-200">
           {note.title}
         </h3>
       </Link>
@@ -46,7 +46,7 @@ export function NoteCard({ note, index }: NoteCardProps) {
 
       <Link
         href={`/notes/${note.slug}`}
-        className="inline-flex items-center gap-1.5 text-sm font-medium text-blue-300/80 transition-colors hover:text-blue-200"
+        className="inline-flex items-center gap-1.5 text-sm font-medium text-slate-300/80 transition-colors hover:text-slate-200"
       >
         阅读全文
         <ArrowRight className="h-3.5 w-3.5 transition-transform group-hover/card:translate-x-0.5" />

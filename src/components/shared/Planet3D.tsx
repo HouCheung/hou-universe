@@ -33,11 +33,11 @@ function RotatingPlanet() {
 
   return (
     <group ref={groupRef}>
-      {/* Main planet — smaller, more transparent */}
+      {/* Main planet */}
       <mesh ref={meshRef} geometry={planetGeometry}>
         <meshStandardMaterial
-          color="#4a6cf7"
-          emissive="#1a2a6c"
+          color="#4a5568"
+          emissive="#1a202c"
           emissiveIntensity={0.25}
           roughness={0.7}
           metalness={0.15}
@@ -48,7 +48,7 @@ function RotatingPlanet() {
       {/* Atmosphere ring */}
       <Sphere args={[1.42, 48, 48]}>
         <meshBasicMaterial
-          color="#6b8cff"
+          color="#718096"
           transparent
           opacity={0.06}
           side={THREE.BackSide}
@@ -57,12 +57,12 @@ function RotatingPlanet() {
       {/* Orbital ring 1 */}
       <mesh rotation={[Math.PI / 2.5, 0, 0]}>
         <torusGeometry args={[1.7, 0.012, 16, 100]} />
-        <meshBasicMaterial color="#6b8cff" transparent opacity={0.2} />
+        <meshBasicMaterial color="#718096" transparent opacity={0.2} />
       </mesh>
       {/* Orbital ring 2 */}
       <mesh rotation={[Math.PI / 3.5, Math.PI / 4, 0]}>
         <torusGeometry args={[1.9, 0.008, 16, 100]} />
-        <meshBasicMaterial color="#8babff" transparent opacity={0.12} />
+        <meshBasicMaterial color="#94a3b8" transparent opacity={0.12} />
       </mesh>
     </group>
   );

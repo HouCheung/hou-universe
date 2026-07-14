@@ -1,3 +1,6 @@
+"use client";
+
+import { useEffect } from "react";
 import Link from "next/link";
 import { Github, Mail } from "lucide-react";
 
@@ -11,7 +14,25 @@ const FOOTER_LINKS = [
   { href: "/contact", label: "联系" },
 ];
 
+declare global {
+  interface Window {
+    busuanziCallback?: (data: { site_uv: number; site_pv: number }) => void;
+  }
+}
+
 export function Footer() {
+  useEffect(() => {
+    // Busuanzi visitor counter
+    const script = document.createElement("script");
+    script.async = true;
+    script.src = "//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js";
+    document.body.appendChild(script);
+
+    return () => {
+      // Don't remove script on unmount to keep counter working
+    };
+  }, []);
+
   return (
     <footer className="mt-auto">
       {/* Top divider */}
@@ -23,7 +44,7 @@ export function Footer() {
           <div className="flex flex-col gap-3">
             <Link
               href="/"
-              className="text-lg font-bold tracking-tight text-foreground transition-colors hover:text-blue-200"
+              className="text-lg font-bold tracking-tight text-foreground transition-colors hover:text-slate-300"
             >
               HOU Universe
             </Link>
@@ -76,7 +97,7 @@ export function Footer() {
             </p>
             <a
               href="mailto:zhang13714579875@163.com"
-              className="text-sm text-blue-400 transition-colors hover:text-blue-300"
+              className="text-sm text-slate-400 transition-colors hover:text-slate-300"
             >
               zhang13714579875@163.com
             </a>
@@ -84,11 +105,22 @@ export function Footer() {
         </div>
       </div>
 
-      {/* Copyright bar */}
+      {/* Copyright bar with visitor counter */}
       <div className="border-t border-white/[0.04]">
         <div className="mx-auto max-w-6xl px-4 py-4 text-center sm:px-6 lg:px-8">
           <p className="text-xs text-slate-600">
             &copy; {new Date().getFullYear()} HOU Universe. All rights reserved.
+            {" "}
+            <span className="text-slate-600/70">
+              ｜ 访客：
+              <span id="busuanzi_value_site_uv" className="text-slate-500">
+                --
+              </span>
+              {" "}｜ 访问：
+              <span id="busuanzi_value_site_pv" className="text-slate-500">
+                --
+              </span>
+            </span>
           </p>
         </div>
       </div>
