@@ -16,10 +16,14 @@
       "Bash(mkdir -p \"d:/123/HOU Universe/public/downloads\")",
       "Bash(echo \"HOU Universe - placeholder download\")",
       "Bash(echo \"Online Judge Platform - placeholder download\")",
-      "Bash(node -e ' *)"
+      "Bash(node -e ' *)",
+      "Bash(mkdir -p \"d:/123/HOU Universe/src/app/notes/[slug]\" \"d:/123/HOU Universe/src/app/tools\" \"d:/123/HOU Universe/src/app/guestbook\" \"d:/123/HOU Universe/content/notes\")",
+      "Bash(rm -rf \"d:/123/HOU Universe/src/app/projects/[id]\")",
+      "Bash(mkdir -p \"d:/123/HOU Universe/src/app/projects/[slug]\")"
     ],
     "additionalDirectories": [
-      "d:\\123\\HOU Universe\\src\\app\\projects"
+      "d:\\123\\HOU Universe\\src\\app\\projects",
+      "d:\\123\\HOU Universe\\src\\app\\notes"
     ]
   }
 }

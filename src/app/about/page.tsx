@@ -1,14 +1,23 @@
 import type { Metadata } from "next";
+import { SkillProgressBar } from "@/components/shared/SkillProgressBar";
+import { skillLevelData } from "@/data/about";
 
 export const metadata: Metadata = {
   title: "关于 - HOU Universe",
-  description: "数据科学与大数据技术专业在读，热爱全栈开发与 AI 工程化——这里是我的个人简历与技术能力全景。",
+  description:
+    "数据科学与大数据技术专业在读，热爱全栈开发与 AI 工程化——这里是我的个人简历与技术能力全景。",
 };
 
 const courses = [
-  "数据结构与算法", "操作系统原理", "计算机网络", "数据库系统原理",
-  "C / Python / Java 程序设计", "算法设计与分析", "大数据技术与应用",
-  "数据挖掘", "NoSQL 数据库",
+  "数据结构与算法",
+  "操作系统原理",
+  "计算机网络",
+  "数据库系统原理",
+  "C / Python / Java 程序设计",
+  "算法设计与分析",
+  "大数据技术与应用",
+  "数据挖掘",
+  "NoSQL 数据库",
 ];
 
 const projects = [
@@ -55,13 +64,6 @@ const campusActivities = [
     period: "2025.05",
     desc: "设计 13 个核心访谈问题，主导访谈全流程，邀请腾讯高级算法工程师作为嘉宾，访谈成果整理为专业生涯指导资料。",
   },
-];
-
-const professionalSkills = [
-  { category: "编程语言", items: "Python、Java、C" },
-  { category: "数据库", items: "SQL、MySQL、NoSQL" },
-  { category: "核心能力", items: "数据采集与清洗、ETL 管线设计、数据分析与可视化、算法实现" },
-  { category: "资格证书", items: "大学英语四级（CET-4）、大学英语六级（CET-6）、C1 驾驶证" },
 ];
 
 function SectionDivider({ label, icon }: { label: string; icon: string }) {
@@ -144,7 +146,10 @@ export default function AboutPage() {
 
             <div className="flex flex-col gap-8">
               {projects.map((project, index) => (
-                <div key={index} className="relative flex gap-5 pl-10 sm:gap-6 sm:pl-14">
+                <div
+                  key={index}
+                  className="relative flex gap-5 pl-10 sm:gap-6 sm:pl-14"
+                >
                   {/* Timeline dot */}
                   <div className="absolute left-[11px] top-2 h-2.5 w-2.5 rounded-full border-2 border-blue-400 bg-background ring-4 ring-background sm:left-[15px]" />
 
@@ -220,32 +225,11 @@ export default function AboutPage() {
           </div>
         </section>
 
-        {/* ========== ⑤ 专业技能 ========== */}
+        {/* ========== ⑤ 专业技能（可视化升级）========== */}
         <section>
           <SectionDivider label="专业技能" icon="🛠" />
 
-          <div className="grid gap-4 sm:grid-cols-2">
-            {professionalSkills.map((skill) => (
-              <div
-                key={skill.category}
-                className="rounded-xl border border-border/60 bg-card/80 p-5 backdrop-blur-sm transition-all duration-300 hover:border-blue-400/30 hover:bg-card hover:shadow-[0_0_20px_rgba(96,165,250,0.08)] sm:p-6"
-              >
-                <h3 className="mb-3 text-base font-semibold text-blue-200/80">
-                  {skill.category}
-                </h3>
-                <div className="flex flex-wrap gap-2">
-                  {skill.items.split("、").map((item) => (
-                    <span
-                      key={item}
-                      className="inline-flex items-center rounded-lg border border-border/50 bg-secondary/50 px-3 py-1.5 text-sm text-foreground transition-all duration-200 hover:border-blue-400/40 hover:bg-blue-400/8 hover:shadow-[0_0_12px_rgba(96,165,250,0.10)]"
-                    >
-                      {item}
-                    </span>
-                  ))}
-                </div>
-              </div>
-            ))}
-          </div>
+          <SkillProgressBar categories={skillLevelData} />
         </section>
       </div>
     </div>

@@ -7,10 +7,11 @@ import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
 import { ProjectCard } from '@/components/projects/ProjectCard';
 import { projects } from '@/data/projects';
-import { skillTreeData } from '@/data/about';
-import type { SkillItem } from '@/types';
+import { skillLevelData } from '@/data/about';
 
-const allSkills: SkillItem[] = skillTreeData.flatMap((cat) => cat.skills);
+const allSkills = skillLevelData.flatMap((cat) =>
+  cat.skills.map((s) => s.name)
+);
 const featuredProjects = projects.slice(0, 2);
 
 const sectionVariants: Variants = {
@@ -84,13 +85,13 @@ export function HomeSections() {
 
           {/* Skill tags */}
           <div className="mt-8 flex flex-wrap justify-center gap-2">
-            {allSkills.slice(0, 12).map((skill) => (
+            {allSkills.slice(0, 12).map((skillName) => (
               <Badge
-                key={skill.name}
+                key={skillName}
                 variant="secondary"
                 className="px-3 py-1 text-xs transition-all hover:border-blue-400/40 hover:bg-blue-400/8 hover:shadow-[0_0_12px_rgba(96,165,250,0.10)]"
               >
-                {skill.name}
+                {skillName}
               </Badge>
             ))}
           </div>

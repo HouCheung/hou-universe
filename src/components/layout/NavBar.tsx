@@ -11,6 +11,9 @@ const NAV_LINKS = [
   { href: "/", label: "首页" },
   { href: "/about", label: "关于" },
   { href: "/projects", label: "项目" },
+  { href: "/notes", label: "笔记" },
+  { href: "/tools", label: "工具箱" },
+  { href: "/guestbook", label: "留言墙" },
   { href: "/contact", label: "联系" },
 ];
 

@@ -1,4 +1,4 @@
-import type { TimelineItem, SkillCategory } from "@/types";
+import type { TimelineItem, SkillCategoryWithLevel } from "@/types";
 
 export const timelineData: TimelineItem[] = [
   {
@@ -52,17 +52,36 @@ export const timelineData: TimelineItem[] = [
   },
 ];
 
-export const skillTreeData: SkillCategory[] = [
+export const skillLevelData: SkillCategoryWithLevel[] = [
   {
     id: "programming",
     title: "编程语言",
     icon: "💻",
     skills: [
-      { name: "Python", label: "精通" },
-      { name: "Java", label: "精通" },
-      { name: "C", label: "熟练" },
-      { name: "TypeScript", label: "熟练" },
-      { name: "SQL", label: "熟练" },
+      { name: "Python", percentage: 85 },
+      { name: "Java", percentage: 80 },
+      { name: "C", percentage: 70 },
+    ],
+  },
+  {
+    id: "database",
+    title: "数据库",
+    icon: "🗄️",
+    skills: [
+      { name: "SQL", percentage: 85 },
+      { name: "MySQL", percentage: 80 },
+      { name: "NoSQL", percentage: 75 },
+    ],
+  },
+  {
+    id: "core",
+    title: "核心能力",
+    icon: "⚙️",
+    skills: [
+      { name: "数据采集与清洗", percentage: 85 },
+      { name: "ETL 管线设计", percentage: 80 },
+      { name: "数据分析与可视化", percentage: 80 },
+      { name: "算法实现", percentage: 75 },
     ],
   },
   {
@@ -70,38 +89,9 @@ export const skillTreeData: SkillCategory[] = [
     title: "AI 工程化",
     icon: "🤖",
     skills: [
-      { name: "Claude Code", label: "精通" },
-      { name: "Harness 工程思想", label: "熟练" },
-      { name: "Prompt Engineering", label: "熟练" },
-      { name: "多 Agent 协同", label: "熟练" },
-      { name: "Trae Work", label: "熟悉" },
-      { name: "模型部署与调试", label: "熟悉" },
-    ],
-  },
-  {
-    id: "bigdata",
-    title: "数据工程",
-    icon: "📊",
-    skills: [
-      { name: "ETL 管线设计", label: "熟练" },
-      { name: "数据采集与清洗", label: "精通" },
-      { name: "数据分析与可视化", label: "熟练" },
-      { name: "MySQL", label: "熟练" },
-      { name: "NoSQL", label: "熟悉" },
-      { name: "RFM / K-Means", label: "熟悉" },
-    ],
-  },
-  {
-    id: "frontend",
-    title: "前端与工具",
-    icon: "🎨",
-    skills: [
-      { name: "React / Next.js", label: "熟练" },
-      { name: "Tailwind CSS", label: "熟练" },
-      { name: "Framer Motion", label: "熟悉" },
-      { name: "shadcn/ui", label: "熟练" },
-      { name: "Git / CI-CD", label: "熟练" },
-      { name: "Figma / 原型设计", label: "了解" },
+      { name: "Claude Code", percentage: 90 },
+      { name: "Trae Work", percentage: 85 },
+      { name: "Harness 工程思想", percentage: 85 },
     ],
   },
 ];

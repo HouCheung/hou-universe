@@ -4,11 +4,19 @@ export interface UpdateLogEntry {
   changes: string[];
 }
 
+export interface ProjectDetail {
+  background: string;
+  coreFeatures: string[];
+  techSolution: string;
+  highlights: string[];
+}
+
 export interface Project {
   id: string;
   title: string;
   description: string;
   fullDescription: string;
+  detail?: ProjectDetail;
   tags: string[];
   coverImage: string;
   techStack: string[];
@@ -37,4 +45,38 @@ export interface SkillCategory {
   title: string;
   icon: string;
   skills: SkillItem[];
+}
+
+export interface SkillWithLevel {
+  name: string;
+  percentage: number;
+}
+
+export interface SkillCategoryWithLevel {
+  id: string;
+  title: string;
+  icon: string;
+  skills: SkillWithLevel[];
+}
+
+export interface Note {
+  slug: string;
+  title: string;
+  date: string;
+  summary: string;
+  content: string;
+}
+
+export interface Tool {
+  name: string;
+  description: string;
+  url: string;
+  category: string;
+}
+
+export interface GuestbookMessage {
+  id: string;
+  nickname: string;
+  content: string;
+  date: string;
 }
