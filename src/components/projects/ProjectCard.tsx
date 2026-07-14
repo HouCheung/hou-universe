@@ -4,7 +4,7 @@ import { useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { motion, type Variants } from "framer-motion";
-import { ExternalLink, Download } from "lucide-react";
+import { Download } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import type { Project } from "@/types";
@@ -122,23 +122,8 @@ export function ProjectCard({ project, index }: ProjectCardProps) {
           )}
         </div>
 
-        {/* Action buttons */}
-        <div className="mt-auto flex gap-2.5 pt-2">
-          <Button
-            render={
-              <a
-                href={project.liveUrl}
-                target="_blank"
-                rel="noopener noreferrer"
-              />
-            }
-            variant="default"
-            size="sm"
-            className="flex-1 transition-all duration-300 hover:scale-[1.03] hover:shadow-[0_0_16px_rgba(96,165,250,0.25)]"
-          >
-            <ExternalLink className="mr-1.5 size-3.5" />
-            在线预览
-          </Button>
+        {/* Action button */}
+        <div className="mt-auto flex justify-center pt-2">
           <Button
             render={
               <a
@@ -146,9 +131,9 @@ export function ProjectCard({ project, index }: ProjectCardProps) {
                 download
               />
             }
-            variant="outline"
+            variant="default"
             size="sm"
-            className="flex-1 transition-all duration-300 hover:scale-[1.03] hover:border-blue-400/50 hover:bg-blue-400/8 hover:shadow-[0_0_12px_rgba(96,165,250,0.12)]"
+            className="transition-all duration-300 hover:scale-[1.03] hover:shadow-[0_0_16px_rgba(96,165,250,0.25)]"
           >
             <Download className="mr-1.5 size-3.5" />
             下载作品
