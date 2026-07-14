@@ -1,11 +1,10 @@
-import type { Metadata } from 'next';
-import { ContactForm } from '@/components/shared/ContactForm';
-import { ContactInfo } from '@/components/shared/ContactInfo';
+import type { Metadata } from "next";
+import { ContactForm } from "@/components/shared/ContactForm";
+import { ContactInfo } from "@/components/shared/ContactInfo";
 
 export const metadata: Metadata = {
-  title: '联系 - HOU Universe',
-  description:
-    '联系我 — 有问题或想合作？通过表单与我取得联系。',
+  title: "联系 - HOU Universe",
+  description: "联系我 — 有问题或想合作？通过表单与我取得联系。",
 };
 
 export default function ContactPage() {
@@ -39,6 +38,21 @@ export default function ContactPage() {
           </div>
         </div>
       </div>
+
+      {/* Hidden static form for Netlify Forms detection */}
+      <form
+        name="contact"
+        data-netlify="true"
+        netlify-honeypot="bot-field"
+        hidden
+        aria-hidden="true"
+      >
+        <input type="text" name="name" />
+        <input type="email" name="email" />
+        <textarea name="description" />
+        <input type="file" name="attachment" />
+        <input type="hidden" name="form-name" value="contact" />
+      </form>
     </div>
   );
 }

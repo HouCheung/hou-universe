@@ -4,7 +4,6 @@ import { Footer } from "@/components/layout/Footer";
 import { PageTransition } from "@/components/layout/PageTransition";
 import "./globals.css";
 import { Geist } from "next/font/google";
-import { cn } from "@/lib/utils";
 
 const geist = Geist({ subsets: ["latin"], variable: "--font-sans" });
 
@@ -70,7 +69,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="zh-CN" className={cn("dark", "font-sans", geist.variable)}>
+    <html lang="zh-CN" className={`dark font-sans ${geist.variable}`}>
       <body className="min-h-screen bg-background font-sans antialiased flex flex-col overflow-x-hidden">
         <NavBar />
         <main className="flex-1">

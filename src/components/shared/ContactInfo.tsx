@@ -1,8 +1,8 @@
-'use client';
+"use client";
 
-import { motion } from 'framer-motion';
-import { Mail, Github, Globe } from 'lucide-react';
-import { Card, CardContent } from '@/components/ui/card';
+import { motion } from "framer-motion";
+import { Mail, Github, Globe } from "lucide-react";
+import { Card, CardContent } from "@/components/ui/card";
 
 interface ContactItem {
   icon: typeof Mail;
@@ -15,21 +15,21 @@ interface ContactItem {
 const contactItems: ContactItem[] = [
   {
     icon: Mail,
-    label: '邮箱',
-    value: 'hou.universe@example.com',
-    href: 'mailto:hou.universe@example.com',
+    label: "邮箱",
+    value: "zhang13714579875@163.com",
+    href: "mailto:zhang13714579875@163.com",
   },
   {
     icon: Github,
-    label: 'GitHub',
-    value: 'github.com/hou-universe',
-    href: 'https://github.com/hou-universe',
+    label: "GitHub",
+    value: "github.com/hou-universe",
+    href: "https://github.com/hou-universe",
     external: true,
   },
   {
     icon: Globe,
-    label: '社交',
-    value: '更多渠道即将上线……',
+    label: "社交",
+    value: "更多渠道即将上线……",
   },
 ];
 
@@ -39,7 +39,7 @@ export function ContactInfo() {
       className="flex flex-col gap-4"
       initial={{ opacity: 0, x: 20 }}
       animate={{ opacity: 1, x: 0 }}
-      transition={{ duration: 0.5, ease: 'easeOut', delay: 0.1 }}
+      transition={{ duration: 0.5, ease: "easeOut", delay: 0.1 }}
     >
       {contactItems.map((item) => {
         const Icon = item.icon;
@@ -61,10 +61,8 @@ export function ContactInfo() {
                 {isLink ? (
                   <a
                     href={item.href}
-                    target={item.external ? '_blank' : undefined}
-                    rel={
-                      item.external ? 'noopener noreferrer' : undefined
-                    }
+                    target={item.external ? "_blank" : undefined}
+                    rel={item.external ? "noopener noreferrer" : undefined}
                     className="truncate text-sm text-muted-foreground transition-colors hover:text-blue-300"
                   >
                     {item.value}
