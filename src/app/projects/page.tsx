@@ -4,9 +4,9 @@ import { ProjectCard } from "@/components/projects/ProjectCard";
 import { projects } from "@/data/projects";
 
 export const metadata: Metadata = {
-  title: "Projects - HOU Universe",
+  title: "项目 - HOU Universe",
   description:
-    "A showcase of projects, experiments, and ideas — all built within HOU Universe.",
+    "项目展示——涵盖大数据管道、AI 应用、全栈平台和开发者工具。",
 };
 
 export default function ProjectsPage() {
@@ -19,16 +19,14 @@ export default function ProjectsPage() {
           {/* Page header */}
           <header className="mb-16 text-center sm:mb-24">
             <p className="mb-3 font-mono text-sm tracking-[0.25em] text-blue-300/60 uppercase">
-              Projects
+              项目
             </p>
             <h1 className="text-4xl font-bold tracking-tight text-foreground sm:text-5xl lg:text-6xl">
-              Projects
+              项目
             </h1>
             <p className="mx-auto mt-6 max-w-2xl text-base leading-relaxed text-muted-foreground sm:text-lg">
-              A showcase of projects, experiments, and ideas — spanning big data
-              pipelines, AI applications, full-stack platforms, and developer
-              tooling. Each project represents a milestone in the journey of
-              building, learning, and creating.
+              项目、实验与创意的展示——涵盖大数据管道、AI 应用、全栈平台与开发者工具。
+              每个项目都是构建、学习与创造之旅中的一个里程碑。
             </p>
           </header>
 
@@ -36,7 +34,7 @@ export default function ProjectsPage() {
           <div className="mb-12 flex items-center gap-3 sm:mb-16">
             <span className="h-px flex-1 bg-gradient-to-r from-transparent via-blue-400/30 to-transparent" />
             <span className="shrink-0 font-mono text-sm tracking-[0.2em] text-blue-300/70 uppercase">
-              Featured
+              精选项目
             </span>
             <span className="h-px flex-1 bg-gradient-to-r from-transparent via-blue-400/30 to-transparent" />
           </div>
@@ -52,7 +50,7 @@ export default function ProjectsPage() {
           {projects.length === 0 && (
             <div className="flex flex-col items-center justify-center py-20 text-center">
               <p className="text-lg text-muted-foreground">
-                No projects yet. Stay tuned!
+                暂无项目，敬请期待！
               </p>
             </div>
           )}

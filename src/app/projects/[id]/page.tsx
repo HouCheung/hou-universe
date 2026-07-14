@@ -20,7 +20,7 @@ export async function generateMetadata({
 
   if (!project) {
     return {
-      title: "Project Not Found - HOU Universe",
+      title: "项目未找到 - HOU Universe",
     };
   }
 
@@ -50,7 +50,7 @@ export default async function ProjectDetailPage({ params }: ProjectPageProps) {
             className="mb-8 inline-flex items-center gap-1.5 text-sm text-muted-foreground transition-colors hover:text-foreground sm:mb-12"
           >
             <ArrowLeft className="h-4 w-4" />
-            Back to Projects
+            返回项目列表
           </Link>
 
           {/* Project title + tags */}
@@ -82,7 +82,7 @@ export default async function ProjectDetailPage({ params }: ProjectPageProps) {
                 size="lg"
               >
                 <ExternalLink className="mr-2 h-4 w-4" />
-                Live Demo
+                在线演示
               </Button>
             )}
             {project.githubUrl && (
@@ -98,7 +98,7 @@ export default async function ProjectDetailPage({ params }: ProjectPageProps) {
                 size="lg"
               >
                 <Github className="mr-2 h-4 w-4" />
-                GitHub Repository
+                GitHub 仓库
               </Button>
             )}
           </div>
@@ -108,7 +108,7 @@ export default async function ProjectDetailPage({ params }: ProjectPageProps) {
             <div className="mb-6 flex items-center gap-3">
               <span className="h-px w-8 bg-blue-400/40" />
               <h2 className="font-mono text-sm tracking-[0.2em] text-blue-300/70 uppercase">
-                About
+                关于项目
               </h2>
               <span className="h-px flex-1 bg-gradient-to-r from-blue-400/30 to-transparent" />
             </div>
@@ -127,7 +127,7 @@ export default async function ProjectDetailPage({ params }: ProjectPageProps) {
             <div className="mb-6 flex items-center gap-3">
               <span className="h-px w-8 bg-blue-400/40" />
               <h2 className="font-mono text-sm tracking-[0.2em] text-blue-300/70 uppercase">
-                Tech Stack
+                技术栈
               </h2>
               <span className="h-px flex-1 bg-gradient-to-r from-blue-400/30 to-transparent" />
             </div>
@@ -149,7 +149,7 @@ export default async function ProjectDetailPage({ params }: ProjectPageProps) {
             <div className="mb-6 flex items-center gap-3">
               <span className="h-px w-8 bg-blue-400/40" />
               <h2 className="font-mono text-sm tracking-[0.2em] text-blue-300/70 uppercase">
-                Update Log
+                更新日志
               </h2>
               <span className="h-px flex-1 bg-gradient-to-r from-blue-400/30 to-transparent" />
             </div>
@@ -164,7 +164,7 @@ export default async function ProjectDetailPage({ params }: ProjectPageProps) {
               size="lg"
             >
               <ArrowLeft className="mr-2 h-4 w-4" />
-              Back to Projects
+              返回项目列表
             </Button>
           </div>
         </div>

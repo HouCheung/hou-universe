@@ -37,14 +37,14 @@ function SectionDivider({ label }: { label: string }) {
 export function HomeSections() {
   return (
     <div className="mx-auto max-w-6xl px-4 py-20 sm:px-6 sm:py-28 lg:px-8 lg:py-36">
-      {/* ========== Featured Projects ========== */}
+      {/* ========== 精选项目 ========== */}
       <motion.section
         initial="hidden"
         whileInView="visible"
         viewport={{ once: true, margin: '-80px' }}
         variants={sectionVariants}
       >
-        <SectionDivider label="Featured Projects" />
+        <SectionDivider label="精选项目" />
 
         <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
           {featuredProjects.map((project, i) => (
@@ -59,12 +59,12 @@ export function HomeSections() {
             size="lg"
           >
             <ArrowRight className="mr-2 size-4" />
-            View All Projects
+            查看全部项目
           </Button>
         </div>
       </motion.section>
 
-      {/* ========== About Intro ========== */}
+      {/* ========== 关于我 ========== */}
       <motion.section
         className="mt-24 sm:mt-32"
         initial="hidden"
@@ -72,16 +72,14 @@ export function HomeSections() {
         viewport={{ once: true, margin: '-80px' }}
         variants={sectionVariants}
       >
-        <SectionDivider label="About Me" />
+        <SectionDivider label="关于我" />
 
         <div className="mx-auto max-w-3xl text-center">
           <p className="text-base leading-relaxed text-muted-foreground sm:text-lg">
-            I&apos;m a full-stack developer passionate about big data, AI, and
-            building tools that make a difference. From real-time data pipelines
-            to AI-powered applications, I love turning complex problems into
-            elegant solutions. HOU Universe is my digital playground — a place
-            where I showcase projects, document my learning journey, and share
-            what I&apos;ve built along the way.
+            我是一名全栈开发者，热衷于大数据、人工智能以及构建有意义的工具。
+            从实时数据管道到 AI 驱动的应用，我乐于将复杂问题转化为优雅的解决方案。
+            HOU Universe 是我的数字乐园——一个展示项目、记录学习历程、
+            分享我一路所建所感的地方。
           </p>
 
           {/* Skill tags */}
@@ -104,13 +102,13 @@ export function HomeSections() {
               size="lg"
             >
               <ArrowRight className="mr-2 size-4" />
-              Learn More About Me
+              了解更多关于我
             </Button>
           </div>
         </div>
       </motion.section>
 
-      {/* ========== Contact CTA ========== */}
+      {/* ========== 联系我 ========== */}
       <motion.section
         className="mt-24 sm:mt-32"
         initial="hidden"
@@ -118,16 +116,15 @@ export function HomeSections() {
         viewport={{ once: true, margin: '-80px' }}
         variants={sectionVariants}
       >
-        <SectionDivider label="Get In Touch" />
+        <SectionDivider label="联系我" />
 
         <div className="mx-auto max-w-2xl text-center">
           <h3 className="text-3xl font-bold tracking-tight text-foreground sm:text-4xl">
-            Let&apos;s Build Something Together
+            一起创造吧
           </h3>
           <p className="mt-4 text-base leading-relaxed text-muted-foreground sm:text-lg">
-            Whether you have a project idea, a collaboration opportunity, or
-            just want to chat about tech — I&apos;m always open to connecting
-            with fellow builders and creators.
+            无论你有一个项目想法、合作机会，还是只想聊聊技术——
+            我始终欢迎与其他构建者和创作者交流。
           </p>
 
           <div className="mt-10">
@@ -137,7 +134,7 @@ export function HomeSections() {
               size="lg"
             >
               <Mail className="mr-2 size-4" />
-              Get In Touch
+              联系我
             </Button>
           </div>
         </div>

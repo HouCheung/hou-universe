@@ -55,7 +55,7 @@ export const timelineData: TimelineItem[] = [
 export const skillTreeData: SkillCategory[] = [
   {
     id: "programming",
-    title: "Programming",
+    title: "编程语言",
     icon: "💻",
     skills: [
       { name: "Java", label: "精通" },
@@ -81,7 +81,7 @@ export const skillTreeData: SkillCategory[] = [
   },
   {
     id: "bigdata",
-    title: "Big Data",
+    title: "大数据",
     icon: "📊",
     skills: [
       { name: "Hadoop", label: "熟悉" },
@@ -94,7 +94,7 @@ export const skillTreeData: SkillCategory[] = [
   },
   {
     id: "frontend",
-    title: "Frontend",
+    title: "前端",
     icon: "🎨",
     skills: [
       { name: "React / Next.js", label: "熟练" },

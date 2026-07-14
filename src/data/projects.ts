@@ -3,13 +3,13 @@ import type { Project } from "@/types";
 export const projects: Project[] = [
   {
     id: "realtime-data-pipeline",
-    title: "Real-time Data Pipeline",
+    title: "实时数据管道",
     description:
-      "A high-throughput real-time data processing platform that ingests, transforms, and analyzes streaming data at scale — built for production-grade observability.",
+      "高吞吐量实时数据处理平台，大规模摄取、转换与分析流式数据——专为生产级可观测性打造。",
     fullDescription:
       "Real-time Data Pipeline 是一个面向企业级场景的流式数据处理平台。系统以 Apache Kafka 作为消息总线，Spark Streaming 与 Flink 协同完成实时计算，计算结果写入 HBase 供下游服务毫秒级查询，同时将原始数据持久化到 HDFS 数据湖中供离线分析。整个平台采用 Docker Compose 编排，支持一键部署，已在模拟的千万级日活埋点场景下通过压力测试。项目涵盖了从数据接入、Schema 校验、流式聚合、异常检测到可视化大屏的完整链路，是大数据工程能力的综合体现。",
     tags: ["Kafka", "Spark Streaming", "Flink", "HBase", "HDFS", "Docker"],
-    coverImage: "",
+    coverImage: "/images/project-1.svg",
     techStack: [
       "Java 17",
       "Scala 2.13",
@@ -57,13 +57,13 @@ export const projects: Project[] = [
   },
   {
     id: "ai-image-studio",
-    title: "AI Image Studio",
+    title: "AI 图像工作室",
     description:
-      "An interactive web application for AI-powered image generation and editing, combining Stable Diffusion with an intuitive React-based creative workflow.",
+      "AI 驱动的图像生成与编辑交互平台，结合 Stable Diffusion 与直观的 React 创作工作流。",
     fullDescription:
       "AI Image Studio 是一个面向创作者与开发者的 AI 图像生成与编辑平台。前端使用 React + Tailwind CSS 构建了直观的创作工作流界面，支持文生图、图生图、局部重绘等核心功能。后端基于 FastAPI 搭建，集成了 Stable Diffusion 模型推理管线，通过 Redis 队列异步处理生成任务，支持批量提交与进度轮询。项目还实现了 Prompt 模板库、历史记录管理、图片对比模式等特色功能，旨在降低 AI 图像创作的门槛，让更多人能够轻松上手。",
     tags: ["PyTorch", "Stable Diffusion", "FastAPI", "React", "Redis", "Docker"],
-    coverImage: "",
+    coverImage: "/images/project-2.svg",
     techStack: [
       "Python 3.11",
       "PyTorch 2.x",
@@ -113,11 +113,11 @@ export const projects: Project[] = [
     id: "hou-universe",
     title: "HOU Universe",
     description:
-      "A personal developer platform that unifies portfolio showcase, project management, and interactive experiences — built from scratch with modern web technologies.",
+      "个人开发者全功能平台，集作品展示、项目管理与互动体验于一体——基于现代 Web 技术从零构建。",
     fullDescription:
       "HOU Universe 是我的个人开发者全功能平台，也是技术能力与工程化思维的集中展示。平台采用 Next.js 15 App Router 架构，以 TypeScript 严格模式编写，使用 Tailwind CSS 构建深黑 + 冷白 + 淡蓝高亮的统一设计语言。从星空粒子背景到鼠标光晕交互，从打字机动画到滚动驱动的视差效果，每一个细节都追求极致体验。平台涵盖个人介绍、技能地图、项目展示、联系方式等完整模块，支持全响应式适配，所有动画基于 Framer Motion 实现，保证 60fps 流畅运行。",
     tags: ["Next.js", "TypeScript", "Tailwind CSS", "Framer Motion", "Base UI"],
-    coverImage: "",
+    coverImage: "/images/project-3.svg",
     techStack: [
       "Next.js 15",
       "TypeScript",
@@ -165,11 +165,11 @@ export const projects: Project[] = [
     id: "devtoolkit-cli",
     title: "DevToolkit CLI",
     description:
-      "A cross-platform command-line developer toolkit that automates repetitive workflows — from project scaffolding to one-click deployment — boosting daily productivity.",
+      "跨平台命令行开发者工具箱，自动化重复工作流——从项目脚手架到一键部署——提升日常开发效率。",
     fullDescription:
       "DevToolkit CLI 是一款面向开发者的跨平台命令行工具箱，旨在用一套统一命令简化日常开发中的重复性工作。工具基于 Go 语言与 Cobra 框架构建，提供了项目脚手架生成、Docker 容器管理、Git 工作流自动化、API 接口测试、环境变量管理等实用子命令。CLI 采用插件化架构设计，用户可通过 YAML 配置文件自定义命令模板与工作流。内置 SQLite 本地数据库用于缓存与状态持久化，支持命令别名与自动补全，大幅提升终端操作效率。",
     tags: ["Go", "CLI", "Docker", "Cobra", "DevOps"],
-    coverImage: "",
+    coverImage: "/images/project-4.svg",
     techStack: [
       "Go 1.22",
       "Cobra",

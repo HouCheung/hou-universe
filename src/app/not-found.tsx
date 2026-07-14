@@ -31,7 +31,7 @@ export default function NotFound() {
           transition={{ delay: 0.25, duration: 0.5 }}
           className="-mt-6 text-2xl font-bold tracking-tight text-foreground sm:text-3xl md:text-4xl"
         >
-          Lost in Space
+          迷失在星空中
         </motion.h1>
 
         <motion.p
@@ -40,9 +40,9 @@ export default function NotFound() {
           transition={{ delay: 0.4, duration: 0.5 }}
           className="mt-4 max-w-md text-base leading-relaxed text-muted-foreground sm:text-lg"
         >
-          This corner of the universe hasn&apos;t been discovered yet.
+          宇宙的这个角落还没有被发现。
           <br />
-          Maybe the stars aligned differently than expected?
+          也许星星的排列和预期的不太一样？
         </motion.p>
 
         <motion.div
@@ -57,7 +57,7 @@ export default function NotFound() {
             size="lg"
           >
             <Home className="mr-2 h-4 w-4" />
-            Back to Home
+            返回首页
           </Button>
           <Button
             render={<Link href="/projects" />}
@@ -65,7 +65,7 @@ export default function NotFound() {
             size="lg"
           >
             <ArrowLeft className="mr-2 h-4 w-4" />
-            Explore Projects
+            浏览项目
           </Button>
         </motion.div>
       </motion.div>

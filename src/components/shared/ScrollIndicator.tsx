@@ -18,7 +18,7 @@ export function ScrollIndicator({ targetId }: ScrollIndicatorProps) {
   return (
     <motion.button
       onClick={handleClick}
-      aria-label="Scroll down to content"
+      aria-label="向下滚动查看内容"
       className="absolute bottom-8 left-1/2 -translate-x-1/2 cursor-pointer text-blue-300/60 hover:text-blue-300 transition-colors duration-300"
       initial={{ opacity: 0, y: -10 }}
       animate={{ opacity: 1, y: 0 }}

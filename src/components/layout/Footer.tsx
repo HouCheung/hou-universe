@@ -6,7 +6,7 @@ export function Footer() {
     <footer className="border-t border-border bg-background">
       <div className="mx-auto flex max-w-6xl flex-col gap-4 px-4 py-8 sm:flex-row sm:items-center sm:justify-between">
         <p className="text-sm text-muted-foreground">
-          &copy; 2026 HOU Universe. All rights reserved.
+          &copy; 2026 HOU Universe. 保留所有权利。
         </p>
         <div className="flex items-center gap-4">
           <Link

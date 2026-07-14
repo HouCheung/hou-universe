@@ -4,8 +4,8 @@ import { SkillTree } from '@/components/about/SkillTree';
 import { timelineData, skillTreeData } from '@/data/about';
 
 export const metadata: Metadata = {
-  title: 'About - HOU Universe',
-  description: 'My growth trajectory and skill map — from first lines of code to a full-stack developer platform.',
+  title: '关于 - HOU Universe',
+  description: '我的成长轨迹与技能地图——从第一行代码到全栈开发者平台。',
 };
 
 export default function AboutPage() {
@@ -15,10 +15,10 @@ export default function AboutPage() {
         {/* Page header */}
         <header className="mb-16 text-center sm:mb-24">
           <p className="mb-3 font-mono text-sm tracking-[0.25em] text-blue-300/60 uppercase">
-            About
+            关于
           </p>
           <h1 className="text-4xl font-bold tracking-tight text-foreground sm:text-5xl lg:text-6xl">
-            About
+            关于我
           </h1>
           <p className="mx-auto mt-6 max-w-2xl text-base leading-relaxed text-muted-foreground sm:text-lg">
             这里是「成长轨迹」与「技能地图」。每一条时间节点记录了我从零开始的技术积累，

@@ -15,7 +15,7 @@ interface ContactItem {
 const contactItems: ContactItem[] = [
   {
     icon: Mail,
-    label: 'Email',
+    label: '邮箱',
     value: 'hou.universe@example.com',
     href: 'mailto:hou.universe@example.com',
   },
@@ -28,8 +28,8 @@ const contactItems: ContactItem[] = [
   },
   {
     icon: Globe,
-    label: 'Social',
-    value: 'More channels coming soon...',
+    label: '社交',
+    value: '更多渠道即将上线……',
   },
 ];
 

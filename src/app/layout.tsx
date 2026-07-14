@@ -14,14 +14,14 @@ export const metadata: Metadata = {
     template: "%s | HOU Universe",
   },
   description:
-    "HOU Universe is a personal developer platform showcasing projects in big data, AI, and full-stack development. Explore interactive experiences, skill maps, and a growing portfolio.",
+    "HOU Universe 是个人开发者全功能平台，展示大数据、AI 与全栈开发项目。探索互动体验、技能地图与持续更新的作品集。",
   keywords: [
-    "developer",
-    "portfolio",
-    "full-stack",
-    "big data",
+    "开发者",
+    "作品集",
+    "全栈",
+    "大数据",
     "AI",
-    "machine learning",
+    "机器学习",
     "Next.js",
     "TypeScript",
     "React",
@@ -31,12 +31,12 @@ export const metadata: Metadata = {
   metadataBase: new URL("https://hou-universe.vercel.app"),
   openGraph: {
     type: "website",
-    locale: "en_US",
+    locale: "zh_CN",
     url: "https://hou-universe.vercel.app",
     siteName: "HOU Universe",
-    title: "HOU Universe — Personal Developer Platform",
+    title: "HOU Universe — 个人开发者平台",
     description:
-      "A personal developer platform showcasing projects in big data, AI, and full-stack development. Build, explore, create.",
+      "个人开发者全功能平台，展示大数据、AI 与全栈开发项目。构建、探索、创造。",
     images: [
       {
         url: "/og-image.png",
@@ -48,14 +48,19 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "HOU Universe — Personal Developer Platform",
+    title: "HOU Universe — 个人开发者平台",
     description:
-      "A personal developer platform showcasing projects in big data, AI, and full-stack development.",
+      "个人开发者全功能平台，展示大数据、AI 与全栈开发项目。",
     images: ["/og-image.png"],
   },
   robots: {
     index: true,
     follow: true,
+  },
+  icons: {
+    icon: "/favicon.svg",
+    shortcut: "/favicon.svg",
+    apple: "/favicon.svg",
   },
 };
 
@@ -65,7 +70,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={cn("dark", "font-sans", geist.variable)}>
+    <html lang="zh-CN" className={cn("dark", "font-sans", geist.variable)}>
       <body className="min-h-screen bg-background font-sans antialiased flex flex-col overflow-x-hidden">
         <NavBar />
         <main className="flex-1">

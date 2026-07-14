@@ -12,8 +12,8 @@ interface Star {
   speed: number;
 }
 
-const STAR_COUNT = 150;
-const PARALLAX_FACTOR = 0.02;
+const STAR_COUNT = 240;
+const PARALLAX_FACTOR = 0.035;
 
 export function StarField() {
   const canvasRef = useRef<HTMLCanvasElement>(null);
@@ -30,8 +30,8 @@ export function StarField() {
       stars.push({
         x: Math.random() * width,
         y: Math.random() * height,
-        radius: Math.random() * 2.2 + 0.4,
-        baseAlpha: Math.random() * 0.6 + 0.2,
+        radius: Math.random() * 2.8 + 0.5,
+        baseAlpha: Math.random() * 0.7 + 0.25,
         depth: Math.random() * 0.8 + 0.2,
         phase: Math.random() * Math.PI * 2,
         speed: Math.random() * 0.02 + 0.005,
@@ -81,14 +81,14 @@ export function StarField() {
 
         ctx.beginPath();
         ctx.arc(drawX, drawY, star.radius * dpr, 0, Math.PI * 2);
-        ctx.fillStyle = `rgba(200,220,255,${clampedAlpha.toFixed(3)})`;
+        ctx.fillStyle = `rgba(210,230,255,${clampedAlpha.toFixed(3)})`;
         ctx.fill();
 
-        // Larger stars get a subtle glow
-        if (star.radius > 1.4) {
+        // Larger stars get a brighter glow
+        if (star.radius > 1.2) {
           ctx.beginPath();
-          ctx.arc(drawX, drawY, star.radius * dpr * 2.5, 0, Math.PI * 2);
-          ctx.fillStyle = `rgba(180,210,255,${(clampedAlpha * 0.15).toFixed(3)})`;
+          ctx.arc(drawX, drawY, star.radius * dpr * 3.5, 0, Math.PI * 2);
+          ctx.fillStyle = `rgba(180,210,255,${(clampedAlpha * 0.22).toFixed(3)})`;
           ctx.fill();
         }
       }

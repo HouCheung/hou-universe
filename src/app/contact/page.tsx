@@ -3,9 +3,9 @@ import { ContactForm } from '@/components/shared/ContactForm';
 import { ContactInfo } from '@/components/shared/ContactInfo';
 
 export const metadata: Metadata = {
-  title: 'Contact - HOU Universe',
+  title: '联系 - HOU Universe',
   description:
-    'Get in touch — have a question or want to collaborate? Reach out through the contact form.',
+    '联系我 — 有问题或想合作？通过表单与我取得联系。',
 };
 
 export default function ContactPage() {
@@ -15,15 +15,14 @@ export default function ContactPage() {
         {/* Page header */}
         <header className="mb-16 text-center sm:mb-24">
           <p className="mb-3 font-mono text-sm tracking-[0.25em] text-blue-300/60 uppercase">
-            Contact
+            联系
           </p>
           <h1 className="text-4xl font-bold tracking-tight text-foreground sm:text-5xl lg:text-6xl">
-            Get In Touch
+            联系我
           </h1>
           <p className="mx-auto mt-6 max-w-2xl text-base leading-relaxed text-muted-foreground sm:text-lg">
-            Have a question, an idea, or just want to say hello? Fill out the
-            form below or reach out through any of the channels listed —
-            I&apos;ll get back to you as soon as possible.
+            有问题、有想法，或者只是想打个招呼？填写下方表单或通过任意渠道联系我——
+            我会尽快回复您。
           </p>
         </header>
 

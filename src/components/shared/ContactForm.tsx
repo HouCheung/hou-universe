@@ -35,15 +35,15 @@ export function ContactForm() {
   const validate = useCallback((): boolean => {
     const next: FormErrors = {};
     if (!values.name.trim()) {
-      next.name = 'Please enter your name.';
+      next.name = '请输入您的姓名。';
     }
     if (!values.email.trim()) {
-      next.email = 'Please enter your email.';
+      next.email = '请输入您的邮箱。';
     } else if (!EMAIL_REGEX.test(values.email)) {
-      next.email = 'Please enter a valid email address.';
+      next.email = '请输入有效的邮箱地址。';
     }
     if (!values.message.trim()) {
-      next.message = 'Please enter your message.';
+      next.message = '请输入您的留言内容。';
     }
     setErrors(next);
     return Object.keys(next).length === 0;
@@ -90,12 +90,12 @@ export function ContactForm() {
           htmlFor="contact-name"
           className="text-sm font-medium text-foreground"
         >
-          Name
+          姓名
         </label>
         <Input
           id="contact-name"
           type="text"
-          placeholder="Your name"
+          placeholder="请输入您的姓名"
           value={values.name}
           onChange={(e) =>
             handleChange('name', (e.target as HTMLInputElement).value)
@@ -120,7 +120,7 @@ export function ContactForm() {
           htmlFor="contact-email"
           className="text-sm font-medium text-foreground"
         >
-          Email
+          邮箱
         </label>
         <Input
           id="contact-email"
@@ -150,11 +150,11 @@ export function ContactForm() {
           htmlFor="contact-message"
           className="text-sm font-medium text-foreground"
         >
-          Message
+          留言
         </label>
         <Textarea
           id="contact-message"
-          placeholder="Your message..."
+          placeholder="请输入您的留言内容……"
           rows={5}
           value={values.message}
           onChange={(e) =>
@@ -185,12 +185,12 @@ export function ContactForm() {
           {isSubmitting ? (
             <>
               <Loader2 className="size-4 animate-spin" />
-              Sending...
+              发送中……
             </>
           ) : (
             <>
               <Send className="size-4" />
-              Send Message
+              发送消息
             </>
           )}
         </Button>
@@ -202,7 +202,7 @@ export function ContactForm() {
             className="mt-3 flex items-center gap-1.5 text-sm text-green-400"
           >
             <CheckCircle2 className="size-4" />
-            Message sent successfully! I&apos;ll get back to you soon.
+            消息发送成功！我会尽快回复您。
           </motion.p>
         )}
       </div>

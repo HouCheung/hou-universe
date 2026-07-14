@@ -23,7 +23,7 @@ interface UpdateLogTimelineProps {
 export function UpdateLogTimeline({ entries }: UpdateLogTimelineProps) {
   if (entries.length === 0) {
     return (
-      <p className="text-sm text-muted-foreground">No update logs yet.</p>
+      <p className="text-sm text-muted-foreground">暂无更新日志。</p>
     );
   }
 
