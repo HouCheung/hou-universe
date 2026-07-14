@@ -71,7 +71,7 @@ export function ContactForm() {
         method: "POST",
         headers: { "Content-Type": "application/x-www-form-urlencoded" },
         body: encode({
-          "form-name": "contact",
+          "form-name": "contact-form",
           name: values.name,
           email: values.email,
           description: values.description,
@@ -114,7 +114,7 @@ export function ContactForm() {
 
   return (
     <motion.form
-      name="contact"
+      name="contact-form"
       method="POST"
       data-netlify="true"
       netlify-honeypot="bot-field"
@@ -126,13 +126,8 @@ export function ContactForm() {
       transition={{ duration: 0.5, ease: "easeOut" }}
     >
       {/* Hidden fields for Netlify Forms */}
-      <input type="hidden" name="form-name" value="contact" />
-      <p className="hidden" aria-hidden="true">
-        <label>
-          请勿填写此项：
-          <input name="bot-field" tabIndex={-1} autoComplete="off" />
-        </label>
-      </p>
+      <input type="hidden" name="form-name" value="contact-form" />
+      <input type="hidden" name="bot-field" />
 
       {/* Name field */}
       <div className="flex flex-col gap-1.5">
