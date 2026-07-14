@@ -23,7 +23,7 @@ export function NavBar() {
   const [scrolled, setScrolled] = useState(false);
 
   useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 10);
+    const onScroll = () => setScrolled(window.scrollY > 80);
     window.addEventListener("scroll", onScroll, { passive: true });
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
@@ -31,23 +31,23 @@ export function NavBar() {
   return (
     <header
       className={cn(
-        "sticky top-0 z-50 border-b transition-all duration-300",
+        "fixed top-0 z-50 w-full transition-all duration-500",
         scrolled
-          ? "border-border/40 bg-background/70 backdrop-blur-xl supports-[backdrop-filter]:bg-background/50"
-          : "border-border bg-background"
+          ? "border-b border-white/[0.06] bg-[rgba(10,10,15,0.7)] backdrop-blur-xl shadow-[0_1px_0_0_rgba(255,255,255,0.03)]"
+          : "border-transparent bg-transparent"
       )}
     >
-      <nav className="mx-auto flex max-w-6xl items-center justify-between px-4 py-3">
+      <nav className="mx-auto flex max-w-6xl items-center justify-between px-4 py-3 sm:px-6 lg:px-8">
         {/* Logo */}
         <Link
           href="/"
-          className="text-lg font-bold tracking-tight hover:opacity-80 transition-opacity"
+          className="relative z-10 text-lg font-bold tracking-tight text-foreground transition-colors duration-300 hover:text-blue-200 sm:text-xl"
         >
           HOU Universe
         </Link>
 
         {/* Desktop links */}
-        <ul className="hidden items-center gap-1 text-sm md:flex">
+        <ul className="hidden items-center gap-0.5 text-sm md:flex">
           {NAV_LINKS.map(({ href, label }) => {
             const isActive =
               href === "/"
@@ -58,14 +58,21 @@ export function NavBar() {
                 <Link
                   href={href}
                   className={cn(
-                    "rounded-md px-3 py-2 transition-colors",
+                    "group relative inline-flex px-3 py-2 transition-colors duration-300",
                     isActive
-                      ? "bg-accent text-accent-foreground font-medium"
-                      : "text-muted-foreground hover:text-foreground hover:bg-accent/50"
+                      ? "text-foreground font-medium"
+                      : "text-slate-400 hover:text-foreground/90"
                   )}
                   {...(isActive ? { "aria-current": "page" as const } : {})}
                 >
                   {label}
+                  {/* Animated underline */}
+                  <span
+                    className={cn(
+                      "absolute bottom-0 left-1/2 h-[2px] -translate-x-1/2 rounded-full bg-gradient-to-r from-blue-400/70 to-purple-400/70 transition-all duration-300 ease-out",
+                      isActive ? "w-3/4" : "w-0 group-hover:w-3/4"
+                    )}
+                  />
                 </Link>
               </li>
             );
@@ -76,7 +83,7 @@ export function NavBar() {
         <Button
           variant="ghost"
           size="icon"
-          className="md:hidden"
+          className="relative z-10 md:hidden"
           aria-label="Toggle menu"
           onClick={() => setMobileOpen((prev) => !prev)}
         >
@@ -85,9 +92,14 @@ export function NavBar() {
       </nav>
 
       {/* Mobile menu */}
-      {mobileOpen && (
-        <div className="border-t border-border md:hidden">
-          <ul className="flex flex-col gap-1 px-4 py-3">
+      <div
+        className={cn(
+          "overflow-hidden transition-all duration-300 md:hidden",
+          mobileOpen ? "max-h-96" : "max-h-0"
+        )}
+      >
+        <div className="border-t border-white/[0.06] bg-[rgba(10,10,15,0.85)] backdrop-blur-xl">
+          <ul className="flex flex-col gap-0.5 px-4 py-3">
             {NAV_LINKS.map(({ href, label }) => {
               const isActive =
                 href === "/"
@@ -99,10 +111,10 @@ export function NavBar() {
                     href={href}
                     onClick={() => setMobileOpen(false)}
                     className={cn(
-                      "block rounded-md px-3 py-2 text-sm transition-colors",
+                      "block rounded-md px-3 py-2.5 text-sm transition-colors duration-200",
                       isActive
-                        ? "bg-accent text-accent-foreground font-medium"
-                        : "text-muted-foreground hover:text-foreground hover:bg-accent/50"
+                        ? "bg-white/[0.06] text-foreground font-medium"
+                        : "text-slate-400 hover:text-foreground hover:bg-white/[0.04]"
                     )}
                     {...(isActive ? { "aria-current": "page" as const } : {})}
                   >
@@ -113,7 +125,7 @@ export function NavBar() {
             })}
           </ul>
         </div>
-      )}
+      </div>
     </header>
   );
 }

@@ -15,16 +15,16 @@ const staggerContainer: Variants = {
   hidden: { opacity: 0 },
   visible: {
     opacity: 1,
-    transition: { staggerChildren: 0.3, delayChildren: 0.2 },
+    transition: { staggerChildren: 0.25, delayChildren: 0.3 },
   },
 };
 
 const itemFadeIn: Variants = {
-  hidden: { opacity: 0, y: 24 },
+  hidden: { opacity: 0, y: 28 },
   visible: {
     opacity: 1,
     y: 0,
-    transition: { duration: 0.7, ease: 'easeOut' as const },
+    transition: { duration: 0.8, ease: 'easeOut' as const },
   },
 };
 
@@ -36,55 +36,65 @@ export function HeroContent() {
       variants={staggerContainer}
       className="relative z-10 flex flex-col items-center justify-center px-4 text-center select-none"
     >
+      {/* Micro label */}
       <motion.p
         variants={itemFadeIn}
-        className="mb-2 font-mono text-sm tracking-[0.3em] text-blue-300/70 uppercase sm:text-base"
+        className="mb-3 font-mono text-xs tracking-[0.35em] text-blue-300/50 uppercase sm:text-sm"
       >
         你好，世界
       </motion.p>
 
+      {/* Main title with gradient text */}
       <motion.h1
         variants={itemFadeIn}
-        className="text-6xl font-extrabold tracking-tight text-white sm:text-7xl md:text-8xl lg:text-9xl"
+        className="text-6xl font-black tracking-tight sm:text-7xl md:text-8xl lg:text-9xl"
       >
-        我是 HOU
+        <span className="text-gradient-primary">
+          我是 HOU
+        </span>
       </motion.h1>
 
+      {/* Slogan line */}
       <motion.p
         variants={itemFadeIn}
-        className="mt-4 text-lg font-light text-blue-100/80 sm:text-xl md:text-2xl"
+        className="mt-4 font-mono text-sm tracking-[0.15em] text-slate-500 sm:text-base"
       >
-        专注于全栈开发与 AI 应用的个人宇宙
+        数据科学 × AI工程化 个人探索宇宙
       </motion.p>
 
+      {/* Typewriter subtitle */}
       <motion.p
         variants={itemFadeIn}
-        className="mt-6 text-lg text-blue-200/60 sm:text-xl md:text-2xl"
+        className="mt-5 text-lg font-light text-slate-400 sm:text-xl md:text-2xl"
       >
         <TypeWriter
           texts={ROLES}
           typeSpeed={80}
           deleteSpeed={40}
           pauseDuration={2000}
-          startDelay={900}
+          startDelay={1200}
           className="font-mono"
         />
       </motion.p>
 
+      {/* CTA buttons */}
       <motion.div
         variants={itemFadeIn}
-        className="mt-10 flex flex-wrap items-center justify-center gap-4"
+        className="mt-12 flex flex-wrap items-center justify-center gap-4"
       >
+        {/* Primary CTA — gradient fill */}
         <Link
           href="/projects"
-          className="inline-flex items-center gap-2 rounded-lg bg-blue-500 px-6 py-3 text-sm font-semibold text-white shadow-lg shadow-blue-500/25 transition-all duration-300 hover:bg-blue-400 hover:shadow-blue-400/30 hover:-translate-y-0.5 sm:px-8 sm:py-3.5 sm:text-base"
+          className="group inline-flex items-center gap-2.5 rounded-xl bg-gradient-to-r from-blue-500 to-purple-500 px-7 py-3.5 text-sm font-semibold text-white shadow-lg shadow-blue-500/20 transition-all duration-300 ease-out hover:-translate-y-1 hover:shadow-xl hover:shadow-blue-500/30 sm:px-9 sm:py-4 sm:text-base"
         >
-          <ArrowRight className="size-4 sm:size-5" />
+          <ArrowRight className="size-4 transition-transform duration-300 group-hover:translate-x-0.5 sm:size-5" />
           查看项目
         </Link>
+
+        {/* Secondary CTA — outline */}
         <Link
           href="/contact"
-          className="inline-flex items-center gap-2 rounded-lg border border-blue-400/30 bg-transparent px-6 py-3 text-sm font-semibold text-blue-100 transition-all duration-300 hover:border-blue-300/50 hover:bg-blue-400/10 hover:-translate-y-0.5 sm:px-8 sm:py-3.5 sm:text-base"
+          className="group inline-flex items-center gap-2.5 rounded-xl border border-white/[0.12] bg-transparent px-7 py-3.5 text-sm font-semibold text-slate-300 transition-all duration-300 ease-out hover:-translate-y-1 hover:border-white/[0.25] hover:bg-white/[0.04] hover:text-foreground sm:px-9 sm:py-4 sm:text-base"
         >
           <Mail className="size-4 sm:size-5" />
           联系我

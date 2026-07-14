@@ -12,18 +12,28 @@ interface Star {
   speed: number;
   originX: number;
   originY: number;
+  tint: "blue" | "purple" | "white";
 }
 
 const LAYERS = [
-  { count: 60, radiusRange: [1.8, 3.2] as [number, number], alphaRange: [0.5, 0.8] as [number, number], speedFactor: 0.15 },
-  { count: 100, radiusRange: [0.9, 1.7] as [number, number], alphaRange: [0.4, 0.7] as [number, number], speedFactor: 0.4 },
-  { count: 160, radiusRange: [0.3, 0.8] as [number, number], alphaRange: [0.55, 0.9] as [number, number], speedFactor: 1.0 },
+  // Far background: sparse, dim, larger, slow parallax
+  { count: 45, radiusRange: [1.2, 2.6] as [number, number], alphaRange: [0.22, 0.45] as [number, number], speedFactor: 0.12 },
+  // Mid ground: medium density, medium brightness
+  { count: 90, radiusRange: [0.7, 1.4] as [number, number], alphaRange: [0.35, 0.6] as [number, number], speedFactor: 0.38 },
+  // Near foreground: dense, brighter, small, fast parallax
+  { count: 180, radiusRange: [0.3, 0.7] as [number, number], alphaRange: [0.55, 0.92] as [number, number], speedFactor: 1.0 },
 ];
 
 const GRAVITY_RADIUS = 150;
-const GRAVITY_STRENGTH = 0.03;
+const GRAVITY_STRENGTH = 0.025;
 const BURST_PARTICLE_COUNT = 18;
 const BURST_LIFESPAN = 1200;
+
+const TINT_COLORS = {
+  blue: { main: "180,210,255", glow: "160,195,255" },
+  purple: { main: "200,180,240", glow: "180,160,230" },
+  white: { main: "210,230,255", glow: "190,215,250" },
+} as const;
 
 interface BurstParticle {
   x: number;
@@ -54,6 +64,10 @@ export function StarField() {
       for (let i = 0; i < layer.count; i++) {
         const x = Math.random() * width;
         const y = Math.random() * height;
+        // Distribute tints: 60% white, 25% blue, 15% purple
+        const tintRand = Math.random();
+        const tint: Star["tint"] = tintRand < 0.6 ? "white" : tintRand < 0.85 ? "blue" : "purple";
+
         stars.push({
           x,
           y,
@@ -64,6 +78,7 @@ export function StarField() {
           layer: l,
           phase: Math.random() * Math.PI * 2,
           speed: Math.random() * 0.02 + 0.005,
+          tint,
         });
       }
     }
@@ -74,7 +89,7 @@ export function StarField() {
     const particles: BurstParticle[] = [];
     for (let i = 0; i < BURST_PARTICLE_COUNT; i++) {
       const angle = (Math.PI * 2 * i) / BURST_PARTICLE_COUNT + (Math.random() - 0.5) * 0.5;
-      const speed = 1.5 + Math.random() * 4;
+      const speed = 1.2 + Math.random() * 3.5;
       particles.push({
         x: cx,
         y: cy,
@@ -82,7 +97,7 @@ export function StarField() {
         vy: Math.sin(angle) * speed,
         life: BURST_LIFESPAN,
         maxLife: BURST_LIFESPAN,
-        radius: 0.5 + Math.random() * 2,
+        radius: 0.4 + Math.random() * 1.6,
       });
     }
     burstParticlesRef.current.push(...particles);
@@ -123,12 +138,12 @@ export function StarField() {
         while (drawY < -10) drawY += displayH + 20;
         while (drawY > displayH + 10) drawY -= displayH + 20;
 
-        // Gravity toward mouse
+        // Gravity toward mouse (stronger for near layers)
         const dx = mouseDisplayX - drawX;
         const dy = mouseDisplayY - drawY;
         const dist = Math.sqrt(dx * dx + dy * dy);
         if (dist < GRAVITY_RADIUS) {
-          const force = (1 - dist / GRAVITY_RADIUS) * GRAVITY_STRENGTH * (star.layer + 1) * 0.5;
+          const force = (1 - dist / GRAVITY_RADIUS) * GRAVITY_STRENGTH * (star.layer + 1) * 0.4;
           drawX += dx * force;
           drawY += dy * force;
         }
@@ -137,19 +152,25 @@ export function StarField() {
         star.y = drawY;
 
         const breathe = Math.sin(timeRef.current * star.speed + star.phase);
-        const alpha = Math.max(0.05, Math.min(1, star.baseAlpha + breathe * 0.25));
+        const alpha = Math.max(0.04, Math.min(1, star.baseAlpha + breathe * 0.2));
 
-        if (alpha < 0.06) continue;
+        if (alpha < 0.05) continue;
 
+        const tintColors = TINT_COLORS[star.tint];
+
+        // Draw star core
         ctx.beginPath();
         ctx.arc(drawX * dpr, drawY * dpr, star.radius * dpr, 0, Math.PI * 2);
-        ctx.fillStyle = `rgba(210,230,255,${alpha.toFixed(3)})`;
+        ctx.fillStyle = `rgba(${tintColors.main},${alpha.toFixed(3)})`;
         ctx.fill();
 
-        if (star.radius > 1.2) {
+        // Draw glow for larger stars
+        if (star.radius > 0.8) {
+          const glowRadius = star.radius * dpr * 3.5;
+          const glowAlpha = star.radius > 1.2 ? 0.18 : 0.12;
           ctx.beginPath();
-          ctx.arc(drawX * dpr, drawY * dpr, star.radius * dpr * 3.5, 0, Math.PI * 2);
-          ctx.fillStyle = `rgba(180,210,255,${(alpha * 0.22).toFixed(3)})`;
+          ctx.arc(drawX * dpr, drawY * dpr, glowRadius, 0, Math.PI * 2);
+          ctx.fillStyle = `rgba(${tintColors.glow},${(alpha * glowAlpha).toFixed(3)})`;
           ctx.fill();
         }
       }
@@ -168,7 +189,7 @@ export function StarField() {
           continue;
         }
         const lifeRatio = p.life / p.maxLife;
-        const alpha = lifeRatio * 0.9;
+        const alpha = lifeRatio * 0.85;
         ctx.beginPath();
         ctx.arc(p.x * dpr, p.y * dpr, p.radius * dpr * lifeRatio, 0, Math.PI * 2);
         ctx.fillStyle = `rgba(200,220,255,${alpha.toFixed(3)})`;

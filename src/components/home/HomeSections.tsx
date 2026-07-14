@@ -2,10 +2,12 @@
 
 import Link from 'next/link';
 import { motion, type Variants } from 'framer-motion';
-import { ArrowRight, Mail } from 'lucide-react';
+import { ArrowRight, Mail, Database, Bot, Code2 } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
 import { ProjectCard } from '@/components/projects/ProjectCard';
+import { SectionHeader } from '@/components/home/SectionHeader';
+import { CapabilityCard } from '@/components/home/CapabilityCard';
 import { projects } from '@/data/projects';
 import { skillLevelData } from '@/data/about';
 
@@ -14,26 +16,35 @@ const allSkills = skillLevelData.flatMap((cat) =>
 );
 const featuredProjects = projects.slice(0, 2);
 
+const CAPABILITIES = [
+  {
+    icon: Database,
+    title: '数据工程能力',
+    description:
+      '覆盖数据采集、ETL清洗、可视化分析全链路，擅长海量数据处理与建模，具备从原始数据到商业洞察的完整工程能力。',
+  },
+  {
+    icon: Bot,
+    title: 'AI工程化开发',
+    description:
+      '熟练运用 Claude Code、Trae Work 等 AI Agent 工具，基于 Harness 工程思想高效交付项目，将 AI 真正融入开发工作流。',
+  },
+  {
+    icon: Code2,
+    title: '全栈项目落地',
+    description:
+      '具备前后端开发能力，可独立完成从需求分析、架构设计到部署上线的完整项目闭环，追求高质量的代码与用户体验。',
+  },
+];
+
 const sectionVariants: Variants = {
   hidden: { opacity: 0, y: 40 },
   visible: {
     opacity: 1,
     y: 0,
-    transition: { duration: 0.6, ease: 'easeOut' },
+    transition: { duration: 0.7, ease: 'easeOut' },
   },
 };
-
-function SectionDivider({ label }: { label: string }) {
-  return (
-    <div className="mb-10 flex items-center gap-3 sm:mb-14">
-      <span className="h-px flex-1 bg-gradient-to-r from-transparent via-blue-400/30 to-transparent" />
-      <h2 className="shrink-0 font-mono text-sm tracking-[0.2em] text-blue-300/70 uppercase">
-        {label}
-      </h2>
-      <span className="h-px flex-1 bg-gradient-to-r from-transparent via-blue-400/30 to-transparent" />
-    </div>
-  );
-}
 
 export function HomeSections() {
   return (
@@ -45,35 +56,59 @@ export function HomeSections() {
         viewport={{ once: true, margin: '-80px' }}
         variants={sectionVariants}
       >
-        <SectionDivider label="精选项目" />
+        <SectionHeader enTitle="Featured Projects" zhTitle="精选项目" />
 
-        <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+        <div className="grid gap-6 sm:grid-cols-2">
           {featuredProjects.map((project, i) => (
             <ProjectCard key={project.id} project={project} index={i} />
           ))}
         </div>
 
-        <div className="mt-10 flex justify-center">
+        <div className="mt-12 flex justify-center">
           <Button
             render={<Link href="/projects" />}
             variant="outline"
             size="lg"
+            className="group border-white/[0.1] bg-transparent text-slate-400 transition-all duration-300 hover:border-blue-400/30 hover:bg-white/[0.04] hover:text-foreground"
           >
-            <ArrowRight className="mr-2 size-4" />
+            <ArrowRight className="mr-2 size-4 transition-transform duration-300 group-hover:translate-x-0.5" />
             查看全部项目
           </Button>
         </div>
       </motion.section>
 
-      {/* ========== 关于我 ========== */}
+      {/* ========== 核心能力 ========== */}
       <motion.section
-        className="mt-24 sm:mt-32"
+        className="mt-24 sm:mt-36"
         initial="hidden"
         whileInView="visible"
         viewport={{ once: true, margin: '-80px' }}
         variants={sectionVariants}
       >
-        <SectionDivider label="关于我" />
+        <SectionHeader enTitle="Core Capabilities" zhTitle="核心能力" />
+
+        <div className="grid gap-6 sm:grid-cols-3">
+          {CAPABILITIES.map((cap, i) => (
+            <CapabilityCard
+              key={cap.title}
+              icon={cap.icon}
+              title={cap.title}
+              description={cap.description}
+              index={i}
+            />
+          ))}
+        </div>
+      </motion.section>
+
+      {/* ========== 关于我 ========== */}
+      <motion.section
+        className="mt-24 sm:mt-36"
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true, margin: '-80px' }}
+        variants={sectionVariants}
+      >
+        <SectionHeader enTitle="About Me" zhTitle="关于我" />
 
         <div className="mx-auto max-w-3xl text-center">
           <p className="text-base leading-relaxed text-muted-foreground sm:text-lg">
@@ -89,7 +124,7 @@ export function HomeSections() {
               <Badge
                 key={skillName}
                 variant="secondary"
-                className="px-3 py-1 text-xs transition-all hover:border-blue-400/40 hover:bg-blue-400/8 hover:shadow-[0_0_12px_rgba(96,165,250,0.10)]"
+                className="border-white/[0.06] bg-white/[0.03] px-3 py-1 text-xs transition-all duration-300 hover:border-blue-400/30 hover:bg-blue-400/6 hover:text-blue-200"
               >
                 {skillName}
               </Badge>
@@ -101,8 +136,9 @@ export function HomeSections() {
               render={<Link href="/about" />}
               variant="outline"
               size="lg"
+              className="group border-white/[0.1] bg-transparent text-slate-400 transition-all duration-300 hover:border-blue-400/30 hover:bg-white/[0.04] hover:text-foreground"
             >
-              <ArrowRight className="mr-2 size-4" />
+              <ArrowRight className="mr-2 size-4 transition-transform duration-300 group-hover:translate-x-0.5" />
               了解更多关于我
             </Button>
           </div>
@@ -111,13 +147,13 @@ export function HomeSections() {
 
       {/* ========== 联系我 ========== */}
       <motion.section
-        className="mt-24 sm:mt-32"
+        className="mt-24 sm:mt-36"
         initial="hidden"
         whileInView="visible"
         viewport={{ once: true, margin: '-80px' }}
         variants={sectionVariants}
       >
-        <SectionDivider label="联系我" />
+        <SectionHeader enTitle="Get In Touch" zhTitle="联系我" />
 
         <div className="mx-auto max-w-2xl text-center">
           <h3 className="text-3xl font-bold tracking-tight text-foreground sm:text-4xl">
@@ -133,6 +169,7 @@ export function HomeSections() {
               render={<Link href="/contact" />}
               variant="default"
               size="lg"
+              className="transition-all duration-300 hover:shadow-[0_0_28px_rgba(96,165,250,0.3)]"
             >
               <Mail className="mr-2 size-4" />
               联系我

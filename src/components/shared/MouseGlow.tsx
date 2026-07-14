@@ -17,8 +17,8 @@ export function MouseGlow() {
     }
 
     // Smooth lerp towards target
-    posRef.current.x += (targetRef.current.x - posRef.current.x) * 0.08;
-    posRef.current.y += (targetRef.current.y - posRef.current.y) * 0.08;
+    posRef.current.x += (targetRef.current.x - posRef.current.x) * 0.06;
+    posRef.current.y += (targetRef.current.y - posRef.current.y) * 0.06;
 
     glow.style.transform = `translate(${posRef.current.x}px, ${posRef.current.y}px)`;
 
@@ -56,12 +56,12 @@ export function MouseGlow() {
       aria-hidden="true"
       className="pointer-events-none fixed left-0 top-0 z-0"
       style={{
-        width: '600px',
-        height: '600px',
+        width: '700px',
+        height: '700px',
         borderRadius: '50%',
         background:
-          'radial-gradient(circle, rgba(120,170,255,0.15) 0%, rgba(100,150,240,0.07) 30%, rgba(60,100,220,0.03) 55%, rgba(0,0,0,0) 75%)',
-        transform: 'translate(-300px, -300px)',
+          'radial-gradient(circle, rgba(99,140,255,0.12) 0%, rgba(90,130,240,0.06) 28%, rgba(50,90,210,0.02) 52%, rgba(0,0,0,0) 78%)',
+        transform: 'translate(-350px, -350px)',
         willChange: 'transform',
       }}
     />
