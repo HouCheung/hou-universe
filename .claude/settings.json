@@ -1,0 +1,20 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(npx create-next-app@latest . --typescript --eslint --tailwind --src-dir --app --import-alias \"@/*\" --no-turbopack --use-npm)",
+      "Bash(npx create-next-app@latest . --typescript --eslint --tailwind --src-dir --app --import-alias \"@/*\" --no-turbopack --use-npm --name \"hou-universe\")",
+      "Read(//d/123/**)",
+      "Bash(npx create-next-app@latest hou-universe --typescript --eslint --tailwind --src-dir --app --import-alias \"@/*\" --no-turbopack --use-npm)",
+      "Bash(cd \"d:/123/HOU Universe\" && mkdir -p src/app/about src/app/projects/\\\\[id\\\\] src/app/contact src/components/ui src/components/layout src/components/shared src/lib src/types src/data)",
+      "Bash(npm install *)",
+      "Bash(npx shadcn@latest init -d --force)",
+      "Bash(npx shadcn@latest add card input textarea avatar badge separator scroll-area --yes)",
+      "Bash(npm run *)",
+      "Bash(git init *)",
+      "Bash(git add *)"
+    ],
+    "additionalDirectories": [
+      "d:\\123\\HOU Universe\\src\\app\\projects"
+    ]
+  }
+}
