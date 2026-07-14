@@ -11,7 +11,8 @@
       "Bash(npx shadcn@latest add card input textarea avatar badge separator scroll-area --yes)",
       "Bash(npm run *)",
       "Bash(git init *)",
-      "Bash(git add *)"
+      "Bash(git add *)",
+      "Bash(git commit -m 'feat: release v0.1.0 - initial version of HOU Universe *)"
     ],
     "additionalDirectories": [
       "d:\\123\\HOU Universe\\src\\app\\projects"
