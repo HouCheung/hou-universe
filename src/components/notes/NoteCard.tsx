@@ -46,7 +46,7 @@ export function NoteCard({ note, index }: NoteCardProps) {
 
       <Link
         href={`/notes/${note.slug}`}
-        className="inline-flex items-center gap-1.5 text-sm font-medium text-slate-300/80 transition-colors hover:text-slate-200"
+        className="inline-flex items-center gap-1.5 text-sm font-medium text-slate-300/80 transition-colors hover:text-[#93c5fd]"
       >
         阅读全文
         <ArrowRight className="h-3.5 w-3.5 transition-transform group-hover/card:translate-x-0.5" />

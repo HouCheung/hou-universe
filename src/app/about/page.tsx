@@ -129,7 +129,7 @@ export default function AboutPage() {
                 {courses.map((course) => (
                   <span
                     key={course}
-                    className="inline-flex items-center rounded-lg border border-border/50 bg-secondary/50 px-3 py-1.5 text-sm text-foreground transition-all duration-200 hover:border-slate-400/40 hover:bg-slate-400/8 hover:shadow-[0_0_12px_rgba(100,116,139,0.10)]"
+                    className="inline-flex items-center rounded-lg border border-border/50 bg-secondary/50 px-3 py-1.5 text-sm text-foreground transition-all duration-200 hover:border-[#2563eb]/30 hover:bg-[#2563eb]/6 hover:shadow-[0_0_12px_rgba(37,99,235,0.08)]"
                   >
                     {course}
                   </span>
@@ -154,7 +154,7 @@ export default function AboutPage() {
                   className="relative flex gap-5 pl-10 sm:gap-6 sm:pl-14"
                 >
                   {/* Timeline dot */}
-                  <div className="absolute left-[11px] top-2 h-2.5 w-2.5 rounded-full border-2 border-slate-400 bg-background ring-4 ring-background sm:left-[15px]" />
+                  <div className="absolute left-[11px] top-2 h-2.5 w-2.5 rounded-full border-2 border-[#2563eb]/50 bg-background ring-4 ring-background sm:left-[15px]" />
 
                   {/* Card */}
                   <div className="glass-card-hover flex-1 rounded-2xl p-5 sm:p-6">

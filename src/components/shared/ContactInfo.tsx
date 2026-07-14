@@ -63,7 +63,7 @@ export function ContactInfo() {
                     href={item.href}
                     target={item.external ? "_blank" : undefined}
                     rel={item.external ? "noopener noreferrer" : undefined}
-                    className="truncate text-sm text-muted-foreground transition-colors hover:text-slate-300"
+                    className="truncate text-sm text-muted-foreground transition-colors hover:text-[#93c5fd]"
                   >
                     {item.value}
                   </a>

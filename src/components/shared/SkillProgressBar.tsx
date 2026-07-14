@@ -82,12 +82,12 @@ function SkillBar({
 
       {/* Progress track — full width on its own row */}
       <div className="relative h-2.5 w-full overflow-hidden rounded-full border border-white/[0.06] bg-white/[0.03]">
-        {/* Fill bar */}
+        {/* Fill bar — 低饱和深空蓝渐变，与全站按钮配色统一 */}
         <motion.div
           className="relative h-full rounded-full"
           style={{
             background:
-              "linear-gradient(90deg, #3b82f6 0%, #60a5fa 55%, #93c5fd 100%)",
+              "linear-gradient(90deg, #2563eb 0%, #1e40af 55%, #1d4ed8 100%)",
           }}
           initial={{ width: 0 }}
           animate={isInView ? { width: `${percentage}%` } : { width: 0 }}
@@ -97,17 +97,17 @@ function SkillBar({
             delay: index * 0.1,
           }}
         >
-          {/* Subtle glow overlay */}
+          {/* Subtle glow overlay — 深蓝调 */}
           <div
             className="absolute inset-0 rounded-full"
             style={{
               background:
-                "linear-gradient(90deg, rgba(255,255,255,0) 0%, rgba(147,197,253,0.2) 50%, rgba(255,255,255,0.08) 100%)",
+                "linear-gradient(90deg, rgba(255,255,255,0) 0%, rgba(37,99,235,0.2) 50%, rgba(255,255,255,0.06) 100%)",
               filter: "blur(1px)",
             }}
           />
 
-          {/* Endpoint dot */}
+          {/* Endpoint dot — 深蓝调 */}
           <motion.div
             className="absolute right-0 top-1/2 -translate-y-1/2 translate-x-1/2"
             initial={{ opacity: 0, scale: 0 }}
@@ -120,8 +120,8 @@ function SkillBar({
               delay: 0.6 + index * 0.1,
             }}
           >
-            <div className="absolute -inset-1.5 rounded-full bg-blue-400/20 blur-[3px]" />
-            <div className="relative h-2.5 w-2.5 rounded-full bg-white shadow-[0_0_6px_rgba(147,197,253,0.8)]" />
+            <div className="absolute -inset-1.5 rounded-full bg-blue-600/20 blur-[3px]" />
+            <div className="relative h-2.5 w-2.5 rounded-full bg-white shadow-[0_0_6px_rgba(37,99,235,0.7)]" />
           </motion.div>
         </motion.div>
       </div>
@@ -151,7 +151,7 @@ export function SkillProgressBar({ categories }: SkillProgressBarProps) {
               <div className="h-8 w-1 shrink-0 rounded-full bg-gradient-to-b from-slate-500 via-slate-400 to-slate-600" />
 
               {/* Icon */}
-              <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg border border-white/[0.06] bg-white/[0.04] text-slate-300 transition-colors duration-300 group-hover/skill-cat:border-slate-400/30 group-hover/skill-cat:bg-slate-400/8">
+              <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg border border-white/[0.06] bg-white/[0.04] text-slate-300 transition-colors duration-300 group-hover/skill-cat:border-[#2563eb]/25 group-hover/skill-cat:bg-[#2563eb]/8">
                 <Icon size={18} strokeWidth={1.8} />
               </div>
 

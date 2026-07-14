@@ -53,7 +53,7 @@ export function MouseTrail() {
       }
     }
 
-    // Update and draw particles
+    // Update and draw particles — 低饱和深空蓝调星尘
     const dt = 16;
     for (let i = particlesRef.current.length - 1; i >= 0; i--) {
       const p = particlesRef.current[i];
@@ -73,16 +73,16 @@ export function MouseTrail() {
       const py = p.y * dpr;
       const radius = p.size * dpr;
 
-      // Glow
+      // Outer glow — 深蓝调
       ctx.beginPath();
       ctx.arc(px, py, radius * 2.5, 0, Math.PI * 2);
-      ctx.fillStyle = `rgba(180,200,230,${(alpha * 0.12).toFixed(3)})`;
+      ctx.fillStyle = `rgba(37,99,235,${(alpha * 0.1).toFixed(3)})`;
       ctx.fill();
 
-      // Core
+      // Inner core — 淡蓝白
       ctx.beginPath();
       ctx.arc(px, py, radius, 0, Math.PI * 2);
-      ctx.fillStyle = `rgba(210,225,250,${alpha.toFixed(3)})`;
+      ctx.fillStyle = `rgba(180,210,250,${alpha.toFixed(3)})`;
       ctx.fill();
     }
 
