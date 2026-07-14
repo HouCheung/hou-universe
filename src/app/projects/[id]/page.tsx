@@ -6,7 +6,11 @@ import { StarField } from "@/components/shared/StarField";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { UpdateLogTimeline } from "@/components/projects/UpdateLogTimeline";
-import { getProjectById } from "@/data/projects";
+import { getProjectById, getAllProjectIds } from "@/data/projects";
+
+export function generateStaticParams() {
+  return getAllProjectIds().map((id) => ({ id }));
+}
 
 interface ProjectPageProps {
   params: Promise<{ id: string }>;
