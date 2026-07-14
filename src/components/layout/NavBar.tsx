@@ -69,7 +69,7 @@ export function NavBar() {
                   {/* Animated underline */}
                   <span
                     className={cn(
-                      "absolute bottom-0 left-1/2 h-[2px] -translate-x-1/2 rounded-full bg-gradient-to-r from-[#2563eb]/60 to-[#1d4ed8]/60 transition-all duration-300 ease-out",
+                      "absolute bottom-0 left-1/2 h-[2px] -translate-x-1/2 rounded-full bg-gradient-to-r from-[#1e40af]/60 to-[#1e3a8a]/60 transition-all duration-300 ease-out",
                       isActive ? "w-3/4" : "w-0 group-hover:w-3/4"
                     )}
                   />

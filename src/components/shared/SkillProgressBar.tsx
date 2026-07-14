@@ -65,13 +65,13 @@ function SkillBar({
 
   return (
     <div ref={ref} className="flex flex-col gap-2">
-      {/* Label row: name left, percentage right — single line */}
-      <div className="flex items-center justify-between">
-        <span className="text-sm font-medium text-foreground/80">
+      {/* Label row: name left, percentage right — single line, no overlap */}
+      <div className="flex items-center justify-between gap-3">
+        <span className="text-sm font-medium text-foreground/80 truncate">
           {name}
         </span>
         <motion.span
-          className="font-mono text-sm font-medium tabular-nums text-slate-300"
+          className="font-mono text-sm font-medium tabular-nums text-slate-300 shrink-0"
           initial={{ opacity: 0 }}
           animate={isInView ? { opacity: 1 } : { opacity: 0 }}
           transition={{ duration: 0.4, delay: 0.25 + index * 0.08 }}
@@ -82,12 +82,12 @@ function SkillBar({
 
       {/* Progress track — full width on its own row */}
       <div className="relative h-2.5 w-full overflow-hidden rounded-full border border-white/[0.06] bg-white/[0.03]">
-        {/* Fill bar — 低饱和深空蓝渐变，与全站按钮配色统一 */}
+        {/* Fill bar — 低饱和深靛蓝渐变，与新版按钮配色体系统一 */}
         <motion.div
           className="relative h-full rounded-full"
           style={{
             background:
-              "linear-gradient(90deg, #2563eb 0%, #1e40af 55%, #1d4ed8 100%)",
+              "linear-gradient(90deg, #1e40af 0%, #1e3a8a 55%, #1d4ed8 100%)",
           }}
           initial={{ width: 0 }}
           animate={isInView ? { width: `${percentage}%` } : { width: 0 }}
@@ -97,17 +97,17 @@ function SkillBar({
             delay: index * 0.1,
           }}
         >
-          {/* Subtle glow overlay — 深蓝调 */}
+          {/* Subtle glow overlay — 深靛蓝调 */}
           <div
             className="absolute inset-0 rounded-full"
             style={{
               background:
-                "linear-gradient(90deg, rgba(255,255,255,0) 0%, rgba(37,99,235,0.2) 50%, rgba(255,255,255,0.06) 100%)",
+                "linear-gradient(90deg, rgba(255,255,255,0) 0%, rgba(30,64,175,0.15) 50%, rgba(255,255,255,0.04) 100%)",
               filter: "blur(1px)",
             }}
           />
 
-          {/* Endpoint dot — 深蓝调 */}
+          {/* Endpoint dot — 深靛蓝调 */}
           <motion.div
             className="absolute right-0 top-1/2 -translate-y-1/2 translate-x-1/2"
             initial={{ opacity: 0, scale: 0 }}
@@ -120,8 +120,8 @@ function SkillBar({
               delay: 0.6 + index * 0.1,
             }}
           >
-            <div className="absolute -inset-1.5 rounded-full bg-blue-600/20 blur-[3px]" />
-            <div className="relative h-2.5 w-2.5 rounded-full bg-white shadow-[0_0_6px_rgba(37,99,235,0.7)]" />
+            <div className="absolute -inset-1.5 rounded-full bg-[#1e40af]/20 blur-[3px]" />
+            <div className="relative h-2.5 w-2.5 rounded-full bg-white shadow-[0_0_6px_rgba(30,64,175,0.7)]" />
           </motion.div>
         </motion.div>
       </div>
@@ -151,7 +151,7 @@ export function SkillProgressBar({ categories }: SkillProgressBarProps) {
               <div className="h-8 w-1 shrink-0 rounded-full bg-gradient-to-b from-slate-500 via-slate-400 to-slate-600" />
 
               {/* Icon */}
-              <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg border border-white/[0.06] bg-white/[0.04] text-slate-300 transition-colors duration-300 group-hover/skill-cat:border-[#2563eb]/25 group-hover/skill-cat:bg-[#2563eb]/8">
+              <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg border border-white/[0.06] bg-white/[0.04] text-slate-300 transition-colors duration-300 group-hover/skill-cat:border-[#1e40af]/25 group-hover/skill-cat:bg-[#1e40af]/8">
                 <Icon size={18} strokeWidth={1.8} />
               </div>
 

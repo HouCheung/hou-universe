@@ -4,16 +4,53 @@ import { cva, type VariantProps } from "class-variance-authority"
 import { cn } from "@/lib/utils"
 
 const buttonVariants = cva(
-  "group/button inline-flex shrink-0 items-center justify-center rounded-lg text-sm font-medium whitespace-nowrap transition-all duration-300 ease-out outline-none select-none focus-visible:border-ring focus-visible:ring-3 focus-visible:ring-ring/50 active:not-aria-[haspopup]:translate-y-px disabled:pointer-events-none disabled:opacity-50 aria-invalid:border-destructive aria-invalid:ring-3 aria-invalid:ring-destructive/20 dark:aria-invalid:border-destructive/50 dark:aria-invalid:ring-destructive/40 [&_svg]:pointer-events-none [&_svg]:shrink-0 [&_svg:not([class*='size-'])]:size-4",
+  "group/button inline-flex shrink-0 items-center justify-center rounded-[9px] text-sm font-medium whitespace-nowrap transition-all duration-300 ease-out outline-none select-none focus-visible:border-ring focus-visible:ring-3 focus-visible:ring-ring/50 active:not-aria-[haspopup]:translate-y-px disabled:pointer-events-none disabled:opacity-50 aria-invalid:border-destructive aria-invalid:ring-3 aria-invalid:ring-destructive/20 dark:aria-invalid:border-destructive/50 dark:aria-invalid:ring-destructive/40 [&_svg]:pointer-events-none [&_svg]:shrink-0 [&_svg:not([class*='size-'])]:size-4",
   {
     variants: {
       variant: {
         default:
-          // 低饱和深空蓝微渐变 + 顶部玻璃高光线 + 极淡同色外阴影
-          "relative border border-[#2563eb]/30 bg-gradient-to-b from-[#2563eb] to-[#1d4ed8] text-white font-medium shadow-[0_2px_8px_rgba(37,99,235,0.15),inset_0_1px_0_rgba(255,255,255,0.15)] before:absolute before:inset-0 before:rounded-[inherit] before:bg-gradient-to-b before:from-white/[0.06] before:to-transparent before:pointer-events-none hover:from-[#3070f0] hover:to-[#2563eb] hover:-translate-y-0.5 hover:shadow-[0_4px_16px_rgba(37,99,235,0.2),0_0_30px_rgba(37,99,235,0.08),inset_0_1px_0_rgba(255,255,255,0.18)] active:translate-y-px active:shadow-[0_1px_4px_rgba(37,99,235,0.1),inset_0_1px_0_rgba(255,255,255,0.1)]",
+          // ── 高级感主按钮：低饱和深靛蓝纵向微渐变 + 立体光影系统 ──
+          // 底色：上浅下深 (#1e40af → #1e3a8a)，饱和度低沉稳不跳
+          "relative border border-white/[0.08] " +
+          "bg-gradient-to-b from-[#1e40af] to-[#1e3a8a] " +
+          "text-white font-medium tracking-[0.01em] " +
+          // 立体阴影：外投影 + 顶部内高光 + 底部内阴影 + 左侧1px竖高光条
+          "shadow-[0_2px_8px_rgba(30,58,138,0.2),inset_0_1px_0_rgba(255,255,255,0.12),inset_0_-1px_0_rgba(0,0,0,0.18),inset_1px_0_0_rgba(255,255,255,0.06)] " +
+          // ::before — 顶部玻璃高光覆盖层
+          "before:absolute before:inset-0 before:rounded-[inherit] before:bg-gradient-to-b before:from-white/[0.06] before:to-transparent before:pointer-events-none before:transition-opacity before:duration-300 " +
+          // ::after — 悬浮星芒闪效（径向光晕，快速淡入淡出）
+          "after:absolute after:inset-0 after:rounded-[inherit] after:pointer-events-none " +
+          "after:bg-[radial-gradient(ellipse_at_center,rgba(255,255,255,0.08)_0%,transparent_70%)] " +
+          "after:opacity-0 after:transition-opacity after:duration-200 " +
+          // ── Hover 悬浮态：上浮2px + 外发光 + 内高光提亮 + 星芒闪效 ──
+          "hover:from-[#2563eb] hover:to-[#1e40af] hover:-translate-y-0.5 " +
+          "hover:shadow-[0_4px_20px_rgba(30,64,175,0.22),0_0_40px_rgba(30,64,175,0.06),inset_0_1px_0_rgba(255,255,255,0.16),inset_0_-1px_0_rgba(0,0,0,0.12),inset_1px_0_0_rgba(255,255,255,0.1)] " +
+          "hover:before:from-white/[0.1] " +
+          "hover:after:opacity-100 " +
+          // ── Active 点击态：下压1px + 光影回收 ──
+          "active:translate-y-px active:shadow-[0_1px_3px_rgba(30,58,138,0.12),inset_0_1px_0_rgba(255,255,255,0.06)] " +
+          "active:before:from-white/[0.03] active:after:opacity-0",
         outline:
-          // 通透次按钮 — 蓝调半透明边框 + 透明底色
-          "border border-[#2563eb]/20 bg-transparent text-slate-300 backdrop-blur-sm hover:border-[#2563eb]/35 hover:bg-[#2563eb]/8 hover:text-foreground hover:-translate-y-0.5 aria-expanded:bg-muted aria-expanded:text-foreground",
+          // ── 高级感次按钮：通透玻璃底 + 渐变半透明蓝边框 ──
+          "relative border border-white/[0.06] " +
+          "bg-[rgba(30,64,175,0.06)] backdrop-blur-sm " +
+          "text-slate-300 font-normal tracking-[0.01em] " +
+          // 微弱顶部内高光
+          "shadow-[inset_0_1px_0_rgba(255,255,255,0.04)] " +
+          // ::before — 内发光层（默认隐藏）
+          "before:absolute before:inset-0 before:rounded-[inherit] before:pointer-events-none before:transition-opacity before:duration-300 " +
+          "before:bg-[radial-gradient(ellipse_at_center,rgba(30,64,175,0.08)_0%,transparent_70%)] " +
+          "before:opacity-0 " +
+          // ── Hover 悬浮态：底色加深 + 边框提亮 + 内发光 + 微上浮 ──
+          "hover:bg-[rgba(30,64,175,0.12)] hover:border-white/[0.12] " +
+          "hover:text-foreground hover:-translate-y-px " +
+          "hover:shadow-[inset_0_0_20px_rgba(30,64,175,0.06),inset_0_1px_0_rgba(255,255,255,0.06),0_4px_16px_rgba(30,64,175,0.06)] " +
+          "hover:before:opacity-100 " +
+          // ── Active 点击态 ──
+          "active:translate-y-px active:shadow-[inset_0_1px_0_rgba(255,255,255,0.03)] " +
+          "active:before:opacity-0 " +
+          // Expanded 态
+          "aria-expanded:bg-[rgba(30,64,175,0.12)] aria-expanded:text-foreground",
         secondary:
           "bg-secondary text-secondary-foreground hover:bg-[color-mix(in_oklch,var(--secondary),var(--foreground)_5%)] aria-expanded:bg-secondary aria-expanded:text-secondary-foreground",
         ghost:
@@ -25,14 +62,15 @@ const buttonVariants = cva(
       size: {
         default:
           "h-8 gap-1.5 px-2.5 has-data-[icon=inline-end]:pr-2 has-data-[icon=inline-start]:pl-2",
-        xs: "h-6 gap-1 rounded-[min(var(--radius-md),10px)] px-2 text-xs in-data-[slot=button-group]:rounded-lg has-data-[icon=inline-end]:pr-1.5 has-data-[icon=inline-start]:pl-1.5 [&_svg:not([class*='size-'])]:size-3",
-        sm: "h-7 gap-1 rounded-[min(var(--radius-md),12px)] px-2.5 text-[0.8rem] in-data-[slot=button-group]:rounded-lg has-data-[icon=inline-end]:pr-1.5 has-data-[icon=inline-start]:pl-1.5 [&_svg:not([class*='size-'])]:size-3.5",
+        xs: "h-6 gap-1 rounded-[min(var(--radius-md),10px)] px-2 text-xs in-data-[slot=button-group]:rounded-[9px] has-data-[icon=inline-end]:pr-1.5 has-data-[icon=inline-start]:pl-1.5 [&_svg:not([class*='size-'])]:size-3",
+        sm: "h-7 gap-1 rounded-[min(var(--radius-md),12px)] px-2.5 text-[0.8rem] in-data-[slot=button-group]:rounded-[9px] has-data-[icon=inline-end]:pr-1.5 has-data-[icon=inline-start]:pl-1.5 [&_svg:not([class*='size-'])]:size-3.5",
         lg: "h-9 gap-1.5 px-2.5 has-data-[icon=inline-end]:pr-2 has-data-[icon=inline-start]:pl-2",
+        xl: "h-11 gap-2 px-7 text-base sm:h-12 sm:px-9",
         icon: "size-8",
         "icon-xs":
-          "size-6 rounded-[min(var(--radius-md),10px)] in-data-[slot=button-group]:rounded-lg [&_svg:not([class*='size-'])]:size-3",
+          "size-6 rounded-[min(var(--radius-md),10px)] in-data-[slot=button-group]:rounded-[9px] [&_svg:not([class*='size-'])]:size-3",
         "icon-sm":
-          "size-7 rounded-[min(var(--radius-md),12px)] in-data-[slot=button-group]:rounded-lg",
+          "size-7 rounded-[min(var(--radius-md),12px)] in-data-[slot=button-group]:rounded-[9px]",
         "icon-lg": "size-9",
       },
     },

@@ -68,7 +68,7 @@ export function HomeSections() {
           <Button
             render={<Link href="/projects" />}
             variant="outline"
-            size="lg"
+            size="xl"
           >
             <ArrowRight className="mr-2 size-4 transition-transform duration-300 group-hover:translate-x-0.5" />
             查看全部项目
@@ -134,7 +134,7 @@ export function HomeSections() {
             <Button
               render={<Link href="/about" />}
               variant="outline"
-              size="lg"
+              size="xl"
             >
               <ArrowRight className="mr-2 size-4 transition-transform duration-300 group-hover:translate-x-0.5" />
               了解更多关于我
@@ -166,7 +166,7 @@ export function HomeSections() {
             <Button
               render={<Link href="/contact" />}
               variant="default"
-              size="lg"
+              size="xl"
             >
               <Mail className="mr-2 size-4" />
               联系我

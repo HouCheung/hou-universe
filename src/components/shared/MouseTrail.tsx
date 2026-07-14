@@ -76,7 +76,7 @@ export function MouseTrail() {
       // Outer glow — 深蓝调
       ctx.beginPath();
       ctx.arc(px, py, radius * 2.5, 0, Math.PI * 2);
-      ctx.fillStyle = `rgba(37,99,235,${(alpha * 0.1).toFixed(3)})`;
+      ctx.fillStyle = `rgba(30,64,175,${(alpha * 0.1).toFixed(3)})`;
       ctx.fill();
 
       // Inner core — 淡蓝白

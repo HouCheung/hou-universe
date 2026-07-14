@@ -178,7 +178,7 @@ export default async function ProjectDetailPage({ params }: ProjectPageProps) {
                   {project.detail.coreFeatures.map((feature, i) => (
                     <div
                       key={i}
-                      className="flex items-start gap-3 rounded-lg border border-border/40 bg-card/50 p-4 transition-all duration-200 hover:border-[#2563eb]/20 hover:bg-card"
+                      className="flex items-start gap-3 rounded-lg border border-border/40 bg-card/50 p-4 transition-all duration-200 hover:border-[#1e40af]/20 hover:bg-card"
                     >
                       <CheckCircle2 className="mt-0.5 h-4 w-4 shrink-0 text-slate-400/60" />
                       <span className="text-sm leading-relaxed text-muted-foreground">
@@ -216,7 +216,7 @@ export default async function ProjectDetailPage({ params }: ProjectPageProps) {
                   {project.detail.highlights.map((highlight, i) => (
                     <div
                       key={i}
-                      className="flex items-start gap-4 rounded-lg border border-border/40 bg-card/50 p-5 transition-all duration-200 hover:border-[#2563eb]/20 hover:bg-card"
+                      className="flex items-start gap-4 rounded-lg border border-border/40 bg-card/50 p-5 transition-all duration-200 hover:border-[#1e40af]/20 hover:bg-card"
                     >
                       <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-slate-400/10 text-sm font-bold text-slate-300">
                         {i + 1}
@@ -244,7 +244,7 @@ export default async function ProjectDetailPage({ params }: ProjectPageProps) {
               {project.techStack.map((tech) => (
                 <div
                   key={tech}
-                  className="flex items-center gap-3 rounded-lg border border-border/40 bg-card/50 px-4 py-3 text-sm text-foreground transition-all duration-200 hover:border-[#2563eb]/20 hover:bg-card"
+                  className="flex items-center gap-3 rounded-lg border border-border/40 bg-card/50 px-4 py-3 text-sm text-foreground transition-all duration-200 hover:border-[#1e40af]/20 hover:bg-card"
                 >
                   <span className="h-1.5 w-1.5 shrink-0 rounded-full bg-slate-400/50" />
                   {tech}

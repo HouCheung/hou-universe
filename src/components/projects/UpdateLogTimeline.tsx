@@ -44,10 +44,10 @@ export function UpdateLogTimeline({ entries }: UpdateLogTimelineProps) {
             className="relative flex gap-4 pl-8 sm:gap-6 sm:pl-12"
           >
             {/* Node dot */}
-            <div className="absolute left-[7px] top-1.5 h-2.5 w-2.5 rounded-full border-2 border-[#2563eb]/50 bg-background ring-4 ring-background sm:left-[11px]" />
+            <div className="absolute left-[7px] top-1.5 h-2.5 w-2.5 rounded-full border-2 border-[#1e40af]/50 bg-background ring-4 ring-background sm:left-[11px]" />
 
             {/* Content */}
-            <div className="flex-1 rounded-lg border border-border/50 bg-card/60 p-4 backdrop-blur-sm transition-all duration-300 hover:border-[#2563eb]/20 hover:bg-card sm:p-5">
+            <div className="flex-1 rounded-lg border border-border/50 bg-card/60 p-4 backdrop-blur-sm transition-all duration-300 hover:border-[#1e40af]/20 hover:bg-card sm:p-5">
               <div className="mb-1 flex flex-wrap items-center gap-2 sm:mb-2">
                 <span className="rounded-full bg-slate-400/10 px-2.5 py-0.5 font-mono text-xs font-medium text-slate-300/90">
                   {entry.version}
