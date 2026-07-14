@@ -42,7 +42,7 @@ export function Footer() {
                 <Github className="h-4 w-4" />
               </a>
               <a
-                href="mailto:contact@example.com"
+                href="mailto:zhang13714579875@163.com"
                 className="text-slate-500 transition-colors hover:text-foreground"
                 aria-label="Email"
               >
@@ -75,10 +75,10 @@ export function Footer() {
               有任何问题或合作意向，欢迎随时联系。
             </p>
             <a
-              href="mailto:contact@example.com"
+              href="mailto:zhang13714579875@163.com"
               className="text-sm text-blue-400 transition-colors hover:text-blue-300"
             >
-              contact@example.com
+              zhang13714579875@163.com
             </a>
           </div>
         </div>

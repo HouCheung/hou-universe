@@ -12,16 +12,20 @@ interface Star {
   speed: number;
   originX: number;
   originY: number;
+  driftAngle: number;
+  driftSpeed: number;
   tint: "blue" | "purple" | "white";
 }
 
 const LAYERS = [
   // Far background: sparse, dim, larger, slow parallax
-  { count: 45, radiusRange: [1.2, 2.6] as [number, number], alphaRange: [0.22, 0.45] as [number, number], speedFactor: 0.12 },
+  { count: 55, radiusRange: [1.2, 2.8] as [number, number], alphaRange: [0.22, 0.45] as [number, number], speedFactor: 0.12 },
   // Mid ground: medium density, medium brightness
-  { count: 90, radiusRange: [0.7, 1.4] as [number, number], alphaRange: [0.35, 0.6] as [number, number], speedFactor: 0.38 },
+  { count: 100, radiusRange: [0.7, 1.4] as [number, number], alphaRange: [0.35, 0.6] as [number, number], speedFactor: 0.38 },
   // Near foreground: dense, brighter, small, fast parallax
-  { count: 180, radiusRange: [0.3, 0.7] as [number, number], alphaRange: [0.55, 0.92] as [number, number], speedFactor: 1.0 },
+  { count: 190, radiusRange: [0.3, 0.7] as [number, number], alphaRange: [0.55, 0.92] as [number, number], speedFactor: 1.0 },
+  // Bright drifting stars: sparse, bright, slow autonomous drift
+  { count: 12, radiusRange: [1.4, 2.6] as [number, number], alphaRange: [0.6, 0.95] as [number, number], speedFactor: 0.05 },
 ];
 
 const GRAVITY_RADIUS = 150;
@@ -67,6 +71,8 @@ export function StarField() {
         // Distribute tints: 60% white, 25% blue, 15% purple
         const tintRand = Math.random();
         const tint: Star["tint"] = tintRand < 0.6 ? "white" : tintRand < 0.85 ? "blue" : "purple";
+        // Bright drifting stars: all blue/purple tinted
+        const finalTint = l === 3 ? (Math.random() < 0.5 ? "blue" : "purple") : tint;
 
         stars.push({
           x,
@@ -78,7 +84,9 @@ export function StarField() {
           layer: l,
           phase: Math.random() * Math.PI * 2,
           speed: Math.random() * 0.02 + 0.005,
-          tint,
+          driftAngle: Math.random() * Math.PI * 2,
+          driftSpeed: l === 3 ? 0.015 + Math.random() * 0.04 : 0,
+          tint: finalTint,
         });
       }
     }
@@ -137,6 +145,23 @@ export function StarField() {
         // Wrap around vertically
         while (drawY < -10) drawY += displayH + 20;
         while (drawY > displayH + 10) drawY -= displayH + 20;
+
+        // Autonomous drift for bright drifting stars (layer 3)
+        if (star.layer === 3 && star.driftSpeed > 0) {
+          const driftDx = Math.cos(star.driftAngle) * star.driftSpeed;
+          const driftDy = Math.sin(star.driftAngle) * star.driftSpeed;
+          drawX += driftDx;
+          drawY += driftDy;
+          star.originX += driftDx;
+          star.originY += driftDy;
+          // Slowly change drift angle for organic movement
+          star.driftAngle += (Math.random() - 0.5) * 0.003;
+          // Wrap origin
+          if (star.originX < -20) star.originX += displayW + 40;
+          if (star.originX > displayW + 20) star.originX -= displayW + 40;
+          if (star.originY < -20) star.originY += displayH + 40;
+          if (star.originY > displayH + 20) star.originY -= displayH + 40;
+        }
 
         // Gravity toward mouse (stronger for near layers)
         const dx = mouseDisplayX - drawX;

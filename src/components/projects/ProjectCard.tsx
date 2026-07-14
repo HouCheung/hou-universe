@@ -39,10 +39,7 @@ export function ProjectCard({ project, index }: ProjectCardProps) {
       viewport={{ once: true, margin: "-40px" }}
       variants={cardVariants}
       className={cn(
-        "group/card flex flex-col rounded-2xl border border-white/[0.06] bg-white/[0.02]",
-        "backdrop-blur-md transition-all duration-300 ease-out",
-        "hover:-translate-y-1.5 hover:border-blue-400/25 hover:bg-white/[0.05]",
-        "hover:shadow-[0_8px_32px_rgba(59,130,246,0.1)]"
+        "group/card glass-card-hover flex flex-col rounded-2xl"
       )}
     >
       {/* Cover image */}

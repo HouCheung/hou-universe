@@ -26,7 +26,7 @@ export function MessageCard({ message, index }: MessageCardProps) {
       whileInView="visible"
       viewport={{ once: true, margin: "-40px" }}
       variants={cardVariants}
-      className="flex gap-4 rounded-xl border border-border/60 bg-card/80 p-5 backdrop-blur-sm transition-all duration-300 hover:border-blue-400/30 hover:shadow-[0_0_20px_rgba(96,165,250,0.08)]"
+      className="glass-card-hover flex gap-4 rounded-2xl p-5"
     >
       <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-blue-400/10 text-blue-300">
         <User className="h-5 w-5" />

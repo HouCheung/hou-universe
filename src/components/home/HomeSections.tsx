@@ -69,7 +69,6 @@ export function HomeSections() {
             render={<Link href="/projects" />}
             variant="outline"
             size="lg"
-            className="group border-white/[0.1] bg-transparent text-slate-400 transition-all duration-300 hover:border-blue-400/30 hover:bg-white/[0.04] hover:text-foreground"
           >
             <ArrowRight className="mr-2 size-4 transition-transform duration-300 group-hover:translate-x-0.5" />
             查看全部项目
@@ -136,7 +135,6 @@ export function HomeSections() {
               render={<Link href="/about" />}
               variant="outline"
               size="lg"
-              className="group border-white/[0.1] bg-transparent text-slate-400 transition-all duration-300 hover:border-blue-400/30 hover:bg-white/[0.04] hover:text-foreground"
             >
               <ArrowRight className="mr-2 size-4 transition-transform duration-300 group-hover:translate-x-0.5" />
               了解更多关于我
@@ -169,7 +167,6 @@ export function HomeSections() {
               render={<Link href="/contact" />}
               variant="default"
               size="lg"
-              className="transition-all duration-300 hover:shadow-[0_0_28px_rgba(96,165,250,0.3)]"
             >
               <Mail className="mr-2 size-4" />
               联系我

@@ -27,7 +27,7 @@ export function NoteCard({ note, index }: NoteCardProps) {
       whileInView="visible"
       viewport={{ once: true, margin: "-40px" }}
       variants={cardVariants}
-      className="group/card flex flex-col rounded-xl border border-border/60 bg-card/80 p-6 backdrop-blur-sm transition-all duration-300 hover:-translate-y-1.5 hover:border-blue-400/40 hover:shadow-[0_0_28px_rgba(96,165,250,0.12)]"
+      className="group/card glass-card-hover flex flex-col rounded-2xl p-6"
     >
       <div className="mb-3 flex items-center gap-2 text-xs text-muted-foreground">
         <Calendar className="h-3.5 w-3.5" />

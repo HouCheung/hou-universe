@@ -33,24 +33,24 @@ export default function GuestbookPage() {
 
           {/* Submit form */}
           <section className="mb-16 sm:mb-20">
-            <div className="mb-8 flex items-center gap-3">
-              <span className="h-px flex-1 bg-gradient-to-r from-transparent via-blue-400/30 to-transparent" />
+            <div className="mb-8 flex items-center gap-4">
+              <div className="h-7 w-1 shrink-0 rounded-full bg-gradient-to-b from-blue-400 via-indigo-400 to-purple-500" />
               <h2 className="shrink-0 font-mono text-sm tracking-[0.2em] text-blue-300/70 uppercase">
                 写留言
               </h2>
-              <span className="h-px flex-1 bg-gradient-to-r from-transparent via-blue-400/30 to-transparent" />
+              <span className="h-px flex-1 bg-gradient-to-r from-blue-400/20 via-blue-400/10 to-transparent" />
             </div>
             <GuestbookForm />
           </section>
 
           {/* Messages */}
           <section>
-            <div className="mb-8 flex items-center gap-3">
-              <span className="h-px flex-1 bg-gradient-to-r from-transparent via-blue-400/30 to-transparent" />
+            <div className="mb-8 flex items-center gap-4">
+              <div className="h-7 w-1 shrink-0 rounded-full bg-gradient-to-b from-blue-400 via-indigo-400 to-purple-500" />
               <h2 className="shrink-0 font-mono text-sm tracking-[0.2em] text-blue-300/70 uppercase">
                 到访足迹
               </h2>
-              <span className="h-px flex-1 bg-gradient-to-r from-transparent via-blue-400/30 to-transparent" />
+              <span className="h-px flex-1 bg-gradient-to-r from-blue-400/20 via-blue-400/10 to-transparent" />
             </div>
             <div className="flex flex-col gap-4">
               {sampleMessages.map((message, index) => (

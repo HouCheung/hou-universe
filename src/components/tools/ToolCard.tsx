@@ -29,7 +29,7 @@ export function ToolCard({ tool, index }: ToolCardProps) {
       whileInView="visible"
       viewport={{ once: true, margin: "-40px" }}
       variants={cardVariants}
-      className="group/card flex flex-col rounded-xl border border-border/60 bg-card/80 p-5 backdrop-blur-sm transition-all duration-300 hover:-translate-y-1.5 hover:border-blue-400/40 hover:shadow-[0_0_28px_rgba(96,165,250,0.12)]"
+      className="group/card glass-card-hover flex flex-col rounded-2xl p-5"
     >
       <div className="mb-2 flex items-start justify-between gap-2">
         <h3 className="text-base font-semibold text-foreground transition-colors group-hover/card:text-blue-200">

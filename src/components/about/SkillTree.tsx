@@ -58,7 +58,7 @@ export function SkillTree({ categories }: SkillTreeProps) {
         <motion.div
           key={category.id}
           variants={categoryVariants}
-          className="overflow-hidden rounded-xl border border-border/60 bg-card/80 backdrop-blur-sm transition-all duration-300 hover:border-blue-400/20"
+          className="glass-card-hover overflow-hidden rounded-2xl"
         >
           {/* Category header */}
           <button

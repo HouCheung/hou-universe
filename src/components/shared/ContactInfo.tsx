@@ -48,7 +48,7 @@ export function ContactInfo() {
         return (
           <Card
             key={item.label}
-            className="transition-all duration-300 hover:border-blue-400/30 hover:bg-card/90 hover:shadow-[0_0_20px_rgba(96,165,250,0.06)]"
+            className="glass-card-hover overflow-hidden"
           >
             <CardContent className="flex items-start gap-4 p-5">
               <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-blue-400/10 text-blue-300">

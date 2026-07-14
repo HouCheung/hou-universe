@@ -31,12 +31,12 @@ export default function ProjectsPage() {
           </header>
 
           {/* Divider */}
-          <div className="mb-12 flex items-center gap-3 sm:mb-16">
-            <span className="h-px flex-1 bg-gradient-to-r from-transparent via-blue-400/30 to-transparent" />
+          <div className="mb-12 flex items-center gap-4 sm:mb-16">
+            <div className="h-7 w-1 shrink-0 rounded-full bg-gradient-to-b from-blue-400 via-indigo-400 to-purple-500" />
             <span className="shrink-0 font-mono text-sm tracking-[0.2em] text-blue-300/70 uppercase">
               精选项目
             </span>
-            <span className="h-px flex-1 bg-gradient-to-r from-transparent via-blue-400/30 to-transparent" />
+            <span className="h-px flex-1 bg-gradient-to-r from-blue-400/20 via-blue-400/10 to-transparent" />
           </div>
 
           {/* Project grid */}

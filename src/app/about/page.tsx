@@ -66,17 +66,25 @@ const campusActivities = [
   },
 ];
 
-function SectionDivider({ label, icon }: { label: string; icon: string }) {
+function SectionDivider({ label, icon, enLabel }: { label: string; icon: string; enLabel?: string }) {
   return (
-    <div className="mb-10 flex items-center gap-3 sm:mb-14">
-      <span className="h-px flex-1 bg-gradient-to-r from-transparent via-blue-400/30 to-transparent" />
-      <span className="shrink-0 text-xl" role="img" aria-hidden="true">
-        {icon}
-      </span>
-      <h2 className="shrink-0 font-mono text-sm tracking-[0.2em] text-blue-300/70 uppercase">
-        {label}
-      </h2>
-      <span className="h-px flex-1 bg-gradient-to-r from-transparent via-blue-400/30 to-transparent" />
+    <div className="mb-10 flex items-center gap-4 sm:mb-14">
+      {/* Vertical gradient accent line */}
+      <div className="h-8 w-1 shrink-0 rounded-full bg-gradient-to-b from-blue-400 via-indigo-400 to-purple-500" />
+      <div className="flex flex-col gap-0.5">
+        {enLabel && (
+          <span className="font-mono text-[0.6rem] uppercase tracking-[0.22em] text-blue-300/30 sm:text-[0.65rem]">
+            {enLabel}
+          </span>
+        )}
+        <h2 className="flex items-center gap-2 text-lg font-semibold tracking-tight text-foreground sm:text-xl">
+          <span className="text-xl" role="img" aria-hidden="true">
+            {icon}
+          </span>
+          {label}
+        </h2>
+      </div>
+      <span className="ml-auto h-px flex-1 bg-gradient-to-r from-blue-400/20 via-blue-400/10 to-transparent" />
     </div>
   );
 }
@@ -101,9 +109,9 @@ export default function AboutPage() {
 
         {/* ========== ① 教育背景 ========== */}
         <section className="mb-20 sm:mb-32">
-          <SectionDivider label="教育背景" icon="🎓" />
+          <SectionDivider label="教育背景" icon="🎓" enLabel="Education" />
 
-          <div className="rounded-xl border border-border/60 bg-card/80 p-6 backdrop-blur-sm transition-all duration-300 hover:border-blue-400/30 hover:shadow-[0_0_20px_rgba(96,165,250,0.08)] sm:p-8">
+          <div className="glass-card-hover rounded-2xl p-6 sm:p-8">
             <div className="flex flex-col gap-4 sm:flex-row sm:items-start sm:justify-between">
               <div>
                 <h3 className="text-xl font-semibold text-foreground">
@@ -138,7 +146,7 @@ export default function AboutPage() {
 
         {/* ========== ② 项目经历 ========== */}
         <section className="mb-20 sm:mb-32">
-          <SectionDivider label="项目经历" icon="💼" />
+          <SectionDivider label="项目经历" icon="💼" enLabel="Projects" />
 
           <div className="relative">
             {/* Vertical timeline line */}
@@ -154,7 +162,7 @@ export default function AboutPage() {
                   <div className="absolute left-[11px] top-2 h-2.5 w-2.5 rounded-full border-2 border-blue-400 bg-background ring-4 ring-background sm:left-[15px]" />
 
                   {/* Card */}
-                  <div className="flex-1 rounded-xl border border-border/60 bg-card/80 p-5 backdrop-blur-sm transition-all duration-300 hover:border-blue-400/30 hover:bg-card hover:shadow-[0_0_20px_rgba(96,165,250,0.08)] sm:p-6">
+                  <div className="glass-card-hover flex-1 rounded-2xl p-5 sm:p-6">
                     <div className="mb-2 flex flex-wrap items-center gap-x-3 gap-y-1">
                       <span className="rounded-full bg-blue-400/10 px-2.5 py-0.5 font-mono text-xs font-medium text-blue-300/90">
                         {project.period}
@@ -178,13 +186,13 @@ export default function AboutPage() {
 
         {/* ========== ③ AI 工程化能力 ========== */}
         <section className="mb-20 sm:mb-32">
-          <SectionDivider label="AI 工程化能力" icon="🤖" />
+          <SectionDivider label="AI 工程化能力" icon="🤖" enLabel="AI Engineering" />
 
           <div className="grid gap-4 sm:grid-cols-3">
             {aiSkills.map((skill, index) => (
               <div
                 key={index}
-                className="rounded-xl border border-border/60 bg-card/80 p-6 backdrop-blur-sm transition-all duration-300 hover:border-blue-400/30 hover:bg-card hover:shadow-[0_0_20px_rgba(96,165,250,0.08)]"
+                className="glass-card-hover rounded-2xl p-6"
               >
                 <div className="mb-3 flex h-10 w-10 items-center justify-center rounded-lg bg-blue-400/10 text-blue-300">
                   <span className="text-lg font-bold" aria-hidden="true">
@@ -201,13 +209,13 @@ export default function AboutPage() {
 
         {/* ========== ④ 校园实践 ========== */}
         <section className="mb-20 sm:mb-32">
-          <SectionDivider label="校园实践" icon="🎭" />
+          <SectionDivider label="校园实践" icon="🎭" enLabel="Campus" />
 
           <div className="flex flex-col gap-6">
             {campusActivities.map((activity, index) => (
               <div
                 key={index}
-                className="rounded-xl border border-border/60 bg-card/80 p-6 backdrop-blur-sm transition-all duration-300 hover:border-blue-400/30 hover:bg-card hover:shadow-[0_0_20px_rgba(96,165,250,0.08)] sm:p-7"
+                className="glass-card-hover rounded-2xl p-6 sm:p-7"
               >
                 <div className="mb-1 flex flex-wrap items-center gap-x-3 gap-y-1">
                   <h3 className="text-lg font-semibold text-foreground">
@@ -227,7 +235,7 @@ export default function AboutPage() {
 
         {/* ========== ⑤ 专业技能（可视化升级）========== */}
         <section>
-          <SectionDivider label="专业技能" icon="🛠" />
+          <SectionDivider label="专业技能" icon="🛠" enLabel="Skills" />
 
           <SkillProgressBar categories={skillLevelData} />
         </section>

@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { NavBar } from "@/components/layout/NavBar";
 import { Footer } from "@/components/layout/Footer";
 import { PageTransition } from "@/components/layout/PageTransition";
+import { NebulaGlow } from "@/components/shared/NebulaGlow";
 import "./globals.css";
 import { Geist } from "next/font/google";
 
@@ -71,6 +72,7 @@ export default function RootLayout({
   return (
     <html lang="zh-CN" className={`dark font-sans ${geist.variable}`}>
       <body className="min-h-screen bg-background font-sans antialiased flex flex-col overflow-x-hidden">
+        <NebulaGlow />
         <NavBar />
         <main className="flex-1">
           <PageTransition>{children}</PageTransition>
