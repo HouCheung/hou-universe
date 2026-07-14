@@ -25,18 +25,9 @@ export default function ProjectsPage() {
               项目
             </h1>
             <p className="mx-auto mt-6 max-w-2xl text-base leading-relaxed text-muted-foreground sm:text-lg">
-              涵盖大数据管道、AI 应用、全栈平台与开发者工具的项目展示——
+              涵盖全栈平台与开发工具的精选项目展示——
               每个项目都是构建、学习与创造之旅中的一个里程碑。
             </p>
-
-            {/* Deployment hint */}
-            <div className="mx-auto mt-6 max-w-2xl rounded-lg border border-blue-400/20 bg-blue-400/5 px-4 py-2.5 text-sm text-blue-300/70">
-              后续新增个人作品，只需修改{" "}
-              <code className="rounded bg-blue-400/10 px-1.5 py-0.5 font-mono text-xs text-blue-200/80">
-                src/data/projects.ts
-              </code>{" "}
-              数据文件，提交后自动更新线上展示
-            </div>
           </header>
 
           {/* Divider */}

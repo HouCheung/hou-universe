@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import { ArrowLeft, ExternalLink, Github } from "lucide-react";
+import { ArrowLeft, ExternalLink, Github, Download } from "lucide-react";
 import { StarField } from "@/components/shared/StarField";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
@@ -73,11 +73,11 @@ export default async function ProjectDetailPage({ params }: ProjectPageProps) {
 
           {/* Action buttons */}
           <div className="mb-10 flex flex-wrap gap-3 sm:mb-14">
-            {project.demoUrl && (
+            {project.liveUrl && (
               <Button
                 render={
                   <a
-                    href={project.demoUrl}
+                    href={project.liveUrl}
                     target="_blank"
                     rel="noopener noreferrer"
                   />
@@ -86,7 +86,22 @@ export default async function ProjectDetailPage({ params }: ProjectPageProps) {
                 size="lg"
               >
                 <ExternalLink className="mr-2 h-4 w-4" />
-                在线演示
+                在线预览
+              </Button>
+            )}
+            {project.downloadUrl && (
+              <Button
+                render={
+                  <a
+                    href={project.downloadUrl}
+                    download
+                  />
+                }
+                variant="outline"
+                size="lg"
+              >
+                <Download className="mr-2 h-4 w-4" />
+                下载作品
               </Button>
             )}
             {project.githubUrl && (

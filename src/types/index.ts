@@ -12,6 +12,8 @@ export interface Project {
   tags: string[];
   coverImage: string;
   techStack: string[];
+  liveUrl: string;
+  downloadUrl: string;
   demoUrl: string;
   githubUrl: string;
   createdAt: string;

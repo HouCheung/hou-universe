@@ -1,3 +1,14 @@
+/* ── 暴力强制全局深色模式：硬编码最高优先级样式 ── */
+html, body {
+  background-color: #0a0a0f !important;
+  color: #f8fafc !important;
+  margin: 0;
+  padding: 0;
+}
+* {
+  border-color: rgba(255,255,255,0.1) !important;
+}
+
 @import "tw-animate-css";
 @import "shadcn/tailwind.css";
 @tailwind base;

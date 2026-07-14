@@ -2,114 +2,6 @@ import type { Project } from "@/types";
 
 export const projects: Project[] = [
   {
-    id: "realtime-data-pipeline",
-    title: "实时数据管道",
-    description:
-      "高吞吐量实时数据处理平台，大规模摄取、转换与分析流式数据——专为生产级可观测性打造。",
-    fullDescription:
-      "Real-time Data Pipeline 是一个面向企业级场景的流式数据处理平台。系统以 Apache Kafka 作为消息总线，Spark Streaming 与 Flink 协同完成实时计算，计算结果写入 HBase 供下游服务毫秒级查询，同时将原始数据持久化到 HDFS 数据湖中供离线分析。整个平台采用 Docker Compose 编排，支持一键部署，已在模拟的千万级日活埋点场景下通过压力测试。项目涵盖了从数据接入、Schema 校验、流式聚合、异常检测到可视化大屏的完整链路，是大数据工程能力的综合体现。",
-    tags: ["Kafka", "Spark Streaming", "Flink", "HBase", "HDFS", "Docker"],
-    coverImage: "/images/project-1.svg",
-    techStack: [
-      "Java 17",
-      "Scala 2.13",
-      "Apache Kafka 3.x",
-      "Apache Spark 3.x",
-      "Apache Flink 1.x",
-      "HBase 2.x",
-      "Hadoop HDFS",
-      "Docker Compose",
-      "Grafana",
-      "Prometheus",
-    ],
-    demoUrl: "",
-    githubUrl: "https://github.com/hou-universe/realtime-data-pipeline",
-    createdAt: "2025-09-15",
-    updateLog: [
-      {
-        version: "v1.2.0",
-        date: "2026-06-20",
-        changes: [
-          "新增 Flink CEP 复杂事件处理模块，支持多条件组合规则",
-          "重构监控面板，迁移至 Grafana Dashboard 统一展示",
-          "修复 Kafka 消费组 rebalance 时的 offset 提交竞态问题",
-        ],
-      },
-      {
-        version: "v1.1.0",
-        date: "2026-03-10",
-        changes: [
-          "引入 Protobuf 序列化替代 JSON，吞吐量提升 40%",
-          "新增数据质量校验层，支持字段级 Schema 验证与异常分流",
-          "完善 Docker Compose 编排，实现一键启动全集群",
-        ],
-      },
-      {
-        version: "v1.0.0",
-        date: "2025-11-01",
-        changes: [
-          "首个稳定版本发布，支持 Kafka → Spark Streaming → HBase 核心链路",
-          "实现 Exactly-Once 语义保证",
-          "完成千万级日活埋点场景压力测试",
-        ],
-      },
-    ],
-  },
-  {
-    id: "ai-image-studio",
-    title: "AI 图像工作室",
-    description:
-      "AI 驱动的图像生成与编辑交互平台，结合 Stable Diffusion 与直观的 React 创作工作流。",
-    fullDescription:
-      "AI Image Studio 是一个面向创作者与开发者的 AI 图像生成与编辑平台。前端使用 React + Tailwind CSS 构建了直观的创作工作流界面，支持文生图、图生图、局部重绘等核心功能。后端基于 FastAPI 搭建，集成了 Stable Diffusion 模型推理管线，通过 Redis 队列异步处理生成任务，支持批量提交与进度轮询。项目还实现了 Prompt 模板库、历史记录管理、图片对比模式等特色功能，旨在降低 AI 图像创作的门槛，让更多人能够轻松上手。",
-    tags: ["PyTorch", "Stable Diffusion", "FastAPI", "React", "Redis", "Docker"],
-    coverImage: "/images/project-2.svg",
-    techStack: [
-      "Python 3.11",
-      "PyTorch 2.x",
-      "Stable Diffusion XL",
-      "FastAPI",
-      "React 18",
-      "Tailwind CSS",
-      "Redis",
-      "PostgreSQL",
-      "Docker",
-      "Nginx",
-    ],
-    demoUrl: "https://ai-image-studio.vercel.app",
-    githubUrl: "https://github.com/hou-universe/ai-image-studio",
-    createdAt: "2026-01-20",
-    updateLog: [
-      {
-        version: "v2.0.0",
-        date: "2026-07-01",
-        changes: [
-          "模型升级至 Stable Diffusion XL，生成质量大幅提升",
-          "新增局部重绘（Inpainting）功能，支持蒙版编辑",
-          "前端重构为 Next.js App Router 架构",
-        ],
-      },
-      {
-        version: "v1.5.0",
-        date: "2026-04-15",
-        changes: [
-          "新增 Prompt 模板库与社区分享功能",
-          "优化生成队列，支持并行推理与优先级调度",
-          "添加图片对比模式，支持前后版本差异高亮",
-        ],
-      },
-      {
-        version: "v1.0.0",
-        date: "2026-02-28",
-        changes: [
-          "首个公开版本，支持文生图与图生图基础功能",
-          "完成前端创作工作流与后端推理管线联调",
-          "部署至 Vercel + GPU 云服务器",
-        ],
-      },
-    ],
-  },
-  {
     id: "hou-universe",
     title: "HOU Universe",
     description:
@@ -128,6 +20,8 @@ export const projects: Project[] = [
       "Lucide Icons",
       "Vercel",
     ],
+    liveUrl: "/",
+    downloadUrl: "/downloads/hou-universe.zip",
     demoUrl: "https://hou-universe.vercel.app",
     githubUrl: "https://github.com/hou-universe/hou-universe",
     createdAt: "2026-05-01",
@@ -162,53 +56,36 @@ export const projects: Project[] = [
     ],
   },
   {
-    id: "devtoolkit-cli",
-    title: "DevToolkit CLI",
+    id: "online-judge-platform",
+    title: "在线刷题平台",
     description:
-      "跨平台命令行开发者工具箱，自动化重复工作流——从项目脚手架到一键部署——提升日常开发效率。",
+      "面向开发者的交互式在线刷题平台，支持多语言编程、实时判题与进度追踪——助力技术面试准备。",
     fullDescription:
-      "DevToolkit CLI 是一款面向开发者的跨平台命令行工具箱，旨在用一套统一命令简化日常开发中的重复性工作。工具基于 Go 语言与 Cobra 框架构建，提供了项目脚手架生成、Docker 容器管理、Git 工作流自动化、API 接口测试、环境变量管理等实用子命令。CLI 采用插件化架构设计，用户可通过 YAML 配置文件自定义命令模板与工作流。内置 SQLite 本地数据库用于缓存与状态持久化，支持命令别名与自动补全，大幅提升终端操作效率。",
-    tags: ["Go", "CLI", "Docker", "Cobra", "DevOps"],
-    coverImage: "/images/project-4.svg",
+      "在线刷题平台是一个面向开发者的交互式刷题网站，支持 JavaScript、Python、Java 等多语言在线编码。平台内置丰富的算法题库，涵盖数组、链表、树、动态规划等经典分类，提供实时代码判题与测试用例验证功能。用户可以按难度筛选题目、收藏经典题型、追踪个人刷题进度。前端采用 React + TypeScript 构建，后端基于 Node.js 实现判题沙箱，致力于为开发者提供流畅高效的刷题体验。",
+    tags: ["React", "TypeScript", "Node.js", "Monaco Editor", "Docker"],
+    coverImage: "/images/project-1.svg",
     techStack: [
-      "Go 1.22",
-      "Cobra",
-      "Docker SDK",
-      "SQLite",
-      "GitHub API",
-      "YAML",
-      "Makefile",
-      "Homebrew",
+      "React 18",
+      "TypeScript",
+      "Node.js",
+      "Monaco Editor",
+      "Docker",
+      "PostgreSQL",
+      "Redis",
     ],
+    liveUrl: "#",
+    downloadUrl: "/downloads/online-judge-platform.zip",
     demoUrl: "",
-    githubUrl: "https://github.com/hou-universe/devtoolkit-cli",
-    createdAt: "2025-12-01",
+    githubUrl: "https://github.com/hou-universe/online-judge-platform",
+    createdAt: "2026-06-15",
     updateLog: [
       {
-        version: "v1.3.0",
-        date: "2026-05-10",
-        changes: [
-          "新增 `toolkit env` 环境变量管理子命令，支持 .env 模板生成",
-          "优化自动补全脚本，支持 zsh / bash / fish 三种 Shell",
-          "新增 Homebrew 安装方式，支持 macOS 一键安装",
-        ],
-      },
-      {
-        version: "v1.1.0",
-        date: "2026-02-15",
-        changes: [
-          "新增 `toolkit docker` 容器管理命令组",
-          "引入插件化架构，支持 YAML 自定义命令模板",
-          "添加命令执行耗时统计与彩色输出",
-        ],
-      },
-      {
         version: "v1.0.0",
-        date: "2026-01-10",
+        date: "2026-06-15",
         changes: [
-          "首个正式版本，包含项目脚手架、Git 工作流、API 测试三大模块",
-          "支持 SQLite 本地缓存与命令别名",
-          "发布至 GitHub Releases 与 Go 模块索引",
+          "首个版本上线，支持 JavaScript/Python/Java 在线编码",
+          "内置 50+ 算法题目，涵盖数组、链表、树等经典分类",
+          "实现实时判题与测试用例验证功能",
         ],
       },
     ],

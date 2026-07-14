@@ -11,7 +11,7 @@ import { skillTreeData } from '@/data/about';
 import type { SkillItem } from '@/types';
 
 const allSkills: SkillItem[] = skillTreeData.flatMap((cat) => cat.skills);
-const featuredProjects = projects.slice(0, 3);
+const featuredProjects = projects.slice(0, 2);
 
 const sectionVariants: Variants = {
   hidden: { opacity: 0, y: 40 },
