@@ -1,0 +1,546 @@
+{
+  "nav": {
+    "home": "首页",
+    "about": "关于",
+    "projects": "项目",
+    "notes": "笔记",
+    "tools": "工具箱",
+    "guestbook": "留言墙",
+    "links": "友链",
+    "contact": "联系",
+    "menuOpen": "打开菜单",
+    "menuClose": "关闭菜单",
+    "drawerTitle": "导航菜单"
+  },
+  "footer": {
+    "description": "个人开发者全功能平台 — 探索数据科学、AI 工程化与全栈开发的无限可能。",
+    "quickLinks": "快速导航",
+    "contact": "联系方式",
+    "contactText": "有任何问题或合作意向，欢迎随时联系。",
+    "email": "邮箱",
+    "visitors": "访客：",
+    "visits": "访问："
+  },
+  "hero": {
+    "microLabel": "你好，世界",
+    "title": "我是 HOU",
+    "slogan": "数据科学 × AI工程化 个人探索宇宙",
+    "role1": "全栈开发者",
+    "role2": "AI 创作者",
+    "role3": "数据工程师",
+    "cta1": "查看项目",
+    "cta2": "联系我",
+    "scrollDown": "向下滚动查看内容"
+  },
+  "home": {
+    "featuredProjects": "精选项目",
+    "featuredProjectsEn": "Featured Projects",
+    "coreCapabilities": "核心能力",
+    "coreCapabilitiesEn": "Core Capabilities",
+    "aboutMe": "关于我",
+    "aboutMeEn": "About Me",
+    "getInTouch": "联系我",
+    "getInTouchEn": "Get In Touch",
+    "viewAllProjects": "查看全部项目",
+    "aboutParagraph": "我是一名全栈开发者，热衷于大数据、人工智能以及构建有意义的工具。从实时数据管道到 AI 驱动的应用，我乐于将复杂问题转化为优雅的解决方案。HOU Universe 是我的数字乐园——一个展示项目、记录学习历程、分享我一路所建所感的地方。",
+    "learnMoreAboutMe": "了解更多关于我",
+    "letsCreate": "一起创造吧",
+    "contactPrompt": "无论你有一个项目想法、合作机会，还是只想聊聊技术——我始终欢迎与其他构建者和创作者交流。",
+    "contactMe": "联系我"
+  },
+  "capabilities": {
+    "data": {
+      "title": "数据工程能力",
+      "description": "覆盖数据采集、ETL清洗、可视化分析全链路，擅长海量数据处理与建模，具备从原始数据到商业洞察的完整工程能力。"
+    },
+    "ai": {
+      "title": "AI工程化开发",
+      "description": "熟练运用 Claude Code、Trae Work 等 AI Agent 工具，基于 Harness 工程思想高效交付项目，将 AI 真正融入开发工作流。"
+    },
+    "fullstack": {
+      "title": "全栈项目落地",
+      "description": "具备前后端开发能力，可独立完成从需求分析、架构设计到部署上线的完整项目闭环，追求高质量的代码与用户体验。"
+    }
+  },
+  "about": {
+    "pageTitle": "关于 - HOU Universe",
+    "pageDesc": "数据科学与大数据技术专业在读，热爱全栈开发与 AI 工程化——这里是我的个人简历与技术能力全景。",
+    "subhead": "关于",
+    "heading": "关于我",
+    "intro": "数据科学与大数据技术专业在读，热爱全栈开发与 AI 工程化。持续探索技术边界，以工程化思维驱动每一个项目的落地与迭代。",
+    "education": "教育背景",
+    "educationEn": "Education",
+    "school": "广东技术师范大学",
+    "major": "数据科学与大数据技术 · 本科",
+    "period": "2024.09 — 2028.06",
+    "coursesTitle": "主修课程",
+    "courses": [
+      "数据结构与算法",
+      "操作系统原理",
+      "计算机网络",
+      "数据库系统原理",
+      "C / Python / Java 程序设计",
+      "算法设计与分析",
+      "大数据技术与应用",
+      "数据挖掘",
+      "NoSQL 数据库"
+    ],
+    "projects": "项目经历",
+    "projectsEn": "Projects",
+    "aiEngineering": "AI 工程化能力",
+    "aiEngineeringEn": "AI Engineering",
+    "campus": "校园实践",
+    "campusEn": "Campus",
+    "skills": "专业技能",
+    "skillsEn": "Skills"
+  },
+  "aboutProjects": {
+    "p1": {
+      "title": "千万级电商用户行为全链路分析与可视化系统",
+      "role": "独立开发",
+      "period": "2026.05 — 2026.06",
+      "desc": "基于海量用户行为日志，借助 Claude Code 辅助开发并践行 Harness 工程思想，构建从数据接入到策略输出的全链路分析系统；设计六步 ETL 清洗管线，搭建 RFM 评分模型结合 K-Means 聚类实现用户分层，输出可视化图表与可执行运营建议。"
+    },
+    "p2": {
+      "title": "Java I/O 流性能测试与分析系统",
+      "role": "独立开发",
+      "period": "2026.05",
+      "desc": "设计自动化性能测试框架，对比不同 I/O 方案在多规格文件下的性能表现，通过 15 组对比实验量化分析，得出不同场景下的 I/O 选型结论，为实际开发提供数据支撑。"
+    },
+    "p3": {
+      "title": "产学研合作系列项目（大健康 / 高科农业）",
+      "role": "技术研发助理",
+      "period": "2026.01 — 2026.03",
+      "desc": "参与需求调研与实地考察，协助构建检测数据集，完成 300 余张图像标注；查阅行业文献整理成文，协助运行模型测试并整理统计报表，完成技术方案与阶段性报告归档。"
+    },
+    "p4": {
+      "title": "基于 MySQL 的仓库管理系统",
+      "role": "项目成员",
+      "period": "2025.12",
+      "desc": "面向中小仓储场景，设计四张核心数据表并建立外键关联，开发仓库、货物、库存、出入库四大管理模块，使用事务机制保障多仓库调拨的数据一致性。"
+    }
+  },
+  "aiSkills": [
+    "熟练使用 Claude Code、Trae Work 等 AI Agent 开发工具，搭建多 Agent 协同编程工作流",
+    "掌握 Harness 工程思想，通过高质量提示词驱动 AI 完成代码生成、调试与重构，提升开发效率",
+    "擅长将复杂项目拆解为标准化工程流程，实现模块解耦与环境无关部署"
+  ],
+  "campusActivities": {
+    "ca1": {
+      "title": "院学生会文娱部 · 部长",
+      "period": "2024.09 — 2026.07",
+      "desc": "统筹两院联合歌手大赛全流程，负责选手筛选、评委邀约与现场分工；牵头组织 4 场「课后一首歌」专场活动；建立班级信息传达机制，保障通知全覆盖。"
+    }
+  },
+  "timeline": {
+    "t1": {
+      "title": "入读广东技术师范大学",
+      "desc": "怀揣对数据科学的热情踏入大学校门，就读数据科学与大数据技术专业，正式开启技术探索之旅。"
+    },
+    "t2": {
+      "title": "Java 与 C 语言入门",
+      "desc": "系统学习 Java 与 C 语言核心语法，掌握面向对象编程思想、集合框架、异常处理与指针操作，为后续系统级开发打下坚实基础。"
+    },
+    "t3": {
+      "title": "Python 与数据科学入门",
+      "desc": "深入 Python 生态，从基础语法到数据分析三剑客（NumPy、Pandas、Matplotlib），感受 Python 在数据科学与自动化领域的强大能力。"
+    },
+    "t4": {
+      "title": "首个全栈项目实践",
+      "desc": "独立完成第一个全栈项目，从数据库建模到后端接口再到前端界面，首次体验了将想法完整落地的成就感。"
+    },
+    "t5": {
+      "title": "大数据技术栈入门",
+      "desc": "系统接触 Hadoop、Spark、Hive 等大数据生态组件，理解分布式计算原理，开始能处理 TB 级别数据并从中提取有价值的信息。"
+    },
+    "t6": {
+      "title": "AI 工程化与项目实践",
+      "desc": "全面投入 AI 工程化实践，熟练使用 Claude Code 等 AI Agent 工具，掌握 Harness 工程思想，独立完成多个数据分析与系统开发项目。"
+    },
+    "t7": {
+      "title": "构建个人开发者平台",
+      "desc": "整合所学技术栈，构建个人开发者平台 HOU Universe，追求全栈能力闭环。持续关注前沿技术，以工程化思维推动个人成长与项目交付。"
+    }
+  },
+  "projects": {
+    "pageTitle": "项目 - HOU Universe",
+    "pageDesc": "项目展示——涵盖大数据管道、AI 应用、全栈平台和开发者工具。",
+    "subhead": "项目",
+    "heading": "项目",
+    "intro": "涵盖全栈平台与开发工具的精选项目展示——每个项目都是构建、学习与创造之旅中的一个里程碑。",
+    "featured": "精选项目",
+    "categoryAll": "全部",
+    "categoryFullstack": "全栈开发",
+    "categoryData": "数据分析",
+    "emptyState": "该分类暂无项目，敬请期待！",
+    "imagePlaceholder": "项目截图预留位 — 可替换为真实项目截图",
+    "backToList": "返回项目列表",
+    "livePreview": "在线预览",
+    "download": "下载作品",
+    "githubRepo": "GitHub 仓库",
+    "aboutProject": "关于项目",
+    "projectBackground": "项目背景",
+    "coreFeatures": "核心功能",
+    "techSolution": "技术方案",
+    "highlights": "亮点成果",
+    "techStack": "技术栈",
+    "updateLog": "更新日志",
+    "notFound": "项目未找到 - HOU Universe",
+    "noUpdateLog": "暂无更新日志。"
+  },
+  "projectData": {
+    "hou-universe": {
+      "title": "HOU Universe",
+      "category": "全栈开发",
+      "description": "个人技术作品集网站，以宇宙主题打造个人品牌展示空间——基于现代 Web 技术从零构建。",
+      "fullDescription": "HOU Universe 是我的个人技术作品集网站，以宇宙主题打造个人品牌展示空间。平台基于 Next.js 15 App Router 架构，TypeScript 严格模式编写，融合 Tailwind CSS 与玻璃拟态设计语言，构建深黑 + 冷白 + 淡蓝高亮的统一视觉体系。从星空粒子背景到鼠标光晕交互，从打字机动画到滚动驱动视差效果，每一个细节追求极致。涵盖项目展示、技能可视化、留言联系、中英双语支持、访客统计等完整功能模块，支持全响应式适配。",
+      "background": "作为个人开发者，需要一个集中展示技术能力、项目成果与学习历程的平台。HOU Universe 由此诞生——它不仅是一个作品集网站，更是个人技术品牌的展示空间。以深空宇宙为视觉主题，从需求到实现全程采用 AI 工程化工作流开发，将传统数周的工作量压缩至数天完成，同时保持高质量的代码规范与用户体验。",
+      "coreFeatures": [
+        "项目作品展示：精选项目卡片带封面图、技术标签与下载按钮，详情页包含完整技术方案与更新日志时间轴",
+        "技能可视化：分级进度条展示四大技能类别（编程语言 / 数据库 / 核心能力 / AI 工程化），滚动触发百分比增长动画",
+        "留言联系系统：Netlify Forms 集成留言墙与联系表单，支持文件附件上传与自动邮件通知",
+        "中英双语支持：基于 i18next 的完整国际化方案，覆盖全站所有文本内容",
+        "访客统计：实时访客计数与页面访问量统计，数据持久化存储",
+        "深空宇宙主题：三层视差星空背景、3D 星球模型、鼠标光晕追踪、玻璃拟态设计语言、全响应式适配"
+      ],
+      "techSolution": "前端基于 Next.js 15 App Router 架构，TypeScript 严格模式保证类型安全。样式层使用 Tailwind CSS + shadcn/ui (Base UI) 组件体系，CSS 自定义属性统一深色主题 Token。动画层统一 Framer Motion 管理页面过渡、滚动入场与交互反馈，Canvas API 实现高性能星空粒子系统，Three.js (React Three Fiber) 驱动 3D 星球元素。国际化基于 i18next + react-i18next，支持 zh-CN / en 双语。构建输出为全静态站点 (output: export)，部署于 Netlify 平台，采用 AI 工程化工作流（Claude Code + Harness 方法论）驱动开发全流程。",
+      "highlights": [
+        "深空宇宙主题视觉：三层视差星空背景、3D 星球模型、鼠标粒子引力交互与点击星爆特效，营造沉浸式宇宙空间体验",
+        "3D 交互元素：Three.js (R3F) 驱动首屏 3D 星球，Canvas 高性能粒子系统，触摸设备自动降级动效保证流畅",
+        "玻璃拟态设计语言：全站统一的 glass-card 风格，backdrop-blur 毛玻璃效果搭配 brand 品牌色微光边框",
+        "全响应式适配：移动端 / 平板 / 桌面端完美适配，所有交互动效基于 Framer Motion 实现 60fps 流畅运行"
+      ],
+      "updateLog": [
+        {
+          "version": "v1.3.0",
+          "date": "2026-07-14",
+          "changes": [
+            "新增 Projects 项目展示模块，含列表页与详情页",
+            "实现项目卡片 hover 上浮微光效果与滚动入场动画",
+            "详情页支持更新日志时间轴展示"
+          ]
+        },
+        {
+          "version": "v1.2.0",
+          "date": "2026-06-10",
+          "changes": [
+            "新增 About 页面，包含成长轨迹时间轴与技能地图",
+            "实现滚动驱动的垂直时间线进度动画",
+            "技能标签组支持分类展示与响应式网格布局"
+          ]
+        },
+        {
+          "version": "v1.0.0",
+          "date": "2026-05-20",
+          "changes": [
+            "平台首个版本上线，包含首页 Hero 区域与星空背景",
+            "实现导航栏、页脚等全局布局组件",
+            "完成 Contact 联系页面基础结构"
+          ]
+        }
+      ]
+    },
+    "shuatiapp-pro-max": {
+      "title": "刷题助手 PRO MAX",
+      "category": "全栈开发",
+      "description": "面向编程学习的在线刷题练习平台，解决批量导入题目难、错题整理效率低的痛点——支持文本粘贴/文件导入双模式批量导题，内置错题本、收藏与专项练习模块。",
+      "fullDescription": "刷题助手 PRO MAX 是一款面向编程学习的在线刷题练习平台，核心解决批量导入题目难、错题整理效率低的痛点。支持文本粘贴与文件导入双模式批量导题，内置智能格式识别自动解析题目、选项与答案。错题本自动收录答错题目，我的收藏方便回顾重点题型，专项练习模块支持按分类针对性训练。答题计时与正确率统计功能帮助学生实时掌握学习进度，数据统计面板直观展示刷题趋势。前端采用原生 JavaScript 构建，后端基于 Node.js + Express 框架，MySQL 存储题库与用户数据。",
+      "background": "编程学习中，刷题是巩固知识的核心手段，但传统方式存在题目来源分散、错题管理不便、学习进度难追踪等痛点。刷题助手 PRO MAX 应运而生，面向编程学习者提供从题目导入到数据分析的一站式刷题体验，解决批量导入题目难、错题整理效率低的核心问题。",
+      "coreFeatures": [
+        "双模式批量导题：支持文本粘贴与文件导入（CSV/JSON），智能格式识别自动解析题干、选项与正确答案，大幅降低题目录入成本",
+        "错题本自动收录：答错题目自动加入错题本，支持按分类筛选、按时间排序，方便针对性复习薄弱知识点",
+        "题目收藏模块：手动收藏重点题型与高频考点，快速回顾核心题目，避免信息过载",
+        "专项练习分类：按数据结构、算法、数据库等分类进行针对性训练，自由选择练习范围与题量",
+        "答题计时系统：每道题自动计时，记录答题耗时，帮助培养时间管理意识与考场节奏感",
+        "正确率与数据统计：正确率趋势、分类掌握度雷达图、每日刷题量柱状图，直观呈现学习进展"
+      ],
+      "techSolution": "前端采用原生 JavaScript + HTML5 + CSS3 构建，不依赖重型框架，确保加载速度与兼容性。后端基于 Node.js + Express 框架提供 RESTful API 接口，前后端分离架构，表单校验保障数据有效性。MySQL 数据库存储题库、用户数据与学习记录，数据持久化保障。智能格式识别模块通过正则表达式 + 规则引擎解析多种题目格式（纯文本、CSV、JSON），自动映射为标准数据结构。答题计时基于前端时间戳记录，正确率统计通过 SQL 聚合查询实时计算。整体架构轻量模块化，方便后续功能扩展。",
+      "highlights": [
+        "双模式导题降低录入成本：文本粘贴 + 文件导入双通道，智能格式识别准确率 > 95%，覆盖主流刷题平台导出格式",
+        "错题 + 收藏 + 专项三维度巩固练习：错题自动收录、重点题型收藏、分类专项训练，三维度构建完整的练习闭环",
+        "数据统计可视化掌握学习进度：正确率趋势、分类掌握度、刷题量趋势三大图表，帮助学生精准定位薄弱环节",
+        "模块化扩展架构：前端静态资源缓存策略保障弱网可用，错题本、收藏、专项练习三大模块独立解耦，新增功能无需修改核心代码"
+      ],
+      "updateLog": [
+        {
+          "version": "v1.0.0",
+          "date": "2026-06-15",
+          "changes": [
+            "首个版本上线，支持文本粘贴与文件导入双模式批量导入题目",
+            "内置错题本、我的收藏、专项练习三大学习模块",
+            "实现答题计时、正确率统计与数据统计面板功能"
+          ]
+        }
+      ]
+    }
+  },
+  "contact": {
+    "pageTitle": "联系 - HOU Universe",
+    "pageDesc": "联系我 — 有问题或想合作？通过表单与我取得联系。",
+    "subhead": "联系",
+    "heading": "联系我",
+    "intro": "有问题、有想法，或者只是想打个招呼？填写下方表单或通过任意渠道联系我——我会尽快回复您。",
+    "form": {
+      "name": "姓名",
+      "namePlaceholder": "请输入您的姓名",
+      "email": "邮箱",
+      "emailPlaceholder": "请输入您的邮箱地址",
+      "description": "作品 / 合作描述",
+      "descriptionPlaceholder": "请描述您的作品或合作意向……",
+      "attachment": "附件上传",
+      "attachmentHint": "支持图片、文档、压缩包（选填）",
+      "submit": "提交",
+      "submitting": "提交中……",
+      "success": "提交成功，感谢你的来信，我会尽快回复",
+      "errorName": "请输入您的姓名。",
+      "errorEmail": "请输入您的邮箱。",
+      "errorEmailInvalid": "请输入有效的邮箱地址。",
+      "errorDescription": "请输入作品描述或合作内容。"
+    },
+    "info": {
+      "email": "邮箱",
+      "github": "GitHub",
+      "social": "社交",
+      "socialValue": "更多渠道即将上线……"
+    }
+  },
+  "notes": {
+    "pageTitle": "笔记 - HOU Universe",
+    "pageDesc": "学习笔记与技术分享——涵盖 AI 工程化、全栈开发、数据工程等话题的实践记录与思考。",
+    "subhead": "笔记",
+    "heading": "学习笔记",
+    "intro": "记录技术学习过程中的思考、实践与心得——涵盖 AI 工程化、全栈开发、数据工程等领域。",
+    "empty": "暂无笔记，敬请期待！",
+    "readMore": "阅读全文",
+    "searchPlaceholder": "搜索文章标题、标签或分类...",
+    "clearSearch": "清除搜索",
+    "categoryAll": "全部",
+    "clearFilters": "清除筛选",
+    "noResults": "未找到匹配的文章，试试其他关键词吧。",
+    "totalPosts": "共 {{count}} 篇文章",
+    "filteredPosts": "显示 {{filtered}} / {{total}} 篇文章",
+    "readingTimeUnit": "分钟阅读",
+    "backToList": "返回笔记列表"
+  },
+  "tools": {
+    "pageTitle": "工具箱 - HOU Universe",
+    "pageDesc": "常用开发工具与学习资源导航——涵盖 AI 开发、大数据学习与效率工具。",
+    "subhead": "工具箱",
+    "heading": "工具箱",
+    "intro": "收集整理日常开发中常用的工具、平台与学习资源，点击卡片即可跳转对应网站。"
+  },
+  "toolsData": {
+    "claude-code": {
+      "name": "Claude Code",
+      "description": "Anthropic 推出的 AI 编程助手，深度集成终端与 IDE，支持多 Agent 协同开发"
+    },
+    "trae-work": {
+      "name": "Trae Work",
+      "description": "字节跳动旗下 AI 编程助手，集成代码生成与调试能力"
+    },
+    "github": {
+      "name": "GitHub",
+      "description": "全球最大的代码托管平台，支持版本控制、CI/CD 与协作开发"
+    },
+    "netlify": {
+      "name": "Netlify",
+      "description": "现代化 Web 部署平台，支持静态站点托管、表单处理与无服务器函数"
+    },
+    "runoob": {
+      "name": "菜鸟教程",
+      "description": "免费编程入门教程网站，涵盖前端、后端、数据库等全方位技术内容"
+    },
+    "leetcode": {
+      "name": "力扣 LeetCode",
+      "description": "全球知名在线编程刷题平台，涵盖算法、数据结构与数据库等题型"
+    },
+    "nowcoder": {
+      "name": "牛客网",
+      "description": "IT 求职刷题与面试准备平台，提供笔试、面试题库与企业真题"
+    },
+    "mdn": {
+      "name": "MDN Web Docs",
+      "description": "Mozilla 维护的 Web 开发权威文档，HTML/CSS/JavaScript 必备参考"
+    },
+    "figma": {
+      "name": "Figma",
+      "description": "基于浏览器的 UI 设计工具，支持实时协作与原型交互设计"
+    },
+    "tinypng": {
+      "name": "TinyPNG",
+      "description": "在线图片压缩工具，智能缩小 PNG/WebP 体积同时保持视觉质量"
+    },
+    "carbon": {
+      "name": "Carbon",
+      "description": "代码片段美化截图工具，支持多种主题与语言高亮，适合分享代码"
+    }
+  },
+  "guestbook": {
+    "pageTitle": "留言墙 - HOU Universe",
+    "pageDesc": "留言墙——留下你的足迹，分享你的想法与建议。",
+    "subhead": "留言墙",
+    "heading": "留言墙",
+    "intro": "有想说的话？留下你的足迹——无论是建议、问题还是简单的问候，都欢迎写在下方。",
+    "writeMessageTitle": "写留言",
+    "footprintsTitle": "到访足迹",
+    "form": {
+      "nickname": "昵称",
+      "nicknamePlaceholder": "请输入你的昵称",
+      "content": "留言内容",
+      "contentPlaceholder": "写下你想说的话……",
+      "submit": "提交留言",
+      "submitting": "提交中……",
+      "success": "留言提交成功，感谢你的到访",
+      "errorNickname": "请输入昵称。",
+      "errorContent": "请输入留言内容。"
+    },
+    "sampleMessages": [
+      {
+        "id": "msg-1",
+        "nickname": "星辰大海",
+        "content": "很棒的宇宙主题设计！星空背景和鼠标交互效果太酷了，技术栈分享也很详细，学到了很多。",
+        "date": "2026-07-10"
+      },
+      {
+        "id": "msg-2",
+        "nickname": "CodeMaster",
+        "content": "看到你关于 AI 工程化的实践分享很受启发，Claude Code + Harness 的工作流思路值得借鉴。期待更多技术文章！",
+        "date": "2026-07-08"
+      },
+      {
+        "id": "msg-3",
+        "nickname": "前端小菜鸟",
+        "content": "从刷题助手项目过来的，界面简洁功能实用。HOU Universe 这个平台本身也是很好的学习案例，感谢开源分享！",
+        "date": "2026-07-05"
+      }
+    ]
+  },
+  "links": {
+    "pageTitle": "友链 - HOU Universe",
+    "pageDesc": "友链墙——友情链接与技术工具导航，发现更多优质开发者站点与实用资源。",
+    "subhead": "友链",
+    "heading": "友链墙",
+    "intro": "一群有趣的人，一堆好用的工具——欢迎交换友链，共同探索技术宇宙。",
+    "friendLinks": "友情链接",
+    "toolNav": "工具导航",
+    "applyButton": "申请友链",
+    "applyTip": "欢迎交换友链！请发送邮件至 contact@hou-universe.vercel.app，附上你的站点名称、简介与链接，我会尽快回复。",
+    "applyTipTitle": "申请友链",
+    "gotIt": "知道了"
+  },
+  "notFound": {
+    "subhead": "404",
+    "heading": "迷失在宇宙中",
+    "description": "你访问的页面飘去了外太空。",
+    "description2": "也许它正绕着某颗恒星运行，暂时无法返回。",
+    "backHome": "返回首页",
+    "browseProjects": "浏览项目"
+  },
+  "backToTop": "回到顶部",
+  "anchorNav": {
+    "label": "页面锚点导航",
+    "projectBackground": "项目背景",
+    "coreFeatures": "核心功能",
+    "techSolution": "技术方案",
+    "techStack": "技术栈",
+    "download": "下载作品"
+  },
+  "skills": {
+    "programming": "编程语言",
+    "database": "数据库",
+    "core": "核心能力",
+    "ai": "AI 工程化",
+    "dataCollection": "数据采集与清洗",
+    "etl": "ETL 管线设计",
+    "dataAnalysis": "数据分析与可视化",
+    "algorithm": "算法实现",
+    "claudeCode": "Claude Code",
+    "traeWork": "Trae Work",
+    "harness": "Harness 工程思想"
+  },
+  "toolsCategories": {
+    "ai": "AI 开发工具",
+    "bigdata": "大数据学习",
+    "efficiency": "效率工具"
+  },
+  "seo": {
+    "siteTitle": "HOU Universe",
+    "siteTitleDefault": "HOU Universe — 个人开发者平台",
+    "siteDesc": "HOU Universe 是个人开发者全功能平台，展示大数据、AI 与全栈开发项目。探索互动体验、技能地图与持续更新的作品集。",
+    "siteKeywords": "开发者, 作品集, 全栈, 大数据, AI, 机器学习, Next.js, TypeScript, React",
+    "homeTitle": "HOU Universe - 数据科学个人作品集",
+    "homeDesc": "数据科学与大数据技术专业个人作品集，展示项目经历、技能栈与学习笔记。涵盖全栈开发、AI 工程化与数据工程领域。"
+  },
+  "language": {
+    "switchTo": "EN",
+    "label": "切换语言"
+  },
+  "theme": {
+    "switchToLight": "切换到日间模式",
+    "switchToDark": "切换到夜间模式"
+  },
+"terminal": {
+    "welcome": "欢迎来到 HOU Universe 终端",
+    "typeHelpHint": "输入 \"help\" 查看可用命令",
+    "close": "关闭终端",
+    "toClose": "关闭",
+    "toNavigate": "历史命令",
+    "placeholder": "输入命令...",
+    "navigating": "正在导航至",
+    "unknownCmd": "未知命令",
+    "typeHelp": "输入 \"help\" 查看可用命令。",
+    "commands": {
+      "help": "可用命令：",
+      "home": "回到首页",
+      "projects": "跳转项目页",
+      "about": "跳转关于页",
+      "contact": "跳转联系页",
+      "notes": "跳转笔记页",
+      "tools": "跳转工具箱页",
+      "guestbook": "跳转留言墙",
+      "links": "跳转友链墙",
+      "whoami": "显示个人简介",
+      "clear": "清屏",
+      "helpCmd": "显示此帮助"
+    },
+    "whoami": {
+      "name": "姓名",
+      "role": "身份",
+      "roleValue": "全栈开发者 / 数据工程师 / AI 创作者",
+      "skills": "技能",
+      "bio": "简介",
+      "bioValue": "探索数据科学与 AI 工程化的无限宇宙。"
+    }
+  },
+  "githubContributions": {
+    "sectionEn": "Open Source",
+    "sectionTitle": "GitHub 开源贡献",
+    "usernameLabel": "GitHub 用户名",
+    "load": "加载贡献",
+    "error": "加载失败，请检查用户名或稍后重试。",
+    "total": "过去一年贡献",
+    "mon": "一",
+    "wed": "三",
+    "fri": "五",
+    "less": "少",
+    "more": "多"
+  },
+  "experience": {
+    "expandDetails": "展开详情",
+    "collapse": "收起",
+    "projectBackground": "项目背景",
+    "coreWork": "核心工作",
+    "projectAchievements": "项目成果",
+    "sectionTitle": "项目经历",
+    "roles": {
+      "independentDev": "独立开发",
+      "rdAssistant": "技术研发助理",
+      "teamMember": "项目成员"
+    }
+  },
+  "vcard": {
+    "title": "电子名片",
+    "description": "下载 vCard 文件，可导入手机通讯录",
+    "download": "下载名片"
+  }
+}

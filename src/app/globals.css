@@ -9,6 +9,16 @@ html, body {
   border-color: rgba(255,255,255,0.1) !important;
 }
 
+/* ── 晴空模式覆盖强制深色规则 ── */
+html[data-theme="light"],
+html[data-theme="light"] body {
+  background-color: #f0f7ff !important;
+  color: #1e293b !important;
+}
+html[data-theme="light"] * {
+  border-color: rgba(148, 163, 184, 0.18) !important;
+}
+
 @import "tw-animate-css";
 @import "shadcn/tailwind.css";
 @import "highlight.js/styles/github-dark.css";
@@ -64,7 +74,69 @@ html, body {
     --color-text-primary: #f1f5f9;
     --color-text-secondary: #94a3b8;
     --color-text-tertiary: #64748b;
+    /* ══════ Theme-aware brand RGB tokens (overridden per [data-theme]) ══════ */
+    --brand-rgb: 30, 64, 175;
+    --brand-deep-rgb: 30, 58, 138;
+    --brand-light-rgb: 37, 99, 235;
+    --brand-muted-rgb: 100, 116, 139;
+    --brand-glow-rgb: 30, 64, 175;
   }
+
+  /* ══════ Clear Sky (晴空) Light Theme ══════ */
+  [data-theme="light"] {
+    --background: oklch(0.975 0.005 250);
+    --foreground: oklch(0.18 0.005 260);
+    --card: oklch(0.99 0.002 250);
+    --card-foreground: oklch(0.18 0.005 260);
+    --popover: oklch(0.99 0.002 250);
+    --popover-foreground: oklch(0.18 0.005 260);
+    --primary: oklch(0.50 0.09 255);
+    --primary-foreground: oklch(0.99 0 0);
+    --secondary: oklch(0.94 0.005 255);
+    --secondary-foreground: oklch(0.22 0.005 260);
+    --muted: oklch(0.93 0.005 255);
+    --muted-foreground: oklch(0.45 0.01 255);
+    --accent: oklch(0.93 0.01 255);
+    --accent-foreground: oklch(0.25 0.005 260);
+    --destructive: oklch(0.55 0.2 20);
+    --destructive-foreground: oklch(0.99 0 0);
+    --border: oklch(0.88 0.005 255);
+    --input: oklch(0.90 0.005 255);
+    --ring: oklch(0.50 0.09 255);
+    --chart-1: oklch(0.50 0.09 255);
+    --chart-2: oklch(0.52 0.09 180);
+    --chart-3: oklch(0.55 0.12 55);
+    --chart-4: oklch(0.52 0.09 320);
+    --chart-5: oklch(0.52 0.09 130);
+    --sidebar: oklch(0.975 0.003 250);
+    --sidebar-foreground: oklch(0.20 0.005 260);
+    --sidebar-primary: oklch(0.50 0.09 255);
+    --sidebar-primary-foreground: oklch(0.99 0 0);
+    --sidebar-accent: oklch(0.93 0.01 255);
+    --sidebar-accent-foreground: oklch(0.25 0.005 260);
+    --sidebar-border: oklch(0.88 0.005 255);
+    --sidebar-ring: oklch(0.50 0.09 255);
+    /* Design system tokens — light warm sky palette */
+    --color-deep-space: #f0f7ff;
+    --color-blue-primary: #2563eb;
+    --color-blue-deep: #1d4ed8;
+    --color-accent-slate: #64748b;
+    --color-glass-bg: rgba(255, 255, 255, 0.55);
+    --color-glass-border: rgba(148, 163, 184, 0.15);
+    --color-glass-border-hover: rgba(37, 99, 235, 0.25);
+    --color-text-primary: #1e293b;
+    --color-text-secondary: #475569;
+    --color-text-tertiary: #64748b;
+    /* Brand RGB tokens — light mode blues */
+    --brand-rgb: 37, 99, 235;
+    --brand-deep-rgb: 29, 78, 216;
+    --brand-light-rgb: 59, 130, 246;
+    --brand-muted-rgb: 100, 116, 139;
+    --brand-glow-rgb: 37, 99, 235;
+  }
+
+
+
 
   .theme {
     --font-heading: var(--font-sans);
@@ -83,7 +155,7 @@ html, body {
   }
 }
 
-/* ── Custom dark scrollbar — 深蓝调 ── */
+/* ── Custom dark scrollbar — 主题色 ── */
 @layer base {
   * {
     scrollbar-width: thin;
@@ -100,13 +172,13 @@ html, body {
   }
 
   ::-webkit-scrollbar-thumb {
-    background: linear-gradient(180deg, rgba(30,64,175,0.25) 0%, rgba(30,58,138,0.25) 100%);
+    background: linear-gradient(180deg, rgba(var(--brand-rgb),0.25) 0%, rgba(var(--brand-deep-rgb),0.25) 100%);
     border-radius: 9999px;
     transition: background 0.3s ease;
   }
 
   ::-webkit-scrollbar-thumb:hover {
-    background: linear-gradient(180deg, rgba(30,64,175,0.4) 0%, rgba(30,58,138,0.4) 100%);
+    background: linear-gradient(180deg, rgba(var(--brand-rgb),0.4) 0%, rgba(var(--brand-deep-rgb),0.4) 100%);
   }
 
   ::-webkit-scrollbar-corner {
@@ -114,21 +186,37 @@ html, body {
   }
 }
 
-/* ── Glass morphism utility — 深蓝调边框 ── */
+/* ── Light theme scrollbar ── */
+[data-theme="light"] * {
+  scrollbar-color: rgba(100, 116, 139, 0.2) transparent;
+}
+[data-theme="light"] ::-webkit-scrollbar-thumb {
+  background: linear-gradient(180deg, rgba(var(--brand-rgb), 0.18) 0%, rgba(var(--brand-deep-rgb), 0.18) 100%);
+}
+[data-theme="light"] ::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(180deg, rgba(var(--brand-rgb), 0.32) 0%, rgba(var(--brand-deep-rgb), 0.32) 100%);
+}
+
+/* ── Glass morphism utility — 深蓝调边框 + 苹果级三级模糊层级 ── */
+/*   L1 (最高): NavBar — backdrop-blur-2xl (40px)  — 持久性导航栏，层级最前 */
+/*   L2 (中等): Drawer/Overlay — backdrop-blur-xl (24px)  — 临时覆盖层 */
+/*   L3 (最低): Cards — backdrop-blur-md (12px)  — 内容卡片，层级最远 */
 @layer utilities {
   .glass-card {
     background: rgba(255, 255, 255, 0.03);
     border: 1px solid rgba(255, 255, 255, 0.06);
-    backdrop-filter: blur(16px);
-    -webkit-backdrop-filter: blur(16px);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
     box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.04);
+    position: relative;
+    overflow: hidden;
   }
 
   .glass-card-hover {
     background: rgba(255, 255, 255, 0.03);
     border: 1px solid rgba(255, 255, 255, 0.06);
-    backdrop-filter: blur(16px);
-    -webkit-backdrop-filter: blur(16px);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
     box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.04);
     transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     position: relative;
@@ -137,15 +225,15 @@ html, body {
 
   .glass-card-hover:hover {
     background: rgba(255, 255, 255, 0.06);
-    border-color: rgba(30, 64, 175, 0.2);
+    border-color: rgba(var(--brand-rgb), 0.2);
     transform: translateY(-6px);
     box-shadow:
       inset 0 1px 0 rgba(255, 255, 255, 0.06),
-      0 8px 32px rgba(30, 64, 175, 0.08),
-      0 0 60px rgba(30, 64, 175, 0.03);
+      0 8px 32px rgba(var(--brand-rgb), 0.08),
+      0 0 60px rgba(var(--brand-glow-rgb), 0.03);
   }
 
-  /* Card click ripple — 低饱和深靛蓝 */
+  /* Card click ripple — 主题色 */
   .card-ripple {
     position: relative;
     overflow: hidden;
@@ -153,7 +241,7 @@ html, body {
   .ripple-effect {
     position: absolute;
     border-radius: 50%;
-    background: rgba(30, 64, 175, 0.12);
+    background: rgba(var(--brand-rgb), 0.12);
     transform: scale(0);
     animation: ripple-anim 0.6s ease-out forwards;
     pointer-events: none;
@@ -177,8 +265,8 @@ html, body {
   .glass-input:focus,
   .glass-input:focus-within {
     background: rgba(255, 255, 255, 0.05);
-    border-color: rgba(30, 64, 175, 0.35);
-    box-shadow: 0 0 0 3px rgba(30, 64, 175, 0.08), 0 0 20px rgba(30, 64, 175, 0.04);
+    border-color: rgba(var(--brand-rgb), 0.35);
+    box-shadow: 0 0 0 3px rgba(var(--brand-rgb), 0.08), 0 0 20px rgba(var(--brand-rgb), 0.04);
   }
 
   .text-gradient-primary {
@@ -196,15 +284,374 @@ html, body {
   }
 }
 
-/* ── Selection styling — 低饱和深靛蓝 ── */
+/* ── Light theme glass morphism overrides ── */
+[data-theme="light"] .glass-card {
+  background: rgba(255, 255, 255, 0.55);
+  border: 1px solid rgba(148, 163, 184, 0.15);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04), inset 0 1px 0 rgba(255, 255, 255, 0.6);
+}
+
+[data-theme="light"] .glass-card-hover {
+  background: rgba(255, 255, 255, 0.55);
+  border: 1px solid rgba(148, 163, 184, 0.15);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04), inset 0 1px 0 rgba(255, 255, 255, 0.6);
+}
+
+[data-theme="light"] .glass-card-hover:hover {
+  background: rgba(255, 255, 255, 0.8);
+  border-color: rgba(var(--brand-rgb), 0.25);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.8),
+    0 4px 16px rgba(var(--brand-rgb), 0.08),
+    0 8px 32px rgba(var(--brand-rgb), 0.04);
+}
+
+[data-theme="light"] .glass-input {
+  background: rgba(255, 255, 255, 0.5);
+  border: 1px solid rgba(148, 163, 184, 0.18);
+}
+
+[data-theme="light"] .glass-input:focus,
+[data-theme="light"] .glass-input:focus-within {
+  background: rgba(255, 255, 255, 0.8);
+  border-color: rgba(var(--brand-rgb), 0.4);
+  box-shadow: 0 0 0 3px rgba(var(--brand-rgb), 0.06), 0 0 20px rgba(var(--brand-rgb), 0.04);
+}
+
+/* ── Light theme text gradients ── */
+[data-theme="light"] .text-gradient-primary {
+  background: linear-gradient(135deg, #1e293b 0%, #334155 30%, #475569 70%, #334155 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+[data-theme="light"] .text-gradient-blue {
+  background: linear-gradient(135deg, #2563eb 0%, #3b82f6 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* ── Selection styling — 主题色 ── */
 ::selection {
-  background: rgba(30, 64, 175, 0.25);
+  background: rgba(var(--brand-rgb), 0.25);
   color: #f8fafc;
 }
 
-/* ── Focus ring refinement — 深靛蓝调 ── */
+[data-theme="light"] ::selection {
+  background: rgba(var(--brand-rgb), 0.18);
+  color: #1e293b;
+}
+
+/* ── Focus ring refinement — 主题色 ── */
 :focus-visible {
-  outline: 2px solid rgba(30, 64, 175, 0.45);
+  outline: 2px solid rgba(var(--brand-rgb), 0.45);
   outline-offset: 2px;
   border-radius: 2px;
+}
+
+/* ===== A11y: Enhanced keyboard focus styles ===== */
+/* Ensure all interactive elements have visible focus states */
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+textarea:focus-visible,
+select:focus-visible,
+[tabindex]:not([tabindex="-1"]):focus-visible {
+  outline: 2px solid rgba(var(--brand-rgb), 0.6) !important;
+  outline-offset: 2px !important;
+  border-radius: 4px !important;
+}
+
+/* Skip link for keyboard navigation */
+.skip-to-main {
+  position: absolute;
+  top: -100%;
+  left: 0;
+  z-index: 9999;
+  padding: 0.75rem 1.5rem;
+  background: rgb(var(--brand-rgb));
+  color: #fff;
+  font-size: 0.875rem;
+  text-decoration: none;
+  border-radius: 0 0 0.5rem 0;
+  transition: top 0.2s ease;
+}
+.skip-to-main:focus {
+  top: 0;
+}
+
+/* Reduce motion for accessibility */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* Screen reader only utility */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* ══════════════════════════════════════════════════════════════
+   ── 全局噪点纹理叠加 (叠加效果，透明度 5% 以内) ──
+   ══════════════════════════════════════════════════════════════ */
+body::after {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  pointer-events: none;
+  opacity: 0.03;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+  background-repeat: repeat;
+  background-size: 256px 256px;
+}
+
+/* Light mode: reduce noise texture visibility */
+[data-theme="light"] body::after {
+  opacity: 0.015;
+}
+
+/* Light mode: glass card noise overlay visibility reduction */
+[data-theme="light"] .glass-card::before,
+[data-theme="light"] .glass-card-hover::before {
+  opacity: 0.02;
+}
+
+/* 玻璃拟态卡片噪点叠加 */
+.glass-card::before,
+.glass-card-hover::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+  opacity: 0.04;
+  border-radius: inherit;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+  background-repeat: repeat;
+  background-size: 256px 256px;
+}
+
+/* ══════════════════════════════════════════════════════════════
+   ── 自定义宇宙风格光标 ──
+   ══════════════════════════════════════════════════════════════ */
+@media (hover: hover) and (pointer: fine) {
+  body {
+    cursor: url("data:image/svg+xml,%3Csvg width='32' height='32' viewBox='0 0 32 32' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Ccircle cx='16' cy='16' r='14' fill='rgba(148,163,184,0.12)' stroke='rgba(180,210,250,0.25)' stroke-width='1'/%3E%3Ccircle cx='16' cy='16' r='6' fill='rgba(200,220,255,0.9)'/%3E%3Ccircle cx='16' cy='16' r='3' fill='white'/%3E%3C/svg%3E") 16 16, auto;
+  }
+
+  body:active {
+    cursor: url("data:image/svg+xml,%3Csvg width='32' height='32' viewBox='0 0 32 32' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Ccircle cx='16' cy='16' r='11' fill='rgba(148,163,184,0.18)' stroke='rgba(180,210,250,0.35)' stroke-width='1'/%3E%3Ccircle cx='16' cy='16' r='5' fill='rgba(200,220,255,0.9)'/%3E%3Ccircle cx='16' cy='16' r='2.5' fill='white'/%3E%3C/svg%3E") 16 16, auto;
+  }
+
+  /* 交互元素上使用 pointer 光标保持系统默认交互感 */
+  a, button, [role="button"], input, textarea, select, [tabindex]:not([tabindex="-1"]) {
+    cursor: url("data:image/svg+xml,%3Csvg width='32' height='32' viewBox='0 0 32 32' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Ccircle cx='16' cy='16' r='14' fill='rgba(148,163,184,0.12)' stroke='rgba(180,210,250,0.25)' stroke-width='1'/%3E%3Ccircle cx='16' cy='16' r='6' fill='rgba(200,220,255,0.9)'/%3E%3Ccircle cx='16' cy='16' r='3' fill='white'/%3E%3C/svg%3E") 16 16, pointer;
+  }
+
+  a:active, button:active, [role="button"]:active {
+    cursor: url("data:image/svg+xml,%3Csvg width='32' height='32' viewBox='0 0 32 32' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Ccircle cx='16' cy='16' r='11' fill='rgba(148,163,184,0.18)' stroke='rgba(180,210,250,0.35)' stroke-width='1'/%3E%3Ccircle cx='16' cy='16' r='5' fill='rgba(200,220,255,0.9)'/%3E%3Ccircle cx='16' cy='16' r='2.5' fill='white'/%3E%3C/svg%3E") 16 16, pointer;
+  }
+
+  /* ── Light theme cursor ── */
+  [data-theme="light"] body {
+    cursor: url("data:image/svg+xml,%3Csvg width='32' height='32' viewBox='0 0 32 32' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Ccircle cx='16' cy='16' r='14' fill='rgba(100,116,139,0.1)' stroke='rgba(100,116,139,0.2)' stroke-width='1'/%3E%3Ccircle cx='16' cy='16' r='6' fill='rgba(71,85,105,0.7)'/%3E%3Ccircle cx='16' cy='16' r='3' fill='rgba(37,99,235,0.9)'/%3E%3C/svg%3E") 16 16, auto;
+  }
+  [data-theme="light"] body:active {
+    cursor: url("data:image/svg+xml,%3Csvg width='32' height='32' viewBox='0 0 32 32' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Ccircle cx='16' cy='16' r='11' fill='rgba(100,116,139,0.14)' stroke='rgba(100,116,139,0.28)' stroke-width='1'/%3E%3Ccircle cx='16' cy='16' r='5' fill='rgba(71,85,105,0.7)'/%3E%3Ccircle cx='16' cy='16' r='2.5' fill='rgba(37,99,235,0.9)'/%3E%3C/svg%3E") 16 16, auto;
+  }
+  [data-theme="light"] a,
+  [data-theme="light"] button,
+  [data-theme="light"] [role="button"],
+  [data-theme="light"] input,
+  [data-theme="light"] textarea,
+  [data-theme="light"] select,
+  [data-theme="light"] [tabindex]:not([tabindex="-1"]) {
+    cursor: url("data:image/svg+xml,%3Csvg width='32' height='32' viewBox='0 0 32 32' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Ccircle cx='16' cy='16' r='14' fill='rgba(100,116,139,0.1)' stroke='rgba(100,116,139,0.2)' stroke-width='1'/%3E%3Ccircle cx='16' cy='16' r='6' fill='rgba(71,85,105,0.7)'/%3E%3Ccircle cx='16' cy='16' r='3' fill='rgba(37,99,235,0.9)'/%3E%3C/svg%3E") 16 16, pointer;
+  }
+  [data-theme="light"] a:active,
+  [data-theme="light"] button:active,
+  [data-theme="light"] [role="button"]:active {
+    cursor: url("data:image/svg+xml,%3Csvg width='32' height='32' viewBox='0 0 32 32' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Ccircle cx='16' cy='16' r='11' fill='rgba(100,116,139,0.14)' stroke='rgba(100,116,139,0.28)' stroke-width='1'/%3E%3Ccircle cx='16' cy='16' r='5' fill='rgba(71,85,105,0.7)'/%3E%3Ccircle cx='16' cy='16' r='2.5' fill='rgba(37,99,235,0.9)'/%3E%3C/svg%3E") 16 16, pointer;
+  }
+}
+
+/* ══════════════════════════════════════════════════════════════
+   ── 卡片悬浮景深升级 ──
+   ══════════════════════════════════════════════════════════════ */
+/* 卡片容器在悬浮卡片时给其他卡片添加轻微模糊 */
+.card-grid-depth:has(.glass-card-hover:hover) .glass-card-hover:not(:hover) {
+  filter: blur(1.5px);
+  transition: filter 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.card-grid-depth .glass-card-hover {
+  transition: filter 0.4s cubic-bezier(0.4, 0, 0.2, 1), transform 0.3s cubic-bezier(0.4, 0, 0.2, 1), border-color 0.3s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.3s cubic-bezier(0.4, 0, 0.2, 1), background 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.card-grid-depth .glass-card-hover:hover {
+  filter: blur(0);
+}
+
+/* ══════════════════════════════════════════════════════════════
+   ── Entrance animation: planet blur-to-clear via data attr ──
+   ══════════════════════════════════════════════════════════════ */
+/* Phase "initial" / "stars": planet blurred & dim */
+html[data-entrance-phase="initial"] .planet-entrance,
+html[data-entrance-phase="stars"] .planet-entrance {
+  filter: blur(16px);
+  opacity: 0.25 !important;
+  transition: none; /* snap to blurred state instantly */
+}
+
+/* Phase "planet": transition to clear */
+html[data-entrance-phase="planet"] .planet-entrance {
+  filter: blur(0px);
+  opacity: 1 !important;
+  transition: filter 0.5s ease-out, opacity 0.5s ease-out;
+}
+
+/* Phase "content" / "complete": fully clear */
+html[data-entrance-phase="content"] .planet-entrance,
+html[data-entrance-phase="complete"] .planet-entrance {
+  filter: blur(0px);
+  transition: filter 0.3s ease-out, opacity 0.3s ease-out;
+}
+
+/* Low-end / reduced-motion: skip blur, fade only */
+@media (prefers-reduced-motion: reduce) {
+  html[data-entrance-phase] .planet-entrance {
+    filter: none !important;
+    transition: opacity 0.8s ease-out !important;
+  }
+}
+
+/* ══════════════════════════════════════════════════════════════
+   ── 隐藏滚动条 ──
+   ══════════════════════════════════════════════════════════════ */
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
+/* ══════════════════════════════════════════════════════════════
+   ── 文字层级规范统一 ──
+   ══════════════════════════════════════════════════════════════ */
+/* 一级标题：柔渐变粗体 */
+.heading-1 {
+  @apply text-4xl font-bold tracking-tight sm:text-5xl lg:text-6xl;
+  background: linear-gradient(135deg, #e2e8f0 0%, #f8fafc 30%, #94a3b8 70%, #cbd5e1 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+[data-theme="light"] .heading-1 {
+  background: linear-gradient(135deg, #1e293b 0%, #334155 30%, #475569 70%, #334155 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* 二级标题：左侧竖向装饰线 */
+.heading-2 {
+  @apply flex items-center gap-4 text-lg font-semibold tracking-tight text-foreground sm:text-xl;
+}
+
+.heading-2-accent {
+  @apply h-8 w-1 shrink-0 rounded-full;
+  background: linear-gradient(to bottom, #64748b, #94a3b8, #475569);
+}
+
+[data-theme="light"] .heading-2-accent {
+  background: linear-gradient(to bottom, #475569, #64748b, #334155);
+}
+
+/* 三级标题：纯色常规 */
+.heading-3 {
+  @apply text-lg font-semibold tracking-tight text-foreground;
+}
+
+/* ══════════════════════════════════════════════════════════════
+   ── 右侧滚动进度指示器 ──
+   ══════════════════════════════════════════════════════════════ */
+.scroll-progress-track {
+  background: transparent;
+}
+
+.scroll-progress-fill {
+  background: linear-gradient(
+    to bottom,
+    rgba(var(--brand-light-rgb), 0.35),
+    rgba(var(--brand-rgb), 0.25) 50%,
+    rgba(var(--brand-light-rgb), 0.35)
+  );
+  transition: background 0.5s ease;
+}
+
+.scroll-progress-label {
+  writing-mode: vertical-rl;
+  text-orientation: mixed;
+  transition: color 0.5s ease;
+}
+
+/* ══════════════════════════════════════════════════════════════
+   ── 白天模式：强制所有按钮/标签文字深黑色 #0f172a ──
+   全覆盖无遗漏，确保白天模式按钮文字100%清晰可读
+   深色模式完全不受影响（所有选择器限定在 [data-theme="light"] 内）
+   ══════════════════════════════════════════════════════════════ */
+[data-theme="light"] button,
+[data-theme="light"] [role="button"],
+[data-theme="light"] [data-slot="button"],
+[data-theme="light"] a[href]:is([class*="bg-brand"], [class*="from-brand"], [class*="to-brand"]) {
+  color: #0f172a !important;
+}
+/* 按钮内图标同步改为深黑色 */
+[data-theme="light"] button svg,
+[data-theme="light"] [role="button"] svg,
+[data-theme="light"] [data-slot="button"] svg,
+[data-theme="light"] a[href]:is([class*="bg-brand"], [class*="from-brand"], [class*="to-brand"]) svg {
+  color: #0f172a !important;
+}
+/* 按钮悬浮/点击/激活态文字保持深黑色 */
+[data-theme="light"] button:hover,
+[data-theme="light"] button:active,
+[data-theme="light"] button:focus-visible,
+[data-theme="light"] button[aria-expanded="true"],
+[data-theme="light"] [role="button"]:hover,
+[data-theme="light"] [role="button"]:active,
+[data-theme="light"] [data-slot="button"]:hover,
+[data-theme="light"] [data-slot="button"]:active,
+[data-theme="light"] a[href]:is([class*="bg-brand"], [class*="from-brand"], [class*="to-brand"]):hover,
+[data-theme="light"] a[href]:is([class*="bg-brand"], [class*="from-brand"], [class*="to-brand"]):active {
+  color: #0f172a !important;
+}
+/* 悬浮/点击态图标保持深黑色 */
+[data-theme="light"] button:hover svg,
+[data-theme="light"] button:active svg,
+[data-theme="light"] button:focus-visible svg,
+[data-theme="light"] [role="button"]:hover svg,
+[data-theme="light"] [role="button"]:active svg,
+[data-theme="light"] [data-slot="button"]:hover svg,
+[data-theme="light"] [data-slot="button"]:active svg {
+  color: #0f172a !important;
 }

@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useCallback, type FormEvent, useRef } from "react";
+import { useTranslation } from "react-i18next";
 import { motion } from "framer-motion";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
@@ -27,6 +28,7 @@ const INPUT_FOCUS_CLASS =
 const INITIAL_VALUES: FormValues = { name: "", email: "", description: "" };
 
 export function ContactForm() {
+  const { t } = useTranslation();
   const [values, setValues] = useState<FormValues>(INITIAL_VALUES);
   const [errors, setErrors] = useState<FormErrors>({});
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -46,19 +48,19 @@ export function ContactForm() {
   const validate = useCallback((): boolean => {
     const next: FormErrors = {};
     if (!values.name.trim()) {
-      next.name = "请输入您的姓名。";
+      next.name = t("contact.form.errorName");
     }
     if (!values.email.trim()) {
-      next.email = "请输入您的邮箱。";
+      next.email = t("contact.form.errorEmail");
     } else if (!EMAIL_REGEX.test(values.email)) {
-      next.email = "请输入有效的邮箱地址。";
+      next.email = t("contact.form.errorEmailInvalid");
     }
     if (!values.description.trim()) {
-      next.description = "请输入作品描述或合作内容。";
+      next.description = t("contact.form.errorDescription");
     }
     setErrors(next);
     return Object.keys(next).length === 0;
-  }, [values]);
+  }, [values, t]);
 
   const handleSubmit = async (e: FormEvent) => {
     e.preventDefault();
@@ -125,7 +127,6 @@ export function ContactForm() {
       animate={{ opacity: 1, x: 0 }}
       transition={{ duration: 0.5, ease: "easeOut" }}
     >
-      {/* Hidden fields for Netlify Forms */}
       <input type="hidden" name="form-name" value="contact-form" />
       <input type="hidden" name="bot-field" />
 
@@ -135,25 +136,28 @@ export function ContactForm() {
           htmlFor="contact-name"
           className="text-sm font-medium text-foreground"
         >
-          姓名
+          {t("contact.form.name")}
         </label>
         <Input
           id="contact-name"
           name="name"
           type="text"
-          placeholder="请输入您的姓名"
+          placeholder={t("contact.form.namePlaceholder")}
           value={values.name}
           onChange={(e) =>
             handleChange("name", (e.target as HTMLInputElement).value)
           }
           className={INPUT_FOCUS_CLASS}
           aria-invalid={!!errors.name}
+          aria-describedby={errors.name ? "contact-name-error" : undefined}
         />
         {errors.name && (
           <motion.p
+            id="contact-name-error"
             initial={{ opacity: 0, y: -4 }}
             animate={{ opacity: 1, y: 0 }}
-            className="text-xs text-red-400"
+            className="text-xs text-red-600 dark:text-red-400"
+            role="alert"
           >
             {errors.name}
           </motion.p>
@@ -166,25 +170,28 @@ export function ContactForm() {
           htmlFor="contact-email"
           className="text-sm font-medium text-foreground"
         >
-          邮箱
+          {t("contact.form.email")}
         </label>
         <Input
           id="contact-email"
           name="email"
           type="email"
-          placeholder="请输入您的邮箱地址"
+          placeholder={t("contact.form.emailPlaceholder")}
           value={values.email}
           onChange={(e) =>
             handleChange("email", (e.target as HTMLInputElement).value)
           }
           className={INPUT_FOCUS_CLASS}
           aria-invalid={!!errors.email}
+          aria-describedby={errors.email ? "contact-email-error" : undefined}
         />
         {errors.email && (
           <motion.p
+            id="contact-email-error"
             initial={{ opacity: 0, y: -4 }}
             animate={{ opacity: 1, y: 0 }}
-            className="text-xs text-red-400"
+            className="text-xs text-red-600 dark:text-red-400"
+            role="alert"
           >
             {errors.email}
           </motion.p>
@@ -197,12 +204,12 @@ export function ContactForm() {
           htmlFor="contact-description"
           className="text-sm font-medium text-foreground"
         >
-          作品 / 合作描述
+          {t("contact.form.description")}
         </label>
         <Textarea
           id="contact-description"
           name="description"
-          placeholder="请描述您的作品或合作意向……"
+          placeholder={t("contact.form.descriptionPlaceholder")}
           rows={5}
           value={values.description}
           onChange={(e) =>
@@ -210,12 +217,15 @@ export function ContactForm() {
           }
           className={INPUT_FOCUS_CLASS}
           aria-invalid={!!errors.description}
+          aria-describedby={errors.description ? "contact-desc-error" : undefined}
         />
         {errors.description && (
           <motion.p
+            id="contact-desc-error"
             initial={{ opacity: 0, y: -4 }}
             animate={{ opacity: 1, y: 0 }}
-            className="text-xs text-red-400"
+            className="text-xs text-red-600 dark:text-red-400"
+            role="alert"
           >
             {errors.description}
           </motion.p>
@@ -228,7 +238,7 @@ export function ContactForm() {
           htmlFor="contact-file"
           className="text-sm font-medium text-foreground"
         >
-          附件上传
+          {t("contact.form.attachment")}
         </label>
         <div className="relative">
           <input
@@ -239,11 +249,12 @@ export function ContactForm() {
             accept="image/*,.pdf,.doc,.docx,.zip,.rar,.7z,.tar,.gz"
             onChange={handleFileChange}
             className="absolute inset-0 cursor-pointer opacity-0"
+            aria-label={t("contact.form.attachment")}
           />
           <div className="flex items-center gap-3 rounded-lg border border-border bg-input/50 px-4 py-2.5 text-sm text-muted-foreground transition-all duration-200 hover:border-slate-400/30 hover:bg-input/70 cursor-pointer">
-            <Paperclip className="size-4 shrink-0 text-slate-300/70" />
+            <Paperclip className="size-4 shrink-0 text-slate-600/70 dark:text-slate-300/70" />
             <span className={fileName ? "text-foreground" : ""}>
-              {fileName || "支持图片、文档、压缩包（选填）"}
+              {fileName || t("contact.form.attachmentHint")}
             </span>
           </div>
         </div>
@@ -260,12 +271,12 @@ export function ContactForm() {
           {isSubmitting ? (
             <>
               <Loader2 className="size-4 animate-spin" />
-              提交中……
+              {t("contact.form.submitting")}
             </>
           ) : (
             <>
               <Send className="size-4" />
-              提交
+              {t("contact.form.submit")}
             </>
           )}
         </Button>
@@ -274,10 +285,11 @@ export function ContactForm() {
           <motion.p
             initial={{ opacity: 0, y: 8 }}
             animate={{ opacity: 1, y: 0 }}
-            className="mt-3 flex items-center gap-1.5 text-sm text-green-400"
+            className="mt-3 flex items-center gap-1.5 text-sm text-green-600 dark:text-green-400"
+            role="status"
           >
             <CheckCircle2 className="size-4" />
-            提交成功，感谢你的来信，我会尽快回复
+            {t("contact.form.success")}
           </motion.p>
         )}
       </div>

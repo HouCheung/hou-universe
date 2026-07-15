@@ -1,0 +1,180 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="800" height="450" viewBox="0 0 800 450">
+  <defs>
+    <linearGradient id="bg-oj" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#0a0e14"/>
+      <stop offset="50%" style="stop-color:#0d1520"/>
+      <stop offset="100%" style="stop-color:#0a0e14"/>
+    </linearGradient>
+    <linearGradient id="code-accent" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#22c55e"/>
+      <stop offset="30%" style="stop-color:#3b82f6"/>
+      <stop offset="60%" style="stop-color:#eab308"/>
+      <stop offset="100%" style="stop-color:#ef4444"/>
+    </linearGradient>
+    <linearGradient id="accent-oj" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#3b82f6"/>
+      <stop offset="100%" style="stop-color:#22c55e"/>
+    </linearGradient>
+    <filter id="glow-oj">
+      <feGaussianBlur stdDeviation="2.5"/>
+    </filter>
+    <pattern id="dot-grid" width="20" height="20" patternUnits="userSpaceOnUse">
+      <circle cx="10" cy="10" r="0.5" fill="rgba(148,163,184,0.06)"/>
+    </pattern>
+  </defs>
+
+  <!-- Dark editor background -->
+  <rect width="800" height="450" fill="url(#bg-oj)"/>
+  <rect width="800" height="450" fill="url(#dot-grid)"/>
+
+  <!-- Subtle glow -->
+  <ellipse cx="400" cy="100" rx="300" ry="120" fill="rgba(59,130,246,0.03)"/>
+
+  <!-- Editor window frame -->
+  <rect x="60" y="60" width="680" height="340" rx="10" fill="#0d1117" stroke="rgba(255,255,255,0.1)" stroke-width="1.2"/>
+  <!-- Editor title bar -->
+  <rect x="60" y="60" width="680" height="32" rx="10" fill="rgba(22,27,34,0.95)"/>
+  <rect x="60" y="82" width="680" height="10" fill="rgba(22,27,34,0.95)"/>
+  <!-- Window dots -->
+  <circle cx="82" cy="76" r="5" fill="#ef4444" opacity="0.8"/>
+  <circle cx="100" cy="76" r="5" fill="#eab308" opacity="0.7"/>
+  <circle cx="118" cy="76" r="5" fill="#22c55e" opacity="0.7"/>
+  <!-- Title bar text -->
+  <text x="400" y="80" text-anchor="middle" font-family="monospace" font-size="10" fill="rgba(148,163,184,0.4)" letter-spacing="1">刷题助手 PRO MAX — online-judge.ts</text>
+
+  <!-- Tab row -->
+  <rect x="60" y="92" width="120" height="22" rx="4" fill="rgba(13,17,23,0.95)" stroke="rgba(255,255,255,0.06)" stroke-width="0.8"/>
+  <text x="120" y="107" text-anchor="middle" font-family="monospace" font-size="9" fill="rgba(148,163,184,0.5)">main.js</text>
+  <rect x="180" y="92" width="100" height="22" rx="4" fill="rgba(22,27,34,0.6)" stroke="rgba(255,255,255,0.03)" stroke-width="0.5"/>
+  <text x="230" y="107" text-anchor="middle" font-family="monospace" font-size="9" fill="rgba(148,163,184,0.3)">data.json</text>
+
+  <!-- Line numbers -->
+  <g font-family="'JetBrains Mono', 'Cascadia Code', 'Fira Code', monospace" font-size="11" fill="rgba(148,163,184,0.2)">
+    <text x="80" y="130">1</text>
+    <text x="80" y="148">2</text>
+    <text x="80" y="166">3</text>
+    <text x="80" y="184">4</text>
+    <text x="80" y="202">5</text>
+    <text x="80" y="220">6</text>
+    <text x="80" y="238">7</text>
+    <text x="80" y="256">8</text>
+    <text x="80" y="274">9</text>
+    <text x="80" y="292">10</text>
+    <text x="80" y="310">11</text>
+    <text x="80" y="328">12</text>
+    <text x="80" y="346">13</text>
+    <text x="80" y="364">14</text>
+    <text x="80" y="382">15</text>
+  </g>
+
+  <!-- Separator line -->
+  <line x1="100" y1="120" x2="100" y2="395" stroke="rgba(148,163,184,0.08)" stroke-width="1"/>
+
+  <!-- Code lines with syntax highlighting -->
+  <g font-family="'JetBrains Mono', 'Cascadia Code', 'Fira Code', monospace" font-size="11.5">
+    <!-- Line 1: import -->
+    <tspan x="115" y="130" fill="rgba(198,120,221,0.5)">import</tspan>
+    <tspan x="157" y="130" fill="rgba(224,226,228,0.35)"> { questions } </tspan>
+    <tspan x="257" y="130" fill="rgba(198,120,221,0.5)">from</tspan>
+    <tspan x="285" y="130" fill="rgba(152,195,121,0.45)"> './data'</tspan>
+    <tspan x="335" y="130" fill="rgba(148,163,184,0.2)">;</tspan>
+
+    <!-- Line 2: empty -->
+    <!-- Line 3: class -->
+    <tspan x="115" y="166" fill="rgba(198,120,221,0.5)">class</tspan>
+    <tspan x="149" y="166" fill="rgba(97,175,239,0.55)"> OnlineJudge</tspan>
+    <tspan x="235" y="166" fill="rgba(148,163,184,0.2)"> {</tspan>
+
+    <!-- Line 4: constructor -->
+    <tspan x="130" y="184" fill="rgba(97,175,239,0.5)">constructor</tspan>
+    <tspan x="200" y="184" fill="rgba(148,163,184,0.2)">() {</tspan>
+
+    <!-- Line 5-6 -->
+    <tspan x="145" y="202" fill="rgba(224,226,228,0.35)">this.</tspan>
+    <tspan x="175" y="202" fill="rgba(224,108,117,0.4)">wrongBook</tspan>
+    <tspan x="250" y="202" fill="rgba(148,163,184,0.2)"> = [];</tspan>
+
+    <tspan x="145" y="220" fill="rgba(224,226,228,0.35)">this.</tspan>
+    <tspan x="175" y="220" fill="rgba(224,108,117,0.4)">favorites</tspan>
+    <tspan x="245" y="220" fill="rgba(148,163,184,0.2)"> = [];</tspan>
+
+    <!-- Line 7 -->
+    <tspan x="130" y="238" fill="rgba(148,163,184,0.2)">  }</tspan>
+
+    <!-- Line 8: empty -->
+
+    <!-- Line 9: method -->
+    <tspan x="130" y="274" fill="rgba(97,175,239,0.5)">submit</tspan>
+    <tspan x="175" y="274" fill="rgba(148,163,184,0.2)">(</tspan>
+    <tspan x="183" y="274" fill="rgba(224,226,228,0.35)">answer</tspan>
+    <tspan x="225" y="274" fill="rgba(148,163,184,0.2)">) {</tspan>
+
+    <!-- Line 10-11 -->
+    <tspan x="145" y="292" fill="rgba(198,120,221,0.5)">if</tspan>
+    <tspan x="160" y="292" fill="rgba(148,163,184,0.2)"> (</tspan>
+    <tspan x="168" y="292" fill="rgba(224,226,228,0.35)">answer </tspan>
+    <tspan x="210" y="292" fill="rgba(86,182,194,0.45)">===</tspan>
+    <tspan x="235" y="292" fill="rgba(224,226,228,0.35)"> question.correct</tspan>
+    <tspan x="355" y="292" fill="rgba(148,163,184,0.2)">) {</tspan>
+
+    <tspan x="160" y="310" fill="rgba(224,226,228,0.35)">score</tspan>
+    <tspan x="195" y="310" fill="rgba(86,182,194,0.45)"> += </tspan>
+    <tspan x="220" y="310" fill="rgba(209,154,102,0.5)">10</tspan>
+    <tspan x="235" y="310" fill="rgba(148,163,184,0.2)">;</tspan>
+
+    <!-- Line 12 -->
+    <tspan x="145" y="328" fill="rgba(148,163,184,0.2)">}</tspan>
+
+    <!-- Line 13-14 -->
+    <tspan x="145" y="346" fill="rgba(198,120,221,0.5)">return</tspan>
+    <tspan x="187" y="346" fill="rgba(224,226,228,0.35)"> score</tspan>
+    <tspan x="225" y="346" fill="rgba(148,163,184,0.2)">;</tspan>
+
+    <tspan x="130" y="364" fill="rgba(148,163,184,0.2)">  }</tspan>
+    <tspan x="115" y="382" fill="rgba(148,163,184,0.2)">}</tspan>
+  </g>
+
+  <!-- Side panel (OJ stats) -->
+  <rect x="520" y="125" width="200" height="240" rx="6" fill="rgba(255,255,255,0.015)" stroke="rgba(255,255,255,0.05)" stroke-width="0.8"/>
+  <text x="620" y="148" text-anchor="middle" font-family="monospace" font-size="10" fill="rgba(148,163,184,0.45)" font-weight="600">📊 答题统计</text>
+  <line x1="535" y1="158" x2="705" y2="158" stroke="rgba(148,163,184,0.06)" stroke-width="0.8"/>
+
+  <!-- Stats rows -->
+  <g font-family="monospace" font-size="10">
+    <text x="535" y="180" fill="rgba(148,163,184,0.35)">正确率</text>
+    <text x="685" y="180" text-anchor="end" fill="rgba(34,197,94,0.5)">87.5%</text>
+    <rect x="535" y="188" width="170" height="3" rx="1.5" fill="rgba(255,255,255,0.04)"/>
+    <rect x="535" y="188" width="149" height="3" rx="1.5" fill="rgba(34,197,94,0.25)"/>
+
+    <text x="535" y="210" fill="rgba(148,163,184,0.35)">错题数</text>
+    <text x="685" y="210" text-anchor="end" fill="rgba(239,68,68,0.45)">23</text>
+
+    <text x="535" y="235" fill="rgba(148,163,184,0.35)">收藏题</text>
+    <text x="685" y="235" text-anchor="end" fill="rgba(234,179,8,0.45)">45</text>
+
+    <text x="535" y="260" fill="rgba(148,163,184,0.35)">总题量</text>
+    <text x="685" y="260" text-anchor="end" fill="rgba(59,130,246,0.45)">186</text>
+  </g>
+
+  <line x1="535" y1="275" x2="705" y2="275" stroke="rgba(148,163,184,0.06)" stroke-width="0.8"/>
+
+  <!-- Question preview area -->
+  <text x="535" y="298" fill="rgba(148,163,184,0.35)" font-family="monospace" font-size="10">📝 当前题目</text>
+  <text x="535" y="318" fill="rgba(224,226,228,0.3)" font-family="monospace" font-size="9.5">下列哪个是有效的</text>
+  <text x="535" y="333" fill="rgba(224,226,228,0.3)" font-family="monospace" font-size="9.5">JavaScript 变量声明？</text>
+
+  <!-- Answer options -->
+  <g font-family="monospace" font-size="9.5">
+    <text x="540" y="355" fill="rgba(148,163,184,0.25)">A. var x = 1;</text>
+    <text x="540" y="372" fill="rgba(148,163,184,0.25)">B. int x = 1;</text>
+    <text x="540" y="389" fill="rgba(148,163,184,0.25)">C. x := 1;</text>
+    <text x="540" y="406" fill="rgba(148,163,184,0.25)">D.</text>
+    <tspan x="555" y="406" fill="rgba(34,197,94,0.3)"> ✓</tspan>
+  </g>
+
+  <!-- Decorative braces art (bottom) -->
+  <g opacity="0.06">
+    <text x="400" y="425" text-anchor="middle" font-family="monospace" font-size="28" fill="#3b82f6">{ } [ ] ( )</text>
+    <text x="400" y="442" text-anchor="middle" font-family="monospace" font-size="12" fill="#3b82f6">&lt;/&gt; &amp;&amp; || =&gt;</text>
+  </g>
+</svg>

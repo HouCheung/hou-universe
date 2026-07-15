@@ -1,8 +1,11 @@
 'use client';
 
 import { useEffect, useRef, useCallback } from 'react';
+import { useTheme } from '@/components/layout/ThemeProvider';
 
 export function MouseGlow() {
+  const { theme } = useTheme();
+  const isLight = theme === 'light';
   const glowRef = useRef<HTMLDivElement>(null);
   const posRef = useRef<{ x: number; y: number }>({ x: -200, y: -200 });
   const targetRef = useRef<{ x: number; y: number }>({ x: -200, y: -200 });
@@ -58,8 +61,9 @@ export function MouseGlow() {
         width: '700px',
         height: '700px',
         borderRadius: '50%',
-        background:
-          'radial-gradient(circle, rgba(100,116,139,0.1) 0%, rgba(71,85,105,0.05) 28%, rgba(51,65,85,0.02) 52%, rgba(0,0,0,0) 78%)',
+        background: isLight
+          ? 'radial-gradient(circle, rgba(37,99,235,0.06) 0%, rgba(59,130,246,0.03) 28%, rgba(100,116,139,0.015) 52%, rgba(0,0,0,0) 78%)'
+          : 'radial-gradient(circle, rgba(100,116,139,0.1) 0%, rgba(71,85,105,0.05) 28%, rgba(51,65,85,0.02) 52%, rgba(0,0,0,0) 78%)',
         transform: 'translate(-350px, -350px)',
         willChange: 'transform',
       }}

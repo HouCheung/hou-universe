@@ -1,0 +1,546 @@
+{
+  "nav": {
+    "home": "Home",
+    "about": "About",
+    "projects": "Projects",
+    "notes": "Notes",
+    "tools": "Tools",
+    "guestbook": "Guestbook",
+    "links": "Links",
+    "contact": "Contact",
+    "menuOpen": "Open menu",
+    "menuClose": "Close menu",
+    "drawerTitle": "Navigation"
+  },
+  "footer": {
+    "description": "A full-stack developer platform — exploring the infinite possibilities of data science, AI engineering, and full-stack development.",
+    "quickLinks": "Quick Links",
+    "contact": "Contact",
+    "contactText": "Have questions or collaboration ideas? Feel free to reach out anytime.",
+    "email": "Email",
+    "visitors": "Visitors: ",
+    "visits": "Visits: "
+  },
+  "hero": {
+    "microLabel": "Hello, World",
+    "title": "I'm HOU",
+    "slogan": "Data Science × AI Engineering · Personal Universe of Exploration",
+    "role1": "Full-Stack Developer",
+    "role2": "AI Creator",
+    "role3": "Data Engineer",
+    "cta1": "View Projects",
+    "cta2": "Contact Me",
+    "scrollDown": "Scroll down to explore"
+  },
+  "home": {
+    "featuredProjects": "精选项目",
+    "featuredProjectsEn": "Featured Projects",
+    "coreCapabilities": "核心能力",
+    "coreCapabilitiesEn": "Core Capabilities",
+    "aboutMe": "关于我",
+    "aboutMeEn": "About Me",
+    "getInTouch": "联系我",
+    "getInTouchEn": "Get In Touch",
+    "viewAllProjects": "View All Projects",
+    "aboutParagraph": "I'm a full-stack developer passionate about big data, artificial intelligence, and building meaningful tools. From real-time data pipelines to AI-driven applications, I enjoy transforming complex problems into elegant solutions. HOU Universe is my digital playground — a place to showcase projects, document my learning journey, and share what I've built and discovered along the way.",
+    "learnMoreAboutMe": "Learn More About Me",
+    "letsCreate": "Let's Create Together",
+    "contactPrompt": "Whether you have a project idea, collaboration opportunity, or just want to chat about tech — I'm always open to connecting with fellow builders and creators.",
+    "contactMe": "Contact Me"
+  },
+  "capabilities": {
+    "data": {
+      "title": "Data Engineering",
+      "description": "Covering the full pipeline of data collection, ETL cleansing, and visual analytics. Proficient in large-scale data processing and modeling, with end-to-end engineering capability from raw data to business insights."
+    },
+    "ai": {
+      "title": "AI-Powered Development",
+      "description": "Skilled in using AI Agent tools such as Claude Code and Trae Work, delivering projects efficiently based on Harness engineering principles, truly integrating AI into the development workflow."
+    },
+    "fullstack": {
+      "title": "Full-Stack Delivery",
+      "description": "Possessing both front-end and back-end development capabilities, able to independently complete the full project cycle from requirements analysis and architecture design to deployment, pursuing high-quality code and user experience."
+    }
+  },
+  "about": {
+    "pageTitle": "About - HOU Universe",
+    "pageDesc": "Student of Data Science and Big Data Technology, passionate about full-stack development and AI engineering — here is my resume and comprehensive technical skill landscape.",
+    "subhead": "About",
+    "heading": "About Me",
+    "intro": "Currently studying Data Science and Big Data Technology, passionate about full-stack development and AI engineering. Continuously exploring the boundaries of technology, driving every project from concept to delivery with an engineering mindset.",
+    "education": "教育背景",
+    "educationEn": "Education",
+    "school": "Guangdong Polytechnic Normal University",
+    "major": "Data Science and Big Data Technology · Bachelor",
+    "period": "2024.09 — 2028.06",
+    "coursesTitle": "Core Courses",
+    "courses": [
+      "Data Structures & Algorithms",
+      "Operating Systems",
+      "Computer Networks",
+      "Database Systems",
+      "C / Python / Java Programming",
+      "Algorithm Design & Analysis",
+      "Big Data Technology & Applications",
+      "Data Mining",
+      "NoSQL Databases"
+    ],
+    "projects": "项目经历",
+    "projectsEn": "Projects",
+    "aiEngineering": "AI 工程化能力",
+    "aiEngineeringEn": "AI Engineering",
+    "campus": "校园实践",
+    "campusEn": "Campus Activities",
+    "skills": "专业技能",
+    "skillsEn": "Skills"
+  },
+  "aboutProjects": {
+    "p1": {
+      "title": "Million-Scale E-Commerce User Behavior Analysis & Visualization System",
+      "role": "Independent Developer",
+      "period": "2026.05 — 2026.06",
+      "desc": "Based on massive user behavior logs, developed with Claude Code assistance applying Harness engineering principles to build a full-pipeline analysis system from data ingestion to strategic output. Designed a six-step ETL cleansing pipeline, built RFM scoring models with K-Means clustering for user segmentation, and delivered visual dashboards with actionable operational recommendations."
+    },
+    "p2": {
+      "title": "Java I/O Stream Performance Testing & Analysis System",
+      "role": "Independent Developer",
+      "period": "2026.05",
+      "desc": "Designed an automated performance testing framework comparing various I/O approaches across multiple file sizes. Conducted 15 comparative experiments with quantitative analysis to derive I/O selection strategies for different scenarios, providing data-driven guidance for practical development."
+    },
+    "p3": {
+      "title": "Industry-Academia Collaborative Projects (Health Tech / High-Tech Agriculture)",
+      "role": "Technical R&D Assistant",
+      "period": "2026.01 — 2026.03",
+      "desc": "Participated in requirements research and field investigations, assisted in building detection datasets with 300+ image annotations. Reviewed industry literature, assisted in model testing runs, compiled statistical reports, and completed technical documentation and phased report archiving."
+    },
+    "p4": {
+      "title": "MySQL-Based Warehouse Management System",
+      "role": "Project Member",
+      "period": "2025.12",
+      "desc": "Designed for small-to-medium warehousing scenarios, created four core data tables with foreign key relationships. Developed four major management modules — warehouse, goods, inventory, and inbound/outbound — using transaction mechanisms to ensure data consistency across multi-warehouse transfers."
+    }
+  },
+  "aiSkills": [
+    "Proficient in AI Agent development tools such as Claude Code and Trae Work, building multi-agent collaborative programming workflows",
+    "Mastery of Harness engineering principles, driving AI through high-quality prompts for code generation, debugging, and refactoring to boost development efficiency",
+    "Skilled at decomposing complex projects into standardized engineering processes, achieving module decoupling and environment-independent deployment"
+  ],
+  "campusActivities": {
+    "ca1": {
+      "title": "Student Union Arts & Culture Department · Head",
+      "period": "2024.09 — 2026.07",
+      "desc": "Coordinated the entire process of a joint two-college singing competition, responsible for contestant screening, judge invitations, and on-site task assignments. Led 4 'After-Class Song' special events. Established a class information dissemination mechanism ensuring full notification coverage."
+    }
+  },
+  "timeline": {
+    "t1": {
+      "title": "Enrolled at Guangdong Polytechnic Normal University",
+      "desc": "Entered university with passion for data science, majoring in Data Science and Big Data Technology, officially embarking on a journey of technical exploration."
+    },
+    "t2": {
+      "title": "Java & C Language Fundamentals",
+      "desc": "Systematically learned Java and C core syntax, mastering object-oriented programming concepts, collection frameworks, exception handling, and pointer operations, laying a solid foundation for subsequent system-level development."
+    },
+    "t3": {
+      "title": "Python & Data Science Introduction",
+      "desc": "Deep-dived into the Python ecosystem, from basic syntax to the data analysis trio (NumPy, Pandas, Matplotlib), experiencing Python's powerful capabilities in data science and automation."
+    },
+    "t4": {
+      "title": "First Full-Stack Project",
+      "desc": "Independently completed a first full-stack project — from database modeling to backend APIs and frontend interfaces — experiencing for the first time the satisfaction of bringing ideas to full implementation."
+    },
+    "t5": {
+      "title": "Big Data Technology Stack Introduction",
+      "desc": "Systematically explored Hadoop, Spark, Hive, and other big data ecosystem components, understanding distributed computing principles, and beginning to process terabyte-level data to extract valuable insights."
+    },
+    "t6": {
+      "title": "AI Engineering & Project Practice",
+      "desc": "Fully engaged in AI engineering practice, proficiently using AI Agent tools such as Claude Code, mastering Harness engineering principles, and independently delivering multiple data analysis and system development projects."
+    },
+    "t7": {
+      "title": "Building a Personal Developer Platform",
+      "desc": "Integrating acquired technical stacks to build HOU Universe, a personal developer platform pursuing full-stack capability closure. Continuously tracking cutting-edge technologies, driving personal growth and project delivery with an engineering mindset."
+    }
+  },
+  "projects": {
+    "pageTitle": "Projects - HOU Universe",
+    "pageDesc": "Project showcase — covering big data pipelines, AI applications, full-stack platforms, and developer tools.",
+    "subhead": "Projects",
+    "heading": "Projects",
+    "intro": "A curated showcase of full-stack platforms and developer tools — each project marks a milestone in the journey of building, learning, and creating.",
+    "featured": "Featured Projects",
+    "categoryAll": "All",
+    "categoryFullstack": "Full-Stack",
+    "categoryData": "Data Analysis",
+    "emptyState": "No projects in this category yet. Stay tuned!",
+    "imagePlaceholder": "Project screenshot placeholder — replace with actual screenshots",
+    "backToList": "Back to Projects",
+    "livePreview": "Live Preview",
+    "download": "Download",
+    "githubRepo": "GitHub Repo",
+    "aboutProject": "About Project",
+    "projectBackground": "Background",
+    "coreFeatures": "Core Features",
+    "techSolution": "Technical Solution",
+    "highlights": "Highlights",
+    "techStack": "Tech Stack",
+    "updateLog": "Update Log",
+    "notFound": "Project Not Found - HOU Universe",
+    "noUpdateLog": "No update logs yet."
+  },
+  "projectData": {
+    "hou-universe": {
+      "title": "HOU Universe",
+      "category": "Full-Stack",
+      "description": "A personal technical portfolio website with a cosmic theme — built from scratch with modern web technologies to create a personal brand showcase space.",
+      "fullDescription": "HOU Universe is my personal technical portfolio website, creating a personal brand showcase space with a cosmic theme. The platform is built on Next.js 15 App Router with TypeScript strict mode, blending Tailwind CSS with glassmorphism design language to create a unified visual system of deep black + cool white + light blue accents. From starfield particle backgrounds to mouse glow interactions, from typewriter animations to scroll-driven parallax effects, every detail pursues excellence. The platform covers project showcases, skill visualization, guestbook & contact, bilingual support (zh-CN/en), and visitor statistics, all with full responsive adaptation.",
+      "background": "As a personal developer, I needed a platform to centrally showcase technical capabilities, project outcomes, and learning journey. HOU Universe was born — it is not only a portfolio website but also a showcase space for my personal technical brand. With a deep-space cosmic visual theme, the entire development process was driven by AI-engineering workflows, compressing weeks of traditional work into days while maintaining high code standards and user experience.",
+      "coreFeatures": [
+        "Project portfolio: curated project cards with cover images, tech tags, and download buttons; detail pages with complete technical solutions and update log timelines",
+        "Skill visualization: tiered progress bars displaying four skill categories (Programming Languages / Databases / Core Competencies / AI Engineering), with scroll-triggered percentage growth animations",
+        "Guestbook & contact: Netlify Forms integrated guestbook wall and contact form, supporting file attachment uploads with automatic email notifications",
+        "Bilingual support: complete i18n solution based on i18next covering all site text content in zh-CN and en",
+        "Visitor statistics: real-time visitor counter and page view tracking with persistent data storage",
+        "Deep space theme: three-layer parallax starfield, 3D planet model, mouse glow tracking, glassmorphism design language, fully responsive"
+      ],
+      "techSolution": "The frontend is built on Next.js 15 App Router with TypeScript strict mode for type safety. Styling uses Tailwind CSS + shadcn/ui (Base UI) component system with CSS custom properties for unified dark theme tokens. Framer Motion manages page transitions, scroll-triggered entries, and interaction feedback. Canvas API powers the high-performance starfield particle system, while Three.js (React Three Fiber) drives the 3D planet element. Internationalization is based on i18next + react-i18next supporting zh-CN / en. The build outputs a fully static site (output: export), deployed on Netlify with AI-engineering workflows (Claude Code + Harness methodology) driving the entire development process.",
+      "highlights": [
+        "Deep space cosmic theme: three-layer parallax starfield, 3D planet model, mouse particle gravity interaction, and click starburst effects for an immersive cosmic experience",
+        "3D interactive elements: Three.js (R3F) powered hero 3D planet, Canvas high-performance particle system, automatic animation degradation on touch devices",
+        "Glassmorphism design language: unified glass-card style across the site with backdrop-blur frosted glass effects and brand-colored micro-glow borders",
+        "Full responsive adaptation: perfect mobile/tablet/desktop adaptation, all interactive animations based on Framer Motion delivering smooth 60fps performance"
+      ],
+      "updateLog": [
+        {
+          "version": "v1.3.0",
+          "date": "2026-07-14",
+          "changes": [
+            "Added Projects showcase module with list and detail pages",
+            "Implemented project card hover lift glow effect with scroll entry animations",
+            "Detail pages now support update log timeline display"
+          ]
+        },
+        {
+          "version": "v1.2.0",
+          "date": "2026-06-10",
+          "changes": [
+            "Added About page with growth trajectory timeline and skill mapping",
+            "Implemented scroll-driven vertical timeline progress animation",
+            "Skill tag groups now support categorized display with responsive grid layout"
+          ]
+        },
+        {
+          "version": "v1.0.0",
+          "date": "2026-05-20",
+          "changes": [
+            "First platform version launched, including homepage Hero section and starfield background",
+            "Implemented navigation bar, footer, and other global layout components",
+            "Completed basic structure for Contact page"
+          ]
+        }
+      ]
+    },
+    "shuatiapp-pro-max": {
+      "title": "Code Practice PRO MAX",
+      "category": "Full-Stack",
+      "description": "An online coding practice platform for programming learners, solving the pain points of difficult bulk question import and inefficient mistake review — supporting dual-mode import via text paste and file upload.",
+      "fullDescription": "Code Practice PRO MAX is an online coding practice platform for programming learners, focused on solving the pain points of difficult bulk question import and inefficient mistake review. It supports dual-mode bulk import via text paste and file upload, with intelligent format recognition that automatically parses questions, options, and answers. The mistake notebook auto-collects wrong answers, favorites allow easy review of key questions, and the targeted practice module supports category-specific training. Answer timing and accuracy statistics help students track learning progress in real-time, while the data analytics dashboard visually presents practice trends. The frontend is built with vanilla JavaScript, backend based on Node.js + Express, with MySQL storing question banks and user data.",
+      "background": "In programming learning, practice is the core means of reinforcing knowledge, but traditional approaches suffer from scattered question sources, inconvenient mistake management, and difficulty tracking learning progress. Code Practice PRO MAX was created to address these pain points, providing a one-stop practice experience from question import to data analysis, solving the core problems of difficult bulk import and inefficient mistake review.",
+      "coreFeatures": [
+        "Dual-mode bulk import: supports text paste and file upload (CSV/JSON), with intelligent format recognition automatically parsing questions, options, and correct answers, significantly reducing entry costs",
+        "Auto mistake collection: wrong answers automatically added to the mistake notebook, supporting category filtering and date sorting for targeted review of weak areas",
+        "Favorites module: manually bookmark key question types and high-frequency exam topics, quickly review core questions, avoiding information overload",
+        "Targeted practice: category-specific training by data structures, algorithms, databases, etc., with flexible selection of practice scope and question volume",
+        "Answer timing system: automatic per-question timing recording response duration, helping develop time management awareness and exam pacing",
+        "Accuracy & data statistics: accuracy trends, category mastery radar charts, daily practice volume bar charts, visually presenting learning progress"
+      ],
+      "techSolution": "The frontend is built with vanilla JavaScript + HTML5 + CSS3 without heavy frameworks, ensuring loading speed and compatibility. The backend is based on Node.js + Express framework providing RESTful API interfaces, with a frontend-backend separated architecture and form validation ensuring data integrity. MySQL database stores question banks, user data, and learning records with data persistence. The intelligent format recognition module uses regex + rule engine to parse multiple question formats (plain text, CSV, JSON), automatically mapping to standard data structures. Answer timing is based on frontend timestamp recording, while accuracy statistics are computed in real-time via SQL aggregate queries. The overall architecture is lightweight and modular for easy future extension.",
+      "highlights": [
+        "Dual-mode import reduces entry cost: text paste + file upload dual channels, intelligent format recognition with >95% accuracy covering mainstream practice platform export formats",
+        "Three-dimensional practice loop: auto mistake collection + key question favorites + category-specific training, building a complete practice feedback loop across three dimensions",
+        "Data visualization for progress tracking: accuracy trends, category mastery, and practice volume trends — three chart types helping students precisely identify weak areas",
+        "Modular extensible architecture: frontend static resource caching ensures offline usability; mistake notebook, favorites, and targeted practice modules are independently decoupled"
+      ],
+      "updateLog": [
+        {
+          "version": "v1.0.0",
+          "date": "2026-06-15",
+          "changes": [
+            "First version launched, supporting dual-mode bulk question import via text paste and file upload",
+            "Built-in mistake notebook, favorites, and targeted practice learning modules",
+            "Implemented answer timing, accuracy statistics, and data analytics dashboard"
+          ]
+        }
+      ]
+    }
+  },
+  "contact": {
+    "pageTitle": "Contact - HOU Universe",
+    "pageDesc": "Get in touch — have questions or want to collaborate? Reach out via the form.",
+    "subhead": "Contact",
+    "heading": "Contact Me",
+    "intro": "Have questions, ideas, or just want to say hello? Fill out the form below or reach out through any channel — I'll get back to you as soon as possible.",
+    "form": {
+      "name": "Name",
+      "namePlaceholder": "Enter your name",
+      "email": "Email",
+      "emailPlaceholder": "Enter your email address",
+      "description": "Project / Collaboration Description",
+      "descriptionPlaceholder": "Describe your project or collaboration idea…",
+      "attachment": "Attachment",
+      "attachmentHint": "Supports images, documents, archives (optional)",
+      "submit": "Submit",
+      "submitting": "Submitting…",
+      "success": "Submitted successfully! Thank you for your message — I'll reply soon.",
+      "errorName": "Please enter your name.",
+      "errorEmail": "Please enter your email.",
+      "errorEmailInvalid": "Please enter a valid email address.",
+      "errorDescription": "Please describe your project or collaboration details."
+    },
+    "info": {
+      "email": "Email",
+      "github": "GitHub",
+      "social": "Social",
+      "socialValue": "More channels coming soon…"
+    }
+  },
+  "notes": {
+    "pageTitle": "Notes - HOU Universe",
+    "pageDesc": "Learning notes and technical sharing — covering practical records and reflections on AI engineering, full-stack development, and data engineering.",
+    "subhead": "Notes",
+    "heading": "Learning Notes",
+    "intro": "Documenting thoughts, practices, and insights from the technical learning journey — covering AI engineering, full-stack development, data engineering, and more.",
+    "empty": "No notes yet. Stay tuned!",
+    "readMore": "Read More",
+    "searchPlaceholder": "Search articles by title, tag, or category...",
+    "clearSearch": "Clear search",
+    "categoryAll": "All",
+    "clearFilters": "Clear filters",
+    "noResults": "No matching articles found. Try different keywords.",
+    "totalPosts": "{{count}} articles in total",
+    "filteredPosts": "Showing {{filtered}} / {{total}} articles",
+    "readingTimeUnit": "min read",
+    "backToList": "Back to Notes"
+  },
+  "tools": {
+    "pageTitle": "Tools - HOU Universe",
+    "pageDesc": "Curated development tools and learning resources — covering AI development, big data learning, and productivity tools.",
+    "subhead": "Tools",
+    "heading": "Tools",
+    "intro": "A collection of commonly used tools, platforms, and learning resources for daily development — click any card to visit the corresponding website."
+  },
+  "toolsData": {
+    "claude-code": {
+      "name": "Claude Code",
+      "description": "Anthropic's AI coding assistant, deeply integrated with terminal and IDE, supporting multi-agent collaborative development"
+    },
+    "trae-work": {
+      "name": "Trae Work",
+      "description": "ByteDance's AI coding assistant with integrated code generation and debugging capabilities"
+    },
+    "github": {
+      "name": "GitHub",
+      "description": "The world's largest code hosting platform, supporting version control, CI/CD, and collaborative development"
+    },
+    "netlify": {
+      "name": "Netlify",
+      "description": "Modern web deployment platform supporting static site hosting, form processing, and serverless functions"
+    },
+    "runoob": {
+      "name": "Runoob Tutorials",
+      "description": "Free programming tutorial website covering frontend, backend, database, and comprehensive technical content"
+    },
+    "leetcode": {
+      "name": "LeetCode",
+      "description": "Globally renowned online coding practice platform covering algorithms, data structures, and database problems"
+    },
+    "nowcoder": {
+      "name": "NowCoder",
+      "description": "IT job-seeking practice and interview preparation platform providing written tests, interview question banks, and real company questions"
+    },
+    "mdn": {
+      "name": "MDN Web Docs",
+      "description": "Mozilla-maintained authoritative web development documentation, essential reference for HTML/CSS/JavaScript"
+    },
+    "figma": {
+      "name": "Figma",
+      "description": "Browser-based UI design tool supporting real-time collaboration and interactive prototyping"
+    },
+    "tinypng": {
+      "name": "TinyPNG",
+      "description": "Online image compression tool that intelligently reduces PNG/WebP file size while maintaining visual quality"
+    },
+    "carbon": {
+      "name": "Carbon",
+      "description": "Code snippet beautification tool supporting multiple themes and language highlighting, ideal for sharing code"
+    }
+  },
+  "guestbook": {
+    "pageTitle": "Guestbook - HOU Universe",
+    "pageDesc": "Guestbook — leave your mark and share your thoughts and suggestions.",
+    "subhead": "Guestbook",
+    "heading": "Guestbook",
+    "intro": "Have something to say? Leave your footprint — suggestions, questions, or simple greetings are all welcome below.",
+    "writeMessageTitle": "Write a Message",
+    "footprintsTitle": "Visitor Footprints",
+    "form": {
+      "nickname": "Nickname",
+      "nicknamePlaceholder": "Enter your nickname",
+      "content": "Message",
+      "contentPlaceholder": "Write your message…",
+      "submit": "Post Message",
+      "submitting": "Posting…",
+      "success": "Message posted! Thank you for visiting.",
+      "errorNickname": "Please enter a nickname.",
+      "errorContent": "Please enter your message."
+    },
+    "sampleMessages": [
+      {
+        "id": "msg-1",
+        "nickname": "Starry Voyager",
+        "content": "Love the cosmic theme! The starfield background and mouse interaction effects are incredibly cool. The tech stack showcase is also very detailed — learned a lot.",
+        "date": "2026-07-10"
+      },
+      {
+        "id": "msg-2",
+        "nickname": "CodeMaster",
+        "content": "Really inspired by your AI engineering practice sharing. The Claude Code + Harness workflow approach is worth adopting. Looking forward to more technical articles!",
+        "date": "2026-07-08"
+      },
+      {
+        "id": "msg-3",
+        "nickname": "Frontend Newbie",
+        "content": "Came here from the Code Practice app — clean interface and practical features. HOU Universe itself is a great learning case study. Thanks for open sourcing!",
+        "date": "2026-07-05"
+      }
+    ]
+  },
+  "links": {
+    "pageTitle": "Links - HOU Universe",
+    "pageDesc": "Links wall — friendly links and technical tool navigation, discover more great developer sites and useful resources.",
+    "subhead": "Links",
+    "heading": "Links Wall",
+    "intro": "A group of interesting people, a bunch of handy tools — welcome to exchange links and explore the tech universe together.",
+    "friendLinks": "Friendly Links",
+    "toolNav": "Tool Navigation",
+    "applyButton": "Apply for Link Exchange",
+    "applyTip": "Welcome to exchange links! Please send an email to contact@hou-universe.vercel.app with your site name, description, and URL. I'll get back to you soon.",
+    "applyTipTitle": "Apply for Link Exchange",
+    "gotIt": "Got it"
+  },
+  "notFound": {
+    "subhead": "404",
+    "heading": "Lost in the Cosmos",
+    "description": "The page you're looking for has drifted into outer space.",
+    "description2": "It might be orbiting a distant star, temporarily out of reach.",
+    "backHome": "Back Home",
+    "browseProjects": "Browse Projects"
+  },
+  "backToTop": "Back to top",
+  "anchorNav": {
+    "label": "Page section navigation",
+    "projectBackground": "Background",
+    "coreFeatures": "Core Features",
+    "techSolution": "Technical Solution",
+    "techStack": "Tech Stack",
+    "download": "Download"
+  },
+  "skills": {
+    "programming": "Programming Languages",
+    "database": "Databases",
+    "core": "Core Competencies",
+    "ai": "AI Engineering",
+    "dataCollection": "Data Collection & Cleansing",
+    "etl": "ETL Pipeline Design",
+    "dataAnalysis": "Data Analysis & Visualization",
+    "algorithm": "Algorithm Implementation",
+    "claudeCode": "Claude Code",
+    "traeWork": "Trae Work",
+    "harness": "Harness Engineering"
+  },
+  "toolsCategories": {
+    "ai": "AI Development Tools",
+    "bigdata": "Big Data Learning",
+    "efficiency": "Productivity Tools"
+  },
+  "seo": {
+    "siteTitle": "HOU Universe",
+    "siteTitleDefault": "HOU Universe — Personal Developer Platform",
+    "siteDesc": "HOU Universe is a personal developer platform showcasing big data, AI, and full-stack development projects. Explore interactive experiences, skill maps, and a continuously updated portfolio.",
+    "siteKeywords": "developer, portfolio, full-stack, big data, AI, machine learning, Next.js, TypeScript, React",
+    "homeTitle": "HOU Universe - Data Science Portfolio",
+    "homeDesc": "A data science and big data technology portfolio showcasing project experience, skill stacks, and learning notes. Covering full-stack development, AI engineering, and data engineering."
+  },
+  "language": {
+    "switchTo": "中文",
+    "label": "Switch language"
+  },
+  "theme": {
+    "switchToLight": "Switch to light mode",
+    "switchToDark": "Switch to dark mode"
+  },
+"terminal": {
+    "welcome": "Welcome to HOU Universe Terminal",
+    "typeHelpHint": "Type \"help\" to get started",
+    "close": "Close terminal",
+    "toClose": "to close",
+    "toNavigate": "history",
+    "placeholder": "Type a command...",
+    "navigating": "Navigating to",
+    "unknownCmd": "Unknown command",
+    "typeHelp": "Type \"help\" for available commands.",
+    "commands": {
+      "help": "Available commands:",
+      "home": "Go to homepage",
+      "projects": "Go to projects page",
+      "about": "Go to about page",
+      "contact": "Go to contact page",
+      "notes": "Go to notes page",
+      "tools": "Go to tools page",
+      "guestbook": "Go to guestbook page",
+      "links": "Go to links page",
+      "whoami": "Show personal info",
+      "clear": "Clear terminal",
+      "helpCmd": "Show this help"
+    },
+    "whoami": {
+      "name": "Name",
+      "role": "Role",
+      "roleValue": "Full-Stack Developer / Data Engineer / AI Creator",
+      "skills": "Skills",
+      "bio": "Bio",
+      "bioValue": "Exploring the universe of data science & AI engineering."
+    }
+  },
+  "githubContributions": {
+    "sectionEn": "Open Source",
+    "sectionTitle": "GitHub Contributions",
+    "usernameLabel": "GitHub Username",
+    "load": "Load Contributions",
+    "error": "Failed to load contributions. Check the username or try again later.",
+    "total": "Contributions in the last year",
+    "mon": "Mon",
+    "wed": "Wed",
+    "fri": "Fri",
+    "less": "Less",
+    "more": "More"
+  },
+  "experience": {
+    "expandDetails": "Expand Details",
+    "collapse": "Collapse",
+    "projectBackground": "Background",
+    "coreWork": "Core Work",
+    "projectAchievements": "Achievements",
+    "sectionTitle": "Project Experience",
+    "roles": {
+      "independentDev": "Independently Developed",
+      "rdAssistant": "R&D Assistant",
+      "teamMember": "Team Member"
+    }
+  },
+  "vcard": {
+    "title": "Digital Business Card",
+    "description": "Download vCard file to import into your phone contacts",
+    "download": "Download Card"
+  }
+}

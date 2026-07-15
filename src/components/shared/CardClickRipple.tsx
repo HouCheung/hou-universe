@@ -3,13 +3,13 @@
 import { useEffect, useCallback } from "react";
 
 /**
- * CardClickRipple — attaches click ripple effect to all .glass-card-hover elements.
+ * CardClickRipple — attaches click ripple effect to all .glass-card and .glass-card-hover elements.
  * Listens globally via event delegation for performance.
  * Ripple color synced with deep blue primary.
  */
 export function CardClickRipple() {
   const handleClick = useCallback((e: MouseEvent) => {
-    const target = (e.target as HTMLElement).closest(".glass-card-hover") as HTMLElement | null;
+    const target = (e.target as HTMLElement).closest(".glass-card-hover, .glass-card") as HTMLElement | null;
     if (!target) return;
 
     // Prevent creating ripple if clicking on a link or button inside the card

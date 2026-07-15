@@ -9,7 +9,7 @@ const cardVariants: Variants = {
   visible: (i: number) => ({
     opacity: 1,
     y: 0,
-    transition: { duration: 0.5, ease: "easeOut", delay: i * 0.1 },
+    transition: { duration: 0.5, ease: "easeOut", delay: i * 0.05 },
   }),
 };
 
@@ -28,7 +28,7 @@ export function MessageCard({ message, index }: MessageCardProps) {
       variants={cardVariants}
       className="glass-card-hover flex gap-4 rounded-2xl p-5"
     >
-      <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-slate-400/10 text-slate-300">
+      <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-slate-300/20 text-slate-500 dark:bg-slate-400/10 dark:text-slate-300">
         <User className="h-5 w-5" />
       </div>
       <div className="min-w-0 flex-1">

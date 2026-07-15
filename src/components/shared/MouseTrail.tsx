@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useRef, useCallback } from "react";
+import { useTheme } from "@/components/layout/ThemeProvider";
 
 interface TrailParticle {
   x: number;
@@ -17,6 +18,7 @@ const SPAWN_INTERVAL = 50; // ms between spawns
 const PARTICLE_LIFETIME = 800; // ms
 
 export function MouseTrail() {
+  const { theme } = useTheme();
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const particlesRef = useRef<TrailParticle[]>([]);
   const mouseRef = useRef<{ x: number; y: number }>({ x: -100, y: -100 });
@@ -76,7 +78,7 @@ export function MouseTrail() {
       // Outer glow — 深蓝调
       ctx.beginPath();
       ctx.arc(px, py, radius * 2.5, 0, Math.PI * 2);
-      ctx.fillStyle = `rgba(30,64,175,${(alpha * 0.1).toFixed(3)})`;
+      ctx.fillStyle = `rgba(var(--brand-rgb),${(alpha * 0.1).toFixed(3)})`;
       ctx.fill();
 
       // Inner core — 淡蓝白
@@ -129,6 +131,9 @@ export function MouseTrail() {
       if (moveTimeoutRef.current) clearTimeout(moveTimeoutRef.current);
     };
   }, [animate, handleResize, handleMouseMove, handleTouch]);
+
+  // Hide mouse trail in light mode — star particles are invisible on light bg
+  if (theme === "light") return null;
 
   return (
     <canvas

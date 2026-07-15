@@ -43,6 +43,13 @@ const config: Config = {
         border: "hsl(var(--border))",
         input: "hsl(var(--input))",
         ring: "hsl(var(--ring))",
+        /* Theme-aware brand colors — driven by --brand-* CSS variables */
+        brand: {
+          DEFAULT: "rgb(var(--brand-rgb) / <alpha-value>)",
+          deep: "rgb(var(--brand-deep-rgb) / <alpha-value>)",
+          light: "rgb(var(--brand-light-rgb) / <alpha-value>)",
+          muted: "rgb(var(--brand-muted-rgb) / <alpha-value>)",
+        },
       },
       borderRadius: {
         lg: "var(--radius)",
@@ -75,8 +82,8 @@ const config: Config = {
           "50%": { transform: "translateY(-10px)" },
         },
         "glow-pulse": {
-          "0%, 100%": { boxShadow: "0 0 20px rgba(30,64,175,0.2)" },
-          "50%": { boxShadow: "0 0 40px rgba(30,64,175,0.35)" },
+          "0%, 100%": { boxShadow: "0 0 20px rgba(var(--brand-rgb),0.2)" },
+          "50%": { boxShadow: "0 0 40px rgba(var(--brand-rgb),0.35)" },
         },
         "ripple": {
           from: { transform: "scale(0)", opacity: "0.5" },

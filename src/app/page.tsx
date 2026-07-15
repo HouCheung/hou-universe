@@ -1,56 +1,12 @@
-import { StarField } from "@/components/shared/StarField";
-import { MouseGlow } from "@/components/shared/MouseGlow";
-import { HeroContent } from "@/components/shared/HeroContent";
-import { ScrollIndicator } from "@/components/shared/ScrollIndicator";
-import { HomeSections } from "@/components/home/HomeSections";
-import { StarPlanet } from "@/components/shared/StarPlanet";
+import type { Metadata } from "next";
+import { HomePageClient } from "./HomePageClient";
+
+export const metadata: Metadata = {
+  title: "HOU Universe - 数据科学个人作品集",
+  description:
+    "数据科学与大数据技术专业个人作品集，展示项目经历、技能栈与学习笔记。涵盖全栈开发、AI 工程化与数据工程领域。",
+};
 
 export default function HomePage() {
-  return (
-    <>
-      <StarField />
-      <MouseGlow />
-
-      {/* Nebula glow accents — subtle muted slate atmosphere */}
-      <div
-        aria-hidden="true"
-        className="pointer-events-none fixed -top-[20%] -left-[10%] h-[60%] w-[60%] rounded-full opacity-[0.06] blur-[120px]"
-        style={{
-          background:
-            "radial-gradient(ellipse, rgba(71,85,105,0.5) 0%, rgba(100,116,139,0.3) 40%, transparent 70%)",
-          zIndex: -1,
-        }}
-      />
-      <div
-        aria-hidden="true"
-        className="pointer-events-none fixed -bottom-[10%] -right-[5%] h-[50%] w-[50%] rounded-full opacity-[0.05] blur-[100px]"
-        style={{
-          background:
-            "radial-gradient(ellipse, rgba(100,116,139,0.4) 0%, rgba(71,85,105,0.2) 45%, transparent 70%)",
-          zIndex: -1,
-        }}
-      />
-      <div
-        aria-hidden="true"
-        className="pointer-events-none fixed top-[40%] left-[60%] h-[40%] w-[40%] rounded-full opacity-[0.04] blur-[140px]"
-        style={{
-          background:
-            "radial-gradient(ellipse, rgba(71,85,105,0.35) 0%, rgba(100,116,139,0.2) 50%, transparent 75%)",
-          zIndex: -1,
-        }}
-      />
-
-      {/* Hero section */}
-      <section className="relative flex min-h-screen flex-col items-center justify-center overflow-hidden">
-        <StarPlanet />
-        <HeroContent />
-        <ScrollIndicator targetId="next-section" />
-      </section>
-
-      {/* Content sections */}
-      <section id="next-section">
-        <HomeSections />
-      </section>
-    </>
-  );
+  return <HomePageClient />;
 }

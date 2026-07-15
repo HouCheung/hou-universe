@@ -13,7 +13,7 @@ const cardVariants: Variants = {
     transition: {
       duration: 0.6,
       ease: 'easeOut',
-      delay: i * 0.12,
+      delay: i * 0.05,
     },
   }),
 };
@@ -34,7 +34,7 @@ export function Timeline({ items }: TimelineProps) {
       {/* Animated vertical line */}
       <div className="absolute left-4 top-0 h-full w-px bg-border sm:left-1/2 sm:-translate-x-px">
         <motion.div
-          className="h-full w-full origin-top bg-slate-400/60"
+          className="h-full w-full origin-top bg-brand/40"
           style={{ scaleY: scrollYProgress, originY: 0 }}
         />
       </div>
@@ -56,14 +56,14 @@ export function Timeline({ items }: TimelineProps) {
             {/* Node dot */}
             <div
               className={cn(
-                'absolute left-[13.5px] top-1 z-10 h-3.5 w-3.5 rounded-full border-2 border-slate-400 bg-background ring-4 ring-background sm:left-1/2 sm:-translate-x-1/2',
-                'group-hover:bg-slate-400 transition-colors duration-300'
+                'absolute left-[13.5px] top-1 z-10 h-3.5 w-3.5 rounded-full border-2 border-slate-500 bg-background ring-4 ring-background sm:left-1/2 sm:-translate-x-1/2',
+                'group-hover:bg-brand transition-colors duration-300'
               )}
             />
 
             {/* Content card */}
-            <div className="group rounded-xl border border-border/60 bg-card/80 p-5 backdrop-blur-sm transition-all duration-300 hover:border-slate-400/30 hover:bg-card hover:shadow-[0_0_20px_rgba(100,116,139,0.08)] sm:p-6">
-              <span className="inline-block rounded-full bg-slate-400/10 px-3 py-0.5 font-mono text-xs font-medium text-slate-300/90">
+            <div className="group rounded-xl border border-border/60 bg-card/80 p-5 backdrop-blur-sm transition-all duration-300 hover:border-brand/30 hover:bg-card hover:shadow-[0_0_20px_rgba(var(--brand-rgb),0.08)] sm:p-6">
+              <span className="inline-block rounded-full bg-slate-300/20 px-3 py-0.5 font-mono text-xs font-medium text-slate-600/90 dark:bg-slate-400/10 dark:text-slate-300/90">
                 {item.year}
               </span>
               <h3 className="mt-3 text-lg font-semibold text-foreground">{item.title}</h3>

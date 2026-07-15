@@ -29,7 +29,7 @@ export function SectionHeader({ enTitle, zhTitle }: SectionHeaderProps) {
       <div className="h-10 w-1 shrink-0 rounded-full bg-gradient-to-b from-slate-500 via-slate-400 to-slate-600" />
 
       <div className="flex flex-col gap-0.5">
-        <span className="font-mono text-[0.65rem] uppercase tracking-[0.25em] text-slate-400/40 sm:text-xs">
+        <span className="font-mono text-[0.65rem] uppercase tracking-[0.25em] text-slate-500/70 sm:text-xs dark:text-slate-400/40">
           {enTitle}
         </span>
         <h2 className="text-2xl font-bold tracking-tight text-foreground sm:text-3xl lg:text-4xl">

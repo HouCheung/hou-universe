@@ -16,6 +16,7 @@ export interface Project {
   title: string;
   description: string;
   fullDescription: string;
+  category?: string;
   detail?: ProjectDetail;
   tags: string[];
   coverImage: string;
@@ -65,6 +66,9 @@ export interface Note {
   date: string;
   summary: string;
   content: string;
+  categories: string[];
+  tags: string[];
+  readingTime: number;
 }
 
 export interface Tool {
@@ -72,6 +76,17 @@ export interface Tool {
   description: string;
   url: string;
   category: string;
+}
+
+export interface ProjectExperience {
+  id: string;
+  title: string;
+  time: string;
+  role: string;
+  description: string;
+  background: string;
+  coreWork: string[];
+  achievements: string[];
 }
 
 export interface GuestbookMessage {
