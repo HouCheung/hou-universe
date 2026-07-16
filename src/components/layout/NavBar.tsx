@@ -130,7 +130,7 @@ export function NavBar() {
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
               transition={{ duration: 0.25 }}
-              className="fixed inset-0 z-40 bg-black/50 backdrop-blur-sm md:hidden"
+              className="fixed inset-0 z-[60] bg-black/50 backdrop-blur-sm md:hidden"
               onClick={closeDrawer}
               aria-hidden="true"
             />
@@ -141,9 +141,9 @@ export function NavBar() {
               animate={{ x: 0 }}
               exit={{ x: "100%" }}
               transition={{ type: "spring", stiffness: 300, damping: 30 }}
-              className="fixed inset-y-0 right-0 z-40 w-72 max-w-[85vw] md:hidden"
+              className="fixed inset-y-0 right-0 z-[70] w-72 max-w-[85vw] md:hidden"
             >
-              <div className="flex h-full flex-col border-l border-slate-200/40 bg-white/85 backdrop-blur-xl shadow-2xl dark:border-white/[0.06] dark:bg-[rgba(10,10,15,0.85)]">
+              <div className="flex h-full flex-col border-l border-slate-200/40 bg-white shadow-2xl dark:border-white/[0.06] dark:bg-[#0a0a0f]">
                 {/* Drawer header */}
                 <div className="flex items-center justify-between border-b border-slate-200/40 px-5 py-4 dark:border-white/[0.06]">
                   <span className="text-sm font-semibold text-foreground">

@@ -103,7 +103,9 @@
       "Bash(sed -i 's|border-white/\\\\[0.06\\\\] bg-white/\\\\[0.03\\\\]|border-slate-300/30 bg-slate-200/40 dark:border-white/[0.06] dark:bg-white/[0.03]|g' src/components/notes/NoteDetailContent.tsx)",
       "Bash(sed -i 's|prose prose-invert prose-blue|prose prose-slate dark:prose-invert prose-blue|g' src/components/notes/NoteDetailContent.tsx)",
       "Bash(sed -i 's|bg-white/\\\\[0.04\\\\] border border-white/\\\\[0.06\\\\]|bg-slate-200/40 border border-slate-300/30 dark:bg-white/[0.04] dark:border-white/[0.06]|g' src/components/projects/AnchorNav.tsx)",
-      "Bash(curl -L -o \"d:/123/HOU Universe/public/images/earth-day.jpg\" \"https://threejs.org/examples/textures/planets/earth_atmos_2048.jpg\")"
+      "Bash(curl -L -o \"d:/123/HOU Universe/public/images/earth-day.jpg\" \"https://threejs.org/examples/textures/planets/earth_atmos_2048.jpg\")",
+      "Bash(npx tsc *)",
+      "Bash(claude --version)"
     ],
     "additionalDirectories": [
       "d:\\123\\HOU Universe\\src\\app\\projects",

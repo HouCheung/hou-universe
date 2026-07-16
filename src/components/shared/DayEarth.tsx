@@ -19,8 +19,9 @@ function EarthSurface() {
       <sphereGeometry args={[1.35, 48, 48]} />
       <meshStandardMaterial
         map={texture}
-        roughness={0.72}
-        metalness={0.02}
+        color="#f7fafd"
+        roughness={0.35}
+        metalness={0.01}
       />
     </mesh>
   );
@@ -62,25 +63,25 @@ function CloudLayer() {
 function DayAtmosphere() {
   return (
     <>
-      {/* Outer soft blue halo */}
+      {/* Outer soft blue halo — barely perceptible */}
       <mesh>
         <sphereGeometry args={[1.48, 32, 32]} />
         <meshBasicMaterial
-          color="#87CEEB"
+          color="#C8E8F8"
           transparent
-          opacity={0.06}
+          opacity={0.03}
           side={THREE.BackSide}
           depthWrite={false}
           blending={THREE.AdditiveBlending}
         />
       </mesh>
-      {/* Inner atmosphere rim */}
+      {/* Inner atmosphere rim — very faint */}
       <mesh>
         <sphereGeometry args={[1.40, 32, 32]} />
         <meshBasicMaterial
-          color="#B0E0FF"
+          color="#D8EEFF"
           transparent
-          opacity={0.08}
+          opacity={0.04}
           side={THREE.BackSide}
           depthWrite={false}
           blending={THREE.AdditiveBlending}
@@ -99,9 +100,9 @@ function DayOrbitalArc() {
     <mesh rotation={[Math.PI / 2.5, 0.1, 0]}>
       <torusGeometry args={[1.80, 0.006, 8, 64]} />
       <meshBasicMaterial
-        color="#87CEEB"
+        color="#C8E0F4"
         transparent
-        opacity={0.10}
+        opacity={0.05}
         depthWrite={false}
       />
     </mesh>
@@ -268,20 +269,20 @@ export default function DayEarth({ interactive = true }: DayEarthProps) {
         pointerEvents: "auto",
       }}
     >
-      {/* Key light — sun-like warm white from upper right */}
+      {/* Key light — soft warm white, gentle shadows */}
       <directionalLight
         position={[5, 3, 5]}
-        intensity={1.6}
-        color="#FFFEF5"
+        intensity={1.1}
+        color="#FFFEFA"
       />
       {/* Fill light — soft sky blue from opposite side */}
       <directionalLight
         position={[-3, -1, -3]}
-        intensity={0.55}
-        color="#B8D8F0"
+        intensity={0.82}
+        color="#D8EAF8"
       />
-      {/* Ambient — sky blue fill to prevent harsh shadows */}
-      <ambientLight intensity={0.55} color="#D4E8F8" />
+      {/* Ambient — bright wash for airy, readable backdrop */}
+      <ambientLight intensity={0.98} color="#F2F6FC" />
 
       <Suspense fallback={null}>
         {interactive ? (
