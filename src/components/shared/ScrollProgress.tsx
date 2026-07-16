@@ -2,38 +2,40 @@
 
 import { useState, useEffect, useMemo } from "react";
 import { usePathname } from "next/navigation";
+import { useTranslation } from "react-i18next";
 import { motion, useScroll, useMotionValueEvent } from "framer-motion";
 
 /* ═══════════════════════════════════════════════════════════
-   Section label mapping — route → Chinese label
+   Section label mapping — route → i18n key for label
    ═══════════════════════════════════════════════════════════ */
 
-const ROUTE_LABELS: Record<string, string> = {
-  "/": "首页",
-  "/projects": "项目",
-  "/about": "关于",
-  "/notes": "笔记",
-  "/tools": "工具",
-  "/guestbook": "留言",
-  "/contact": "联系",
+const ROUTE_LABEL_KEYS: Record<string, string> = {
+  "/": "nav.home",
+  "/projects": "nav.projects",
+  "/about": "nav.about",
+  "/notes": "nav.notes",
+  "/tools": "nav.tools",
+  "/guestbook": "nav.guestbook",
+  "/contact": "nav.contact",
 };
 
-function getLabelFromPathname(pathname: string): string {
-  if (pathname === "/") return "首页";
-  for (const [route, label] of Object.entries(ROUTE_LABELS)) {
+function getLabelKeyFromPathname(pathname: string): string {
+  if (pathname === "/") return ROUTE_LABEL_KEYS["/"];
+  for (const [route, key] of Object.entries(ROUTE_LABEL_KEYS)) {
     if (route !== "/" && pathname.startsWith(route)) {
-      return label;
+      return key;
     }
   }
   return "";
 }
 
 /* ═══════════════════════════════════════════════════════════
-   ScrollProgress — 右侧1px滚动进度指示器 + 板块名称
+   ScrollProgress — right-side 1px scroll progress indicator + section name
    ═══════════════════════════════════════════════════════════ */
 
 export function ScrollProgress() {
   const pathname = usePathname();
+  const { t } = useTranslation();
   const { scrollYProgress } = useScroll();
   const [progress, setProgress] = useState(0);
   const [sectionName, setSectionName] = useState("");
@@ -52,11 +54,11 @@ export function ScrollProgress() {
         const vh = window.innerHeight;
         if (vh <= 0) return;
         if (scrollY < vh * 0.6) {
-          setSectionName("首页");
+          setSectionName(t("nav.home"));
         } else if (scrollY < vh * 2.8) {
-          setSectionName("项目");
+          setSectionName(t("nav.projects"));
         } else {
-          setSectionName("关于");
+          setSectionName(t("nav.about"));
         }
       };
       onScroll();
@@ -65,8 +67,9 @@ export function ScrollProgress() {
     }
 
     // Other pages — use pathname
-    setSectionName(getLabelFromPathname(pathname));
-  }, [pathname]);
+    const labelKey = getLabelKeyFromPathname(pathname);
+    setSectionName(labelKey ? t(labelKey) : "");
+  }, [pathname, t]);
 
   /* ── Smooth progress percentage ── */
   const progressPercent = useMemo(() => Math.round(progress * 100), [progress]);

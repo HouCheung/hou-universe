@@ -72,6 +72,7 @@ export interface Note {
 }
 
 export interface Tool {
+  id?: string;
   name: string;
   description: string;
   url: string;

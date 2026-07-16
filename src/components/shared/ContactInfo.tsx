@@ -35,7 +35,7 @@ export function ContactInfo() {
       icon: Globe,
       labelKey: "contact.info.social",
       valueKey: "contact.info.socialValue",
-      value: "更多渠道即将上线……",
+      value: "More channels coming soon…",
     },
   ];
 

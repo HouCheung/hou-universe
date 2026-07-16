@@ -38,7 +38,7 @@ export function LanguageSwitcher() {
         transition={{ duration: 0.2, ease: "easeOut" }}
         className="tabular-nums"
       >
-        {isZh ? "EN" : "中文"}
+        {t("language.switchTo")}
       </motion.span>
     </button>
   );

@@ -52,7 +52,7 @@ export const metadata: Metadata = {
     locale: "zh_CN",
     url: "https://hou-universe.vercel.app",
     siteName: "HOU Universe",
-    title: "HOU Universe — Personal Developer Platform",
+    title: "HOU Universe",
     description:
       "A personal full-stack developer platform showcasing big data, AI, and full-stack projects. Build, explore, create.",
     images: [
@@ -60,13 +60,13 @@ export const metadata: Metadata = {
         url: "/og-image.png",
         width: 1200,
         height: 630,
-        alt: "HOU Universe — Personal Developer Platform",
+        alt: "HOU Universe",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "HOU Universe — Personal Developer Platform",
+    title: "HOU Universe",
     description:
       "A personal full-stack developer platform showcasing big data, AI, and full-stack projects.",
     images: ["/og-image.png"],

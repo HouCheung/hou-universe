@@ -1,6 +1,7 @@
 "use client";
 
 import { useRef, useMemo, useState, useEffect } from "react";
+import { useTranslation } from "react-i18next";
 import { Canvas, useFrame, useThree } from "@react-three/fiber";
 import { Text } from "@react-three/drei";
 import * as THREE from "three";
@@ -207,18 +208,20 @@ function TagCloudCanvas({
   activeTag,
   onTagClick,
   isLight,
+  errorText,
 }: {
   tags: string[];
   activeTag: string | null;
   onTagClick: (tag: string) => void;
   isLight: boolean;
+  errorText: string;
 }) {
   const [hasError, setHasError] = useState(false);
 
   if (hasError) {
     return (
       <div className="flex h-[380px] items-center justify-center">
-        <p className="text-sm text-slate-500">3D 标签云加载失败，请刷新页面重试</p>
+        <p className="text-sm text-slate-500">{errorText}</p>
       </div>
     );
   }
@@ -279,6 +282,7 @@ export function TechTagCloud({
   activeTag,
   onTagClick,
 }: TechTagCloudProps) {
+  const { t } = useTranslation();
   const { theme } = useTheme();
   const isLight = theme === "light";
   const [mounted, setMounted] = useState(false);
@@ -311,7 +315,7 @@ export function TechTagCloud({
     return (
       <div className="mb-10">
         <p className="mb-3 font-mono text-xs tracking-[0.2em] text-slate-500/70 uppercase">
-          技术标签
+          {t("projects.tagCloudTitle")}
         </p>
         <MobileTagBar
           tags={tags}
@@ -330,11 +334,12 @@ export function TechTagCloud({
         activeTag={activeTag}
         onTagClick={onTagClick}
         isLight={isLight}
+        errorText={t("projects.tagCloudError")}
       />
 
       {/* Hint text — subdued, low opacity */}
       <p className="mt-3 text-center text-xs text-slate-400/60 dark:text-slate-500/40">
-        按住拖拽可旋转 · 点击标签筛选项目
+        {t("projects.tagCloudHint")}
       </p>
 
       {activeTag && (
@@ -344,8 +349,8 @@ export function TechTagCloud({
             onClick={() => onTagClick(activeTag)}
             className="inline-flex items-center gap-1.5 rounded-full border border-blue-400/30 bg-blue-500/10 px-3 py-1 text-xs text-blue-600 transition-all duration-200 hover:border-blue-400/50 hover:bg-blue-500/20 dark:border-blue-400/20 dark:bg-blue-500/8 dark:text-blue-300 dark:hover:border-blue-400/35 dark:hover:bg-blue-500/15"
           >
-            当前筛选：{activeTag}
-            <span className="ml-0.5 text-slate-400">✕ 清除</span>
+            {t("projects.tagCloudFilter")}{activeTag}
+            <span className="ml-0.5 text-slate-400">{t("projects.tagCloudClear")}</span>
           </button>
         </div>
       )}

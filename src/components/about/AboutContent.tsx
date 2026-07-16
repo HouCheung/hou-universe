@@ -9,21 +9,25 @@ const courseKeys = Array.from({ length: 9 }, (_, i) => `about.courses.${i}`);
 const projectKeys = ["p1", "p2", "p3", "p4"];
 const aiSkillKeys = ["0", "1", "2"];
 
-function SectionDivider({ label, icon, enLabel }: { label: string; icon: string; enLabel?: string }) {
+function SectionDivider({ titleKey, icon }: { titleKey: string; icon: string }) {
+  const { t, i18n } = useTranslation();
+  const isZh = i18n.language?.startsWith("zh");
+  const enTitle = isZh ? i18n.getFixedT("en")(titleKey) : undefined;
+
   return (
     <div className="mb-10 flex items-center gap-4 sm:mb-14">
       <div className="h-8 w-1 shrink-0 rounded-full bg-gradient-to-b from-slate-500 via-slate-400 to-slate-600" />
       <div className="flex flex-col gap-0.5">
-        {enLabel && (
+        {enTitle && (
           <span className="font-mono text-[0.6rem] uppercase tracking-[0.22em] text-slate-500/50 sm:text-[0.65rem] dark:text-slate-400/30">
-            {enLabel}
+            {enTitle}
           </span>
         )}
         <h2 className="flex items-center gap-2 text-lg font-semibold tracking-tight text-foreground sm:text-xl">
           <span className="text-xl" role="img" aria-hidden="true">
             {icon}
           </span>
-          {label}
+          {t(titleKey)}
         </h2>
       </div>
       <span className="ml-auto h-px flex-1 bg-gradient-to-r from-slate-400/20 via-slate-400/10 to-transparent" />
@@ -52,7 +56,7 @@ export function AboutContent() {
 
         {/* ① Education */}
         <section className="mb-20 sm:mb-32">
-          <SectionDivider label={t("about.education")} icon="🎓" enLabel={t("about.educationEn")} />
+          <SectionDivider titleKey="about.education" icon="🎓" />
           <div className="glass-card-hover rounded-2xl p-6 sm:p-8">
             <div className="flex flex-col gap-4 sm:flex-row sm:items-start sm:justify-between">
               <div>
@@ -81,7 +85,7 @@ export function AboutContent() {
 
         {/* ② Projects */}
         <section className="mb-20 sm:mb-32">
-          <SectionDivider label={t("about.projects")} icon="💼" enLabel={t("about.projectsEn")} />
+          <SectionDivider titleKey="about.projects" icon="💼" />
           <div className="relative">
             <div className="absolute left-[15px] top-0 h-full w-px bg-border sm:left-[19px]" />
             <div className="flex flex-col gap-8">
@@ -112,7 +116,7 @@ export function AboutContent() {
 
         {/* ③ AI Engineering */}
         <section className="mb-20 sm:mb-32">
-          <SectionDivider label={t("about.aiEngineering")} icon="🤖" enLabel={t("about.aiEngineeringEn")} />
+          <SectionDivider titleKey="about.aiEngineering" icon="🤖" />
           <div className="grid gap-4 sm:grid-cols-3">
             {aiSkillKeys.map((sk, index) => (
               <div key={index} className="glass-card-hover rounded-2xl p-6">
@@ -131,7 +135,7 @@ export function AboutContent() {
 
         {/* ④ Campus */}
         <section className="mb-20 sm:mb-32">
-          <SectionDivider label={t("about.campus")} icon="🎭" enLabel={t("about.campusEn")} />
+          <SectionDivider titleKey="about.campus" icon="🎭" />
           <div className="flex flex-col gap-6">
             <div className="glass-card-hover rounded-2xl p-6 sm:p-7">
               <div className="mb-1 flex flex-wrap items-center gap-x-3 gap-y-1">
@@ -151,7 +155,7 @@ export function AboutContent() {
 
         {/* ⑤ Skills */}
         <section>
-          <SectionDivider label={t("about.skills")} icon="🛠" enLabel={t("about.skillsEn")} />
+          <SectionDivider titleKey="about.skills" icon="🛠" />
           <StarSkillTree categories={skillLevelData} />
         </section>
 

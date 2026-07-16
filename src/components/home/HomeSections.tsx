@@ -56,7 +56,7 @@ export function HomeSections() {
         viewport={{ once: true, margin: '-80px' }}
         variants={sectionVariants}
       >
-        <SectionHeader enTitle={t('home.featuredProjectsEn')} zhTitle={t('home.featuredProjects')} />
+        <SectionHeader titleKey="home.featuredProjects" />
 
         <div className="grid gap-6 sm:grid-cols-2 card-grid-depth">
           {featuredProjects.map((project, i) => (
@@ -84,7 +84,7 @@ export function HomeSections() {
         viewport={{ once: true, margin: '-80px' }}
         variants={sectionVariants}
       >
-        <SectionHeader enTitle={t('home.coreCapabilitiesEn')} zhTitle={t('home.coreCapabilities')} />
+        <SectionHeader titleKey="home.coreCapabilities" />
 
         <div className="grid gap-6 sm:grid-cols-3">
           {CAPABILITIES.map((cap, i) => (
@@ -107,7 +107,7 @@ export function HomeSections() {
         viewport={{ once: true, margin: '-80px' }}
         variants={sectionVariants}
       >
-        <SectionHeader enTitle={t('home.aboutMeEn')} zhTitle={t('home.aboutMe')} />
+        <SectionHeader titleKey="home.aboutMe" />
 
         <div className="mx-auto max-w-3xl text-center">
           <p className="text-base leading-relaxed text-muted-foreground sm:text-lg">
@@ -148,7 +148,7 @@ export function HomeSections() {
         viewport={{ once: true, margin: '-80px' }}
         variants={sectionVariants}
       >
-        <SectionHeader enTitle={t('home.getInTouchEn')} zhTitle={t('home.getInTouch')} />
+        <SectionHeader titleKey="home.getInTouch" />
 
         <div className="mx-auto max-w-2xl text-center">
           <h3 className="text-3xl font-bold tracking-tight text-foreground sm:text-4xl">

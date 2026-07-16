@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useMemo, useCallback } from "react";
+import { useTranslation } from "react-i18next";
 import { motion, AnimatePresence } from "framer-motion";
 import Link from "next/link";
 import type { SkillCategoryWithLevel, Project } from "@/types";
@@ -63,6 +64,7 @@ interface StarSkillTreeProps {
 }
 
 export function StarSkillTree({ categories }: StarSkillTreeProps) {
+  const { t } = useTranslation();
   const [selectedSkill, setSelectedSkill] = useState<{
     name: string;
     percentage: number;
@@ -237,7 +239,7 @@ export function StarSkillTree({ categories }: StarSkillTreeProps) {
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
-              aria-label="关闭弹窗"
+              aria-label={t("skills.closePopup")}
             />
 
             {/* Popup card — glass-morphism */}
@@ -261,7 +263,7 @@ export function StarSkillTree({ categories }: StarSkillTreeProps) {
                 type="button"
                 onClick={handleClose}
                 className="absolute right-4 top-4 flex h-7 w-7 items-center justify-center rounded-full border border-slate-300/30 bg-slate-100/50 text-sm text-slate-700 transition-all duration-200 hover:border-slate-400/40 hover:bg-slate-200/60 hover:text-slate-900 dark:border-white/[0.06] dark:bg-white/[0.03] dark:text-slate-400 dark:hover:border-white/[0.15] dark:hover:bg-white/[0.06] dark:hover:text-slate-200"
-                aria-label="关闭"
+                aria-label={t("skills.close")}
               >
                 ✕
               </button>
@@ -287,7 +289,7 @@ export function StarSkillTree({ categories }: StarSkillTreeProps) {
 
               {/* Proficiency bar */}
               <div className="mb-2 flex items-baseline justify-between">
-                <span className="text-sm text-slate-500 dark:text-slate-400">熟练度</span>
+                <span className="text-sm text-slate-500 dark:text-slate-400">{t("skills.proficiency")}</span>
                 <span className="font-mono text-xl font-semibold text-slate-700 tabular-nums dark:text-slate-200">
                   {selectedSkill.percentage}
                   <span className="text-sm text-slate-400 dark:text-slate-500">%</span>
@@ -311,7 +313,7 @@ export function StarSkillTree({ categories }: StarSkillTreeProps) {
               {/* Related projects */}
               <div>
                 <p className="mb-2.5 text-xs font-medium uppercase tracking-[0.15em] text-slate-400 dark:text-slate-500">
-                  相关项目
+                  {t("skills.relatedProjects")}
                   {relatedProjects.length > 0 && (
                     <span className="ml-1.5 text-slate-500 dark:text-slate-600">
                       ({relatedProjects.length})
@@ -338,7 +340,7 @@ export function StarSkillTree({ categories }: StarSkillTreeProps) {
                     ))}
                   </div>
                 ) : (
-                  <p className="text-sm text-slate-500 dark:text-slate-500">暂无相关项目</p>
+                  <p className="text-sm text-slate-500 dark:text-slate-500">{t("skills.noRelatedProjects")}</p>
                 )}
               </div>
             </motion.div>

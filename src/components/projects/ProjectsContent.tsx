@@ -35,8 +35,8 @@ export function ProjectsContent() {
     // Category filter
     if (activeCategory !== categories[0]) {
       const catMap: Record<string, string> = {
-        [t("projects.categoryFullstack")]: "全栈开发",
-        [t("projects.categoryData")]: "数据分析",
+        [t("projects.categoryFullstack")]: "fullstack",
+        [t("projects.categoryData")]: "data",
       };
       const dataCat = catMap[activeCategory] || activeCategory;
       result = result.filter((p) => p.category === dataCat);

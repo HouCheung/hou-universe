@@ -34,13 +34,9 @@
   },
   "home": {
     "featuredProjects": "精选项目",
-    "featuredProjectsEn": "Featured Projects",
     "coreCapabilities": "核心能力",
-    "coreCapabilitiesEn": "Core Capabilities",
     "aboutMe": "关于我",
-    "aboutMeEn": "About Me",
     "getInTouch": "联系我",
-    "getInTouchEn": "Get In Touch",
     "viewAllProjects": "查看全部项目",
     "aboutParagraph": "我是一名全栈开发者，热衷于大数据、人工智能以及构建有意义的工具。从实时数据管道到 AI 驱动的应用，我乐于将复杂问题转化为优雅的解决方案。HOU Universe 是我的数字乐园——一个展示项目、记录学习历程、分享我一路所建所感的地方。",
     "learnMoreAboutMe": "了解更多关于我",
@@ -69,7 +65,6 @@
     "heading": "关于我",
     "intro": "数据科学与大数据技术专业在读，热爱全栈开发与 AI 工程化。持续探索技术边界，以工程化思维驱动每一个项目的落地与迭代。",
     "education": "教育背景",
-    "educationEn": "Education",
     "school": "广东技术师范大学",
     "major": "数据科学与大数据技术 · 本科",
     "period": "2024.09 — 2028.06",
@@ -86,13 +81,9 @@
       "NoSQL 数据库"
     ],
     "projects": "项目经历",
-    "projectsEn": "Projects",
     "aiEngineering": "AI 工程化能力",
-    "aiEngineeringEn": "AI Engineering",
     "campus": "校园实践",
-    "campusEn": "Campus",
-    "skills": "专业技能",
-    "skillsEn": "Skills"
+    "skills": "专业技能"
   },
   "aboutProjects": {
     "p1": {
@@ -186,7 +177,12 @@
     "techStack": "技术栈",
     "updateLog": "更新日志",
     "notFound": "项目未找到 - HOU Universe",
-    "noUpdateLog": "暂无更新日志。"
+    "noUpdateLog": "暂无更新日志。",
+    "tagCloudTitle": "技术标签",
+    "tagCloudHint": "按住拖拽可旋转 · 点击标签筛选项目",
+    "tagCloudFilter": "当前筛选：",
+    "tagCloudClear": "✕ 清除",
+    "tagCloudError": "3D 标签云加载失败，请刷新页面重试"
   },
   "projectData": {
     "hou-universe": {
@@ -381,6 +377,7 @@
     "subhead": "留言墙",
     "heading": "留言墙",
     "intro": "有想说的话？留下你的足迹——无论是建议、问题还是简单的问候，都欢迎写在下方。",
+    "emptyState": "还没有留言，来做第一个留言的人吧 ✨",
     "writeMessageTitle": "写留言",
     "footprintsTitle": "到访足迹",
     "form": {
@@ -456,7 +453,12 @@
     "algorithm": "算法实现",
     "claudeCode": "Claude Code",
     "traeWork": "Trae Work",
-    "harness": "Harness 工程思想"
+    "harness": "Harness 工程思想",
+    "proficiency": "熟练度",
+    "relatedProjects": "相关项目",
+    "noRelatedProjects": "暂无相关项目",
+    "closePopup": "关闭弹窗",
+    "close": "关闭"
   },
   "toolsCategories": {
     "ai": "AI 开发工具",
@@ -468,7 +470,7 @@
     "siteTitleDefault": "HOU Universe — 个人开发者平台",
     "siteDesc": "HOU Universe 是个人开发者全功能平台，展示大数据、AI 与全栈开发项目。探索互动体验、技能地图与持续更新的作品集。",
     "siteKeywords": "开发者, 作品集, 全栈, 大数据, AI, 机器学习, Next.js, TypeScript, React",
-    "homeTitle": "HOU Universe - 数据科学个人作品集",
+    "homeTitle": "HOU Universe",
     "homeDesc": "数据科学与大数据技术专业个人作品集，展示项目经历、技能栈与学习笔记。涵盖全栈开发、AI 工程化与数据工程领域。"
   },
   "language": {
@@ -536,6 +538,74 @@
       "independentDev": "独立开发",
       "rdAssistant": "技术研发助理",
       "teamMember": "项目成员"
+    },
+    "projects": {
+      "ecommerce-user-behavior": {
+        "title": "千万级电商用户行为全链路分析与可视化系统",
+        "role": "独立开发",
+        "description": "基于淘宝平台31天1225万条真实用户行为日志，借助 Claude Code 辅助开发并践行 Harness 工程思想，构建从数据接入到策略输出的端到端分析系统。",
+        "background": "海量日志脏数据干扰与用户价值分层模糊，构建从数据接入到策略输出的全链路分析系统。",
+        "coreWork": [
+          "使用 Claude Code 生成 LocalHdfsClient 封装类、六步 ETL 清洗管线及 RFM 评分模型代码，将 HDFS 连接配置、清洗规则、分群阈值抽取为独立 YAML 配置文件，实现模块解耦与环境无关部署",
+          "设计缺失值填充、异常时间戳修正、重复去重、字段校验、业务过滤、MD5 完整性校验六步 ETL 管线",
+          "基于清洗数据构建 RFM 模型结合 K-Means 聚类，划分用户价值分层",
+          "使用 Matplotlib/Seaborn 生成交互热力图、转化漏斗图、用户生命周期分布图等7类核心图表"
+        ],
+        "achievements": [
+          "代码复用率提升60%以上",
+          "脏数据率由 18.7% 降至 5.2%，下降幅度达 35%",
+          "划分出高价值活跃用户（20.68%）与沉默流失风险用户（34.12%）",
+          "输出沉默用户个性化召回、高价值用户专属客服、加购转化路径优化3项可执行运营建议，所有建议均附数据验证逻辑与 A/B 测试预案"
+        ]
+      },
+      "java-io-performance": {
+        "title": "Java I/O 流性能测试与分析系统",
+        "role": "独立开发",
+        "description": "日常开发中文件读写性能优化缺乏量化依据，为给 I/O 方案选型提供明确指导，独立设计自动化性能测试框架，系统对比不同 I/O 方法在不同文件规模下的性能表现。",
+        "background": "文件读写性能优化缺乏量化基准，搭建自动化测试框架，系统对比不同规模文件下的I/O方案表现。",
+        "coreWork": [
+          "设计自动化测试框架，支持生成 0.1KB 至 10MB 不同规格的测试文件，对基础字节流、缓冲流、NIO 通道三种模式各测试5次取平均值，使用 System.nanoTime() 保证计时精度",
+          "使用 try-with-resources 管理流资源，基于零拷贝技术实现 NIO 通道文件复制",
+          "开发文件比较器，通过「先比大小后逐字节对比」策略校验文件复制正确性",
+          "通过15组对比实验数据量化分析，得出不同场景下的 I/O 选型结论"
+        ],
+        "achievements": [
+          "大文件校验耗时缩短约 72%",
+          "得出「缓冲流适配中小文件、NIO 通道适配大文件」的工程结论，为实际开发中的 I/O 方案选型提供数据支撑"
+        ]
+      },
+      "industry-university-research": {
+        "title": "产学研合作系列项目（大健康/高科农业/生态产业）",
+        "role": "技术研发助理",
+        "description": "学校与企业联合开展的横向课题，分别面向大健康产品瑕疵检测、高科农业智能感知、生态产业数字资产三大方向，推动 AI 技术在实际产业场景中的落地应用。",
+        "background": "与企业联合开展横向课题，覆盖大健康产品检测、智能农业、生态产业数字资产三大方向。",
+        "coreWork": [
+          "参与大健康、高科农业两个方向的需求调研与实地考察，了解产品外观瑕疵类型、田间环境与作物生长等场景",
+          "协助构建检测数据集，完成图像样本标注 300 余张，清洗传感器异常数据并整理成结构化表格",
+          "查阅作物生长预测、农业智能感知等领域文献 20 余篇并整理成综述，收集生态产业数字资产行业标准与政策文件",
+          "使用 Excel 和 Python 对生态资产基础数据进行统计与可视化分析，协助完成数据标准化处理与质量检查",
+          "协助运行模型测试脚本，记录不同参数下识别准确率，整理标准化统计报表 10 余份",
+          "按照甲方要求规范整理技术方案、阶段性报告、测试记录、研发文档等交付资料"
+        ],
+        "achievements": [
+          "建立 3 个子项目的完备归档体系，支撑横向课题顺利交付"
+        ]
+      },
+      "mysql-warehouse-system": {
+        "title": "基于 MySQL 的仓库管理系统",
+        "role": "项目成员",
+        "description": "面向中小型仓储管理场景，设计并开发集仓库、货物、库存、出入库管理于一体的信息管理系统，解决库存数据混乱、出入库记录不清等问题。",
+        "background": "中小型仓储场景存在库存数据混乱、出入库记录不清等问题，开发一体化仓储信息管理系统。",
+        "coreWork": [
+          "设计 warehouses、goods、inventory、transactions 四张数据表并建立外键关联，实现库存状态自动计算与阈值预警功能",
+          "开发仓库管理、货物管理、库存管理、出入库管理四大核心模块，支持货物种类全生命周期管理",
+          "使用事务机制保障多仓库调拨操作的数据一致性，出库时自动校验库存防止负库存",
+          "使用 tkbootstrap 构建图形化操作界面，包含 5 个功能标签页"
+        ],
+        "achievements": [
+          "支持出入库记录按时间范围查询与报表生成，实现仓储业务全流程数字化管理"
+        ]
+      }
     }
   },
   "vcard": {

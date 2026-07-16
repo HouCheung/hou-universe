@@ -1,5 +1,6 @@
 "use client";
 
+import { useTranslation } from "react-i18next";
 import { motion } from "framer-motion";
 import { User, Calendar } from "lucide-react";
 import { useTheme } from "@/components/layout/ThemeProvider";
@@ -28,6 +29,7 @@ function getCardOffset(index: number): string {
 }
 
 export function StarWall({ messages }: StarWallProps) {
+  const { t } = useTranslation();
   const { theme } = useTheme();
   const isDark = theme === "dark";
 
@@ -127,7 +129,7 @@ export function StarWall({ messages }: StarWallProps) {
         {messages.length === 0 && (
           <div className="relative flex items-center justify-center py-16">
             <p className="text-sm text-slate-500">
-              还没有留言，来做第一个留言的人吧 ✨
+              {t("guestbook.emptyState")}
             </p>
           </div>
         )}

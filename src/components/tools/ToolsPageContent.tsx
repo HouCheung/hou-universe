@@ -56,8 +56,6 @@ export function ToolsPageContent() {
 }
 
 function getCategoryKey(category: string): string {
-  if (category === "AI 开发工具") return "toolsCategories.ai";
-  if (category === "大数据学习") return "toolsCategories.bigdata";
-  if (category === "效率工具") return "toolsCategories.efficiency";
-  return category;
+  // Categories are now key-based (ai, bigdata, efficiency)
+  return `toolsCategories.${category}`;
 }

@@ -33,14 +33,10 @@
     "scrollDown": "Scroll down to explore"
   },
   "home": {
-    "featuredProjects": "精选项目",
-    "featuredProjectsEn": "Featured Projects",
-    "coreCapabilities": "核心能力",
-    "coreCapabilitiesEn": "Core Capabilities",
-    "aboutMe": "关于我",
-    "aboutMeEn": "About Me",
-    "getInTouch": "联系我",
-    "getInTouchEn": "Get In Touch",
+    "featuredProjects": "Featured Projects",
+    "coreCapabilities": "Core Capabilities",
+    "aboutMe": "About Me",
+    "getInTouch": "Get In Touch",
     "viewAllProjects": "View All Projects",
     "aboutParagraph": "I'm a full-stack developer passionate about big data, artificial intelligence, and building meaningful tools. From real-time data pipelines to AI-driven applications, I enjoy transforming complex problems into elegant solutions. HOU Universe is my digital playground — a place to showcase projects, document my learning journey, and share what I've built and discovered along the way.",
     "learnMoreAboutMe": "Learn More About Me",
@@ -68,8 +64,7 @@
     "subhead": "About",
     "heading": "About Me",
     "intro": "Currently studying Data Science and Big Data Technology, passionate about full-stack development and AI engineering. Continuously exploring the boundaries of technology, driving every project from concept to delivery with an engineering mindset.",
-    "education": "教育背景",
-    "educationEn": "Education",
+    "education": "Education",
     "school": "Guangdong Polytechnic Normal University",
     "major": "Data Science and Big Data Technology · Bachelor",
     "period": "2024.09 — 2028.06",
@@ -85,14 +80,10 @@
       "Data Mining",
       "NoSQL Databases"
     ],
-    "projects": "项目经历",
-    "projectsEn": "Projects",
-    "aiEngineering": "AI 工程化能力",
-    "aiEngineeringEn": "AI Engineering",
-    "campus": "校园实践",
-    "campusEn": "Campus Activities",
-    "skills": "专业技能",
-    "skillsEn": "Skills"
+    "projects": "Projects",
+    "aiEngineering": "AI Engineering",
+    "campus": "Campus Activities",
+    "skills": "Skills"
   },
   "aboutProjects": {
     "p1": {
@@ -186,7 +177,12 @@
     "techStack": "Tech Stack",
     "updateLog": "Update Log",
     "notFound": "Project Not Found - HOU Universe",
-    "noUpdateLog": "No update logs yet."
+    "noUpdateLog": "No update logs yet.",
+    "tagCloudTitle": "Tech Tags",
+    "tagCloudHint": "Drag to rotate · Click tag to filter",
+    "tagCloudFilter": "Filter: ",
+    "tagCloudClear": "✕ Clear",
+    "tagCloudError": "3D tag cloud failed to load, please refresh the page"
   },
   "projectData": {
     "hou-universe": {
@@ -381,6 +377,7 @@
     "subhead": "Guestbook",
     "heading": "Guestbook",
     "intro": "Have something to say? Leave your footprint — suggestions, questions, or simple greetings are all welcome below.",
+    "emptyState": "No messages yet — be the first to leave one ✨",
     "writeMessageTitle": "Write a Message",
     "footprintsTitle": "Visitor Footprints",
     "form": {
@@ -456,7 +453,12 @@
     "algorithm": "Algorithm Implementation",
     "claudeCode": "Claude Code",
     "traeWork": "Trae Work",
-    "harness": "Harness Engineering"
+    "harness": "Harness Engineering",
+    "proficiency": "Proficiency",
+    "relatedProjects": "Related Projects",
+    "noRelatedProjects": "No related projects found",
+    "closePopup": "Close popup",
+    "close": "Close"
   },
   "toolsCategories": {
     "ai": "AI Development Tools",
@@ -465,10 +467,10 @@
   },
   "seo": {
     "siteTitle": "HOU Universe",
-    "siteTitleDefault": "HOU Universe — Personal Developer Platform",
+    "siteTitleDefault": "HOU Universe",
     "siteDesc": "HOU Universe is a personal developer platform showcasing big data, AI, and full-stack development projects. Explore interactive experiences, skill maps, and a continuously updated portfolio.",
     "siteKeywords": "developer, portfolio, full-stack, big data, AI, machine learning, Next.js, TypeScript, React",
-    "homeTitle": "HOU Universe - Data Science Portfolio",
+    "homeTitle": "HOU Universe",
     "homeDesc": "A data science and big data technology portfolio showcasing project experience, skill stacks, and learning notes. Covering full-stack development, AI engineering, and data engineering."
   },
   "language": {
@@ -536,6 +538,74 @@
       "independentDev": "Independently Developed",
       "rdAssistant": "R&D Assistant",
       "teamMember": "Team Member"
+    },
+    "projects": {
+      "ecommerce-user-behavior": {
+        "title": "10M+ E-commerce User Behavior Full-link Analysis & Visualization System",
+        "role": "Independently Developed",
+        "description": "Built an end-to-end analysis system based on 12.25 million real user behavior logs from Taobao, developed with Claude Code following Harness engineering philosophy, covering data ingestion to strategy output.",
+        "background": "Lacked systematic user value stratification and suffered from high dirty data rate in massive log data. Built a full-pipeline analysis system from data access to strategy output.",
+        "coreWork": [
+          "Generated LocalHdfsClient wrapper, 6-step ETL pipeline and RFM scoring model via Claude Code; extracted HDFS config, cleaning rules and segmentation thresholds into standalone YAML files for module decoupling",
+          "Designed a 6-step ETL pipeline: missing value filling, abnormal timestamp correction, deduplication, field validation, business filtering, MD5 integrity check",
+          "Built RFM model with K-Means clustering to segment user value tiers",
+          "Generated 7 types of core charts including heatmaps, conversion funnels and user lifecycle distribution with Matplotlib/Seaborn"
+        ],
+        "achievements": [
+          "Improved code reusability by over 60%",
+          "Reduced dirty data rate from 18.7% to 5.2% (35% drop)",
+          "Identified high-value active users (20.68%) and at-risk churn users (34.12%)",
+          "Delivered 3 actionable operation suggestions with A/B test plans"
+        ]
+      },
+      "java-io-performance": {
+        "title": "Java I/O Stream Performance Testing & Analysis System",
+        "role": "Independently Developed",
+        "description": "Designed an automated performance testing framework to quantify I/O performance across different file sizes, providing data-driven guidance for I/O scheme selection.",
+        "background": "File read/write optimization lacked quantitative benchmarks. Built an automated test framework to systematically compare I/O methods across file sizes.",
+        "coreWork": [
+          "Built automated test framework generating files from 0.1KB to 10MB; tested byte stream, buffered stream and NIO channel 5 times each, timed via System.nanoTime()",
+          "Managed stream resources with try-with-resources; implemented NIO file transfer via zero-copy technology",
+          "Built file comparator using \"size-first then byte-by-byte\" strategy to verify copy accuracy",
+          "Drew engineering conclusions from 15 groups of comparative experiments"
+        ],
+        "achievements": [
+          "Cut large-file verification time by ~72%",
+          "Concluded that buffered streams fit small files and NIO channels fit large files"
+        ]
+      },
+      "industry-university-research": {
+        "title": "Industry-University-Research Collaboration Projects",
+        "role": "R&D Assistant",
+        "description": "Horizontal research projects covering healthcare defect detection, agricultural AI perception and ecological digital assets, promoting AI adoption in real industry scenarios.",
+        "background": "Joint research projects with enterprises across three verticals: product defect detection, smart agriculture and ecological industry digital assets.",
+        "coreWork": [
+          "Participated in requirement research and on-site investigation for healthcare and agriculture projects",
+          "Assisted in dataset construction: 300+ image annotations, sensor data cleaning and structuring",
+          "Reviewed 20+ papers on crop growth prediction and agricultural AI; compiled industry standards and policy documents",
+          "Performed statistical and visual analysis on ecological asset data via Excel and Python",
+          "Ran model test scripts, recorded accuracy under different parameters, produced 10+ standardized reports",
+          "Organized deliverables including technical proposals, phase reports and test records"
+        ],
+        "achievements": [
+          "Established complete documentation system for 3 sub-projects and supported successful project delivery"
+        ]
+      },
+      "mysql-warehouse-system": {
+        "title": "MySQL-based Warehouse Management System",
+        "role": "Team Member",
+        "description": "An information management system for small and medium warehouses, covering warehouse, goods, inventory and inbound/outbound management.",
+        "background": "Solved inventory data inconsistency and unclear inbound/outbound records in small warehouse scenarios.",
+        "coreWork": [
+          "Designed 4 tables (warehouses, goods, inventory, transactions) with foreign key associations; implemented auto inventory calculation and threshold alert",
+          "Developed 4 core modules: warehouse, goods, inventory, inbound/outbound management",
+          "Guaranteed data consistency during cross-warehouse transfer via transactions; prevented negative stock on outbound",
+          "Built GUI with tkbootstrap containing 5 function tabs"
+        ],
+        "achievements": [
+          "Realized time-range query and report generation for inbound/outbound records; digitized full warehouse workflow"
+        ]
+      }
     }
   },
   "vcard": {

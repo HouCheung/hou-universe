@@ -1,5 +1,6 @@
 "use client";
 
+import { useTranslation } from "react-i18next";
 import { motion, type Variants } from "framer-motion";
 import { ExternalLink } from "lucide-react";
 import { TiltCard } from "@/components/shared/TiltCard";
@@ -20,6 +21,11 @@ interface ToolCardProps {
 }
 
 export function ToolCard({ tool, index }: ToolCardProps) {
+  const { t } = useTranslation();
+  const i18nBase = tool.id ? `toolsData.${tool.id}` : null;
+  const displayName = i18nBase ? t(`${i18nBase}.name`, tool.name) : tool.name;
+  const displayDesc = i18nBase ? t(`${i18nBase}.description`, tool.description) : tool.description;
+
   return (
     <motion.div
       custom={index}
@@ -41,12 +47,12 @@ export function ToolCard({ tool, index }: ToolCardProps) {
         >
           <div className="mb-2 flex items-start justify-between gap-2">
             <h3 className="text-base font-semibold text-foreground transition-colors group-hover/card:text-brand dark:group-hover/card:text-slate-200">
-              {tool.name}
+              {displayName}
             </h3>
             <ExternalLink className="mt-0.5 h-4 w-4 shrink-0 text-muted-foreground transition-colors group-hover/card:text-brand dark:group-hover/card:text-brand/70 dark:group-hover/card:text-slate-300/70" />
           </div>
           <p className="text-sm leading-relaxed text-muted-foreground">
-            {tool.description}
+            {displayDesc}
           </p>
         </a>
       </TiltCard>

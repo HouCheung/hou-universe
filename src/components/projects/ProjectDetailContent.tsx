@@ -50,7 +50,7 @@ export function ProjectDetailContent({ project }: ProjectDetailContentProps) {
                 {/* eslint-disable-next-line @next/next/no-img-element */}
                 <img
                   src={project.coverImage}
-                  alt={`${title} 项目封面`}
+                  alt={title}
                   className="max-h-64 w-auto object-contain"
                 />
               </div>

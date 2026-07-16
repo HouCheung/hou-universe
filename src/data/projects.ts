@@ -4,7 +4,7 @@ export const projects: Project[] = [
   {
     id: "hou-universe",
     title: "HOU Universe",
-    category: "全栈开发",
+    category: "fullstack",
     description:
       "个人开发者全功能平台，集作品展示、项目管理与互动体验于一体——基于现代 Web 技术从零构建。",
     fullDescription:
@@ -79,7 +79,7 @@ export const projects: Project[] = [
   {
     id: "shuatiapp-pro-max",
     title: "刷题助手 PRO MAX",
-    category: "全栈开发",
+    category: "fullstack",
     description:
       "一款专注编程学习的在线刷题练习平台，支持文本粘贴与文件导入双模式批量导入题目，自带智能格式识别；内置错题本、我的收藏、专项练习模块，搭配答题计时、正确率统计与数据统计功能，帮助高效巩固知识点，提升刷题效率。",
     fullDescription:

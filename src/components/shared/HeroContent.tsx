@@ -25,8 +25,7 @@ const itemFadeIn: Variants = {
 };
 
 export function HeroContent() {
-  const { t, i18n } = useTranslation();
-  const isEn = i18n.language?.startsWith('en');
+  const { t } = useTranslation();
   const { contentVisible } = useEntrance();
 
   const ROLES = [
@@ -56,7 +55,7 @@ export function HeroContent() {
         className="text-6xl font-black tracking-tight sm:text-7xl md:text-8xl lg:text-9xl"
       >
         <span className="text-gradient-primary">
-          {isEn ? "I'm HOU" : "我是 HOU"}
+          {t('hero.title')}
         </span>
       </motion.h1>
 
