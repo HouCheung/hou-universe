@@ -56,6 +56,7 @@ export const skillLevelData: SkillCategoryWithLevel[] = [
   {
     id: "programming",
     title: "编程语言",
+    titleKey: "skills.categoryProgramming",
     icon: "💻",
     skills: [
       { name: "Python", percentage: 85 },
@@ -66,6 +67,7 @@ export const skillLevelData: SkillCategoryWithLevel[] = [
   {
     id: "database",
     title: "数据库",
+    titleKey: "skills.categoryDatabase",
     icon: "🗄️",
     skills: [
       { name: "SQL", percentage: 85 },
@@ -76,22 +78,24 @@ export const skillLevelData: SkillCategoryWithLevel[] = [
   {
     id: "core",
     title: "核心能力",
+    titleKey: "skills.categoryCoreAbility",
     icon: "⚙️",
     skills: [
-      { name: "数据采集与清洗", percentage: 85 },
-      { name: "ETL 管线设计", percentage: 80 },
-      { name: "数据分析与可视化", percentage: 80 },
-      { name: "算法实现", percentage: 75 },
+      { name: "数据采集与清洗", nameKey: "skills.dataCollection", percentage: 85 },
+      { name: "ETL 管线设计", nameKey: "skills.etl", percentage: 80 },
+      { name: "数据分析与可视化", nameKey: "skills.dataAnalysis", percentage: 80 },
+      { name: "算法实现", nameKey: "skills.algorithm", percentage: 75 },
     ],
   },
   {
     id: "ai",
     title: "AI 工程化",
+    titleKey: "skills.categoryAiEngineering",
     icon: "🤖",
     skills: [
-      { name: "Claude Code", percentage: 90 },
-      { name: "Trae Work", percentage: 85 },
-      { name: "Harness 工程思想", percentage: 85 },
+      { name: "Claude Code", nameKey: "skills.claudeCode", percentage: 90 },
+      { name: "Trae Work", nameKey: "skills.traeWork", percentage: 85 },
+      { name: "Harness 工程思想", nameKey: "skills.harness", percentage: 85 },
     ],
   },
 ];

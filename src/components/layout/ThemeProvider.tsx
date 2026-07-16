@@ -26,6 +26,11 @@ function getStoredTheme(): Theme {
   } catch {
     // localStorage unavailable (private browsing, etc.)
   }
+  // Mobile devices (<768px) default to dark theme on first visit (no stored preference).
+  // Desktop keeps the existing DEFAULT_THEME behavior unchanged.
+  if (window.innerWidth < 768) {
+    return "dark";
+  }
   return DEFAULT_THEME;
 }
 

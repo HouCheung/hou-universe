@@ -24,8 +24,8 @@ export function Footer() {
       {/* Top divider */}
       <div className="border-t border-white/[0.06]" />
 
-      <div className="mx-auto max-w-6xl px-4 py-12 sm:px-6 lg:px-8">
-        <div className="grid grid-cols-1 gap-10 sm:grid-cols-3">
+      <div className="mx-auto max-w-6xl px-4 py-12 sm:px-6 lg:px-8 max-sm:px-5 max-sm:py-10">
+        <div className="grid grid-cols-1 gap-10 sm:grid-cols-3 max-sm:gap-6 max-sm:text-center">
           {/* Brand */}
           <div className="flex flex-col gap-3">
             <Link
@@ -95,8 +95,8 @@ export function Footer() {
 
       {/* Copyright bar with visitor counter */}
       <div className="border-t border-white/[0.04]">
-        <div className="mx-auto max-w-6xl px-4 py-4 text-center sm:px-6 lg:px-8">
-          <p className="text-xs text-slate-500 dark:text-slate-600">
+        <div className="mx-auto max-w-6xl px-4 py-4 text-center sm:px-6 lg:px-8 max-sm:px-5 max-sm:py-3">
+          <p className="text-xs text-slate-500 dark:text-slate-600 max-sm:leading-relaxed">
             &copy; {new Date().getFullYear()} HOU Universe. All rights reserved.
             {" "}
             <span className="text-slate-500/70 dark:text-slate-600/70">

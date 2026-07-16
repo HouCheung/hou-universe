@@ -50,12 +50,14 @@ export interface SkillCategory {
 
 export interface SkillWithLevel {
   name: string;
+  nameKey?: string;
   percentage: number;
 }
 
 export interface SkillCategoryWithLevel {
   id: string;
   title: string;
+  titleKey?: string;
   icon: string;
   skills: SkillWithLevel[];
 }

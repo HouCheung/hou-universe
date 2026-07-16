@@ -40,22 +40,22 @@ export function AboutContent() {
 
   return (
     <div className="min-h-screen">
-      <div className="mx-auto max-w-4xl px-4 py-20 sm:px-6 sm:py-28 lg:px-8 lg:py-36">
+      <div className="mx-auto max-w-4xl px-4 py-20 sm:px-6 sm:py-28 lg:px-8 lg:py-36 max-sm:px-5 max-sm:py-16">
         {/* Page header */}
-        <header className="mb-16 text-center sm:mb-24">
+        <header className="mb-16 text-center sm:mb-24 max-sm:mb-12">
           <p className="mb-3 font-mono text-sm tracking-[0.25em] text-slate-500/80 uppercase dark:text-slate-400/60">
             {t("about.subhead")}
           </p>
-          <h1 className="text-4xl font-bold tracking-tight text-foreground sm:text-5xl lg:text-6xl">
+          <h1 className="text-4xl font-bold tracking-tight text-foreground sm:text-5xl lg:text-6xl max-sm:text-3xl">
             {t("about.heading")}
           </h1>
-          <p className="mx-auto mt-6 max-w-2xl text-base leading-relaxed text-muted-foreground sm:text-lg">
+          <p className="mx-auto mt-6 max-w-2xl text-base leading-relaxed text-muted-foreground sm:text-lg max-sm:text-sm max-sm:mt-4">
             {t("about.intro")}
           </p>
         </header>
 
         {/* ① Education */}
-        <section className="mb-20 sm:mb-32">
+        <section className="mb-20 sm:mb-32 max-sm:mb-14">
           <SectionDivider titleKey="about.education" icon="🎓" />
           <div className="glass-card-hover rounded-2xl p-6 sm:p-8">
             <div className="flex flex-col gap-4 sm:flex-row sm:items-start sm:justify-between">
@@ -84,7 +84,7 @@ export function AboutContent() {
         </section>
 
         {/* ② Projects */}
-        <section className="mb-20 sm:mb-32">
+        <section className="mb-20 sm:mb-32 max-sm:mb-14">
           <SectionDivider titleKey="about.projects" icon="💼" />
           <div className="relative">
             <div className="absolute left-[15px] top-0 h-full w-px bg-border sm:left-[19px]" />
@@ -115,7 +115,7 @@ export function AboutContent() {
         </section>
 
         {/* ③ AI Engineering */}
-        <section className="mb-20 sm:mb-32">
+        <section className="mb-20 sm:mb-32 max-sm:mb-14">
           <SectionDivider titleKey="about.aiEngineering" icon="🤖" />
           <div className="grid gap-4 sm:grid-cols-3">
             {aiSkillKeys.map((sk, index) => (
@@ -134,7 +134,7 @@ export function AboutContent() {
         </section>
 
         {/* ④ Campus */}
-        <section className="mb-20 sm:mb-32">
+        <section className="mb-20 sm:mb-32 max-sm:mb-14">
           <SectionDivider titleKey="about.campus" icon="🎭" />
           <div className="flex flex-col gap-6">
             <div className="glass-card-hover rounded-2xl p-6 sm:p-7">

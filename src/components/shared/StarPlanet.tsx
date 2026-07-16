@@ -52,7 +52,12 @@ export function StarPlanet({ interactive }: StarPlanetProps) {
     return placeholder;
   }
 
-  // Light mode: render realistic daytime Earth globe with NASA Blue Marble texture
+  // Mobile + light mode: hide 3D earth entirely, let hero text center naturally
+  if (isMobile && isLight) {
+    return null;
+  }
+
+  // Light mode (desktop/tablet): render realistic daytime Earth globe with NASA Blue Marble texture
   if (isLight) {
     return <DayEarth interactive={shouldInteract} />;
   }

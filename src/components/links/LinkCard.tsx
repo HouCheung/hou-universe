@@ -1,5 +1,6 @@
 "use client";
 
+import { useTranslation } from "react-i18next";
 import { motion, type Variants } from "framer-motion";
 import { ExternalLink } from "lucide-react";
 import { TiltCard } from "@/components/shared/TiltCard";
@@ -20,6 +21,9 @@ interface LinkCardProps {
 }
 
 export function LinkCard({ link, index }: LinkCardProps) {
+  const { t } = useTranslation();
+  const descKey = link.descriptionKey;
+
   return (
     <motion.div
       custom={index}
@@ -51,7 +55,7 @@ export function LinkCard({ link, index }: LinkCardProps) {
             <ExternalLink className="mt-0.5 h-4 w-4 shrink-0 text-muted-foreground transition-colors group-hover/card:text-brand/70 dark:group-hover/card:text-slate-300/70" />
           </div>
           <p className="text-sm leading-relaxed text-muted-foreground">
-            {link.description}
+            {descKey ? t(descKey, link.description) : link.description}
           </p>
         </a>
       </TiltCard>

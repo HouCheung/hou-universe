@@ -2,8 +2,8 @@ import type { Metadata } from "next";
 import { ContactPageContent } from "@/components/contact/ContactPageContent";
 
 export const metadata: Metadata = {
-  title: "联系 - HOU Universe",
-  description: "联系我 — 有问题或想合作？通过表单与我取得联系。",
+  title: "Contact - HOU Universe",
+  description: "Get in touch — have questions or want to collaborate? Reach out via the form.",
 };
 
 export default function ContactPage() {

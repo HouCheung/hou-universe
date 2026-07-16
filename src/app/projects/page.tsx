@@ -2,9 +2,9 @@ import type { Metadata } from "next";
 import { ProjectsContent } from "@/components/projects/ProjectsContent";
 
 export const metadata: Metadata = {
-  title: "项目 - HOU Universe",
+  title: "Projects - HOU Universe",
   description:
-    "项目展示——涵盖大数据管道、AI 应用、全栈平台和开发者工具。",
+    "Project showcase — covering big data pipelines, AI applications, full-stack platforms, and developer tools.",
 };
 
 export default function ProjectsPage() {

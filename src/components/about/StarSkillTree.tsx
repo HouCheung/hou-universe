@@ -88,7 +88,7 @@ export function StarSkillTree({ categories }: StarSkillTreeProps) {
 
   return (
     <>
-      <div className="grid gap-8 sm:grid-cols-2 sm:gap-10">
+      <div className="grid gap-8 sm:grid-cols-2 sm:gap-10 max-sm:gap-6">
         {categories.map((cat) => {
           const colors = CATEGORY_COLORS[cat.id] || DEFAULT_COLORS;
 
@@ -99,7 +99,7 @@ export function StarSkillTree({ categories }: StarSkillTreeProps) {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "-60px" }}
               transition={{ duration: 0.55, ease: "easeOut" }}
-              className="flex flex-col gap-5 rounded-2xl border border-slate-200/60 bg-white/60 p-6 backdrop-blur-sm sm:p-7 dark:border-white/[0.04] dark:bg-slate-900/30"
+              className="flex flex-col gap-5 rounded-2xl border border-slate-200/60 bg-white/60 p-6 backdrop-blur-sm sm:p-7 max-sm:p-5 dark:border-white/[0.04] dark:bg-slate-900/30"
             >
               {/* ── Category header with constellation decoration ── */}
               <div className="flex items-center gap-3">
@@ -131,7 +131,7 @@ export function StarSkillTree({ categories }: StarSkillTreeProps) {
                   {cat.icon}
                 </span>
                 <h3 className="text-sm font-semibold text-foreground">
-                  {cat.title}
+                  {t(cat.titleKey || cat.title, cat.title)}
                 </h3>
                 <span className="ml-auto rounded-full bg-slate-300/20 px-2 py-0.5 text-xs font-medium text-slate-500/60 dark:bg-slate-400/8 dark:text-slate-400/60">
                   {cat.skills.length}
@@ -191,7 +191,7 @@ export function StarSkillTree({ categories }: StarSkillTreeProps) {
 
                       {/* Skill name */}
                       <span className="min-w-0 flex-1 truncate text-sm font-medium text-slate-600/90 transition-colors duration-200 group-hover/skill:text-slate-800 dark:text-slate-300/90 dark:group-hover/skill:text-slate-100">
-                        {skill.name}
+                        {t(skill.nameKey || skill.name, skill.name)}
                       </span>
 
                       {/* Progress bar + percentage */}
@@ -244,7 +244,7 @@ export function StarSkillTree({ categories }: StarSkillTreeProps) {
 
             {/* Popup card — glass-morphism */}
             <motion.div
-              className="relative z-10 w-full max-w-sm rounded-2xl border border-slate-200/60 bg-white/95 p-6 shadow-xl backdrop-blur-xl sm:p-7 dark:border-white/[0.08] dark:bg-[#0d0d18]/90 dark:shadow-2xl"
+              className="relative z-10 w-full max-w-sm rounded-2xl border border-slate-200/60 bg-white/95 p-6 shadow-xl backdrop-blur-xl sm:p-7 max-sm:max-w-[92vw] max-sm:p-5 dark:border-white/[0.08] dark:bg-[#0d0d18]/90 dark:shadow-2xl"
               initial={{ scale: 0.9, y: 20, opacity: 0 }}
               animate={{ scale: 1, y: 0, opacity: 1 }}
               exit={{ scale: 0.9, y: 20, opacity: 0 }}

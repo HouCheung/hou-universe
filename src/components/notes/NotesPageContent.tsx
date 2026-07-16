@@ -54,22 +54,22 @@ export function NotesPageContent({ notes, allCategories }: NotesPageContentProps
       <StarField />
 
       <div className="min-h-screen">
-        <div className="mx-auto max-w-4xl px-4 py-20 sm:px-6 sm:py-28 lg:px-8 lg:py-36">
+        <div className="mx-auto max-w-4xl px-4 py-20 sm:px-6 sm:py-28 lg:px-8 lg:py-36 max-sm:px-5 max-sm:py-16">
           {/* Page header */}
-          <header className="mb-12 text-center sm:mb-16">
+          <header className="mb-12 text-center sm:mb-16 max-sm:mb-10">
             <p className="mb-3 font-mono text-sm tracking-[0.25em] text-slate-500/80 uppercase dark:text-slate-500/70 dark:text-slate-400/60">
               {t("notes.subhead")}
             </p>
-            <h1 className="text-4xl font-bold tracking-tight text-foreground sm:text-5xl lg:text-6xl">
+            <h1 className="text-4xl font-bold tracking-tight text-foreground sm:text-5xl lg:text-6xl max-sm:text-3xl">
               {t("notes.heading")}
             </h1>
-            <p className="mx-auto mt-6 max-w-2xl text-base leading-relaxed text-muted-foreground sm:text-lg">
+            <p className="mx-auto mt-6 max-w-2xl text-base leading-relaxed text-muted-foreground sm:text-lg max-sm:text-sm max-sm:mt-4">
               {t("notes.intro")}
             </p>
           </header>
 
           {/* Search + Filter bar */}
-          <div className="mb-8 space-y-4 sm:mb-10">
+          <div className="mb-8 space-y-4 sm:mb-10 max-sm:mb-6 max-sm:space-y-3">
             {/* Search */}
             <div className="relative">
               <Search className="pointer-events-none absolute left-4 top-1/2 h-4 w-4 -translate-y-1/2 text-slate-500/70 dark:text-slate-400/60" />

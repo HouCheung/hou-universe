@@ -18,7 +18,7 @@ export async function generateMetadata({
   const note = getNoteBySlug(slug);
 
   if (!note) {
-    return { title: "笔记未找到 - HOU Universe" };
+    return { title: "Note Not Found - HOU Universe" };
   }
 
   return {

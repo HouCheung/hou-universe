@@ -24,16 +24,16 @@ export function LinksPageContent() {
       <StarField />
 
       <div className="min-h-screen">
-        <div className="mx-auto max-w-6xl px-4 py-20 sm:px-6 sm:py-28 lg:px-8 lg:py-36">
+        <div className="mx-auto max-w-6xl px-4 py-20 sm:px-6 sm:py-28 lg:px-8 lg:py-36 max-sm:px-5 max-sm:py-16">
           {/* Page header */}
-          <header className="mb-16 text-center sm:mb-24">
+          <header className="mb-16 text-center sm:mb-24 max-sm:mb-12">
             <p className="mb-3 font-mono text-sm tracking-[0.25em] text-slate-500/80 uppercase dark:text-slate-400/60">
               {t("links.subhead")}
             </p>
-            <h1 className="text-4xl font-bold tracking-tight text-foreground sm:text-5xl lg:text-6xl">
+            <h1 className="text-4xl font-bold tracking-tight text-foreground sm:text-5xl lg:text-6xl max-sm:text-3xl">
               {t("links.heading")}
             </h1>
-            <p className="mx-auto mt-6 max-w-2xl text-base leading-relaxed text-muted-foreground sm:text-lg">
+            <p className="mx-auto mt-6 max-w-2xl text-base leading-relaxed text-muted-foreground sm:text-lg max-sm:text-sm max-sm:mt-4">
               {t("links.intro")}
             </p>
           </header>
@@ -45,7 +45,7 @@ export function LinksPageContent() {
               category
             );
             return (
-              <section key={category} className="mb-16 sm:mb-20">
+              <section key={category} className="mb-16 sm:mb-20 max-sm:mb-12">
                 <div className="mb-8 flex items-center gap-4">
                   <div className="h-7 w-1 shrink-0 rounded-full bg-gradient-to-b from-slate-500 via-slate-400 to-slate-600" />
                   <h2 className="shrink-0 font-mono text-sm tracking-[0.2em] text-slate-500/80 uppercase dark:text-slate-400/70">
@@ -96,7 +96,7 @@ export function LinksPageContent() {
               className="fixed inset-0 z-[61] flex items-center justify-center p-4"
             >
               <div
-                className="w-full max-w-md rounded-2xl border border-slate-200/60 bg-white/95 p-6 shadow-2xl backdrop-blur-xl dark:border-white/[0.08] dark:bg-[rgba(15,15,25,0.92)]"
+                className="w-full max-w-md rounded-2xl border border-slate-200/60 bg-white/95 p-6 shadow-2xl backdrop-blur-xl max-sm:max-w-[92vw] max-sm:p-5 dark:border-white/[0.08] dark:bg-[rgba(15,15,25,0.92)]"
                 role="dialog"
                 aria-modal="true"
                 aria-label={t("links.applyTipTitle")}

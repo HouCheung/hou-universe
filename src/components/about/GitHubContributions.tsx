@@ -124,7 +124,7 @@ export function GitHubContributions() {
           </span>
           <h2 className="flex items-center gap-2 text-lg font-semibold tracking-tight text-foreground sm:text-xl">
             <Github className="h-5 w-5 text-slate-500 dark:text-slate-500 dark:text-slate-400" />
-            {t("githubContributions.sectionTitle", "GitHub 开源贡献")}
+            {t("githubContributions.sectionTitle", "GitHub Contributions")}
           </h2>
         </div>
         <span className="ml-auto h-px flex-1 bg-gradient-to-r from-slate-400/20 via-slate-400/10 to-transparent" />
@@ -138,7 +138,7 @@ export function GitHubContributions() {
               htmlFor="github-username"
               className="mb-1.5 block text-xs font-medium text-slate-500 dark:text-slate-400"
             >
-              {t("githubContributions.usernameLabel", "GitHub 用户名")}
+              {t("githubContributions.usernameLabel", "GitHub Username")}
             </label>
             <input
               id="github-username"
@@ -154,7 +154,7 @@ export function GitHubContributions() {
             type="submit"
             className="rounded-lg border border-brand/25 bg-brand/10 px-5 py-2.5 text-sm font-medium text-slate-800 transition-all dark:text-slate-200 duration-300 hover:border-brand/40 hover:bg-brand/20"
           >
-            {t("githubContributions.load", "加载贡献")}
+            {t("githubContributions.load", "Load Contributions")}
           </button>
           <a
             href={`https://github.com/${username}`}
@@ -183,7 +183,7 @@ export function GitHubContributions() {
             {/* Total count */}
             <div className="mb-4 flex items-center gap-2">
               <span className="text-sm text-slate-500 dark:text-slate-400">
-                {t("githubContributions.total", "过去一年贡献")}:
+                {t("githubContributions.total", "Contributions in the last year")}:
               </span>
               <span className="font-mono text-lg font-bold text-[#39d353]">
                 {data.totalContributions.toLocaleString()}
@@ -196,7 +196,7 @@ export function GitHubContributions() {
               <div className="flex gap-[3px] min-w-max">
                 {/* Day labels */}
                 <div className="mr-2 flex flex-col gap-[3px] pt-[18px]">
-                  {["", t("githubContributions.mon", "一"), "", t("githubContributions.wed", "三"), "", t("githubContributions.fri", "五"), ""].map(
+                  {["", t("githubContributions.mon", "Mon"), "", t("githubContributions.wed", "Wed"), "", t("githubContributions.fri", "Fri"), ""].map(
                     (label, i) => (
                       <div
                         key={i}

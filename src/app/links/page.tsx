@@ -2,9 +2,9 @@ import type { Metadata } from "next";
 import { LinksPageContent } from "@/components/links/LinksPageContent";
 
 export const metadata: Metadata = {
-  title: "友链 - HOU Universe",
+  title: "Links - HOU Universe",
   description:
-    "友链墙——友情链接与技术工具导航，发现更多优质开发者站点与实用资源。",
+    "Links wall — friendly links and technical tool navigation, discover more great developer sites and useful resources.",
 };
 
 export default function LinksPage() {

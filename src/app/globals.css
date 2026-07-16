@@ -655,3 +655,120 @@ html[data-entrance-phase="complete"] .planet-entrance {
 [data-theme="light"] [data-slot="button"]:active svg {
   color: #0f172a !important;
 }
+
+/* ══════════════════════════════════════════════════════════════
+   ── 移动端全站统一美化 (< 768px) ──
+   PC 端零影响 — 所有规则限定在 @media (max-width: 767px) 内
+   ══════════════════════════════════════════════════════════════ */
+@media (max-width: 767px) {
+  /* ── 全局排版：统一水平内边距 ── */
+  .mx-auto.max-w-6xl,
+  .mx-auto.max-w-4xl,
+  .mx-auto.max-w-2xl,
+  .mx-auto.max-w-3xl {
+    padding-left: 1.25rem !important;
+    padding-right: 1.25rem !important;
+  }
+
+  /* ── 全局禁止横向溢出 ── */
+  html, body {
+    overflow-x: hidden !important;
+    max-width: 100vw;
+  }
+
+  /* ── 标题字号统一适配 ── */
+  h1 {
+    font-size: 2rem !important;
+    line-height: 1.2 !important;
+  }
+  h2 {
+    font-size: 1.25rem !important;
+    line-height: 1.35 !important;
+  }
+
+  /* ── 正文段落行高 ── */
+  p, .text-muted-foreground {
+    line-height: 1.65 !important;
+  }
+
+  /* ── 卡片组件统一样式 ── */
+  .glass-card,
+  .glass-card-hover {
+    border-radius: 0.75rem !important;
+    padding: 1.25rem !important;
+  }
+
+  /* ── 所有卡片内的 flex/grid 间距收紧 ── */
+  .glass-card .flex,
+  .glass-card-hover .flex {
+    gap: 0.75rem;
+  }
+
+  /* ── 最小触控区域 44px ── */
+  a, button, [role="button"],
+  input, textarea, select {
+    min-height: 44px;
+    min-width: 44px;
+  }
+
+  /* 保持 inline icon-only 按钮灵活 */
+  button.size-icon,
+  [role="button"].size-icon {
+    min-height: 44px;
+    min-width: 44px;
+  }
+
+  /* ── 表单全宽适配 ── */
+  input[type="text"],
+  input[type="email"],
+  input[type="search"],
+  textarea,
+  .glass-input {
+    width: 100% !important;
+    font-size: 16px !important; /* 防 iOS 缩放 */
+    padding: 0.75rem 0.875rem !important;
+  }
+
+  /* ── 弹窗/Modal 移动端适配 ── */
+  .fixed.inset-0.z-\[61\],
+  .fixed.inset-0.z-50 {
+    padding: 1rem !important;
+  }
+
+  /* ── 标签/小字间距统一 ── */
+  .flex.flex-wrap.gap-2 {
+    gap: 0.5rem;
+  }
+
+  /* ── 网格布局单列化 ── */
+  .grid {
+    grid-template-columns: 1fr !important;
+  }
+
+  /* ── Section 标题间距 ── */
+  section {
+    margin-bottom: 2.5rem;
+  }
+  section:last-child {
+    margin-bottom: 0;
+  }
+
+  /* ── Footer 三列转单列 ── */
+  footer .grid.grid-cols-1.sm\:grid-cols-3 {
+    gap: 1.75rem;
+    text-align: center;
+  }
+
+  /* ── 投影卡片 hover 上浮减小（移动端无 hover，防意外触发） ── */
+  .glass-card-hover:active {
+    transform: translateY(-2px);
+  }
+
+  /* ── 深色/浅色双主题下卡片保持一致 ── */
+  .glass-card,
+  .glass-card-hover {
+    margin-left: 0;
+    margin-right: 0;
+    width: 100%;
+  }
+}

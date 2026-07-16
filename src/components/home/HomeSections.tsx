@@ -13,7 +13,7 @@ import { projects } from '@/data/projects';
 import { skillLevelData } from '@/data/about';
 
 const allSkills = skillLevelData.flatMap((cat) =>
-  cat.skills.map((s) => s.name)
+  cat.skills.map((s) => ({ name: s.name, nameKey: s.nameKey }))
 );
 const featuredProjects = projects.slice(0, 2);
 
@@ -48,7 +48,7 @@ export function HomeSections() {
   ];
 
   return (
-    <div className="mx-auto max-w-6xl px-4 py-20 sm:px-6 sm:py-28 lg:px-8 lg:py-36">
+    <div className="mx-auto max-w-6xl px-4 py-20 sm:px-6 sm:py-28 lg:px-8 lg:py-36 max-sm:px-5 max-sm:py-16">
       {/* ========== 精选项目 ========== */}
       <motion.section
         initial="hidden"
@@ -78,7 +78,7 @@ export function HomeSections() {
 
       {/* ========== 核心能力 ========== */}
       <motion.section
-        className="mt-24 sm:mt-36"
+        className="mt-20 sm:mt-36 max-sm:mt-16"
         initial="hidden"
         whileInView="visible"
         viewport={{ once: true, margin: '-80px' }}
@@ -101,7 +101,7 @@ export function HomeSections() {
 
       {/* ========== 关于我 ========== */}
       <motion.section
-        className="mt-24 sm:mt-36"
+        className="mt-20 sm:mt-36 max-sm:mt-16"
         initial="hidden"
         whileInView="visible"
         viewport={{ once: true, margin: '-80px' }}
@@ -116,13 +116,13 @@ export function HomeSections() {
 
           {/* Skill tags */}
           <div className="mt-8 flex flex-wrap justify-center gap-2">
-            {allSkills.slice(0, 12).map((skillName) => (
+            {allSkills.slice(0, 12).map((skill) => (
               <Badge
-                key={skillName}
+                key={skill.name}
                 variant="secondary"
                 className="border-slate-300/30 bg-slate-100/50 px-3 py-1 text-xs transition-all duration-300 hover:border-brand/20 hover:bg-brand/5 hover:text-slate-700 dark:border-white/[0.06] dark:bg-white/[0.03] dark:hover:border-slate-400/30 dark:hover:bg-slate-400/6 dark:hover:text-slate-200"
               >
-                {skillName}
+                {t(skill.nameKey || skill.name, skill.name)}
               </Badge>
             ))}
           </div>
@@ -142,7 +142,7 @@ export function HomeSections() {
 
       {/* ========== 联系我 ========== */}
       <motion.section
-        className="mt-24 sm:mt-36"
+        className="mt-20 sm:mt-36 max-sm:mt-16"
         initial="hidden"
         whileInView="visible"
         viewport={{ once: true, margin: '-80px' }}
@@ -151,10 +151,10 @@ export function HomeSections() {
         <SectionHeader titleKey="home.getInTouch" />
 
         <div className="mx-auto max-w-2xl text-center">
-          <h3 className="text-3xl font-bold tracking-tight text-foreground sm:text-4xl">
+          <h3 className="text-3xl font-bold tracking-tight text-foreground sm:text-4xl max-sm:text-2xl">
             {t('home.letsCreate')}
           </h3>
-          <p className="mt-4 text-base leading-relaxed text-muted-foreground sm:text-lg">
+          <p className="mt-4 text-base leading-relaxed text-muted-foreground sm:text-lg max-sm:text-sm max-sm:mt-3">
             {t('home.contactPrompt')}
           </p>
 

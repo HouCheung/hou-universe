@@ -26,10 +26,10 @@ export function DownloadVCardButton() {
           </div>
           <div className="flex min-w-0 flex-1 flex-col gap-1">
             <p className="text-sm font-medium text-foreground">
-              {t("vcard.title", "电子名片")}
+              {t("vcard.title", "Digital Business Card")}
             </p>
             <p className="text-xs text-muted-foreground">
-              {t("vcard.description", "下载 vCard 文件，可导入手机通讯录")}
+              {t("vcard.description", "Download vCard file to import into your phone contacts")}
             </p>
           </div>
           <button
@@ -37,7 +37,7 @@ export function DownloadVCardButton() {
             className="flex shrink-0 items-center gap-1.5 rounded-lg border border-brand/20 bg-brand/10 px-4 py-2 text-sm font-medium text-blue-600 transition-all duration-300 hover:border-brand/35 hover:bg-brand/20 hover:text-blue-700 dark:text-[#93c5fd] dark:hover:text-[#bfdbfe]"
           >
             <Download className="size-4" />
-            <span className="hidden sm:inline">{t("vcard.download", "下载名片")}</span>
+            <span className="hidden sm:inline">{t("vcard.download", "Download Card")}</span>
           </button>
         </CardContent>
       </Card>

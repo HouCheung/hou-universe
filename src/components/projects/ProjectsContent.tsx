@@ -58,18 +58,18 @@ export function ProjectsContent() {
       <StarField />
 
       <div className="min-h-screen">
-        <div className="mx-auto max-w-6xl px-4 py-20 sm:px-6 sm:py-28 lg:px-8 lg:py-36">
+        <div className="mx-auto max-w-6xl px-4 py-20 sm:px-6 sm:py-28 lg:px-8 lg:py-36 max-sm:px-5 max-sm:py-16">
           {/* Page header */}
-          <header className="mb-12 text-center sm:mb-16">
+          <header className="mb-12 text-center sm:mb-16 max-sm:mb-10">
             <p className="mb-3 font-mono text-sm tracking-[0.25em] text-slate-500/80 uppercase dark:text-slate-400/60">
               {t("projects.subhead")}
             </p>
-            <h1 className="text-4xl font-bold tracking-tight sm:text-5xl lg:text-6xl">
+            <h1 className="text-4xl font-bold tracking-tight sm:text-5xl lg:text-6xl max-sm:text-3xl">
               <span className="bg-gradient-to-r from-[#1e293b] via-[#334155] to-[#475569] bg-clip-text text-transparent dark:from-[#e2e8f0] dark:via-[#f8fafc] dark:to-[#94a3b8]">
                 {t("projects.heading")}
               </span>
             </h1>
-            <p className="mx-auto mt-6 max-w-2xl text-base leading-relaxed text-muted-foreground sm:text-lg">
+            <p className="mx-auto mt-6 max-w-2xl text-base leading-relaxed text-muted-foreground sm:text-lg max-sm:text-sm max-sm:mt-4">
               {t("projects.intro")}
             </p>
           </header>
@@ -89,7 +89,7 @@ export function ProjectsContent() {
           />
 
           {/* Divider */}
-          <div className="mb-12 flex items-center gap-4 sm:mb-16">
+          <div className="mb-12 flex items-center gap-4 sm:mb-16 max-sm:mb-8 max-sm:gap-3">
             <div className="h-7 w-1 shrink-0 rounded-full bg-gradient-to-b from-slate-500 via-slate-400 to-slate-600" />
             <span className="shrink-0 font-mono text-sm tracking-[0.2em] text-slate-500/80 uppercase dark:text-slate-400/70">
               {t("projects.featured")}
@@ -119,7 +119,7 @@ export function ProjectsContent() {
           </motion.div>
 
           {/* ── Project experience divider ── */}
-          <div className="mb-12 mt-16 flex items-center gap-4 sm:mb-16 sm:mt-20">
+          <div className="mb-12 mt-16 flex items-center gap-4 sm:mb-16 sm:mt-20 max-sm:mb-8 max-sm:mt-12">
             <div className="h-7 w-1 shrink-0 rounded-full bg-gradient-to-b from-brand/70 via-brand/50 to-brand/30" />
             <span className="shrink-0 font-mono text-sm tracking-[0.2em] text-slate-500/80 uppercase dark:text-slate-400/70">
               {t("experience.sectionTitle")}

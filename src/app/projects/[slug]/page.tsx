@@ -18,7 +18,7 @@ export async function generateMetadata({
   const project = getProjectById(slug);
 
   if (!project) {
-    return { title: "项目未找到 - HOU Universe" };
+    return { title: "Project Not Found - HOU Universe" };
   }
 
   return {
