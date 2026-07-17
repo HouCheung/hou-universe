@@ -330,8 +330,11 @@ export function NumberRush({ open, onClose }: NumberRushProps) {
   /* ── Derived values ── */
   const { cols } = getGridConfig(difficulty);
   const currentBest = difficulty === "3x3" ? best3x3 : best4x4;
-  // Responsive cell font: larger text for 3×3 grid, slightly smaller for denser 4×4
-  const cellFontClass = cols === 3 ? "text-2xl sm:text-3xl" : "text-xl sm:text-2xl";
+  // Responsive cell font: larger for 3×3, smaller for denser 4×4, mobile-friendly
+  const cellFontClass =
+    cols === 3
+      ? "text-xl sm:text-3xl"
+      : "text-base sm:text-xl";
 
   /* ── Render ── */
   return (
@@ -351,9 +354,10 @@ export function NumberRush({ open, onClose }: NumberRushProps) {
           {/* ── Modal panel ── */}
           <motion.div
             className={cn(
-              "glass-card relative z-10 flex w-full max-w-[600px] flex-col items-center gap-4 rounded-2xl p-6 sm:gap-5 sm:p-8",
+              "glass-card preserve-padding relative z-10 flex w-full max-w-[600px] flex-col items-center gap-3 rounded-2xl p-4 sm:gap-5 sm:p-8",
               "border-brand/20 shadow-[0_0_40px_rgba(var(--brand-rgb),0.15)]",
               "max-h-[95vh] overflow-y-auto",
+              "mx-2 sm:mx-0",
             )}
             initial={{ opacity: 0, scale: 0.9, y: 20 }}
             animate={{ opacity: 1, scale: 1, y: 0 }}
@@ -379,7 +383,7 @@ export function NumberRush({ open, onClose }: NumberRushProps) {
 
             {/* ── Info bar: difficulty · timer · best record ── */}
             <div className="flex w-full flex-wrap items-center justify-center gap-2 text-sm text-muted-foreground">
-              <span className="glass-card rounded-lg px-3 py-1 text-xs font-medium">
+              <span className="glass-card preserve-padding rounded-lg px-3 py-1 text-xs font-medium">
                 {t("playground.numberRush.currentLevel")}
               </span>
 
@@ -400,7 +404,7 @@ export function NumberRush({ open, onClose }: NumberRushProps) {
 
             {/* ── Number grid ── */}
             <div
-              className="grid w-full max-w-[520px] gap-2 sm:gap-3"
+              className="preserve-grid-cols grid w-full max-w-[520px] gap-1.5 sm:gap-3"
               style={{ gridTemplateColumns: `repeat(${cols}, minmax(0, 1fr))` }}
             >
               {numbers.map((value, index) => {
@@ -417,13 +421,14 @@ export function NumberRush({ open, onClose }: NumberRushProps) {
                       "relative flex items-center justify-center rounded-xl border-2 font-bold select-none",
                       "transition-colors duration-150",
                       "focus:outline-none focus-visible:ring-2 focus-visible:ring-brand/50",
-                      "min-w-[44px] sm:min-w-[64px] aspect-square",
+                      "min-w-[48px] min-h-[48px] sm:min-w-[64px] sm:min-h-[64px] aspect-square",
+                      "touch-manipulation",
                       // Default style
                       "border-slate-200 bg-slate-50 text-slate-700",
                       "dark:border-white/[0.08] dark:bg-white/[0.04] dark:text-slate-200",
-                      // Hover (suppressed while processing)
+                      // Hover (desktop) + Active (mobile touch feedback)
                       !isProcessing &&
-                        "hover:border-brand/40 hover:bg-brand/5 dark:hover:border-brand/30 dark:hover:bg-brand/5",
+                        "hover:border-brand/40 hover:bg-brand/5 active:border-brand/60 active:bg-brand/10 dark:hover:border-brand/30 dark:hover:bg-brand/5 dark:active:border-brand/40 dark:active:bg-brand/10",
                       // Correct feedback
                       isClickedCell &&
                         isCorrect &&

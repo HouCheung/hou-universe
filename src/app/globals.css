@@ -759,8 +759,8 @@ html[data-entrance-phase="complete"] .planet-entrance {
   }
 
   /* ── 卡片组件统一样式 ── */
-  .glass-card,
-  .glass-card-hover {
+  .glass-card:not(.preserve-padding),
+  .glass-card-hover:not(.preserve-padding) {
     border-radius: 0.75rem !important;
     padding: 1.25rem !important;
   }
@@ -807,8 +807,8 @@ html[data-entrance-phase="complete"] .planet-entrance {
     gap: 0.5rem;
   }
 
-  /* ── 网格布局单列化 ── */
-  .grid {
+  /* ── 网格布局单列化（排除游戏网格等需要保持多列的场景）── */
+  .grid:not(.preserve-grid-cols) {
     grid-template-columns: 1fr !important;
   }
 
