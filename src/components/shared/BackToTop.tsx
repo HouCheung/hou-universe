@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect, useCallback } from "react";
+import { useState, useEffect, useCallback, useRef } from "react";
 import { useTranslation } from "react-i18next";
 import { motion, AnimatePresence } from "framer-motion";
 import { ArrowUp } from "lucide-react";
@@ -8,15 +8,35 @@ import { ArrowUp } from "lucide-react";
 export function BackToTop() {
   const { t } = useTranslation();
   const [visible, setVisible] = useState(false);
+  const lastVisibleRef = useRef(false);
 
+  // Throttled via rAF to avoid triggering React re-renders on every scroll pixel
   const handleScroll = useCallback(() => {
-    setVisible(window.scrollY > window.innerHeight);
+    const isVisible = window.scrollY > window.innerHeight;
+    // Only update state when crossing the threshold — avoids unnecessary re-renders
+    if (isVisible !== lastVisibleRef.current) {
+      lastVisibleRef.current = isVisible;
+      setVisible(isVisible);
+    }
   }, []);
 
   useEffect(() => {
-    window.addEventListener("scroll", handleScroll, { passive: true });
-    handleScroll();
-    return () => window.removeEventListener("scroll", handleScroll);
+    let rafId: number | null = null;
+
+    const onScroll = () => {
+      if (rafId !== null) return; // already queued
+      rafId = requestAnimationFrame(() => {
+        rafId = null;
+        handleScroll();
+      });
+    };
+
+    window.addEventListener("scroll", onScroll, { passive: true });
+    handleScroll(); // set initial state
+    return () => {
+      window.removeEventListener("scroll", onScroll);
+      if (rafId !== null) cancelAnimationFrame(rafId);
+    };
   }, [handleScroll]);
 
   const scrollToTop = () => {

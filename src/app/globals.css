@@ -152,6 +152,11 @@ html[data-theme="light"] * {
   html {
     @apply font-sans;
     scroll-behavior: smooth;
+    -webkit-overflow-scrolling: touch;
+  }
+  /* GPU-composited scroll container — ensures smooth momentum scroll on iOS */
+  body {
+    overscroll-behavior-y: contain;
   }
 }
 
@@ -449,6 +454,55 @@ body::after {
 }
 
 /* ══════════════════════════════════════════════════════════════
+   ── 滚动性能优化：GPU合成层 + 布局隔离 ──
+   ══════════════════════════════════════════════════════════════ */
+/* Fixed-position elements promoted to own compositor layer.
+   Only targets the main header nav (the primary fixed element during scroll).
+   Avoids blanket [class*="fixed"] to prevent excess GPU memory from too many layers. */
+header.fixed {
+  will-change: transform;
+}
+
+/* Canvas / WebGL backgrounds: promote to GPU layer, avoid scroll-triggered repaint */
+canvas.fixed {
+  will-change: transform;
+  transform: translateZ(0);
+}
+
+/* Layout containment for long-scroll content sections — isolates layout
+   recalc so scrolling through one section doesn't reflow others.
+   Applied only via utility class to avoid breaking positioned children. */
+.contain-layout {
+  contain: layout style;
+}
+
+/* Image size stability — prevents layout shift & scroll jank when
+   images load mid-scroll. */
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+/* Card containers — prevent hover-state layout shifts during scroll.
+   contain: layout style isolates recalc without clipping box-shadows
+   (contain: paint would clip the outer box-shadow on hover). */
+.glass-card,
+.glass-card-hover {
+  contain: layout style;
+}
+
+/* Backdrop-filter optimization: force GPU compositing so the browser
+   doesn't re-compute the filter on every scroll frame.
+   translateZ(0) creates a dedicated GPU layer for the filter calculation. */
+header[class*="backdrop-blur"],
+.glass-card,
+.glass-card-hover,
+.glass-input {
+  transform: translateZ(0);
+  backface-visibility: hidden;
+}
+
+/* ══════════════════════════════════════════════════════════════
    ── 自定义宇宙风格光标 ──
    ══════════════════════════════════════════════════════════════ */
 @media (hover: hover) and (pointer: fine) {
@@ -674,6 +728,19 @@ html[data-entrance-phase="complete"] .planet-entrance {
   html, body {
     overflow-x: hidden !important;
     max-width: 100vw;
+  }
+
+  /* ── 移动端触控优化：消除300ms点击延迟，提升触摸响应 ── */
+  a, button, [role="button"], input, textarea, select {
+    touch-action: manipulation;
+  }
+
+  /* ── iOS 惯性滚动 + 防止橡皮筋抖动 ── */
+  html {
+    -webkit-overflow-scrolling: touch;
+  }
+  body {
+    overscroll-behavior-y: contain;
   }
 
   /* ── 标题字号统一适配 ── */

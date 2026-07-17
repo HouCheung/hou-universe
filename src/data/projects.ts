@@ -131,6 +131,62 @@ export const projects: Project[] = [
       },
     ],
   },
+  {
+    id: "churn-attribution-platform",
+    title: "流失归因分析平台",
+    category: "data",
+    description:
+      "基于 XGBoost + SHAP 的智能流失归因决策系统，将黑盒模型转化为可落地的业务策略，支持风险分层、特征归因与策略 ROI 模拟。",
+    fullDescription:
+      "面向用户流失治理场景，基于 XGBoost + SHAP 构建的端到端智能归因决策系统，将黑盒预测模型转化为可落地的业务运营策略。借助 Claude Code 与 Superpower 能力快速搭建全栈原型，基于 XGBoost 算法构建流失预测模型，AUC 达 0.85 以上；引入 SHAP 可解释性框架实现特征重要性排序与单用户归因可视化；设计策略模拟模块支持动态调整干预参数并实时计算预估挽回 GMV 与 ROI。采用模块化架构设计，6 处代码修改即可完成合成数据到真实业务数据的无缝迁移，全链路双层异常兜底杜绝单点故障。使用 Streamlit 搭建响应式深色主题界面，集成 Plotly 交互式图表，实现零服务端依赖、本地一键运行。",
+    detail: {
+      background:
+        "传统流失治理依赖经验判断，缺乏量化归因与策略效果预估，无法精准定位高风险人群与核心流失动因。流失归因分析平台应运而生，基于 XGBoost + SHAP 构建端到端智能归因决策系统，借助 Claude Code 与 Superpower 快速搭建全栈原型，覆盖 7043 名用户全量流失风险预测，将黑盒模型转化为可落地的业务运营策略。",
+      coreFeatures: [
+        "XGBoost 流失预测模型：基于 XGBoost 算法构建流失预测模型，输出个体级流失概率，AUC 达 0.85 以上，精准识别高风险人群",
+        "SHAP 可解释性归因：引入 SHAP 框架实现全局特征重要性排序与单用户归因可视化，定位核心流失驱动因子",
+        "策略模拟模块：支持动态调整干预参数，实时计算预估挽回 GMV 与投入回报比，量化策略效果",
+        "模块化架构设计：6 处代码修改即可完成合成数据到真实业务数据的无缝迁移，全链路双层异常兜底",
+        "Streamlit 交互界面：响应式深色主题界面，集成 Plotly 交互式图表，零服务端依赖、本地一键运行",
+      ],
+      techSolution:
+        "基于 XGBoost 算法构建流失预测模型，结合 SHAP 可解释性框架实现全局特征重要性分析与单用户归因可视化。策略模拟模块支持动态参数调整与 ROI 实时计算。前端使用 Streamlit 搭建响应式深色主题界面，集成 Plotly 交互式图表。采用模块化架构设计，6 处代码修改即可完成合成数据到真实业务数据的无缝迁移，全链路双层异常兜底确保系统稳定性。纯前端计算架构，无需 GPU，普通设备即可运行，可快速嵌入企业数据中台。",
+      highlights: [
+        "XGBoost + SHAP 端到端归因：流失预测模型 AUC 达 0.85 以上，SHAP 实现全局特征重要性排序与单用户归因可视化",
+        "策略 ROI 模拟引擎：支持动态调整干预参数，实时计算预估挽回 GMV 与投入回报比",
+        "模块化架构 + 故障免疫：6 处代码修改完成数据迁移，全链路双层异常兜底杜绝单点故障",
+        "零依赖纯前端部署：Streamlit + Plotly 响应式深色主题界面，本地一键运行，可快速嵌入企业数据中台",
+      ],
+    },
+    tags: ["Python", "XGBoost", "SHAP", "Streamlit", "Plotly"],
+    coverImage: "/images/projects/churn-attribution-cover.png",
+    techStack: [
+      "Python",
+      "XGBoost",
+      "SHAP",
+      "Streamlit",
+      "Plotly",
+      "Pandas",
+      "NumPy",
+      "Scikit-learn",
+    ],
+    liveUrl: "/contact",
+    downloadUrl: "",
+    demoUrl: "",
+    githubUrl: "",
+    createdAt: "2026-07-17",
+    updateLog: [
+      {
+        version: "v1.0.0",
+        date: "2026-07-17",
+        changes: [
+          "首个版本上线，基于 XGBoost + SHAP 构建端到端流失归因决策系统",
+          "实现流失预测模型（AUC > 0.85）、SHAP 特征归因可视化与策略 ROI 模拟三大核心模块",
+          "覆盖 7043 名用户全量流失风险预测，支持 Streamlit 本地一键运行",
+        ],
+      },
+    ],
+  },
 ];
 
 export function getProjectById(id: string): Project | undefined {

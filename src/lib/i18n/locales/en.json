@@ -3,6 +3,7 @@
     "home": "Home",
     "about": "About",
     "projects": "Projects",
+    "playground": "Playground",
     "notes": "Notes",
     "tools": "Tools",
     "guestbook": "Guestbook",
@@ -86,6 +87,12 @@
     "skills": "Skills"
   },
   "aboutProjects": {
+    "p0": {
+      "title": "Churn Attribution Analysis Platform",
+      "role": "Independently Developed",
+      "period": "2026.07.17",
+      "desc": "An end-to-end intelligent churn attribution decision system built on XGBoost + SHAP, covering full churn risk prediction for 7,043 users with AUC above 0.85. Introduces SHAP explainability for feature attribution visualization and a strategy simulation module for real-time ROI calculation — transforming black-box models into actionable business strategies."
+    },
     "p1": {
       "title": "Million-Scale E-Commerce User Behavior Analysis & Visualization System",
       "role": "Independent Developer",
@@ -169,6 +176,7 @@
     "livePreview": "Live Preview",
     "download": "Download",
     "githubRepo": "GitHub Repo",
+    "requestAccess": "Request Access",
     "aboutProject": "About Project",
     "projectBackground": "Background",
     "coreFeatures": "Core Features",
@@ -265,6 +273,38 @@
             "First version launched, supporting dual-mode bulk question import via text paste and file upload",
             "Built-in mistake notebook, favorites, and targeted practice learning modules",
             "Implemented answer timing, accuracy statistics, and data analytics dashboard"
+          ]
+        }
+      ]
+    },
+    "churn-attribution-platform": {
+      "title": "Churn Attribution Analysis Platform",
+      "category": "Data Analysis",
+      "description": "Intelligent churn attribution decision system based on XGBoost + SHAP, transforming black-box models into actionable business strategies with risk stratification, feature attribution and strategy ROI simulation.",
+      "fullDescription": "An end-to-end intelligent attribution decision system built on XGBoost + SHAP for user churn governance, transforming black-box prediction models into actionable business strategies. Built the full-stack prototype rapidly with Claude Code and Superpower; constructed churn prediction model based on XGBoost algorithm, outputting user-level churn probability with AUC above 0.85; introduced SHAP explainability framework for feature importance ranking and single-user attribution visualization; designed strategy simulation module supporting dynamic adjustment of intervention parameters and real-time calculation of estimated recovered GMV and ROI. Adopted modular architecture design; seamless migration from synthetic data to real business data with only 6 code changes; full-link double-layer exception handling to prevent page crash. Built responsive dark theme interface with Streamlit, integrated Plotly interactive charts, zero server dependency and one-click local operation.",
+      "background": "Traditional churn management relies on empirical judgment, lacking quantitative attribution and strategy effect estimation, failing to accurately identify high-risk groups and core churn drivers. The Churn Attribution Analysis Platform was born — an end-to-end intelligent attribution decision system built on XGBoost + SHAP, rapidly prototyped with Claude Code and Superpower, covering full churn risk prediction for 7,043 users, transforming black-box models into actionable business strategies.",
+      "coreFeatures": [
+        "XGBoost churn prediction model: constructed churn prediction model based on XGBoost algorithm, outputting user-level churn probability with AUC above 0.85, accurately identifying high-risk groups",
+        "SHAP explainable attribution: introduced SHAP framework for global feature importance ranking and single-user attribution visualization, locating core churn driving factors",
+        "Strategy simulation module: supports dynamic adjustment of intervention parameters, real-time calculation of estimated recovered GMV and ROI, quantifying strategy effectiveness",
+        "Modular architecture design: seamless migration from synthetic data to real business data with only 6 code changes, full-link double-layer exception handling",
+        "Streamlit interactive interface: responsive dark theme interface, integrated Plotly interactive charts, zero server dependency and one-click local operation"
+      ],
+      "techSolution": "Built churn prediction model based on XGBoost algorithm, combined with SHAP explainability framework for global feature importance analysis and single-user attribution visualization. Strategy simulation module supports dynamic parameter adjustment and real-time ROI calculation. Frontend uses Streamlit for responsive dark theme interface with Plotly interactive charts. Modular architecture design enables seamless migration from synthetic data to real business data with only 6 code changes; full-link double-layer exception handling ensures system stability. Pure frontend computing architecture, no GPU required, runs on ordinary devices, can be quickly embedded in enterprise data middle platforms.",
+      "highlights": [
+        "XGBoost + SHAP end-to-end attribution: churn prediction model with AUC above 0.85, SHAP enables global feature importance ranking and single-user attribution visualization",
+        "Strategy ROI simulation engine: supports dynamic adjustment of intervention parameters, real-time calculation of estimated recovered GMV and ROI",
+        "Modular architecture + fault immunity: data migration with 6 code changes, full-link double-layer exception handling eliminates single point failures",
+        "Zero-dependency pure frontend deployment: Streamlit + Plotly responsive dark theme interface, one-click local operation, quickly embeddable in enterprise data middle platforms"
+      ],
+      "updateLog": [
+        {
+          "version": "v1.0.0",
+          "date": "2026-07-17",
+          "changes": [
+            "First version launched, end-to-end churn attribution decision system built on XGBoost + SHAP",
+            "Implemented three core modules: churn prediction model (AUC > 0.85), SHAP feature attribution visualization, and strategy ROI simulation",
+            "Covered full churn risk prediction for 7,043 users, supporting one-click Streamlit local operation"
           ]
         }
       ]
@@ -553,6 +593,25 @@
       "teamMember": "Team Member"
     },
     "projects": {
+      "churn-attribution-platform": {
+        "title": "Churn Attribution Analysis Platform",
+        "role": "Independently Developed",
+        "description": "An end-to-end intelligent attribution decision system built on XGBoost + SHAP for user churn governance, transforming black-box prediction models into actionable business strategies with risk stratification, feature attribution and strategy ROI simulation.",
+        "background": "Traditional churn management relies on empirical judgment, lacking quantitative attribution and strategy effect estimation, failing to accurately identify high-risk groups and core churn drivers.",
+        "coreWork": [
+          "Built the full-stack prototype rapidly with Claude Code and Superpower; constructed churn prediction model based on XGBoost algorithm, outputting user-level churn probability with AUC above 0.85",
+          "Introduced SHAP explainability framework to realize global feature importance ranking and single-user attribution visualization, locating core churn driving factors",
+          "Designed strategy simulation module, supporting dynamic adjustment of intervention parameters and real-time calculation of estimated recovered GMV and ROI",
+          "Adopted modular architecture design; seamless migration from synthetic data to real business data with only 6 code changes; full-link double-layer exception handling to prevent page crash caused by single point failure",
+          "Built responsive dark theme interface with Streamlit, integrated Plotly interactive charts, zero server dependency and one-click local operation"
+        ],
+        "achievements": [
+          "Covered full churn risk prediction for 7,043 users, accurately identifying high-risk groups",
+          "Attribution results directly connect with operation actions, outputting actionable user retention strategies",
+          "Fault-immune design ensures zero blank screen under abnormal scenarios, greatly improving system stability and availability",
+          "Pure frontend computing architecture, no GPU required, runs on ordinary devices, can be quickly embedded in enterprise data middle platforms"
+        ]
+      },
       "ecommerce-user-behavior": {
         "title": "10M+ E-commerce User Behavior Full-link Analysis & Visualization System",
         "role": "Independently Developed",
@@ -625,5 +684,40 @@
     "title": "Digital Business Card",
     "description": "Download vCard file to import into your phone contacts",
     "download": "Download Card"
+  },
+  "playground": {
+    "pageTitle": "Playground - HOU Universe",
+    "pageDesc": "Interactive algorithm lab — a collection of fun browser games blending data science concepts with playful interactions.",
+    "subhead": "Playground",
+    "heading": "Playground",
+    "intro": "An interactive algorithm experiment space — explore data science concepts through fun browser games. Pick one and start playing!",
+    "backToPlayground": "Back to Playground",
+    "startButton": "Start",
+    "loading": "Loading game…",
+    "games": {
+      "number-rush": {
+        "title": "🔢 Number Rush Challenge",
+        "description": "Click numbers in ascending order and race for the fastest time",
+        "tag": "Logic"
+      }
+    },
+    "numberRush": {
+      "waitingForStart": "Tap number 1 to start timing",
+      "correct": "Correct! Find the next number",
+      "wrongOrder": "❌ Wrong order, round automatically reset",
+      "completed": "Completed! Total time: {{time}} ms",
+      "bestRecord": "Best Record: {{best}} ms",
+      "noRecord": "No Record",
+      "currentLevel": "Current Level: 3×3 (1~9)",
+      "clearedUpgrading": "Cleared! Upgrading to 4×4 (1~16)",
+      "restart": "Restart",
+      "close": "Close"
+    },
+    "notFound": {
+      "subhead": "404",
+      "heading": "Game Not Found",
+      "description": "This game seems to have drifted into deep space.",
+      "backToPlayground": "Back to Playground"
+    }
   }
 }

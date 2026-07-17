@@ -4,7 +4,7 @@ import { useState } from "react";
 import Link from "next/link";
 import { useTranslation } from "react-i18next";
 import { motion, type Variants } from "framer-motion";
-import { Download } from "lucide-react";
+import { Download, Send } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { TiltCard } from "@/components/shared/TiltCard";
@@ -124,7 +124,7 @@ export function ProjectCard({ project, index }: ProjectCardProps) {
           </div>
 
           {/* Action button */}
-          {project.downloadUrl && (
+          {project.downloadUrl ? (
             <div className="mt-auto flex justify-center pt-2">
               <Button
                 render={
@@ -141,7 +141,19 @@ export function ProjectCard({ project, index }: ProjectCardProps) {
                 {t("projects.download")}
               </Button>
             </div>
-          )}
+          ) : project.liveUrl ? (
+            <div className="mt-auto flex justify-center pt-2">
+              <Button
+                render={<Link href={project.liveUrl} />}
+                variant="default"
+                size="sm"
+                className="transition-all duration-200"
+              >
+                <Send className="mr-1.5 size-3.5" />
+                {t("projects.requestAccess")}
+              </Button>
+            </div>
+          ) : null}
         </div>
       </TiltCard>
     </motion.div>

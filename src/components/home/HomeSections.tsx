@@ -15,7 +15,7 @@ import { skillLevelData } from '@/data/about';
 const allSkills = skillLevelData.flatMap((cat) =>
   cat.skills.map((s) => ({ name: s.name, nameKey: s.nameKey }))
 );
-const featuredProjects = projects.slice(0, 2);
+const featuredProjects = projects.slice(0, 3);
 
 const sectionVariants: Variants = {
   hidden: { opacity: 0, y: 40 },
@@ -58,7 +58,7 @@ export function HomeSections() {
       >
         <SectionHeader titleKey="home.featuredProjects" />
 
-        <div className="grid gap-6 sm:grid-cols-2 card-grid-depth">
+        <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3 card-grid-depth">
           {featuredProjects.map((project, i) => (
             <ProjectCard key={project.id} project={project} index={i} />
           ))}

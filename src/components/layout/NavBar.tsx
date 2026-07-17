@@ -3,7 +3,7 @@
 import { useState, useEffect, useLayoutEffect, useCallback, useRef } from "react";
 import { createPortal } from "react-dom";
 import Link from "next/link";
-import { usePathname } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
 import { useTranslation } from "react-i18next";
 import { Menu, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
@@ -16,6 +16,7 @@ const NAV_KEYS = [
   { href: "/", key: "nav.home" },
   { href: "/about", key: "nav.about" },
   { href: "/projects", key: "nav.projects" },
+  { href: "/playground", key: "nav.playground" },
   { href: "/notes", key: "nav.notes" },
   { href: "/tools", key: "nav.tools" },
   { href: "/links", key: "nav.links" },
@@ -26,14 +27,36 @@ const NAV_KEYS = [
 export function NavBar() {
   const { t } = useTranslation();
   const pathname = usePathname();
+  const router = useRouter();
   const [mobileOpen, setMobileOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const [portalMounted, setPortalMounted] = useState(false);
 
+  // ── Throttled scroll listener for header blur state ──
+  // Uses RAF-based throttling to avoid excessive re-renders during scroll
   useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 80);
+    let rafId: number | null = null;
+    let lastState = false;
+
+    const onScroll = () => {
+      if (rafId !== null) return; // already queued
+      rafId = requestAnimationFrame(() => {
+        rafId = null;
+        const isScrolled = window.scrollY > 80;
+        if (isScrolled !== lastState) {
+          lastState = isScrolled;
+          setScrolled(isScrolled);
+        }
+      });
+    };
+
     window.addEventListener("scroll", onScroll, { passive: true });
-    return () => window.removeEventListener("scroll", onScroll);
+    // Run once to set initial state
+    onScroll();
+    return () => {
+      window.removeEventListener("scroll", onScroll);
+      if (rafId !== null) cancelAnimationFrame(rafId);
+    };
   }, []);
 
   // Portal target — mount synchronously before paint so createPortal
@@ -48,6 +71,9 @@ export function NavBar() {
   const scrollPosRef = useRef(0);
   const wasLockedRef = useRef(false);
   const drawerRef = useRef<HTMLDivElement>(null);
+  // Tracks whether the drawer close was triggered by a navigation click
+  // (in which case we must NOT restore old scroll position)
+  const isNavigatingRef = useRef(false);
 
   // ── Lock page scroll when mobile drawer opens (<768px only).
   // Uses overflow:hidden + touch-action:none (NOT position:fixed)
@@ -75,6 +101,19 @@ export function NavBar() {
     document.body.style.touchAction = "none";
   }, [mobileOpen]);
 
+  // ── Strip all scroll-lock styles synchronously (single reflow).
+  // Does NOT restore old scroll position — that's the caller's job.
+  const clearScrollLock = useCallback(() => {
+    document.documentElement.style.overflow = "";
+    document.documentElement.style.overscrollBehavior = "";
+    document.documentElement.style.scrollBehavior = "";
+    document.body.style.overflow = "";
+    document.body.style.overscrollBehavior = "";
+    document.body.style.touchAction = "";
+    // Force reflow so the browser registers unlocked scroll
+    void document.body.offsetHeight;
+  }, []);
+
   // ── Restore scroll position atomically — all style removal +
   // scrollTo in the same synchronous block, zero frames in between.
   const restoreScroll = useCallback(() => {
@@ -82,22 +121,11 @@ export function NavBar() {
     wasLockedRef.current = false;
 
     const savedY = scrollPosRef.current;
-
-    // Strip every lock style synchronously (single reflow)
-    document.documentElement.style.overflow = "";
-    document.documentElement.style.overscrollBehavior = "";
-    document.documentElement.style.scrollBehavior = "";
-    document.body.style.overflow = "";
-    document.body.style.overscrollBehavior = "";
-    document.body.style.touchAction = "";
-
-    // Force the browser to recompute layout before scrollTo —
-    // guarantees the document has a valid scrollHeight to target.
-    void document.body.offsetHeight;
+    clearScrollLock();
 
     // Instant jump (scroll-behavior was set to "auto" on lock)
     window.scrollTo(0, Math.max(0, savedY));
-  }, []);
+  }, [clearScrollLock]);
 
   // ── Safeguard: if the component unmounts while the drawer is still
   // open (e.g. route change), restore scroll so the next page isn't
@@ -115,19 +143,68 @@ export function NavBar() {
   //      after the transition, eliminating multi-frame jank.
   const closeDrawer = useCallback(() => setMobileOpen(false), []);
 
+  // ── Mobile nav link click handler.
+  // Clears scroll lock IMMEDIATELY (doesn't wait for transition),
+  // then closes drawer. Does NOT restore old scroll position —
+  // the new page should always start at the top.
+  const handleMobileNavClick = useCallback(
+    (href: string) => {
+      isNavigatingRef.current = true;
+      // Clear scroll lock immediately so Next.js scroll restoration
+      // (which resets to top on navigation) can work correctly
+      clearScrollLock();
+      wasLockedRef.current = false;
+      // Close drawer — the CSS transition will still play out visually
+      setMobileOpen(false);
+      // Ensure scroll to top before navigation
+      window.scrollTo(0, 0);
+      // Navigate programmatically for precise control
+      router.push(href);
+    },
+    [clearScrollLock, router]
+  );
+
   // ── Fires when the drawer panel's CSS transform transition completes.
   // Only acts on the "close" direction (mobileOpen === false).
+  // Skips scroll restoration when navigating away (the new page needs
+  // to start at the top, not at the old scroll position).
   const handleDrawerTransitionEnd = useCallback(
     (e: React.TransitionEvent) => {
       // We only care about the transform property completing
       if (e.propertyName !== "transform") return;
       // Only restore scroll when the drawer just finished closing
-      if (!mobileOpen) {
+      // AND we are NOT navigating to a different page
+      if (!mobileOpen && !isNavigatingRef.current) {
         restoreScroll();
       }
+      isNavigatingRef.current = false;
     },
     [mobileOpen, restoreScroll]
   );
+
+  // ── After route change: reset navigating flag + scroll-to-top safety net.
+  // This catches edge cases where scrollTo(0,0) in handleMobileNavClick
+  // was overridden by browser scroll restoration or a delayed render.
+  useEffect(() => {
+    isNavigatingRef.current = false;
+    // If scroll is still locked from an aborted drawer close, unlock it
+    if (wasLockedRef.current) {
+      clearScrollLock();
+      wasLockedRef.current = false;
+    }
+    // Mobile safety net: ensure page starts at top after navigation.
+    // Uses double rAF to guarantee DOM is fully painted before checking.
+    if (window.innerWidth < 768) {
+      requestAnimationFrame(() => {
+        window.scrollTo(0, 0);
+        requestAnimationFrame(() => {
+          if (window.scrollY !== 0) {
+            window.scrollTo(0, 0);
+          }
+        });
+      });
+    }
+  }, [pathname, clearScrollLock]);
 
   return (
     <>
@@ -301,7 +378,10 @@ export function NavBar() {
                       >
                         <Link
                           href={href}
-                          onClick={closeDrawer}
+                          onClick={(e) => {
+                            e.preventDefault();
+                            handleMobileNavClick(href);
+                          }}
                           className={cn(
                             "flex items-center gap-3 rounded-lg px-4 py-3 text-sm transition-all duration-200",
                             isActive

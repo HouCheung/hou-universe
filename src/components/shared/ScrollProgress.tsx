@@ -45,25 +45,35 @@ export function ScrollProgress() {
     setProgress(latest);
   });
 
-  /* ── Derive section name from route + scroll position ── */
+  /* ── Derive section name from route + scroll position (throttled) ── */
   useEffect(() => {
     // On home page, detect section by viewport scroll
     if (pathname === "/") {
+      let rafId: number | null = null;
+
       const onScroll = () => {
-        const scrollY = window.scrollY;
-        const vh = window.innerHeight;
-        if (vh <= 0) return;
-        if (scrollY < vh * 0.6) {
-          setSectionName(t("nav.home"));
-        } else if (scrollY < vh * 2.8) {
-          setSectionName(t("nav.projects"));
-        } else {
-          setSectionName(t("nav.about"));
-        }
+        if (rafId !== null) return; // already queued
+        rafId = requestAnimationFrame(() => {
+          rafId = null;
+          const scrollY = window.scrollY;
+          const vh = window.innerHeight;
+          if (vh <= 0) return;
+          if (scrollY < vh * 0.6) {
+            setSectionName(t("nav.home"));
+          } else if (scrollY < vh * 2.8) {
+            setSectionName(t("nav.projects"));
+          } else {
+            setSectionName(t("nav.about"));
+          }
+        });
       };
+
       onScroll();
       window.addEventListener("scroll", onScroll, { passive: true });
-      return () => window.removeEventListener("scroll", onScroll);
+      return () => {
+        window.removeEventListener("scroll", onScroll);
+        if (rafId !== null) cancelAnimationFrame(rafId);
+      };
     }
 
     // Other pages — use pathname

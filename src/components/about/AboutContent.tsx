@@ -6,7 +6,7 @@ import { GitHubContributions } from "@/components/about/GitHubContributions";
 import { skillLevelData } from "@/data/about";
 
 const courseKeys = Array.from({ length: 9 }, (_, i) => `about.courses.${i}`);
-const projectKeys = ["p1", "p2", "p3", "p4"];
+const projectKeys = ["p0", "p1", "p2", "p3", "p4"];
 const aiSkillKeys = ["0", "1", "2"];
 
 function SectionDivider({ titleKey, icon }: { titleKey: string; icon: string }) {
