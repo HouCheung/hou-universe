@@ -5,6 +5,7 @@ import { motion, type Variants } from 'framer-motion';
 import Link from 'next/link';
 import { ArrowRight, Mail } from 'lucide-react';
 import { TypeWriter } from './TypeWriter';
+import { MissionBar } from './MissionBar';
 import { useEntrance } from './EntranceSequence';
 
 const staggerContainer: Variants = {
@@ -81,6 +82,9 @@ export function HeroContent() {
           className="font-mono"
         />
       </motion.p>
+
+      {/* ★ Current Mission Bar */}
+      <MissionBar />
 
       {/* CTA buttons — 全站统一深蓝按钮规范 */}
       <motion.div
