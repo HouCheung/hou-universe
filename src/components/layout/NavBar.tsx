@@ -14,6 +14,7 @@ import { cn } from "@/lib/utils";
 
 const NAV_KEYS = [
   { href: "/", key: "nav.home" },
+  { href: "/ai-lab", key: "nav.aiLab" },
   { href: "/about", key: "nav.about" },
   { href: "/projects", key: "nav.projects" },
   { href: "/playground", key: "nav.playground" },
