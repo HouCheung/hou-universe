@@ -98,3 +98,21 @@ export interface GuestbookMessage {
   content: string;
   date: string;
 }
+
+export interface RoadmapNode {
+  id: string;
+  order: number;
+  titleKey: string;
+  descriptionKey: string;
+  status: "completed" | "in-progress" | "upcoming";
+  topics?: string[];
+}
+
+export interface RoadmapPhase {
+  id: string;
+  order: number;
+  titleKey: string;
+  descriptionKey: string;
+  status: "completed" | "in-progress" | "upcoming";
+  nodes: RoadmapNode[];
+}
