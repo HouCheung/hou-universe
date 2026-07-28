@@ -1,6 +1,7 @@
 {
   "nav": {
     "home": "首页",
+    "aiLab": "AI Lab",
     "about": "关于",
     "projects": "项目",
     "playground": "游乐场",
@@ -31,7 +32,11 @@
     "role3": "数据工程师",
     "cta1": "查看项目",
     "cta2": "联系我",
-    "scrollDown": "向下滚动查看内容"
+    "scrollDown": "向下滚动查看内容",
+    "missionLabel": "★ 当前任务",
+    "missionPhase": "阶段",
+    "missionTask": "任务",
+    "viewAILab": "进入 AI Lab"
   },
   "home": {
     "featuredProjects": "精选项目",
@@ -718,6 +723,92 @@
       "heading": "游戏未找到",
       "description": "这个游戏似乎飘到了深空之中。",
       "backToPlayground": "返回游乐场"
+    }
+  },
+  "aiLab": {
+    "pageTitle": "AI Lab - HOU Universe",
+    "pageDesc": "AI Lab 是 HOU Universe 的 AI 研究实验空间——围绕 MiniMind 从零构建一个小型语言模型，逐行理解源码，系统性掌握 LLM 全链路技术栈。",
+    "subhead": "AI Lab",
+    "heading": "AI Lab · MiniMind Research",
+    "intro": "从零开始，逐行构建一个小型语言模型。这不是一个教程合集——而是一场系统性的探索之旅，围绕 MiniMind 源码，深入理解 LLM 全技术栈。",
+    "missionStatement": "逐行理解 MiniMind 源码，系统性构建小型语言模型全链路知识体系。",
+    "sections": {
+      "mission": "任务宣言",
+      "roadmap": "学习路线图",
+      "timeline": "学习时间轴",
+      "knowledgeMap": "知识图谱",
+      "progress": "最新进度",
+      "resources": "学习资源",
+      "github": "GitHub",
+      "blog": "学习笔记"
+    },
+    "comingSoon": "内容建设中",
+    "comingSoonDesc": "该板块正在筹备中，内容将逐步更新。",
+    "backToLab": "返回 AI Lab",
+    "viewOnGithub": "在 GitHub 上查看",
+    "readBlog": "阅读笔记"
+  },
+  "roadmap": {
+    "phases": {
+      "foundation": {
+        "title": "Phase 1: 基础架构",
+        "description": "从 Tokenizer 到 Transformer——理解语言模型的核心基石"
+      },
+      "training": {
+        "title": "Phase 2: 训练与微调",
+        "description": "掌握从预训练到对齐的全流程训练方法"
+      },
+      "advanced": {
+        "title": "Phase 3: 高级能力",
+        "description": "探索检索增强生成与智能体系统"
+      }
+    },
+    "nodes": {
+      "tokenizer": {
+        "title": "Tokenizer",
+        "description": "理解文本分词——从字符到子词的词汇构建"
+      },
+      "embedding": {
+        "title": "Embedding",
+        "description": "将离散 token 映射为连续语义向量空间"
+      },
+      "attention": {
+        "title": "Attention",
+        "description": "理解自注意力机制——Transformer 的核心引擎"
+      },
+      "transformer": {
+        "title": "Transformer",
+        "description": "构建完整的 Transformer 编解码架构"
+      },
+      "pretrain": {
+        "title": "Pretrain",
+        "description": "大规模无监督预训练——让模型学会语言"
+      },
+      "sft": {
+        "title": "SFT",
+        "description": "有监督微调——让模型遵循指令"
+      },
+      "lora": {
+        "title": "LoRA",
+        "description": "低秩适应——高效参数微调技术"
+      },
+      "rlhf": {
+        "title": "RLHF",
+        "description": "基于人类反馈的强化学习——让模型对齐偏好"
+      },
+      "rag": {
+        "title": "RAG",
+        "description": "检索增强生成——让模型访问外部知识"
+      },
+      "agent": {
+        "title": "Agent",
+        "description": "智能体系统——让模型使用工具与自主决策"
+      }
+    },
+    "status": {
+      "completed": "已完成",
+      "inProgress": "进行中",
+      "upcoming": "待探索"
     }
   }
 }

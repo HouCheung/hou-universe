@@ -1,6 +1,7 @@
 {
   "nav": {
     "home": "Home",
+    "aiLab": "AI Lab",
     "about": "About",
     "projects": "Projects",
     "playground": "Playground",
@@ -31,7 +32,11 @@
     "role3": "Data Engineer",
     "cta1": "View Projects",
     "cta2": "Contact Me",
-    "scrollDown": "Scroll down to explore"
+    "scrollDown": "Scroll down to explore",
+    "missionLabel": "★ Current Mission",
+    "missionPhase": "Phase",
+    "missionTask": "Task",
+    "viewAILab": "Enter AI Lab"
   },
   "home": {
     "featuredProjects": "Featured Projects",
@@ -718,6 +723,92 @@
       "heading": "Game Not Found",
       "description": "This game seems to have drifted into deep space.",
       "backToPlayground": "Back to Playground"
+    }
+  },
+  "aiLab": {
+    "pageTitle": "AI Lab - HOU Universe",
+    "pageDesc": "AI Lab is HOU Universe's AI research space — building a small language model from scratch around MiniMind, understanding every line of source code, systematically mastering the full LLM tech stack.",
+    "subhead": "AI Lab",
+    "heading": "AI Lab · MiniMind Research",
+    "intro": "Building a small language model from scratch, line by line. This isn't a tutorial collection — it's a systematic exploration journey, diving deep into the full LLM tech stack through MiniMind source code.",
+    "missionStatement": "Understand MiniMind source code line by line, systematically build a small language model full-stack knowledge system.",
+    "sections": {
+      "mission": "Mission",
+      "roadmap": "Learning Roadmap",
+      "timeline": "Learning Timeline",
+      "knowledgeMap": "Knowledge Map",
+      "progress": "Latest Progress",
+      "resources": "Resources",
+      "github": "GitHub",
+      "blog": "Blog"
+    },
+    "comingSoon": "Coming Soon",
+    "comingSoonDesc": "This section is under development. Content will be added progressively.",
+    "backToLab": "Back to AI Lab",
+    "viewOnGithub": "View on GitHub",
+    "readBlog": "Read Notes"
+  },
+  "roadmap": {
+    "phases": {
+      "foundation": {
+        "title": "Phase 1: Foundation",
+        "description": "From Tokenizer to Transformer — understanding the core building blocks of language models"
+      },
+      "training": {
+        "title": "Phase 2: Training & Fine-tuning",
+        "description": "Mastering the full training pipeline from pretraining to alignment"
+      },
+      "advanced": {
+        "title": "Phase 3: Advanced Capabilities",
+        "description": "Exploring retrieval-augmented generation and agent systems"
+      }
+    },
+    "nodes": {
+      "tokenizer": {
+        "title": "Tokenizer",
+        "description": "Understanding text tokenization — building vocabularies from characters to subwords"
+      },
+      "embedding": {
+        "title": "Embedding",
+        "description": "Mapping discrete tokens into continuous semantic vector space"
+      },
+      "attention": {
+        "title": "Attention",
+        "description": "Understanding self-attention — the core engine of Transformers"
+      },
+      "transformer": {
+        "title": "Transformer",
+        "description": "Building the complete Transformer encoder-decoder architecture"
+      },
+      "pretrain": {
+        "title": "Pretrain",
+        "description": "Large-scale unsupervised pretraining — teaching models to understand language"
+      },
+      "sft": {
+        "title": "SFT",
+        "description": "Supervised Fine-Tuning — teaching models to follow instructions"
+      },
+      "lora": {
+        "title": "LoRA",
+        "description": "Low-Rank Adaptation — efficient parameter-efficient fine-tuning"
+      },
+      "rlhf": {
+        "title": "RLHF",
+        "description": "Reinforcement Learning from Human Feedback — aligning models with preferences"
+      },
+      "rag": {
+        "title": "RAG",
+        "description": "Retrieval-Augmented Generation — giving models access to external knowledge"
+      },
+      "agent": {
+        "title": "Agent",
+        "description": "Agent systems — enabling models to use tools and make autonomous decisions"
+      }
+    },
+    "status": {
+      "completed": "Completed",
+      "inProgress": "In Progress",
+      "upcoming": "Upcoming"
     }
   }
 }
