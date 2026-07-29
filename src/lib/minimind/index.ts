@@ -34,6 +34,26 @@ export { MiniEmbedding } from "./embedding/Embedding";
 export type { MatrixInfo } from "./embedding/Embedding";
 export type { EmbeddingConfig, EmbeddingVector, EmbeddingMatrix } from "./embedding/types";
 
+// ── RoPE (Rotary Position Embedding) ──
+export { RotaryEmbedding } from "./rope/RotaryEmbedding";
+export type {
+  RoPEConfig,
+  FrequencyCache,
+  RotationTrace,
+  RotationResult,
+  QKRotationResult,
+} from "./rope/types";
+export {
+  getFrequencies,
+  getAngles,
+  getAllAngles,
+  frequencyCache,
+  rotateVector,
+  applyRotation,
+  applyQKRotation,
+  l2Norm,
+} from "./rope/math";
+
 // ── Pipeline ──
 export { MiniMindPipeline } from "./pipeline/MiniMindPipeline";
 export type { PipelineResult } from "./pipeline/types";
