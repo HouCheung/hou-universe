@@ -54,6 +54,25 @@ export {
   l2Norm,
 } from "./rope/math";
 
+// ── Attention (Multi-Head Self-Attention) ──
+export { MiniAttention } from "./attention/Attention";
+export type {
+  AttentionConfig,
+  AttentionInput,
+  AttentionScore,
+  AttentionTrace,
+  AttentionOutput,
+} from "./attention/types";
+export {
+  dotProduct,
+  matrixMultiply,
+  transpose,
+  softmax,
+  applyCausalMask,
+  applyPaddingMask,
+  scaledDotProductAttention,
+} from "./attention/math";
+
 // ── Pipeline ──
 export { MiniMindPipeline } from "./pipeline/MiniMindPipeline";
 export type { PipelineResult } from "./pipeline/types";
