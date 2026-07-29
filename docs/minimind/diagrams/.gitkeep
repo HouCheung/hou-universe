@@ -1,0 +1,5 @@
+# Diagrams
+
+此目录用于保存 MiniMind 架构和数据流的 Mermaid 流程图。
+
+命名规范：`{module-name}-{diagram-name}.mmd` 或 `.md`（内嵌 Mermaid）。

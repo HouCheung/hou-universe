@@ -1,0 +1,5 @@
+# Scripts
+
+此目录用于保存 MiniMind 学习辅助脚本（数据预处理、可视化、性能测试等）。
+
+命名规范：`{purpose}.py` 或 `{purpose}.sh`，每个脚本自包含、有清晰的 docstring。

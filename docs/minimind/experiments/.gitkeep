@@ -1,0 +1,5 @@
+# Experiments
+
+此目录用于保存 MiniMind 各模块的实验代码。
+
+命名规范：`{module-name}/` 子目录，内含独立的实验脚本和 README。

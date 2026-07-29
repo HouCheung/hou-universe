@@ -748,6 +748,54 @@
     "viewOnGithub": "View on GitHub",
     "readBlog": "Read Notes"
   },
+  "minimind": {
+    "experience": {
+      "pageTitle": "MiniMind Architecture Experience - HOU Universe",
+      "pageDesc": "Interactive architecture visualization of the MiniMind language model — explore the complete computation pipeline from text input to output.",
+      "subhead": "Architecture Experience",
+      "heading": "MiniMind Pipeline",
+      "intro": "A visual exploration of how MiniMind processes text end-to-end — from raw characters through tokenization, embedding, positional encoding, self-attention, and the full transformer block.",
+      "sectionTitles": {
+        "architecture": "Architecture Overview",
+        "flow": "Computation Flow",
+        "dependencyGraph": "Module Dependencies",
+        "progress": "Learning Progress"
+      },
+      "architecture": {
+        "title": "Why These Modules Exist",
+        "description": "Each component in MiniMind solves a specific problem. Understanding why each exists is the first step to understanding how they work together.",
+        "tokenizer": {
+          "title": "Tokenizer — Text to Numbers",
+          "description": "Computers don't understand text directly. The Tokenizer converts raw character sequences into discrete token IDs — the only representation the model can process. MiniMind uses a V1 Word Tokenizer that splits on whitespace, maps words to vocabulary indices, and supports encode/decode round-trips."
+        },
+        "embedding": {
+          "title": "Embedding — Discrete to Continuous",
+          "description": "Token IDs are meaningless integers. The Embedding layer maps each token ID to a dense vector of learnable parameters — placing semantically similar tokens near each other in a continuous vector space. This is the model's first step toward understanding meaning."
+        },
+        "transformer": {
+          "title": "Transformer — Layer by Layer Processing",
+          "description": "The Transformer block is the engine. Each layer applies multi-head self-attention (tokens look at each other), followed by a feed-forward network (per-token processing), with residual connections and layer normalization ensuring stable, deep training. Stacking multiple layers lets the model build increasingly abstract representations."
+        }
+      },
+      "flow": {
+        "title": "Complete Computation Flow",
+        "description": "Trace a single input through every processing stage of MiniMind — from raw text to final output.",
+        "nodes": {
+          "textInput": "Text Input",
+          "tokenIds": "Token IDs",
+          "output": "Output"
+        }
+      },
+      "dependencyGraph": {
+        "title": "Module Dependency Graph",
+        "description": "Auto-generated from the module registry. Arrows show prerequisite relationships — each module builds on the ones below it."
+      },
+      "progress": {
+        "title": "Learning Progress",
+        "description": "Track your progress through each MiniMind module. Data sourced from the learning roadmap."
+      }
+    }
+  },
   "roadmap": {
     "phases": {
       "foundation": {
@@ -764,6 +812,10 @@
       }
     },
     "nodes": {
+      "repo-overview": {
+        "title": "Repository Overview",
+        "description": "Understand the full MiniMind repo structure, architecture, and data flow"
+      },
       "tokenizer": {
         "title": "Tokenizer",
         "description": "Understanding text tokenization — building vocabularies from characters to subwords"

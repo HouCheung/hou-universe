@@ -1,0 +1,39 @@
+// ============================================================
+// MiniMind — index.ts
+// ============================================================
+// MiniMind 统一导出入口
+//
+// 整合所有 MiniMind 子模块的公开 API，
+// 供 Playground、AI Lab 和外部消费者使用。
+// ============================================================
+
+// ── Tokenizer ──
+export { MiniTokenizer } from "./tokenizer/MiniTokenizer";
+export type { MiniTokenizerOptions } from "./tokenizer/MiniTokenizer";
+
+export { Vocabulary, DEFAULT_SPECIAL_TOKENS, SPECIAL_TOKEN_TO_ID } from "./tokenizer/vocabulary";
+export type { SpecialToken } from "./tokenizer/vocabulary";
+
+export type { TokenInfo, ExplainResult } from "./tokenizer/types";
+
+export { TokenizerStage } from "./tokenizer/stages";
+export { TokenizerPipeline, getImplementedSteps, getPlannedSteps, getStepByStage } from "./tokenizer/pipeline";
+export type { PipelineStep } from "./tokenizer/pipeline";
+
+export {
+  EducationalTokenizerFeatures,
+  MiniMindTokenizerFeatures,
+  getSupportedFeatures,
+  getPlannedFeatures,
+  getFeaturesByVersion,
+} from "./tokenizer/comparison";
+export type { TokenizerFeature } from "./tokenizer/comparison";
+
+// ── Embedding ──
+export { MiniEmbedding } from "./embedding/Embedding";
+export type { MatrixInfo } from "./embedding/Embedding";
+export type { EmbeddingConfig, EmbeddingVector, EmbeddingMatrix } from "./embedding/types";
+
+// ── Pipeline ──
+export { MiniMindPipeline } from "./pipeline/MiniMindPipeline";
+export type { PipelineResult } from "./pipeline/types";

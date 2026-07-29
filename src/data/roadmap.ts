@@ -1,4 +1,47 @@
 import type { RoadmapPhase, RoadmapNode } from "@/types";
+import {
+  MINIMIND_MODULES,
+  type MiniMindModule,
+} from "./minimind/module-registry";
+
+// ============================================================
+// Roadmap ↔ Module Registry cross-reference
+// ============================================================
+// Roadmap nodes that correspond to MiniMind modules share the
+// same `id` field.  MINIMIND_MODULES is the single source of
+// truth for module-level metadata (status, description, paths);
+// the roadmap supplies the i18n key layer on top for display.
+//
+// When updating a module's status, change it in module-registry.ts
+// FIRST, then verify the matching roadmap node below is consistent.
+// ============================================================
+
+/** Map of MiniMind module id → module for O(1) cross-reference */
+const moduleMap = new Map<string, MiniMindModule>(
+  MINIMIND_MODULES.map((m) => [m.id, m])
+);
+
+/** Check whether a roadmap node id corresponds to a MiniMind module */
+export function isMiniMindModuleNode(nodeId: string): boolean {
+  return moduleMap.has(nodeId);
+}
+
+/** Get the MiniMind module metadata for a roadmap node (null if unrelated) */
+export function getMiniMindModuleForNode(
+  nodeId: string
+): MiniMindModule | null {
+  return moduleMap.get(nodeId) ?? null;
+}
+
+/** Verify that a roadmap node's status matches its module-registry entry */
+export function validateModuleNodeConsistency(
+  nodeId: string,
+  nodeStatus: RoadmapNode["status"]
+): boolean {
+  const mod = moduleMap.get(nodeId);
+  if (!mod) return true; // not a module node — no constraint
+  return mod.status === nodeStatus;
+}
 
 export const roadmapPhases: RoadmapPhase[] = [
   {
@@ -9,8 +52,16 @@ export const roadmapPhases: RoadmapPhase[] = [
     status: "in-progress",
     nodes: [
       {
-        id: "tokenizer",
+        id: "repo-overview",
         order: 1,
+        titleKey: "roadmap.nodes.repo-overview.title",
+        descriptionKey: "roadmap.nodes.repo-overview.description",
+        status: "completed",
+        topics: ["Repo Structure", "Data Flow", "Architecture", "Dependencies"],
+      },
+      {
+        id: "tokenizer",
+        order: 2,
         titleKey: "roadmap.nodes.tokenizer.title",
         descriptionKey: "roadmap.nodes.tokenizer.description",
         status: "in-progress",
@@ -18,7 +69,7 @@ export const roadmapPhases: RoadmapPhase[] = [
       },
       {
         id: "embedding",
-        order: 2,
+        order: 3,
         titleKey: "roadmap.nodes.embedding.title",
         descriptionKey: "roadmap.nodes.embedding.description",
         status: "upcoming",
@@ -26,7 +77,7 @@ export const roadmapPhases: RoadmapPhase[] = [
       },
       {
         id: "attention",
-        order: 3,
+        order: 4,
         titleKey: "roadmap.nodes.attention.title",
         descriptionKey: "roadmap.nodes.attention.description",
         status: "upcoming",
@@ -34,7 +85,7 @@ export const roadmapPhases: RoadmapPhase[] = [
       },
       {
         id: "transformer",
-        order: 4,
+        order: 5,
         titleKey: "roadmap.nodes.transformer.title",
         descriptionKey: "roadmap.nodes.transformer.description",
         status: "upcoming",
@@ -51,7 +102,7 @@ export const roadmapPhases: RoadmapPhase[] = [
     nodes: [
       {
         id: "pretrain",
-        order: 5,
+        order: 6,
         titleKey: "roadmap.nodes.pretrain.title",
         descriptionKey: "roadmap.nodes.pretrain.description",
         status: "upcoming",
@@ -59,7 +110,7 @@ export const roadmapPhases: RoadmapPhase[] = [
       },
       {
         id: "sft",
-        order: 6,
+        order: 7,
         titleKey: "roadmap.nodes.sft.title",
         descriptionKey: "roadmap.nodes.sft.description",
         status: "upcoming",
@@ -67,7 +118,7 @@ export const roadmapPhases: RoadmapPhase[] = [
       },
       {
         id: "lora",
-        order: 7,
+        order: 8,
         titleKey: "roadmap.nodes.lora.title",
         descriptionKey: "roadmap.nodes.lora.description",
         status: "upcoming",
@@ -75,7 +126,7 @@ export const roadmapPhases: RoadmapPhase[] = [
       },
       {
         id: "rlhf",
-        order: 8,
+        order: 9,
         titleKey: "roadmap.nodes.rlhf.title",
         descriptionKey: "roadmap.nodes.rlhf.description",
         status: "upcoming",
@@ -92,7 +143,7 @@ export const roadmapPhases: RoadmapPhase[] = [
     nodes: [
       {
         id: "rag",
-        order: 9,
+        order: 10,
         titleKey: "roadmap.nodes.rag.title",
         descriptionKey: "roadmap.nodes.rag.description",
         status: "upcoming",
@@ -100,7 +151,7 @@ export const roadmapPhases: RoadmapPhase[] = [
       },
       {
         id: "agent",
-        order: 10,
+        order: 11,
         titleKey: "roadmap.nodes.agent.title",
         descriptionKey: "roadmap.nodes.agent.description",
         status: "upcoming",

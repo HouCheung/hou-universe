@@ -1,10 +1,12 @@
 import type { Metadata } from "next";
-import { SubRoutePlaceholder } from "@/components/ai-lab/SubRoutePlaceholder";
+import { MiniMindPlayground } from "@/components/minimind/playground/MiniMindPlayground";
 
 export const metadata: Metadata = {
-  title: "AI Playground",
+  title: "Tokenizer Playground",
+  description:
+    "MiniMind Learning Edition — interactive tokenizer playground. Explore how text becomes tokens through the full pipeline: whitespace split, vocabulary lookup, encode, and decode.",
 };
 
 export default function PlaygroundPage() {
-  return <SubRoutePlaceholder sectionNameKey="aiLab.sections.roadmap" />;
+  return <MiniMindPlayground />;
 }

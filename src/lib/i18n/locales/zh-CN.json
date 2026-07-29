@@ -748,6 +748,54 @@
     "viewOnGithub": "在 GitHub 上查看",
     "readBlog": "阅读笔记"
   },
+  "minimind": {
+    "experience": {
+      "pageTitle": "MiniMind 架构体验 - HOU Universe",
+      "pageDesc": "MiniMind 语言模型的交互式架构可视化——探索从文本输入到输出的完整计算管线。",
+      "subhead": "架构体验",
+      "heading": "MiniMind 流水线",
+      "intro": "可视化探索 MiniMind 如何端到端处理文本——从原始字符到分词、嵌入、位置编码、自注意力机制，再到完整的 Transformer 模块。",
+      "sectionTitles": {
+        "architecture": "架构概览",
+        "flow": "计算流程",
+        "dependencyGraph": "模块依赖",
+        "progress": "学习进度"
+      },
+      "architecture": {
+        "title": "为什么需要这些模块",
+        "description": "MiniMind 的每个组件都解决一个特定问题。理解每个组件为什么存在，是理解它们如何协同工作的第一步。",
+        "tokenizer": {
+          "title": "Tokenizer — 文本到数字",
+          "description": "计算机无法直接理解文本。Tokenizer 将原始字符序列转换为离散的 token ID——这是模型唯一能处理的表示形式。MiniMind 使用 V1 Word Tokenizer，基于空格分词，将单词映射到词汇表索引，并支持编码/解码往返。"
+        },
+        "embedding": {
+          "title": "Embedding — 离散到连续",
+          "description": "Token ID 只是无意义的整数。Embedding 层将每个 token ID 映射为可学习的稠密向量——将语义相似的 token 放置在连续向量空间中彼此靠近的位置。这是模型理解语义的第一步。"
+        },
+        "transformer": {
+          "title": "Transformer — 逐层处理",
+          "description": "Transformer 模块是核心引擎。每一层依次执行多头自注意力（token 之间相互关注）和前馈网络（逐 token 处理），残差连接和层归一化确保深层训练的稳定性。堆叠多个层使模型能够构建越来越抽象的表征。"
+        }
+      },
+      "flow": {
+        "title": "完整计算流程",
+        "description": "追踪单次输入经过 MiniMind 每个处理阶段——从原始文本到最终输出。",
+        "nodes": {
+          "textInput": "文本输入",
+          "tokenIds": "Token IDs",
+          "output": "输出"
+        }
+      },
+      "dependencyGraph": {
+        "title": "模块依赖关系图",
+        "description": "从模块注册表自动生成。箭头表示前置依赖关系——每个模块都建立在其下方模块的基础之上。"
+      },
+      "progress": {
+        "title": "学习进度",
+        "description": "跟踪每个 MiniMind 模块的学习进度。数据来源于学习路线图。"
+      }
+    }
+  },
   "roadmap": {
     "phases": {
       "foundation": {
@@ -764,6 +812,10 @@
       }
     },
     "nodes": {
+      "repo-overview": {
+        "title": "Repository Overview",
+        "description": "全面理解 MiniMind 仓库结构、架构设计与完整数据流"
+      },
       "tokenizer": {
         "title": "Tokenizer",
         "description": "理解文本分词——从字符到子词的词汇构建"
