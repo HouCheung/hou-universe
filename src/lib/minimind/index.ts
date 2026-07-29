@@ -91,6 +91,16 @@ export {
   swiGLU,
 } from "./ffn/math";
 
+// ── Transformer Block ──
+export { MiniRMSNorm } from "./transformer/RMSNorm";
+export { MiniTransformerBlock } from "./transformer/TransformerBlock";
+export type {
+  TransformerConfig,
+  TransformerInput,
+  TransformerOutput,
+  TransformerTrace,
+} from "./transformer/types";
+
 // ── Pipeline ──
 export { MiniMindPipeline } from "./pipeline/MiniMindPipeline";
 export type { PipelineResult } from "./pipeline/types";
