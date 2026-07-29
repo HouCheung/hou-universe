@@ -101,6 +101,17 @@ export type {
   TransformerTrace,
 } from "./transformer/types";
 
+// ── Model (Full Forward) ──
+export { MiniLMHead } from "./model/LMHead";
+export { MiniMindModel } from "./model/MiniMindModel";
+export { runForwardExample } from "./model/examples";
+export type {
+  ModelConfig,
+  ModelInput,
+  ModelOutput,
+  ModelTrace,
+} from "./model/types";
+
 // ── Pipeline ──
 export { MiniMindPipeline } from "./pipeline/MiniMindPipeline";
 export type { PipelineResult } from "./pipeline/types";
