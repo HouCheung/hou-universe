@@ -73,6 +73,24 @@ export {
   scaledDotProductAttention,
 } from "./attention/math";
 
+// ── FFN (Feed-Forward Network / SwiGLU) ──
+export { MiniFeedForward } from "./ffn/FeedForward";
+export type {
+  FFNConfig,
+  FFNInput,
+  FFNOutput,
+  ActivationTrace,
+} from "./ffn/types";
+export {
+  matrixMultiply as ffnMatrixMultiply,
+  linear,
+  sigmoid,
+  silu,
+  multiplyGate,
+  applySiLU,
+  swiGLU,
+} from "./ffn/math";
+
 // ── Pipeline ──
 export { MiniMindPipeline } from "./pipeline/MiniMindPipeline";
 export type { PipelineResult } from "./pipeline/types";
