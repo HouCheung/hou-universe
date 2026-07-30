@@ -20,7 +20,6 @@
 import type {
   SamplingStrategy,
   SamplingConfig,
-  GenerationStep,
   TokenAlternative,
 } from "./types";
 import { softmax } from "../attention/math";
