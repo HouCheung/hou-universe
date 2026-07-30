@@ -13,7 +13,7 @@
 // No d3-force. No randomness. Structured educational map.
 // ============================================================
 
-import type { KnowledgeGraph, KnowledgeNode, KnowledgeNodeType, KnowledgeEdge, KnowledgeEdgeType } from "@/data/minimind/knowledge-registry";
+import type { KnowledgeGraph, KnowledgeNode, KnowledgeNodeType, KnowledgeEdgeType } from "@/data/minimind/knowledge-registry";
 import { computeDependencyLevels } from "@/data/minimind/module-registry";
 import type {
   ForceNode,
@@ -234,7 +234,6 @@ function placeModuleNodes(
   }
 
   const sortedLevels = Array.from(levelMap.entries()).sort(([a], [b]) => a - b);
-  const totalLevels = sortedLevels.length;
   const zoneStartY = zone.cy - (zone.height / 2) + dims.height + 20;
 
   const result: ForceNode[] = [];

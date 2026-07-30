@@ -88,8 +88,6 @@ export function KnowledgeGraphCanvas({
 }: KnowledgeGraphCanvasProps) {
   const containerRef = useRef<HTMLDivElement>(null);
   const [scale, setScale] = useState(1);
-  const [panX, setPanX] = useState(0);
-  const [panY, setPanY] = useState(0);
   const [hoveredNode, setHoveredNode] = useState<string | null>(null);
 
   // Filter nodes by type toggle and search query
