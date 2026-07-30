@@ -3,7 +3,7 @@
 // ============================================================
 //
 // Pure functions that derive LearningPaths from the Knowledge
-// Graph and existing SSOT registries. 8 derivation rules.
+// Graph and existing SSOT registries. 4 derivation rules (L1, L3, L7, L8).
 // ============================================================
 
 import { KNOWLEDGE_GRAPH } from "@/data/minimind/knowledge-registry";
@@ -24,7 +24,6 @@ function deriveLearningNodes(): LearningNode[] {
   const levelMap = new Map(depLevels.map((d) => [d.moduleId, d.level]));
 
   // Build dependency graph from module metadata
-  const moduleMap = new Map(MINIMIND_MODULES.map((m) => [m.id, m]));
   const prereqMap = new Map<string, string[]>();
   const unlockMap = new Map<string, string[]>();
 
@@ -39,14 +38,13 @@ function deriveLearningNodes(): LearningNode[] {
   }
 
   // Compute critical path
-  const criticalIds = computeCriticalPath(moduleMap, prereqMap);
+  const criticalIds = computeCriticalPath(prereqMap);
 
   const nodes: LearningNode[] = [];
 
   for (const node of moduleNodes) {
     const moduleId = node.sourceId;
     const depth = levelMap.get(moduleId) ?? 0;
-    const mod = moduleMap.get(moduleId);
 
     // Concepts from explains edges
     const conceptIds = KNOWLEDGE_GRAPH.edges
@@ -88,7 +86,6 @@ function deriveLearningNodes(): LearningNode[] {
 // ============================================================
 
 function computeCriticalPath(
-  moduleMap: Map<string, { metadata: { dependencies?: string[] } }>,
   prereqMap: Map<string, string[]>
 ): Set<string> {
   const critical = new Set<string>();
