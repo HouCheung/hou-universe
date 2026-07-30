@@ -817,8 +817,8 @@
     },
     "learning": {
       "subhead": "Learning Journey",
-      "heading": "Your Path to Mastery",
-      "intro": "A structured learning path through the MiniMind architecture. Follow the critical path for a guided experience, go breadth-first to cover all fundamentals, or dive into hands-on experiments to learn by building.",
+      "heading": "Your Path Through MiniMind",
+      "intro": "Follow a guided, dependency-ordered learning path through all MiniMind modules. Track concept mastery, validate knowledge with experiments, and get smart recommendations for what to learn next.",
       "empty": "No learning path available.",
       "status": {
         "mastered": "Mastered",
