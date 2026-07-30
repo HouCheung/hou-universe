@@ -814,6 +814,21 @@
       "subhead": "Knowledge Graph",
       "heading": "How Everything Connects",
       "intro": "An interactive map of the MiniMind learning system. Explore how modules, concepts, experiments, documents, and implementations relate to each other. Click any node to see its connections — every node and edge is derived from the module registry, no manual maintenance required."
+    },
+    "learning": {
+      "empty": "No learning path available.",
+      "status": {
+        "mastered": "Mastered",
+        "done": "Completed",
+        "active": "In Progress",
+        "ready": "Available",
+        "locked": "Locked"
+      },
+      "step": "Step {{step}}",
+      "minute_one": "{{count}} min",
+      "minute_other": "{{count}} mins",
+      "concept_one": "{{count}} concept",
+      "concept_other": "{{count}} concepts"
     }
   },
   "roadmap": {

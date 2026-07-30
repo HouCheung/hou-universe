@@ -814,6 +814,21 @@
       "subhead": "知识图谱",
       "heading": "万物互联",
       "intro": "MiniMind 学习系统的交互式知识地图。探索模块、概念、实验、文档和实现之间的关系。点击任意节点查看其连接——所有节点和边均从模块注册表自动派生，无需手动维护。"
+    },
+    "learning": {
+      "empty": "暂无学习路径。",
+      "status": {
+        "mastered": "已掌握",
+        "done": "已完成",
+        "active": "进行中",
+        "ready": "可开始",
+        "locked": "未解锁"
+      },
+      "step": "第 {{step}} 步",
+      "minute_one": "{{count}} 分钟",
+      "minute_other": "{{count}} 分钟",
+      "concept_one": "{{count}} 个概念",
+      "concept_other": "{{count}} 个概念"
     }
   },
   "roadmap": {
