@@ -794,6 +794,21 @@
         "title": "Learning Progress",
         "description": "Track your progress through each MiniMind module. Data sourced from the learning roadmap."
       }
+    },
+    "experiments": {
+      "heading": "Experiment Lab",
+      "intro": "Explore MiniMind internals through interactive experiments. Each experiment lets you run modules side-by-side, compare strategies, and see what's happening inside the model.",
+      "noActive": "No active experiments yet. Check back soon!",
+      "plannedCount": "{{count}} experiment(s) in development",
+      "backToHub": "Back to Experiments",
+      "run": "Run Experiment",
+      "running": "Running...",
+      "timing": "Completed in {{ms}}ms",
+      "errors": {
+        "experimentNotFound": "Experiment \"{{id}}\" not found in registry.",
+        "runnerFailed": "Experiment execution failed.",
+        "contextFailed": "Failed to create experiment context. Check module configuration."
+      }
     }
   },
   "roadmap": {

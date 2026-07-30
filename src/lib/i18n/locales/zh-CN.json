@@ -794,6 +794,21 @@
         "title": "学习进度",
         "description": "跟踪每个 MiniMind 模块的学习进度。数据来源于学习路线图。"
       }
+    },
+    "experiments": {
+      "heading": "实验实验室",
+      "intro": "通过交互式实验探索 MiniMind 内部机制。每个实验让你并排运行模块、比较策略、观察模型内部运作。",
+      "noActive": "暂无可用实验，敬请期待！",
+      "plannedCount": "{{count}} 个实验开发中",
+      "backToHub": "返回实验列表",
+      "run": "运行实验",
+      "running": "运行中...",
+      "timing": "耗时 {{ms}}ms",
+      "errors": {
+        "experimentNotFound": "未找到实验 \"{{id}}\"。",
+        "runnerFailed": "实验执行失败。",
+        "contextFailed": "无法创建实验上下文，请检查模块配置。"
+      }
     }
   },
   "roadmap": {
