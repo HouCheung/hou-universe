@@ -24,7 +24,7 @@ import type { VisualizationCapabilities } from "./types";
  * caps.tokenizer = { ...caps.tokenizer, tokenList: true };
  * ```
  */
-export const DEFAULT_CAPABILITIES: VisualizationCapabilities = {
+export const DEFAULT_CAPABILITIES: Readonly<VisualizationCapabilities> = Object.freeze({
   tokenizer: {
     tokenList: false,
     vocabExplorer: false,
@@ -50,4 +50,4 @@ export const DEFAULT_CAPABILITIES: VisualizationCapabilities = {
     topKRanking: false,
     probabilityDistribution: false,
   },
-};
+}) as VisualizationCapabilities;

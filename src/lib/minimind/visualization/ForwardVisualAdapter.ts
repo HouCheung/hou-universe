@@ -296,7 +296,7 @@ export class ForwardVisualAdapter {
     trace: ModelTrace,
     config: ModelConfig
   ): RoPEVisualData {
-    const { seqLen, dModel } = trace;
+    const { seqLen } = trace;
     const { numHeads, headDim, ropeTheta, maxSeqLen } = config;
     const rope = model.getRoPE();
 
@@ -609,6 +609,9 @@ export class ForwardVisualAdapter {
    * 减去 maxLogit 防止 exp 溢出。
    */
   private static computeSoftmax(logits: number[]): number[] {
+    // ── 空 logits 防护 ──
+    if (logits.length === 0) return [];
+
     const maxLogit = Math.max(...logits);
     const exps = logits.map((l) => Math.exp(l - maxLogit));
     const sumExp = exps.reduce((a, b) => a + b, 0);
@@ -737,9 +740,13 @@ export class ForwardVisualAdapter {
     transformer: TransformerVisualData[],
     lmHead: LMHeadVisualData
   ): VisualizationCapabilities {
-    const caps: VisualizationCapabilities = JSON.parse(
-      JSON.stringify(DEFAULT_CAPABILITIES)
-    ) as VisualizationCapabilities;
+    const caps: VisualizationCapabilities = {
+      tokenizer: { ...DEFAULT_CAPABILITIES.tokenizer },
+      embedding: { ...DEFAULT_CAPABILITIES.embedding },
+      rope: { ...DEFAULT_CAPABILITIES.rope },
+      transformer: { ...DEFAULT_CAPABILITIES.transformer },
+      lmHead: { ...DEFAULT_CAPABILITIES.lmHead },
+    };
 
     // Tokenizer
     caps.tokenizer.tokenList = tokenizer.tokenDetails.length > 0;
