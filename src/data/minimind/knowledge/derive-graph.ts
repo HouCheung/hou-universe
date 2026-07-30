@@ -17,13 +17,9 @@ import type {
   KnowledgeGraph,
   KnowledgeGraphMeta,
 } from "./types";
-import {
-  MINIMIND_MODULES,
-  computeDependencyLevels,
-} from "@/data/minimind/module-registry";
+import { MINIMIND_MODULES } from "@/data/minimind/module-registry";
 import { MINIMIND_EXPERIMENTS } from "@/data/minimind/experiment-registry";
 import { getActiveModelModule } from "@/data/minimind/model-registry";
-import type { ModelModule } from "@/data/minimind/model-registry";
 
 // ============================================================
 // Slug helper — concept string → URL-safe identifier
@@ -210,15 +206,16 @@ export function deriveKnowledgeGraph(): KnowledgeGraph {
     const docPath = mod.theoryDocPath;
     if (!docPath) continue;
 
-    const docId = `document:${docPathToId(docPath)}`;
+    const docStem = docPathToId(docPath);
+    const docId = `document:${docStem}`;
 
     if (!docSet.has(docId)) {
       docSet.set(docId, docPath);
       nodes.push({
         id: docId,
         type: "document",
-        label: docStemToLabel(docPathToId(docPath)),
-        sourceId: docPathToId(docPath),
+        label: docStemToLabel(docStem),
+        sourceId: docStem,
         group: "document",
         metadata: {
           description: `Theory documentation for ${mod.title}`,
@@ -247,7 +244,8 @@ export function deriveKnowledgeGraph(): KnowledgeGraph {
     const sourcePath = mod.sourcePath;
     if (!sourcePath) continue;
 
-    const implId = `implementation:${sourcePathToId(sourcePath)}`;
+    const implStem = sourcePathToId(sourcePath);
+    const implId = `implementation:${implStem}`;
 
     if (!implSet.has(implId)) {
       implSet.set(implId, sourcePath);
@@ -260,7 +258,7 @@ export function deriveKnowledgeGraph(): KnowledgeGraph {
         id: implId,
         type: "implementation",
         label: `${dirname}/`,
-        sourceId: sourcePathToId(sourcePath),
+        sourceId: implStem,
         group: "implementation",
         metadata: {
           description: `Source implementation for ${mod.title}`,
