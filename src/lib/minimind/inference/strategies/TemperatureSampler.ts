@@ -31,6 +31,15 @@ export class TemperatureSampler implements SamplingStrategy {
   apply(logits: number[], config: SamplingConfig): LogitsTransformResult {
     const T = config.temperature;
 
+    // T < 0 → 无效温度，不做变换
+    if (T < 0) {
+      return {
+        logits,
+        maskedIndices: [],
+        description: "T < 0 (invalid, no scaling)",
+      };
+    }
+
     // T=0 → 贪婪模式 — 由编排器处理，此处不做变换
     if (T === 0) {
       return {

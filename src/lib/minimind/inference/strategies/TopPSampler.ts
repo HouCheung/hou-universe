@@ -29,6 +29,7 @@
 
 import type { SamplingStrategy, SamplingConfig, LogitsTransformResult } from "../types";
 import { softmax } from "../../attention/math";
+import { MASK_LOGIT } from "./constants";
 
 export class TopPSampler implements SamplingStrategy {
   readonly id = "topp";
@@ -63,14 +64,13 @@ export class TopPSampler implements SamplingStrategy {
     }
 
     // 屏蔽未保留的 token
-    const MASK_VALUE = -1e9;
     const masked = new Array(logits.length);
     const maskedIndices: number[] = [];
     let maskedCount = 0;
 
     for (let i = 0; i < logits.length; i++) {
       if (!kept.has(i)) {
-        masked[i] = MASK_VALUE;
+        masked[i] = MASK_LOGIT;
         maskedIndices.push(i);
         maskedCount++;
       } else {

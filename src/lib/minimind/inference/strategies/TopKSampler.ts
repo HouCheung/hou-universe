@@ -23,6 +23,7 @@
 // ============================================================
 
 import type { SamplingStrategy, SamplingConfig, LogitsTransformResult } from "../types";
+import { MASK_LOGIT } from "./constants";
 
 export class TopKSampler implements SamplingStrategy {
   readonly id = "topk";
@@ -55,14 +56,13 @@ export class TopKSampler implements SamplingStrategy {
     const threshold = indexed[K - 1]?.value ?? -Infinity;
 
     // 屏蔽低于阈值的 token
-    const MASK_VALUE = -1e9;
     const masked = new Array(logits.length);
     const maskedIndices: number[] = [];
     let maskedCount = 0;
 
     for (let i = 0; i < logits.length; i++) {
       if (logits[i] < threshold) {
-        masked[i] = MASK_VALUE;
+        masked[i] = MASK_LOGIT;
         maskedIndices.push(i);
         maskedCount++;
       } else {

@@ -42,7 +42,7 @@ import { softmax } from "../attention/math";
  * ]);
  *
  * const result = sampler.sample(logits, { temperature: 0.8, topK: 40, topP: 0.95 });
- * // result → { tokenId, token, probability, logit, alternatives, pipelineDescription }
+ * // result → { tokenId, probability, logit, alternatives, pipelineDescription }
  * ```
  */
 export class Sampler {

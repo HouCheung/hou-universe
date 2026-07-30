@@ -25,37 +25,22 @@ export class GreedySampler implements SamplingStrategy {
   /**
    * apply — 不修改 logits，仅判断采样模式
    *
-   * 当所有前置策略均为默认值（temperature=1.0, topK=0, topP=1.0）时：
-   *   实际执行 argmax → "Argmax (greedy selection)"
-   * 否则（有温度缩放、topK 过滤或 topP 过滤）：
-   *   实际从概率分布中采样 → "Sample from probability distribution"
+   * 贪婪判定与 Sampler 编排器保持一致：
+   *   temperature === 0 && topK === 0 && topP === 1.0 → argmax
+   * 其他所有情况（包括默认配置 T=1.0）→ 概率采样
    */
   apply(logits: number[], config: SamplingConfig): LogitsTransformResult {
-    const isProbabilistic =
-      config.temperature !== 1.0 &&
-      config.temperature !== 0 ||
-      config.topK > 0 ||
-      config.topP < 1.0;
-
-    // 如果 temperature=0 且无其他过滤，视为纯 argmax
-    const isGreedy = config.temperature === 0 &&
+    const isGreedy =
+      config.temperature === 0 &&
       config.topK === 0 &&
       config.topP === 1.0;
-
-    if (isGreedy) {
-      return {
-        logits,
-        maskedIndices: [],
-        description: "Argmax (greedy selection)",
-      };
-    }
 
     return {
       logits,
       maskedIndices: [],
-      description: isProbabilistic
-        ? "Sample from probability distribution"
-        : "Argmax (greedy selection)",
+      description: isGreedy
+        ? "Argmax (greedy selection)"
+        : "Sample from probability distribution",
     };
   }
 }
