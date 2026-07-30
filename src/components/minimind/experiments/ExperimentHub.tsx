@@ -3,7 +3,7 @@
 import { motion, type Variants } from "framer-motion";
 import { FlaskConical } from "lucide-react";
 import { useTranslation } from "react-i18next";
-import { MINIMIND_EXPERIMENTS, getActiveExperiments, getPlannedExperiments } from "@/data/minimind/experiment-registry";
+import { getActiveExperiments, getPlannedExperiments } from "@/data/minimind/experiment-registry";
 import { ExperimentCard } from "./ExperimentCard";
 
 // ============================================================
@@ -22,9 +22,18 @@ const containerVariants: Variants = {
 // ============================================================
 
 interface ExperimentHubProps {
+  /** Callback fired when the user clicks an experiment card to enter the experiment playground */
   onSelectExperiment: (id: string) => void;
 }
 
+/**
+ * ExperimentHub — top-level page that lists MiniMind interactive experiments.
+ *
+ * Pulls the experiment catalog from the experiment-registry SSOT and renders
+ * active experiments in a responsive card grid with staggered Framer Motion
+ * animations. When no active experiments exist, a glass-panel empty state is
+ * shown with the count of planned experiments.
+ */
 export function ExperimentHub({ onSelectExperiment }: ExperimentHubProps) {
   const { t } = useTranslation();
   const activeExperiments = getActiveExperiments();
