@@ -127,7 +127,8 @@ export class GenerationLoop {
     const stopReason = this.evaluateStopConditions(
       generatedIds,
       1,
-      config.stopConditions
+      config.stopConditions,
+      config.maxTokens
     );
     if (stopReason) {
       this.lastStopReason = stopReason;
@@ -142,7 +143,7 @@ export class GenerationLoop {
       // 单 token 前向传播（带 KV Cache）
       const { logits } = this.forwardSingleToken(
         prevTokenId,
-        promptLen + step,
+        promptLen + step - 1,
         config.debug
       );
 
@@ -173,7 +174,8 @@ export class GenerationLoop {
       const reason = this.evaluateStopConditions(
         generatedIds,
         step + 1,
-        config.stopConditions
+        config.stopConditions,
+        config.maxTokens
       );
       if (reason) {
         this.lastStopReason = reason;
@@ -470,8 +472,9 @@ export class GenerationLoop {
    */
   private evaluateStopConditions(
     generatedIds: number[],
-    _tokensGenerated: number,
-    conditions: StopCondition[]
+    tokensGenerated: number,
+    conditions: StopCondition[],
+    maxTokens: number
   ): string | null {
     for (const condition of conditions) {
       switch (condition.type) {
@@ -489,6 +492,11 @@ export class GenerationLoop {
             generatedIds[generatedIds.length - 1] === condition.tokenId
           ) {
             return `tokenId=${condition.tokenId}`;
+          }
+          break;
+        case "maxTokens":
+          if (tokensGenerated >= maxTokens) {
+            return "maxTokens";
           }
           break;
         case "custom":

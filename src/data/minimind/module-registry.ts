@@ -284,14 +284,14 @@ export const MINIMIND_MODULES: MiniMindModule[] = [
     title: "Inference",
     description:
       "Autoregressive generation loop. Temperature sampling, top-k / top-p filtering, KV-cache management.",
-    status: "upcoming",
+    status: "in-progress",
     order: 9,
     phase: "advanced",
     theoryDocPath: "docs/minimind/08-inference.md",
     sourcePath: "src/lib/minimind/inference/",
     playgroundPath: "src/components/minimind/playground/inference/",
-    implemented: false,
-    futureVersion: "V6",
+    implemented: true,
+    futureVersion: null,
     metadata: {
       theoryDocPath: "docs/minimind/08-inference.md",
       sourcePath: "src/lib/minimind/inference/",
