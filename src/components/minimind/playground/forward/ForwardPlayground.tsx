@@ -16,6 +16,7 @@ import type { StageId } from "@/data/minimind/visualization-capabilities";
 import { ForwardHeader } from "./ForwardHeader";
 import { InputPanel } from "./InputPanel";
 import { PipelineTimeline } from "./PipelineTimeline";
+import { DeepDivePanel } from "./DeepDivePanel";
 
 // ============================================================
 // ForwardPlayground — Root state owner for Forward Model
@@ -173,10 +174,10 @@ export function ForwardPlayground() {
         />
       )}
 
-      {/* DeepDivePanel (Level 2) — Commit 3 placeholder */}
-      {/* {visualTrace && selectedStageId && (
+      {/* DeepDivePanel (Level 2) — renders when a stage is selected */}
+      {visualTrace && selectedStageId && (
         <DeepDivePanel trace={visualTrace} stageId={selectedStageId} />
-      )} */}
+      )}
 
       {/* Empty state — shown before first run */}
       {!visualTrace && !isRunning && (
