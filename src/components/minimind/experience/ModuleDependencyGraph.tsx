@@ -4,6 +4,8 @@ import { useMemo, useRef, useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
 import { motion, type Variants } from "framer-motion";
 import { cn } from "@/lib/utils";
+import Link from "next/link";
+import { ArrowRight } from "lucide-react";
 import {
   MINIMIND_MODULES,
   computeDependencyLevels,
@@ -262,6 +264,17 @@ export function ModuleDependencyGraph() {
           ))}
         </div>
       </div>
+
+        {/* Link to full knowledge graph */}
+        <div className="mt-10 flex justify-center">
+          <Link
+            href="/ai-lab/knowledge"
+            className="group inline-flex items-center gap-2 rounded-full border border-brand/20 bg-brand/[0.03] px-5 py-2.5 text-sm font-medium text-brand/70 transition-all duration-300 hover:border-brand/40 hover:bg-brand/[0.06] hover:text-brand dark:border-brand/25 dark:text-brand/60 dark:hover:text-brand/80"
+          >
+            Explore full knowledge graph
+            <ArrowRight className="size-4 transition-transform duration-300 group-hover:translate-x-0.5" />
+          </Link>
+        </div>
     </motion.section>
   );
 }

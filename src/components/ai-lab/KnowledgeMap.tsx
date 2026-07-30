@@ -3,7 +3,8 @@
 import { useTranslation } from "react-i18next";
 import { motion, type Variants } from "framer-motion";
 import { SectionHeader } from "@/components/home/SectionHeader";
-import { Brain } from "lucide-react";
+import { Brain, ArrowRight } from "lucide-react";
+import Link from "next/link";
 
 const variants: Variants = {
   hidden: { opacity: 0, y: 40 },
@@ -27,17 +28,24 @@ export function KnowledgeMap() {
     >
       <SectionHeader titleKey="aiLab.sections.knowledgeMap" />
 
-      <div className="flex flex-col items-center justify-center rounded-xl border border-dashed border-slate-500/15 py-16 text-center dark:border-white/[0.05]">
-        <div className="mb-4 flex size-14 items-center justify-center rounded-full border border-slate-500/[0.12] bg-slate-500/[0.03] dark:border-white/[0.04] dark:bg-white/[0.02]">
-          <Brain className="size-6 text-slate-500/50 dark:text-slate-600" />
+      <Link
+        href="/ai-lab/knowledge"
+        className="group flex flex-col items-center justify-center rounded-xl border border-brand/15 bg-brand/[0.02] py-16 text-center transition-all duration-300 hover:border-brand/30 hover:bg-brand/[0.05] dark:border-white/[0.06] dark:hover:border-brand/25"
+      >
+        <div className="mb-4 flex size-14 items-center justify-center rounded-full border border-brand/20 bg-brand/[0.06] transition-all duration-300 group-hover:border-brand/40 group-hover:shadow-[0_0_20px_rgba(var(--brand-rgb),0.1)] dark:border-brand/25 dark:bg-brand/[0.08]">
+          <Brain className="size-6 text-brand/60 transition-all duration-300 group-hover:text-brand/80" />
         </div>
-        <h3 className="text-base font-semibold text-foreground">
-          {t("aiLab.comingSoon")}
+        <h3 className="text-base font-semibold text-foreground transition-colors group-hover:text-brand">
+          {t("aiLab.sections.knowledgeMap")}
         </h3>
-        <p className="mt-2 max-w-sm text-sm text-slate-500/80 dark:text-slate-500/70">
-          {t("aiLab.comingSoonDesc")}
+        <p className="mt-2 max-w-sm text-sm text-slate-500/70 transition-colors group-hover:text-slate-500/90 dark:text-slate-500/60 dark:group-hover:text-slate-400/80">
+          Explore the complete web of modules, concepts, experiments, and documents.
         </p>
-      </div>
+        <span className="mt-4 inline-flex items-center gap-1 text-xs font-medium text-brand/60 transition-all duration-300 group-hover:text-brand group-hover:translate-x-0.5 dark:text-brand/50 dark:group-hover:text-brand/70">
+          Explore Knowledge Graph
+          <ArrowRight className="size-3" />
+        </span>
+      </Link>
     </motion.section>
   );
 }
