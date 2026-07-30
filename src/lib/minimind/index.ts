@@ -152,3 +152,29 @@ export type {
   AttentionHeatmapData,
   HeadHeatmapData,
 } from "./experiments";
+
+// ── Inference (Phase 21) ──
+export { InferenceEngine } from "./inference/InferenceEngine";
+export { KVCache } from "./inference/KVCache";
+export { Sampler } from "./inference/Sampler";
+export { GenerationLoop } from "./inference/GenerationLoop";
+export {
+  GreedySampler,
+  TemperatureSampler,
+  TopKSampler,
+  TopPSampler,
+} from "./inference";
+export type {
+  InferenceConfig,
+  SamplingConfig,
+  StopCondition,
+  GenerationStep,
+  TokenAlternative,
+  CacheSnapshot,
+  GenerationTrace,
+  GenerationResult,
+  KVCacheEntry,
+  PositionMetadata,
+  SamplingStrategy,
+  LogitsTransformResult,
+} from "./inference/types";
