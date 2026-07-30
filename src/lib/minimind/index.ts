@@ -115,3 +115,40 @@ export type {
 // ── Pipeline ──
 export { MiniMindPipeline } from "./pipeline/MiniMindPipeline";
 export type { PipelineResult } from "./pipeline/types";
+
+// ── Experiments (Phase 19) ──
+export {
+  // Context + Tokenizer
+  createExperimentContext,
+  CharacterTokenizer,
+  getRequiredModuleNames,
+  // Runner registry + dispatch
+  registerRunner,
+  getRunner,
+  getRegisteredExperimentIds,
+  runExperiment,
+  // Runner classes
+  TokenizerComparisonRunner,
+  EmbeddingExplorerRunner,
+  AttentionHeatmapRunner,
+} from "./experiments";
+export type {
+  ExperimentContext,
+  ExperimentModuleConfig,
+  ExperimentResult,
+  ExperimentError,
+  ExperimentTiming,
+  ExperimentRunner,
+  ICharacterTokenizer,
+  TokenizerComparisonInput,
+  TokenizerComparisonData,
+  TokenizerRunSummary,
+  TokenizerComparisonMetrics,
+  EmbeddingExplorerInput,
+  EmbeddingExplorerData,
+  EmbeddingVectorInfo,
+  TokenSimilarity,
+  AttentionHeatmapInput,
+  AttentionHeatmapData,
+  HeadHeatmapData,
+} from "./experiments";
