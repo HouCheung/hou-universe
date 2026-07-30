@@ -4,6 +4,7 @@ import { MissionBanner } from "./MissionBanner";
 import { RoadmapSection } from "./RoadmapSection";
 import { TimelineSection } from "./TimelineSection";
 import { KnowledgeMap } from "./KnowledgeMap";
+import { JourneySection } from "./JourneySection";
 import { ProgressSection } from "./ProgressSection";
 import { ResourcesSection } from "./ResourcesSection";
 import { GithubSection } from "./GithubSection";
@@ -15,6 +16,8 @@ export function AiLabClient() {
       <MissionBanner />
 
       <RoadmapSection />
+
+      <JourneySection />
 
       <ProgressSection />
       <TimelineSection />
