@@ -88,7 +88,7 @@ function StatCard({
   icon: React.ComponentType<{ className?: string }>;
   label: string;
   value: number;
-  total: number;
+  total?: number;
   color: string;
 }) {
   return (
@@ -100,9 +100,11 @@ function StatCard({
         </p>
         <p className="text-sm font-semibold tabular-nums text-foreground">
           {value}
-          <span className="text-xs font-normal text-slate-400">
-            /{total}
-          </span>
+          {total !== undefined && (
+            <span className="text-xs font-normal text-slate-400">
+              /{total}
+            </span>
+          )}
         </p>
       </div>
     </div>
@@ -225,7 +227,6 @@ export function ProgressDashboard({
           icon={Clock}
           label="Remaining"
           value={hours > 0 ? hours : mins}
-          total={0}
           color="text-slate-500"
         />
       </div>

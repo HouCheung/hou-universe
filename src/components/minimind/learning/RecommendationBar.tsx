@@ -70,7 +70,7 @@ export function RecommendationBar({ recommendations }: RecommendationBarProps) {
         Recommended Next Steps
       </h3>
 
-      <div className="flex gap-3 overflow-x-auto pb-2 snap-x snap-mandatory scrollbar-none">
+      <div className="flex gap-3 overflow-x-auto pb-2 snap-x snap-mandatory no-scrollbar">
         {cards.map((card, i) => {
           const ReasonIcon =
             ReasonIcons[card.recommendation.reason] ?? Compass;
