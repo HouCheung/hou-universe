@@ -87,7 +87,7 @@ export const MINIMIND_EXPERIMENTS: MiniMindExperiment[] = [
     description:
       "Side-by-side comparison of MiniTokenizer (word-level) and CharacterTokenizer (character-level). Encode the same input text with both strategies and compare token count, vocabulary coverage, and unknown token rate.",
     relatedModule: "tokenizer",
-    status: "planned",
+    status: "active",
     concepts: [
       "Word Tokenization",
       "Character Tokenization",
@@ -95,7 +95,7 @@ export const MINIMIND_EXPERIMENTS: MiniMindExperiment[] = [
       "Unknown Token Rate",
       "Sequence Length Trade-off",
     ],
-    componentPath: null,
+    componentPath: "src/components/minimind/experiments/results/TokenizerComparisonResult",
     requiredCapabilities: {
       visualization: ["token-list", "vocab-explorer"],
       dataRequirements: [
@@ -112,7 +112,7 @@ export const MINIMIND_EXPERIMENTS: MiniMindExperiment[] = [
     description:
       "Interactive vector lookup and comparison tool. Look up any token's embedding vector, compute cosine similarity between token pairs, and explore the semantic relationships captured by the embedding space.",
     relatedModule: "embedding",
-    status: "planned",
+    status: "active",
     concepts: [
       "Embedding Vector",
       "Cosine Similarity",
@@ -120,7 +120,7 @@ export const MINIMIND_EXPERIMENTS: MiniMindExperiment[] = [
       "Vector Arithmetic",
       "Nearest Neighbor Search",
     ],
-    componentPath: null,
+    componentPath: "src/components/minimind/experiments/results/EmbeddingExplorerResult",
     requiredCapabilities: {
       visualization: ["vector-viewer", "matrix-heatmap", "stats-panel"],
       dataRequirements: [
@@ -141,7 +141,7 @@ export const MINIMIND_EXPERIMENTS: MiniMindExperiment[] = [
     description:
       "Deep-dive into attention patterns. Visualize full [numHeads × seqLen × seqLen] attention matrices, switch between heads to observe pattern diversity, and inspect raw attention scores before and after softmax.",
     relatedModule: "attention",
-    status: "planned",
+    status: "active",
     concepts: [
       "Attention Matrix",
       "Head Diversity",
@@ -149,7 +149,7 @@ export const MINIMIND_EXPERIMENTS: MiniMindExperiment[] = [
       "Softmax Temperature",
       "Attention Entropy",
     ],
-    componentPath: null,
+    componentPath: "src/components/minimind/experiments/results/AttentionHeatmapResult",
     requiredCapabilities: {
       visualization: ["attention-heatmap", "attention-head-diversity"],
       dataRequirements: [
