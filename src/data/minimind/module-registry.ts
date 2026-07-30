@@ -11,6 +11,8 @@
 // stay in sync automatically.
 // ============================================================
 
+import { getExperimentsByModule, type MiniMindExperiment } from "./experiment-registry";
+
 // ============================================================
 // Module metadata — enriched knowledge-layer fields
 // ============================================================
@@ -26,8 +28,6 @@ export interface MiniMindModuleMetadata {
   playgroundPath?: string;
   /** Core concepts this module teaches */
   concepts?: string[];
-  /** Named experiments available for this module */
-  experiments?: string[];
   /** Module ids this module depends on (learning pre-requisites) */
   dependencies?: string[];
 }
@@ -59,7 +59,7 @@ export interface MiniMindModule {
   implemented: boolean;
   /** Planned version label when implemented === false, null when live */
   futureVersion: string | null;
-  /** Enriched metadata — concepts, experiments, dependencies, and path cross-references */
+  /** Enriched metadata — concepts, dependencies, and path cross-references */
   metadata: MiniMindModuleMetadata;
 }
 
@@ -86,7 +86,6 @@ export const MINIMIND_MODULES: MiniMindModule[] = [
       sourcePath: "src/lib/minimind/tokenizer",
       playgroundPath: "/ai-lab/playground",
       concepts: ["Token", "Vocabulary", "Encoding", "Decoding", "BPE"],
-      experiments: ["word-vs-character"],
       dependencies: [],
     },
   },
@@ -115,7 +114,6 @@ export const MINIMIND_MODULES: MiniMindModule[] = [
         "One-Hot Encoding",
         "Trainable Parameters",
       ],
-      experiments: ["embedding-visualization", "semantic-similarity"],
       dependencies: ["tokenizer"],
     },
   },
@@ -147,13 +145,6 @@ export const MINIMIND_MODULES: MiniMindModule[] = [
         "Vector Norm Invariance",
         "Orthogonal Transformation",
         "Precomputed Cache",
-      ],
-      experiments: [
-        "frequency-analysis",
-        "position-sensitivity",
-        "rotation-visualization",
-        "norm-invariance-verification",
-        "relative-position-decay",
       ],
       dependencies: ["embedding"],
     },
@@ -188,14 +179,6 @@ export const MINIMIND_MODULES: MiniMindModule[] = [
         "Head Split / Merge",
         "Output Projection (W_O)",
       ],
-      experiments: [
-        "attention-heatmap",
-        "head-diversity",
-        "score-distribution",
-        "weight-concentration",
-        "causal-mask-verification",
-        "qkv-similarity",
-      ],
       dependencies: ["rope", "embedding"],
     },
   },
@@ -228,13 +211,6 @@ export const MINIMIND_MODULES: MiniMindModule[] = [
         "Expansion-Compression (Bottleneck)",
         "Non-linearity in Transformers",
       ],
-      experiments: [
-        "activation-distribution",
-        "gate-value-analysis",
-        "dimension-importance",
-        "token-wise-comparison",
-        "swiglu-vs-relu-contrast",
-      ],
       dependencies: ["attention"],
     },
   },
@@ -266,13 +242,6 @@ export const MINIMIND_MODULES: MiniMindModule[] = [
         "Gradient Highway",
         "Block Stacking",
         "LLaMA Architecture",
-      ],
-      experiments: [
-        "block-output-trace",
-        "residual-flow-analysis",
-        "norm-output-distribution",
-        "attention-vs-ffn-output-comparison",
-        "pre-norm-gradient-analysis",
       ],
       dependencies: ["ffn", "attention", "rope", "embedding"],
     },
@@ -307,13 +276,6 @@ export const MINIMIND_MODULES: MiniMindModule[] = [
         "Model Orchestration",
         "Pipeline Trace",
       ],
-      experiments: [
-        "full-pipeline-trace",
-        "hidden-state-evolution",
-        "logit-distribution-analysis",
-        "token-prediction-ranking",
-        "embedding-vs-final-hidden-comparison",
-      ],
       dependencies: ["transformer", "tokenizer"],
     },
   },
@@ -341,11 +303,6 @@ export const MINIMIND_MODULES: MiniMindModule[] = [
         "Top-P Filtering",
         "KV Cache",
         "Beam Search",
-      ],
-      experiments: [
-        "sampling-comparison",
-        "temperature-sweep",
-        "repetition-penalty",
       ],
       dependencies: ["model", "transformer", "tokenizer"],
     },
@@ -492,4 +449,19 @@ export function getModuleProgress(
     case "upcoming":
       return 0;
   }
+}
+
+// ============================================================
+// Experiment derivation — from experiment-registry SSOT
+// ============================================================
+
+/**
+ * Get all experiments belonging to a specific module.
+ *
+ * Derives from experiment-registry.ts — the single source of truth
+ * for all MiniMind experiment metadata. Replaces the deprecated
+ * metadata.experiments: string[] field on MiniMindModuleMetadata.
+ */
+export function getModuleExperiments(moduleId: string): MiniMindExperiment[] {
+  return getExperimentsByModule(moduleId);
 }
