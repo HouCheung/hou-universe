@@ -16,6 +16,8 @@
 // changes, update it HERE and all views stay in sync automatically.
 // ============================================================
 
+import { getExperimentsByModule, type MiniMindExperiment } from "./experiment-registry";
+
 // ============================================================
 // Core data types
 // ============================================================
@@ -83,8 +85,6 @@ export interface ModelModule {
   architecture: ModelArchitectureConfig;
   /** Core concepts this module teaches */
   concepts: string[];
-  /** Named experiments available for this module */
-  experiments: string[];
   /** Features introduced or relevant to this version */
   features: ModelFeature[];
   /** Module ids this version is compatible with */
@@ -212,13 +212,6 @@ export const MODEL_MODULES: ModelModule[] = [
       "Model Orchestration",
       "Pipeline Trace",
     ],
-    experiments: [
-      "full-pipeline-trace",
-      "hidden-state-evolution",
-      "logit-distribution-analysis",
-      "token-prediction-ranking",
-      "embedding-vs-final-hidden-comparison",
-    ],
     features: V1_FEATURES.filter((f) =>
       [
         "Complete Forward Pipeline",
@@ -257,11 +250,6 @@ export const MODEL_MODULES: ModelModule[] = [
       "Residual Stream Analysis",
       "Attention Pattern Evolution",
     ],
-    experiments: [
-      "layer-wise-output-comparison",
-      "attention-pattern-by-layer",
-      "representation-similarity-matrix",
-    ],
     features: [
       {
         feature: "Multi-Layer Stacking",
@@ -297,11 +285,6 @@ export const MODEL_MODULES: ModelModule[] = [
       "Probability Distribution",
       "Prediction Confidence",
       "Logits → Probabilities",
-    ],
-    experiments: [
-      "temperature-sweep",
-      "probability-entropy-analysis",
-      "top-k-prediction-accuracy",
     ],
     features: [
       {
@@ -340,11 +323,6 @@ export const MODEL_MODULES: ModelModule[] = [
       "Top-P (Nucleus) Filtering",
       "Next Token Prediction Loop",
     ],
-    experiments: [
-      "sampling-strategy-comparison",
-      "temperature-effect-on-diversity",
-      "repetition-analysis",
-    ],
     features: [
       {
         feature: "Generation Loop",
@@ -381,13 +359,6 @@ export const MODEL_MODULES: ModelModule[] = [
       "6400-Word Vocabulary",
       "Full Forward + Generation Pipeline",
       "End-to-End Token Prediction",
-    ],
-    experiments: [
-      "full-model-forward-benchmark",
-      "layer-wise-output-analysis-deep",
-      "attention-pattern-evolution-8layer",
-      "parameter-count-breakdown",
-      "inference-speed-profiling",
     ],
     features: [
       {
@@ -428,15 +399,9 @@ export function getAllModelConcepts(): string[] {
   return Array.from(seen);
 }
 
-/** All experiments across all Model modules, deduplicated */
-export function getAllModelExperiments(): string[] {
-  const seen = new Set<string>();
-  for (const m of MODEL_MODULES) {
-    for (const e of m.experiments) {
-      seen.add(e);
-    }
-  }
-  return Array.from(seen);
+/** All experiments related to the model module, from experiment-registry SSOT */
+export function getAllModelExperiments(): MiniMindExperiment[] {
+  return getExperimentsByModule("model");
 }
 
 // ============================================================
@@ -447,6 +412,6 @@ export function getAllModelExperiments(): string[] {
 export const MODEL_CONCEPTS: string[] =
   getActiveModelModule()?.concepts ?? [];
 
-/** Canonical experiment list from the active (V1) Model module */
+/** Canonical experiment list for the model module, from experiment-registry SSOT */
 export const MODEL_EXPERIMENTS: string[] =
-  getActiveModelModule()?.experiments ?? [];
+  getAllModelExperiments().map((e) => e.id);
