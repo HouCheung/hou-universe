@@ -14,6 +14,7 @@ import type {
   MasteryTree,
   MasteryDimension,
   Recommendation,
+  RecommendationReason,
   UserProgress,
 } from "./types";
 
@@ -196,7 +197,7 @@ export function deriveMasteryTree(): MasteryTree {
 // Recommendation Derivation (5 Rules)
 // ============================================================
 
-const REASON_LABELS: Record<string, { cta: string }> = {
+const REASON_LABELS: Record<RecommendationReason, { cta: string }> = {
   next_in_path: { cta: "Continue Learning" },
   prerequisite_for: { cta: "Unlocks More" },
   experiment: { cta: "Validate Knowledge" },
@@ -287,12 +288,12 @@ function findNextInPath(progress: UserProgress): string | null {
     const status = progress.nodeStatus[node.id] ?? "locked";
     if (status === "completed" || status === "mastered") continue;
 
-    // Check prerequisites
+    // Check prerequisites: node depends on e.target (prerequisites)
     const prereqEdges = KNOWLEDGE_GRAPH.edges.filter(
-      (e) => e.target === node.id && e.type === "depends_on"
+      (e) => e.source === node.id && e.type === "depends_on"
     );
     const allPrereqsDone = prereqEdges.every((e) => {
-      const ps = progress.nodeStatus[e.source] ?? "locked";
+      const ps = progress.nodeStatus[e.target] ?? "locked";
       return ps === "completed" || ps === "mastered";
     });
 
@@ -349,15 +350,16 @@ function collectTransitiveUnlocks(
   if (visited.has(nodeId)) return;
   visited.add(nodeId);
 
+  // Find who depends on nodeId — those are the modules nodeId unlocks
   const unlockEdges = KNOWLEDGE_GRAPH.edges.filter(
-    (e) => e.source === nodeId && e.type === "depends_on"
+    (e) => e.target === nodeId && e.type === "depends_on"
   );
 
   for (const edge of unlockEdges) {
-    const targetStatus = progress.nodeStatus[edge.target] ?? "locked";
-    if (targetStatus === "completed" || targetStatus === "mastered") continue;
-    result.add(edge.target);
-    collectTransitiveUnlocks(edge.target, visited, result, progress);
+    const sourceStatus = progress.nodeStatus[edge.source] ?? "locked";
+    if (sourceStatus === "completed" || sourceStatus === "mastered") continue;
+    result.add(edge.source);
+    collectTransitiveUnlocks(edge.source, visited, result, progress);
   }
 }
 
