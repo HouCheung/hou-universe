@@ -878,6 +878,30 @@
       "minute_other": "{{count}} mins",
       "concept_one": "{{count}} concept",
       "concept_other": "{{count}} concepts"
+    },
+    "evolution": {
+      "subhead": "MiniMind Project",
+      "heading": "Project Evolution Timeline",
+      "intro": "Track the evolution of MiniMind — each module builds on the last, from tokenization to inference.",
+      "phases": {
+        "foundation": "Foundation Layer",
+        "training": "Training Pipeline",
+        "advanced": "Advanced Capabilities"
+      },
+      "status": {
+        "completed": "Completed",
+        "in-progress": "In Progress",
+        "upcoming": "Upcoming"
+      },
+      "dependencies": "Dependencies",
+      "experiments": "Experiments",
+      "source": "Source",
+      "playground": "Open Playground",
+      "noExperiments": "No experiments yet",
+      "noDependencies": "No dependencies",
+      "plannedCount": "{{count}} planned",
+      "activeCount": "{{count}} active",
+      "viewExperiment": "View experiment"
     }
   },
   "roadmap": {

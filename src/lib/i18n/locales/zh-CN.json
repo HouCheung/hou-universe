@@ -878,6 +878,30 @@
       "minute_other": "{{count}} 分钟",
       "concept_one": "{{count}} 个概念",
       "concept_other": "{{count}} 个概念"
+    },
+    "evolution": {
+      "subhead": "MiniMind 项目",
+      "heading": "项目演进时间线",
+      "intro": "追踪 MiniMind 的演进历程 — 每个模块都建立在前一个之上，从分词到推理。",
+      "phases": {
+        "foundation": "基础层",
+        "training": "训练管线",
+        "advanced": "高级能力"
+      },
+      "status": {
+        "completed": "已完成",
+        "in-progress": "进行中",
+        "upcoming": "待开始"
+      },
+      "dependencies": "依赖",
+      "experiments": "实验",
+      "source": "源码",
+      "playground": "打开 Playground",
+      "noExperiments": "暂无实验",
+      "noDependencies": "无依赖",
+      "plannedCount": "{{count}} 个计划中",
+      "activeCount": "{{count}} 个活跃",
+      "viewExperiment": "查看实验"
     }
   },
   "roadmap": {
