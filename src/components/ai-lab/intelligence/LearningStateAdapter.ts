@@ -55,9 +55,9 @@ export function adaptLearningState(): LearningState {
 
   const rawRecs = progress ? getRecommendations(progress) : [];
 
-  const recommendations = rawRecs.map((rec) =>
-    enrichRecommendation(rec, progress)
-  );
+  const recommendations = progress
+    ? rawRecs.map((rec) => enrichRecommendation(rec, progress))
+    : [];
 
   const moduleProgress: ModuleProgressEntry[] =
     buildModuleProgress(progress);
