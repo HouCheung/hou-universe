@@ -781,7 +781,17 @@
       "allMastered": "所有模块已掌握！尝试实验以加深理解。",
       "modulesStat": "个模块",
       "phaseStat": "阶段",
-      "progressStat": "已完成"
+      "progressStat": "已完成",
+      "journeyDesc": "跟随引导式学习路径，遍历所有 MiniMind 模块——从分词到推理，含进度追踪和概念掌握。",
+      "knowledgeDesc": "探索完整知识图谱——模块、概念、实验及其关系以交互式网络可视化呈现。",
+      "experienceLabel": "架构体验",
+      "experienceDesc": "逐步浏览 MiniMind 管线——观察数据如何从文本输入流经每个模块到达输出。",
+      "experimentsLabel": "实验工坊",
+      "experimentsDesc": "运行交互式实验——对比分词器、探索嵌入、检查注意力模式等。",
+      "playgroundLabel": "演练场",
+      "playgroundDesc": "直接与每个 MiniMind 模块交互——调整参数、可视化内部结构、实时查看结果。",
+      "inferenceLabel": "推理",
+      "inferenceDesc": "观察 MiniMind 逐 token 生成文本——探索温度采样、Top-K、Top-P 和 KV-Cache 行为。"
     }
   },
   "minimind": {

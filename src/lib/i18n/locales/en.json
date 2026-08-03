@@ -781,7 +781,17 @@
       "allMastered": "All modules mastered! Try an experiment to deepen your understanding.",
       "modulesStat": "modules",
       "phaseStat": "phase",
-      "progressStat": "complete"
+      "progressStat": "complete",
+      "journeyDesc": "Follow a guided learning path through all MiniMind modules — from tokenization to inference, with progress tracking and concept mastery.",
+      "knowledgeDesc": "Explore the full knowledge graph — modules, concepts, experiments, and their relationships visualized as an interactive network.",
+      "experienceLabel": "Architecture Experience",
+      "experienceDesc": "Walk through the MiniMind pipeline step by step — see how data flows from text input through every module to output.",
+      "experimentsLabel": "Experiments",
+      "experimentsDesc": "Run interactive experiments — compare tokenizers, explore embeddings, inspect attention patterns, and more.",
+      "playgroundLabel": "Playground",
+      "playgroundDesc": "Interact with every MiniMind module directly — tweak parameters, visualize internals, and see results in real time.",
+      "inferenceLabel": "Inference",
+      "inferenceDesc": "Watch MiniMind generate text token by token — explore temperature, top-k, top-p sampling, and KV-cache behavior."
     }
   },
   "minimind": {
