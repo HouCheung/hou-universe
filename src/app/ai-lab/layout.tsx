@@ -1,4 +1,6 @@
 import type { Metadata } from "next";
+import { FloatingNavDock } from "@/components/ai-lab/FloatingNavDock";
+import { BreadcrumbBar } from "@/components/ai-lab/BreadcrumbBar";
 
 export const metadata: Metadata = {
   title: {
@@ -33,6 +35,13 @@ export default function AiLabLayout({
             "radial-gradient(ellipse, rgba(var(--brand-light-rgb),0.2) 0%, rgba(var(--brand-rgb),0.1) 50%, transparent 75%)",
         }}
       />
+
+      {/* Breadcrumb bar — renders on sub-pages only */}
+      <BreadcrumbBar />
+
+      {/* Floating navigation dock */}
+      <FloatingNavDock />
+
       {children}
     </>
   );
