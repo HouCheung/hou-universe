@@ -768,7 +768,21 @@
     "comingSoonDesc": "该板块正在筹备中，内容将逐步更新。",
     "backToLab": "返回 AI Lab",
     "viewOnGithub": "在 GitHub 上查看",
-    "readBlog": "阅读笔记"
+    "readBlog": "阅读笔记",
+    "dashboard": {
+      "currentMission": "当前任务",
+      "continueLearning": "继续学习",
+      "explorationHub": "探索中心",
+      "resumeJourney": "继续旅程",
+      "openKnowledgeGraph": "打开知识图谱",
+      "runExperiment": "运行实验",
+      "lastActive": "上次学习",
+      "noProgressYet": "从 Tokenizer 开始——所有语言模型的基石。",
+      "allMastered": "所有模块已掌握！尝试实验以加深理解。",
+      "modulesStat": "个模块",
+      "phaseStat": "阶段",
+      "progressStat": "已完成"
+    }
   },
   "minimind": {
     "experience": {

@@ -768,7 +768,21 @@
     "comingSoonDesc": "This section is under development. Content will be added progressively.",
     "backToLab": "Back to AI Lab",
     "viewOnGithub": "View on GitHub",
-    "readBlog": "Read Notes"
+    "readBlog": "Read Notes",
+    "dashboard": {
+      "currentMission": "Current Mission",
+      "continueLearning": "Continue Learning",
+      "explorationHub": "Exploration Hub",
+      "resumeJourney": "Continue Journey",
+      "openKnowledgeGraph": "Open Knowledge Graph",
+      "runExperiment": "Run Experiment",
+      "lastActive": "Last active",
+      "noProgressYet": "Start with Tokenizer — the foundation of all language models.",
+      "allMastered": "All modules mastered! Try an experiment to deepen your understanding.",
+      "modulesStat": "modules",
+      "phaseStat": "phase",
+      "progressStat": "complete"
+    }
   },
   "minimind": {
     "experience": {
