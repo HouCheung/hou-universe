@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { AiLabClient } from "@/components/ai-lab/AiLabClient";
+import { AiLabDashboard } from "@/components/ai-lab/dashboard/AiLabDashboard";
 
 export const metadata: Metadata = {
   title: "AI Lab · MiniMind Research",
@@ -8,5 +8,5 @@ export const metadata: Metadata = {
 };
 
 export default function AiLabPage() {
-  return <AiLabClient />;
+  return <AiLabDashboard />;
 }
