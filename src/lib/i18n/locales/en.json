@@ -739,9 +739,30 @@
       "knowledgeMap": "Knowledge Map",
 	      "learningJourney": "Learning Journey",
       "progress": "Latest Progress",
+      "moduleProgress": "Module Progress",
       "resources": "Resources",
       "github": "GitHub",
-      "blog": "Blog"
+      "blog": "Blog",
+      "forwardPlayground": "Forward Model Explorer"
+    },
+    "nav": {
+      "dashboard": "Dashboard",
+      "journey": "Journey",
+      "knowledge": "Knowledge",
+      "experience": "Experience",
+      "experiments": "Experiments",
+      "playground": "Playground",
+      "forward": "Forward"
+    },
+    "forwardPlayground": {
+      "title": "Forward Model Explorer",
+      "description": "Trace the complete Text → Tokenizer → Embedding → RoPE → Transformer → LM Head → Logits pipeline. See every intermediate result with interactive visualizations at every stage.",
+      "cta": "Run Forward Pass"
+    },
+    "playground": {
+      "tryForward": "Ready for the full pipeline?",
+      "tryForwardDesc": "Trace text through every stage — Tokenizer, Embedding, RoPE, Transformer, and LM Head — with real-time visualizations at each step.",
+      "tryForwardCta": "Open Forward Model Explorer"
     },
     "comingSoon": "Coming Soon",
     "comingSoonDesc": "This section is under development. Content will be added progressively.",

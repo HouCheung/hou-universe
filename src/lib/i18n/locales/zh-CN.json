@@ -739,9 +739,30 @@
       "knowledgeMap": "知识图谱",
 	      "learningJourney": "学习旅程",
       "progress": "最新进度",
+      "moduleProgress": "学习模块进度",
       "resources": "学习资源",
       "github": "GitHub",
-      "blog": "学习笔记"
+      "blog": "博客",
+      "forwardPlayground": "前向模型浏览器"
+    },
+    "nav": {
+      "dashboard": "总览",
+      "journey": "学习路径",
+      "knowledge": "知识图谱",
+      "experience": "架构体验",
+      "experiments": "实验工坊",
+      "playground": "演练场",
+      "forward": "前向模型"
+    },
+    "forwardPlayground": {
+      "title": "前向模型浏览器",
+      "description": "追踪完整的 Text → Tokenizer → Embedding → RoPE → Transformer → LM Head → Logits 管线。在每个阶段查看中间结果和交互式可视化。",
+      "cta": "运行前向推理"
+    },
+    "playground": {
+      "tryForward": "准备好体验完整管线了吗？",
+      "tryForwardDesc": "追踪文本通过每个阶段 — Tokenizer、Embedding、RoPE、Transformer 和 LM Head — 每步都有实时可视化。",
+      "tryForwardCta": "打开前向模型浏览器"
     },
     "comingSoon": "内容建设中",
     "comingSoonDesc": "该板块正在筹备中，内容将逐步更新。",
