@@ -18,7 +18,6 @@
 
 import { useTranslation } from "react-i18next";
 import { motion, type Variants } from "framer-motion";
-import { SectionHeader } from "@/components/home/SectionHeader";
 import {
   Map,
   Brain,
@@ -30,6 +29,7 @@ import {
   type LucideIcon,
 } from "lucide-react";
 import Link from "next/link";
+import { SectionHeader } from "@/components/home/SectionHeader";
 import { MINIMIND_MODULES } from "@/data/minimind/module-registry";
 import { getActiveExperiments } from "@/data/minimind/experiment-registry";
 import { cn } from "@/lib/utils";

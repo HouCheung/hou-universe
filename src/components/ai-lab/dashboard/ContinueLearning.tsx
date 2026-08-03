@@ -21,7 +21,6 @@
 import { useState, useEffect } from "react";
 import { useTranslation } from "react-i18next";
 import { motion, type Variants } from "framer-motion";
-import { SectionHeader } from "@/components/home/SectionHeader";
 import {
   BookOpen,
   Brain,
@@ -30,6 +29,7 @@ import {
   Clock,
 } from "lucide-react";
 import Link from "next/link";
+import { SectionHeader } from "@/components/home/SectionHeader";
 import { getOverallProgress } from "@/data/minimind/learning-registry";
 import { MINIMIND_MODULES } from "@/data/minimind/module-registry";
 import type { UserProgress, LearningStatus } from "@/data/minimind/learning-registry";

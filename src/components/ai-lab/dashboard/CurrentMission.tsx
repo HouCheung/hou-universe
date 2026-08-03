@@ -24,9 +24,9 @@
 import { useState, useEffect } from "react";
 import { useTranslation } from "react-i18next";
 import { motion, type Variants } from "framer-motion";
-import { SectionHeader } from "@/components/home/SectionHeader";
 import { ArrowRight, Target, CheckCircle2 } from "lucide-react";
 import Link from "next/link";
+import { SectionHeader } from "@/components/home/SectionHeader";
 import {
   getNextNodes,
   getRecommendations,
