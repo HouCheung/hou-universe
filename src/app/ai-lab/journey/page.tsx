@@ -1,12 +1,12 @@
 import type { Metadata } from "next";
-import { LearningJourneyPageClient } from "@/components/minimind/learning";
+import { ProjectEvolutionPageClient } from "@/components/minimind/evolution";
 
 export const metadata: Metadata = {
-  title: "Learning Journey — MiniMind",
+  title: "Project Evolution — MiniMind",
   description:
-    "Follow the guided learning path through MiniMind modules — from tokenization to inference, with concept tracking and experiment validation.",
+    "Track the evolution of the MiniMind project — from tokenization through inference, each module building on the last.",
 };
 
 export default function JourneyPage() {
-  return <LearningJourneyPageClient />;
+  return <ProjectEvolutionPageClient />;
 }
