@@ -9,10 +9,10 @@
 // modifying any individual page file.
 //
 // Behavior:
-//   - Only renders on /ai-lab/* sub-pages (not the dashboard)
+//   - Renders on all AI Lab pages including the dashboard
 //   - Auto-hides on scroll-down, reappears on scroll-up
 //   - Active route has brand-color glow ring
-//   - Desktop: icon-only with tooltip on hover
+//   - Desktop: icon with text label
 //   - Mobile: fixed to viewport bottom
 // ============================================================
 

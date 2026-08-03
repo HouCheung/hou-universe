@@ -2,9 +2,9 @@
 
 import { useTranslation } from "react-i18next";
 import { motion, type Variants } from "framer-motion";
-import { SectionHeader } from "@/components/home/SectionHeader";
 import { ArrowRight, Layers } from "lucide-react";
 import Link from "next/link";
+import { SectionHeader } from "@/components/home/SectionHeader";
 
 const variants: Variants = {
   hidden: { opacity: 0, y: 40 },
