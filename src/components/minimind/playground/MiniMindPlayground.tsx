@@ -2,11 +2,13 @@
 
 import { useState, useCallback } from "react";
 import { motion, type Variants } from "framer-motion";
-import { Sparkles, Construction } from "lucide-react";
+import { Sparkles, Construction, ArrowRight, Layers } from "lucide-react";
+import Link from "next/link";
 import { cn } from "@/lib/utils";
 import { TokenizerPlayground } from "./tokenizer/TokenizerPlayground";
 import { EmbeddingPlayground } from "./embedding/EmbeddingPlayground";
 import { MINIMIND_MODULES } from "@/data/minimind/module-registry";
+import { CrossRefButton } from "@/components/ai-lab/CrossRefButton";
 
 // ============================================================
 // Animation variants
@@ -242,6 +244,45 @@ export function MiniMindPlayground() {
       </motion.section>
 
       {/* ================================================================ */}
+      {/* Forward Playground CTA */}
+      {/* ================================================================ */}
+      <motion.div
+        initial={{ opacity: 0, y: 20 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true }}
+        transition={{ duration: 0.5, ease: "easeOut" }}
+        className="mt-8"
+      >
+        <Link
+          href="/ai-lab/playground/forward"
+          className="group flex items-center gap-5 rounded-xl border border-brand/15 bg-brand/[0.03] px-6 py-5 backdrop-blur-sm transition-all duration-300 hover:border-brand/30 hover:bg-brand/[0.06] dark:border-white/[0.06] dark:hover:border-brand/25 sm:px-8 sm:py-6"
+        >
+          {/* Icon */}
+          <div className="flex size-11 shrink-0 items-center justify-center rounded-full border border-brand/20 bg-brand/[0.08] transition-all duration-300 group-hover:border-brand/40 group-hover:shadow-[0_0_20px_rgba(var(--brand-rgb),0.12)] dark:border-brand/25 dark:bg-brand/[0.1] sm:size-12">
+            <Layers className="size-5 text-brand/70 transition-all duration-300 group-hover:text-brand sm:size-5.5" />
+          </div>
+
+          {/* Text */}
+          <div className="min-w-0 flex-1">
+            <h3 className="text-sm font-semibold text-foreground transition-colors group-hover:text-brand sm:text-base">
+              Ready for the full pipeline?
+            </h3>
+            <p className="mt-1 text-xs leading-relaxed text-slate-500/80 dark:text-slate-400/70 sm:text-sm">
+              Trace text through every stage — Tokenizer, Embedding, RoPE,
+              Transformer, and LM Head — with real-time visualizations at each
+              step.
+            </p>
+          </div>
+
+          {/* Arrow */}
+          <div className="hidden shrink-0 items-center gap-1.5 text-xs font-medium text-brand/60 transition-all duration-300 group-hover:text-brand group-hover:translate-x-0.5 sm:flex dark:text-brand/50 dark:group-hover:text-brand/70">
+            Open Forward Model Explorer
+            <ArrowRight className="size-3.5" />
+          </div>
+        </Link>
+      </motion.div>
+
+      {/* ================================================================ */}
       {/* Active Module Playground */}
       {/* ================================================================ */}
       <motion.section
@@ -264,6 +305,17 @@ export function MiniMindPlayground() {
         {selectedModule === "tokenizer" && <TokenizerPlayground />}
         {selectedModule === "embedding" && <EmbeddingPlayground />}
       </motion.section>
+
+      {/* ================================================================ */}
+      {/* Cross-Reference Navigation */}
+      {/* ================================================================ */}
+      <div className="mt-16 flex items-center justify-center sm:mt-20">
+        <CrossRefButton
+          variant="journey"
+          targetId={selectedModule}
+          label={`Learn ${activeTitle} in Journey`}
+        />
+      </div>
     </div>
   );
 }
