@@ -9,7 +9,9 @@ import { ProgressSection } from "./ProgressSection";
 import { ResourcesSection } from "./ResourcesSection";
 import { GithubSection } from "./GithubSection";
 import { BlogSection } from "./BlogSection";
-import { ModuleProgressGrid } from "./ModuleProgressGrid";
+// TODO: ModuleProgressGrid component not yet created (Phase 24-A).
+// Re-enable when the component is implemented.
+// import { ModuleProgressGrid } from "./ModuleProgressGrid";
 import { ForwardPlaygroundSection } from "./ForwardPlaygroundSection";
 
 export function AiLabClient() {
@@ -29,7 +31,7 @@ export function AiLabClient() {
       <GithubSection />
       <BlogSection />
 
-      <ModuleProgressGrid />
+      {/* <ModuleProgressGrid /> */}
     </div>
   );
 }

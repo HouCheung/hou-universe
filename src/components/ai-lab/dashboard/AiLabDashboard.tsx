@@ -21,7 +21,9 @@ import { DashboardHero } from "./DashboardHero";
 import { CurrentMission } from "./CurrentMission";
 import { ContinueLearning } from "./ContinueLearning";
 import { ExplorationLinks } from "./ExplorationLinks";
-import { ModuleProgressGrid } from "../ModuleProgressGrid";
+// TODO: ModuleProgressGrid component not yet created (Phase 24-A).
+// Re-enable when the component is implemented.
+// import { ModuleProgressGrid } from "../ModuleProgressGrid";
 
 export function AiLabDashboard() {
   return (
@@ -29,7 +31,7 @@ export function AiLabDashboard() {
       <DashboardHero />
       <CurrentMission />
       <ContinueLearning />
-      <ModuleProgressGrid />
+      {/* <ModuleProgressGrid /> */}
       <ExplorationLinks />
     </div>
   );
