@@ -11,6 +11,7 @@ import {
   Clock,
 } from "lucide-react";
 import { cn } from "@/lib/utils";
+import { CrossRefButton } from "@/components/ai-lab/CrossRefButton";
 import type { MiniMindExperiment } from "@/data/minimind/experiment-registry";
 
 // ============================================================
@@ -143,6 +144,17 @@ export function ExperimentCard({ experiment, onSelect }: ExperimentCardProps) {
           </span>
         )}
       </div>
+
+      {/* Module cross-reference */}
+      {isActive && (
+        <div className="mt-3 border-t border-brand/8 pt-3 dark:border-white/[0.04]">
+          <CrossRefButton
+            variant="journey"
+            targetId={experiment.relatedModule}
+            label={`Learn ${experiment.relatedModule}`}
+          />
+        </div>
+      )}
     </motion.button>
   );
 }

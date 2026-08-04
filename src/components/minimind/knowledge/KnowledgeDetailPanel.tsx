@@ -30,6 +30,7 @@ import type {
 } from "@/data/minimind/knowledge-registry";
 import { getRelatedNodes } from "@/data/minimind/knowledge-registry";
 import { enrichForUI } from "@/lib/minimind/knowledge";
+import { CrossRefButton } from "@/components/ai-lab/CrossRefButton";
 import Link from "next/link";
 
 // ============================================================
@@ -301,6 +302,22 @@ export function KnowledgeDetailPanel({
                   </div>
                 )
               )}
+            </div>
+          )}
+
+          {/* Cross-reference navigation */}
+          {node.type === "module" && (
+            <div className="flex flex-wrap gap-2 border-t border-slate-500/10 pt-5 dark:border-white/[0.04]">
+              <CrossRefButton
+                variant="journey"
+                targetId={node.id}
+                label="Learn this module"
+              />
+              <CrossRefButton
+                variant="experiments"
+                targetId={node.id}
+                label="Try related experiments"
+              />
             </div>
           )}
         </motion.div>

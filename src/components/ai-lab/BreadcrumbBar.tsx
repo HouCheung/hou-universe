@@ -30,6 +30,8 @@ const SEGMENT_LABELS: Record<string, string> = {
   experiments: "Experiments",
   playground: "Playground",
   forward: "Forward",
+  inference: "Inference",
+  training: "Training",
 };
 
 // ============================================================

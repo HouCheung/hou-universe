@@ -13,7 +13,7 @@
 
 export interface NavItem {
   /** lucide-react icon name — resolved to component in consumers */
-  icon: "Home" | "Map" | "Brain" | "Layers" | "FlaskConical" | "Gamepad2";
+  icon: "Home" | "Map" | "Brain" | "Layers" | "FlaskConical" | "Gamepad2" | "Cpu" | "GraduationCap";
   /** i18n key for the display label (e.g. "aiLab.nav.journey") */
   labelKey: string;
   /** Route path relative to site root */
@@ -31,6 +31,8 @@ export const AI_LAB_NAV_ITEMS: NavItem[] = [
   { icon: "Layers", labelKey: "aiLab.nav.experience", href: "/ai-lab/experience" },
   { icon: "FlaskConical", labelKey: "aiLab.nav.experiments", href: "/ai-lab/experiments" },
   { icon: "Gamepad2", labelKey: "aiLab.nav.playground", href: "/ai-lab/playground" },
+  { icon: "Cpu", labelKey: "aiLab.nav.inference", href: "/ai-lab/inference" },
+  { icon: "GraduationCap", labelKey: "aiLab.nav.training", href: "/ai-lab/training" },
 ];
 
 // ============================================================
@@ -43,4 +45,6 @@ export const AI_LAB_DOCK_ROUTES: string[] = [
   "/ai-lab/experience",
   "/ai-lab/experiments",
   "/ai-lab/playground",
+  "/ai-lab/inference",
+  "/ai-lab/training",
 ];

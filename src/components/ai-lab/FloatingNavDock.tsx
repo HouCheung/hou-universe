@@ -29,6 +29,8 @@ import {
   Layers,
   FlaskConical,
   Gamepad2,
+  Cpu,
+  GraduationCap,
   type LucideIcon,
 } from "lucide-react";
 import { AI_LAB_NAV_ITEMS, AI_LAB_DOCK_ROUTES, type NavItem } from "./nav-config";
@@ -44,6 +46,8 @@ const ICON_MAP: Record<NavItem["icon"], LucideIcon> = {
   Layers,
   FlaskConical,
   Gamepad2,
+  Cpu,
+  GraduationCap,
 };
 
 // ============================================================

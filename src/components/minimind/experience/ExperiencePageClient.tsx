@@ -7,6 +7,7 @@ import { ArchitectureOverview } from "@/components/minimind/experience/Architect
 import { MiniMindFlow } from "@/components/minimind/experience/MiniMindFlow";
 import { ModuleDependencyGraph } from "@/components/minimind/experience/ModuleDependencyGraph";
 import { LearningProgress } from "@/components/minimind/experience/LearningProgress";
+import { CrossRefButton } from "@/components/ai-lab/CrossRefButton";
 
 // ============================================================
 // Animation variants
@@ -72,6 +73,25 @@ export function ExperiencePageClient() {
         <MiniMindFlow />
         <ModuleDependencyGraph />
         <LearningProgress />
+      </div>
+
+      {/* ================================================================ */}
+      {/* Cross-Reference Navigation */}
+      {/* ================================================================ */}
+      <div className="mt-20 flex flex-wrap items-center justify-center gap-3 sm:mt-28">
+        <span className="text-xs text-slate-500/70 dark:text-slate-400/50">
+          Continue exploring:
+        </span>
+        <CrossRefButton
+          variant="journey"
+          targetId="attention"
+          label="Start Learning Journey"
+        />
+        <CrossRefButton
+          variant="knowledge"
+          targetId="attention"
+          label="Explore Knowledge Graph"
+        />
       </div>
     </div>
   );

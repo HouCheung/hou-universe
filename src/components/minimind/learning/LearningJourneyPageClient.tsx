@@ -23,6 +23,7 @@ import { getNodeById as getKnowledgeNodeById } from "@/data/minimind/knowledge-r
 import { LearningPathTimeline } from "./LearningPathTimeline";
 import { RecommendationBar } from "./RecommendationBar";
 import { ProgressDashboard } from "./ProgressDashboard";
+import { CrossRefButton } from "@/components/ai-lab/CrossRefButton";
 import { cn } from "@/lib/utils";
 
 // ============================================================
@@ -312,6 +313,22 @@ function NodeDetailPanel({
             >
               Mark Mastered
             </button>
+          )}
+        </div>
+
+        {/* Cross-reference links */}
+        <div className="flex flex-wrap gap-2 border-t border-slate-500/10 pt-4 dark:border-white/[0.05]">
+          <CrossRefButton
+            variant="knowledge"
+            targetId={sourceId}
+            label="Explore in Knowledge Graph"
+          />
+          {learningNode.experimentIds.length > 0 && (
+            <CrossRefButton
+              variant="experiments"
+              targetId={learningNode.experimentIds[0]}
+              label="Run Experiment"
+            />
           )}
         </div>
       </div>
