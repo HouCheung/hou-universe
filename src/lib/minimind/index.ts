@@ -7,6 +7,25 @@
 // 供 Playground、AI Lab 和外部消费者使用。
 // ============================================================
 
+// ── Core (Phase 30: Tensor + Autograd Engine) ──
+// Note: transpose & softmax are NOT re-exported here to avoid
+// conflict with existing attention/math exports of the same name.
+// Import them directly from "@/lib/minimind/core" if needed.
+export {
+  Tensor,
+  add,
+  multiply,
+  matmul,
+  sum,
+  reshape,
+  relu,
+  executeBackward,
+  buildTopologicalOrder,
+  indexFor,
+  shapeSize,
+} from "./core";
+export type { BackwardContext } from "./core";
+
 // ── Tokenizer ──
 export { MiniTokenizer } from "./tokenizer/MiniTokenizer";
 export type { MiniTokenizerOptions } from "./tokenizer/MiniTokenizer";
