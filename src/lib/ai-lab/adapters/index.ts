@@ -83,3 +83,26 @@ export {
   type GenerationSample,
   type TrainingStats,
 } from "./trainingAdapter";
+
+// trainingVisualizationAdapter — observatory chart data (Phase 53)
+export {
+  getLossCurveData,
+  getLossCurveDataById,
+  getLearningRateCurveData,
+  getThroughputData,
+  getTrainingSummary,
+  getTrainingSummaryById,
+  getGenerationComparison,
+  getObservatoryStats,
+  hasObservatoryData,
+  getRunList,
+  getLatestAnalysis,
+  type LossCurvePoint,
+  type LossCurveData,
+  type LearningRateCurvePoint,
+  type LearningRateCurveData,
+  type ThroughputPoint,
+  type ThroughputData,
+  type TrainingSummary,
+  type GenerationComparisonData,
+} from "./trainingVisualizationAdapter";
