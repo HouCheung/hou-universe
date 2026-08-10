@@ -1,0 +1,48 @@
+{
+  "version": 1,
+  "name": "tinystories-baseline",
+  "description": "Phase 52 baseline training campaign — validates MiniMind real GPT training with TinyStories dataset. Uses the 'small' model architecture (dModel=256, 6 layers, ~12M params) trained for 3 epochs with AdamW + cosine scheduler.",
+  "seed": 42,
+  "dataset": {
+    "type": "tinystories",
+    "split": "train",
+    "maxDocuments": 2000,
+    "blockSize": 256,
+    "batchSize": 8
+  },
+  "model": {
+    "preset": "custom",
+    "vocabSize": 32000,
+    "dModel": 256,
+    "numHeads": 8,
+    "dFF": 1024,
+    "numLayers": 6,
+    "maxSeqLen": 256
+  },
+  "tokenizer": {
+    "type": "bpe",
+    "vocabSize": 32000
+  },
+  "optimizer": {
+    "type": "adamw",
+    "lr": 0.0003,
+    "weightDecay": 0.01,
+    "betas": [0.9, 0.999],
+    "eps": 1e-8
+  },
+  "scheduler": {
+    "type": "cosine",
+    "warmupSteps": 100,
+    "minLR": 3e-6
+  },
+  "training": {
+    "epochs": 3,
+    "gradientAccumulationSteps": 4,
+    "gradientClipNorm": 1.0,
+    "logInterval": 10,
+    "evalEvery": 0
+  },
+  "output": {
+    "dir": ".cache/minimind/experiments"
+  }
+}
