@@ -55,3 +55,30 @@ export type {
   SuiteComparison,
   BenchmarkSuiteConfig,
 } from "./BenchmarkSuite";
+
+// Research Conclusion
+export {
+  generateConclusions,
+  assessSignificance,
+  formatConclusions,
+} from "./ResearchConclusion";
+
+export type {
+  ResearchConclusion,
+  ResearchConclusions,
+  ConclusionCategory,
+  ConclusionSeverity,
+  SignificanceLevel,
+} from "./ResearchConclusion";
+
+// Research Benchmark Report
+export {
+  createBenchmarkResearchReport,
+  reportToJSON,
+  reportFromJSON,
+  reportToMarkdown,
+} from "./ResearchBenchmarkReport";
+
+export type {
+  BenchmarkResearchReport,
+} from "./ResearchBenchmarkReport";

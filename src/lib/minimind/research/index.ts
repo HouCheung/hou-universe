@@ -224,6 +224,13 @@ export {
   createLearningRateSuite,
   createBatchSizeSuite,
   createEpochSuite,
+  generateConclusions,
+  assessSignificance,
+  formatConclusions,
+  createBenchmarkResearchReport,
+  reportToJSON,
+  reportFromJSON,
+  reportToMarkdown,
 } from "./benchmark";
 
 export type {
@@ -245,6 +252,12 @@ export type {
   BenchmarkSuiteResult,
   SuiteComparison,
   BenchmarkSuiteConfig,
+  ResearchConclusion,
+  ResearchConclusions,
+  ConclusionCategory,
+  ConclusionSeverity,
+  SignificanceLevel,
+  BenchmarkResearchReport,
 } from "./benchmark";
 
 // Research Report v2
