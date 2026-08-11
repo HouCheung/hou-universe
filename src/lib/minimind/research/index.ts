@@ -83,6 +83,7 @@ export {
   RecommendationEngine,
   ComparisonInsightEngine,
   ResearchReport,
+  BenchmarkCopilot,
 } from "./copilot";
 
 export type {
@@ -98,6 +99,9 @@ export type {
   MetricWinner,
   TradeOff,
   ResearchReportData,
+  BenchmarkInsight,
+  BenchmarkInsights,
+  BenchmarkRecommendation,
 } from "./copilot";
 
 // ── Phase 60: Research Experiment Loop ──
