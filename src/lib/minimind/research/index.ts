@@ -219,6 +219,11 @@ export {
   detectConvergence,
   formatBenchmarkReport,
   compareBenchmarkReports,
+  BenchmarkSuite,
+  createModelScaleSuite,
+  createLearningRateSuite,
+  createBatchSizeSuite,
+  createEpochSuite,
 } from "./benchmark";
 
 export type {
@@ -235,6 +240,11 @@ export type {
   ResearchBenchmarkReport,
   BenchmarkMetricStats,
   ConvergenceStats,
+  SuiteMember,
+  SuiteMemberResult,
+  BenchmarkSuiteResult,
+  SuiteComparison,
+  BenchmarkSuiteConfig,
 } from "./benchmark";
 
 // Research Report v2

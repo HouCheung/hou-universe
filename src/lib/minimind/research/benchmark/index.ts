@@ -38,3 +38,20 @@ export type {
   BenchmarkMetricStats,
   ConvergenceStats,
 } from "./ResearchBenchmarkRunner";
+
+// Benchmark Suite
+export {
+  BenchmarkSuite,
+  createModelScaleSuite,
+  createLearningRateSuite,
+  createBatchSizeSuite,
+  createEpochSuite,
+} from "./BenchmarkSuite";
+
+export type {
+  SuiteMember,
+  SuiteMemberResult,
+  BenchmarkSuiteResult,
+  SuiteComparison,
+  BenchmarkSuiteConfig,
+} from "./BenchmarkSuite";
