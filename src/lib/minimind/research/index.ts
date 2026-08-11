@@ -215,6 +215,10 @@ export {
   compareExperimentIdentity,
   formatFingerprint,
   extractExperimentIdentity,
+  ResearchBenchmarkRunner,
+  detectConvergence,
+  formatBenchmarkReport,
+  compareBenchmarkReports,
 } from "./benchmark";
 
 export type {
@@ -224,6 +228,13 @@ export type {
   FingerprintTrainingConfig,
   FingerprintDatasetConfig,
   FingerprintTokenizerConfig,
+  ResearchBenchmarkProfile,
+  ResearchBenchmarkRunResult,
+  ResearchBenchmarkAggregate,
+  ResearchBenchmarkResult,
+  ResearchBenchmarkReport,
+  BenchmarkMetricStats,
+  ConvergenceStats,
 } from "./benchmark";
 
 // Research Report v2
