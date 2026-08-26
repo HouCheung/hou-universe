@@ -1,0 +1,143 @@
+{
+  "phase": "phase92-tokenizer-probe",
+  "question": "Does increasing the BPE tokenizer merge budget improve Chinese tokenization granularity (fewer tokens per CJK character, more single-token characters)?",
+  "seed": 42,
+  "dataset": {
+    "id": "bilingual",
+    "version": "0.3.0",
+    "samples": 600,
+    "languageCounts": {
+      "zh": 200,
+      "en": 200,
+      "mixed": 200
+    }
+  },
+  "couplingContract": {
+    "rule": "merges = vocabSize - 260 (256 byte tokens + 4 specials)",
+    "verifiedBy": "mergeCount == vocabTarget - 260 for every candidate"
+  },
+  "corpusDerivation": {
+    "distinctCjkChars": 864,
+    "frequentCjkChars": 548,
+    "mergesForFullZhCoverage": 1096,
+    "zhChars": 200,
+    "enChars": 200,
+    "mixedChars": 200
+  },
+  "candidates": [
+    {
+      "key": "A",
+      "label": "baseline (production, merges=40)",
+      "vocabTarget": 300,
+      "actualVocabSize": 300,
+      "mergeCount": 40,
+      "stateHash": "dd92e39f",
+      "deterministicReconstruction": true,
+      "stateRoundTrip": true,
+      "roundTrip": {
+        "allRoundTrip": true,
+        "failures": 0
+      },
+      "tokens": {
+        "totalTokens": 21303,
+        "avgTokensZhSample": 36.705,
+        "avgTokensEnSample": 35.76,
+        "avgTokensMixedSample": 34.05,
+        "minTokensPerSample": 13,
+        "maxTokensPerSample": 60
+      },
+      "chinese": {
+        "avgTokensPerCjkOccurrence": 2.6846580406654343,
+        "pctSingleToken": 0.05286506469500924,
+        "pctTwoToken": 0.20961182994454713,
+        "pctThreePlus": 0.7375231053604436,
+        "tokensPerCharZhSamples": 2.7138632162661738,
+        "cjkCharsPerTokenZhSamples": 0.3684784089361122
+      },
+      "vocabUtilization": {
+        "used": 140,
+        "total": 300,
+        "ratio": 0.4666666666666667
+      },
+      "accepted": true
+    },
+    {
+      "key": "B",
+      "label": "moderate merge budget (merges=80)",
+      "vocabTarget": 340,
+      "actualVocabSize": 340,
+      "mergeCount": 80,
+      "stateHash": "592ac7ec",
+      "deterministicReconstruction": true,
+      "stateRoundTrip": true,
+      "roundTrip": {
+        "allRoundTrip": true,
+        "failures": 0
+      },
+      "tokens": {
+        "totalTokens": 19144,
+        "avgTokensZhSample": 32.885,
+        "avgTokensEnSample": 33.255,
+        "avgTokensMixedSample": 29.58,
+        "minTokensPerSample": 7,
+        "maxTokensPerSample": 54
+      },
+      "chinese": {
+        "avgTokensPerCjkOccurrence": 2.4044362292051757,
+        "pctSingleToken": 0.10018484288354898,
+        "pctTwoToken": 0.3951940850277264,
+        "pctThreePlus": 0.5046210720887245,
+        "tokensPerCharZhSamples": 2.4314232902033273,
+        "cjkCharsPerTokenZhSamples": 0.4112817393948609
+      },
+      "vocabUtilization": {
+        "used": 178,
+        "total": 340,
+        "ratio": 0.5235294117647059
+      },
+      "accepted": true
+    },
+    {
+      "key": "C",
+      "label": "larger merge budget (merges=120)",
+      "vocabTarget": 380,
+      "actualVocabSize": 380,
+      "mergeCount": 120,
+      "stateHash": "61e014b6",
+      "deterministicReconstruction": true,
+      "stateRoundTrip": true,
+      "roundTrip": {
+        "allRoundTrip": true,
+        "failures": 0
+      },
+      "tokens": {
+        "totalTokens": 17737,
+        "avgTokensZhSample": 30.655,
+        "avgTokensEnSample": 30.755,
+        "avgTokensMixedSample": 27.275,
+        "minTokensPerSample": 7,
+        "maxTokensPerSample": 47
+      },
+      "chinese": {
+        "avgTokensPerCjkOccurrence": 2.243992606284658,
+        "pctSingleToken": 0.17116451016635859,
+        "pctTwoToken": 0.41367837338262475,
+        "pctThreePlus": 0.41515711645101666,
+        "tokensPerCharZhSamples": 2.266543438077634,
+        "cjkCharsPerTokenZhSamples": 0.44120045669548197
+      },
+      "vocabUtilization": {
+        "used": 218,
+        "total": 380,
+        "ratio": 0.5736842105263158
+      },
+      "accepted": true
+    }
+  ],
+  "acceptedCandidates": [
+    "A",
+    "B",
+    "C"
+  ],
+  "rejectedCandidates": []
+}

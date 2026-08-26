@@ -1,0 +1,988 @@
+{
+  "key": "A",
+  "label": "baseline (production)",
+  "vocabTarget": 300,
+  "tokenizer": {
+    "actualVocabSize": 300,
+    "mergeCount": 40,
+    "stateHash": "dd92e39f",
+    "roundTrip": true,
+    "accepted": true,
+    "avgTokensPerCjkOccurrence": 2.6846580406654343,
+    "pctSingleToken": 0.05286506469500924,
+    "pctTwoToken": 0.20961182994454713,
+    "pctThreePlus": 0.7375231053604436,
+    "tokensPerCharZhSamples": 2.7138632162661738
+  },
+  "model": {
+    "totalParams": 1126528,
+    "expectedParams": 1126528,
+    "paramsDelta": 0
+  },
+  "training": {
+    "trained": false,
+    "source": "experiments/phase90/phase90-aligned.ckpt.json (Phase 90 condition B)",
+    "initialLoss": 6.0273,
+    "finalLoss": 0.1226,
+    "bestLoss": 0.1222,
+    "totalSteps": 3000,
+    "durationMs": 6816180,
+    "maxAbsParamDelta": null,
+    "meanAbsParamDelta": null
+  },
+  "checkpoint": {
+    "path": "D:\\123\\HOU Universe\\experiments\\phase90\\phase90-aligned.ckpt.json",
+    "integrity": {
+      "exists": true,
+      "sizeBytes": 73605758,
+      "source": "D:\\123\\HOU Universe\\experiments\\phase90\\phase90-aligned.ckpt.json",
+      "expectedParamCount": 1126528,
+      "actualParamCount": 1126528,
+      "paramCountMatches": true,
+      "shapeMismatches": [],
+      "nanCount": 0,
+      "infinityCount": 0,
+      "finite": true,
+      "reloadDeterministic": true,
+      "loadSaveLoadLossless": true
+    }
+  },
+  "gates": {
+    "memorization": {
+      "top1": 0.9580152671755725,
+      "predictions": 262,
+      "chance": 0.0033333333333333335,
+      "exceedsChance": true,
+      "reproducesPatterns": true
+    },
+    "generation": {
+      "byLanguage": {
+        "zh": {
+          "validUtf8Ratio": 0.5,
+          "nonEmptyRatio": 1,
+          "cjkRatio": 1,
+          "collapsedRatio": 0,
+          "mergedTokenRatio": 0.5
+        },
+        "en": {
+          "validUtf8Ratio": 0.5,
+          "nonEmptyRatio": 1,
+          "cjkRatio": 0.5,
+          "collapsedRatio": 0,
+          "mergedTokenRatio": 1
+        },
+        "mixed": {
+          "validUtf8Ratio": 0,
+          "nonEmptyRatio": 1,
+          "cjkRatio": 1,
+          "collapsedRatio": 0,
+          "mergedTokenRatio": 1
+        }
+      },
+      "samples": [
+        {
+          "prompt": "the sun rises",
+          "language": "en",
+          "continuation": "es over the quiet valleach morningse",
+          "tokenCount": 24,
+          "empty": false,
+          "validUtf8": true,
+          "hasCjk": false,
+          "repeatedCollapse": false,
+          "usesMergedTokens": true,
+          "replacementCharCount": 0
+        },
+        {
+          "prompt": "machine learning is",
+          "language": "en",
+          "continuation": "dean �小存储了改结��",
+          "tokenCount": 24,
+          "empty": false,
+          "validUtf8": false,
+          "hasCjk": true,
+          "repeatedCollapse": false,
+          "usesMergedTokens": true,
+          "replacementCharCount": 3
+        },
+        {
+          "prompt": "太阳",
+          "language": "zh",
+          "continuation": "从山谷后面缓缓升",
+          "tokenCount": 24,
+          "empty": false,
+          "validUtf8": true,
+          "hasCjk": true,
+          "repeatedCollapse": false,
+          "usesMergedTokens": false,
+          "replacementCharCount": 0
+        },
+        {
+          "prompt": "机器学习是",
+          "language": "zh",
+          "continuation": "个躦会掻��复连��的�",
+          "tokenCount": 24,
+          "empty": false,
+          "validUtf8": false,
+          "hasCjk": true,
+          "repeatedCollapse": false,
+          "usesMergedTokens": true,
+          "replacementCharCount": 5
+        },
+        {
+          "prompt": "什么是 machine learning",
+          "language": "mixed",
+          "continuation": "？�all�ning 的 pitery 的 pateake",
+          "tokenCount": 24,
+          "empty": false,
+          "validUtf8": false,
+          "hasCjk": true,
+          "repeatedCollapse": false,
+          "usesMergedTokens": true,
+          "replacementCharCount": 2
+        }
+      ]
+    },
+    "roundTrip": {
+      "allRoundTrip": true,
+      "counts": {
+        "zh": 200,
+        "en": 200,
+        "mixed": 200
+      },
+      "failures": {
+        "zh": 0,
+        "en": 0,
+        "mixed": 0
+      }
+    },
+    "level": 3,
+    "levelText": "Capability gates:\n  [✔] Level 0 — Pipeline works: Training loop runs to completion; checkpoint saves and loads\n        - training loop completes\n        - checkpoint save/load succeeds\n  [✔] Level 1 — Bilingual tokenizer: zh/en/mixed encode→decode round-trip is lossless\n        - tokenizer round-trips all language classes\n  [✔] Level 2 — Training signal: Loss decreases and parameters change during training\n        - loss decreases\n        - parameters change\n  [✔] Level 3 — Memorization: Model reproduces training patterns (top-1 >= 0.5)\n        - next-token top-1 accuracy >= 0.5 (actual reproduction, not merely above chance)\n  [✘] Level 4 — Coherent bilingual generation: Generated text is valid UTF-8, non-empty, non-collapsed, uses learned vocab\n        - generation is valid UTF-8\n        - generation is non-empty\n        - generation is not repetition-collapsed\n        - generation uses learned (merged) subword tokens\n        - lower gate not met\n  [✘] Level 5 — Bilingual Q&A: Model answers zh/en questions coherently\n        - requires instruction tuning + Q&A evaluation set (not present)\n        - lower gate not met\nHighest achieved level: 3",
+    "levels": [
+      {
+        "level": 0,
+        "name": "Pipeline works",
+        "criterion": "Training loop runs to completion; checkpoint saves and loads",
+        "achieved": true,
+        "reasons": [
+          "training loop completes",
+          "checkpoint save/load succeeds"
+        ]
+      },
+      {
+        "level": 1,
+        "name": "Bilingual tokenizer",
+        "criterion": "zh/en/mixed encode→decode round-trip is lossless",
+        "achieved": true,
+        "reasons": [
+          "tokenizer round-trips all language classes"
+        ]
+      },
+      {
+        "level": 2,
+        "name": "Training signal",
+        "criterion": "Loss decreases and parameters change during training",
+        "achieved": true,
+        "reasons": [
+          "loss decreases",
+          "parameters change"
+        ]
+      },
+      {
+        "level": 3,
+        "name": "Memorization",
+        "criterion": "Model reproduces training patterns (top-1 >= 0.5)",
+        "achieved": true,
+        "reasons": [
+          "next-token top-1 accuracy >= 0.5 (actual reproduction, not merely above chance)"
+        ]
+      },
+      {
+        "level": 4,
+        "name": "Coherent bilingual generation",
+        "criterion": "Generated text is valid UTF-8, non-empty, non-collapsed, uses learned vocab",
+        "achieved": false,
+        "reasons": [
+          "generation is valid UTF-8",
+          "generation is non-empty",
+          "generation is not repetition-collapsed",
+          "generation uses learned (merged) subword tokens",
+          "lower gate not met"
+        ]
+      },
+      {
+        "level": 5,
+        "name": "Bilingual Q&A",
+        "criterion": "Model answers zh/en questions coherently",
+        "achieved": false,
+        "reasons": [
+          "requires instruction tuning + Q&A evaluation set (not present)",
+          "lower gate not met"
+        ]
+      }
+    ]
+  },
+  "generationAnalysis": {
+    "greedy": {
+      "samples": [
+        {
+          "prompt": "the sun rises",
+          "language": "en",
+          "continuation": "es over the quiet valleach morningst",
+          "validUtf8": true,
+          "replacementCharCount": 0,
+          "stopReason": "maxTokens",
+          "generatedLength": 24
+        },
+        {
+          "prompt": "machine learning is",
+          "language": "en",
+          "continuation": "dean ss dan ss an onusty onety ",
+          "validUtf8": true,
+          "replacementCharCount": 0,
+          "stopReason": "maxTokens",
+          "generatedLength": 24
+        },
+        {
+          "prompt": "太阳",
+          "language": "zh",
+          "continuation": "通过核聚变产生能量",
+          "validUtf8": true,
+          "replacementCharCount": 0,
+          "stopReason": "maxTokens",
+          "generatedLength": 24
+        },
+        {
+          "prompt": "机器学习是",
+          "language": "zh",
+          "continuation": "上�成一大�词�接改�",
+          "validUtf8": false,
+          "replacementCharCount": 4,
+          "stopReason": "maxTokens",
+          "generatedLength": 24
+        },
+        {
+          "prompt": "什么是 machine learning",
+          "language": "mixed",
+          "continuation": "？�eakeakean iakeaine dea",
+          "validUtf8": false,
+          "replacementCharCount": 1,
+          "stopReason": "maxTokens",
+          "generatedLength": 24
+        }
+      ],
+      "invalidRate": 0.4,
+      "byLanguage": {
+        "zh": 0.5,
+        "en": 0,
+        "mixed": 1
+      }
+    },
+    "temp08": {
+      "samples": [
+        {
+          "prompt": "the sun rises",
+          "language": "en",
+          "continuation": "es over the quiet valleach morningse",
+          "tokenCount": 24,
+          "empty": false,
+          "replacementCharCount": 0,
+          "validUtf8": true,
+          "cjkCharCount": 0,
+          "hasCjk": false,
+          "repeatedCollapse": false,
+          "usesMergedTokens": true,
+          "mergedTokenCount": 7
+        },
+        {
+          "prompt": "machine learning is",
+          "language": "en",
+          "continuation": "dean �小存储了改结��",
+          "tokenCount": 24,
+          "empty": false,
+          "replacementCharCount": 3,
+          "validUtf8": false,
+          "cjkCharCount": 6,
+          "hasCjk": true,
+          "repeatedCollapse": false,
+          "usesMergedTokens": true,
+          "mergedTokenCount": 3
+        },
+        {
+          "prompt": "太阳",
+          "language": "zh",
+          "continuation": "从山谷后面缓缓升",
+          "tokenCount": 24,
+          "empty": false,
+          "replacementCharCount": 0,
+          "validUtf8": true,
+          "cjkCharCount": 8,
+          "hasCjk": true,
+          "repeatedCollapse": false,
+          "usesMergedTokens": false,
+          "mergedTokenCount": 0
+        },
+        {
+          "prompt": "机器学习是",
+          "language": "zh",
+          "continuation": "个躦会掻��复连��的�",
+          "tokenCount": 24,
+          "empty": false,
+          "replacementCharCount": 5,
+          "validUtf8": false,
+          "cjkCharCount": 7,
+          "hasCjk": true,
+          "repeatedCollapse": false,
+          "usesMergedTokens": true,
+          "mergedTokenCount": 4
+        },
+        {
+          "prompt": "什么是 machine learning",
+          "language": "mixed",
+          "continuation": "？�all�ning 的 pitery 的 pateake",
+          "tokenCount": 24,
+          "empty": false,
+          "replacementCharCount": 2,
+          "validUtf8": false,
+          "cjkCharCount": 2,
+          "hasCjk": true,
+          "repeatedCollapse": false,
+          "usesMergedTokens": true,
+          "mergedTokenCount": 7
+        }
+      ],
+      "byLanguage": {
+        "zh": {
+          "language": "zh",
+          "sampleCount": 2,
+          "nonEmptyRatio": 1,
+          "validUtf8Ratio": 0.5,
+          "cjkRatio": 1,
+          "collapsedRatio": 0,
+          "mergedTokenRatio": 0.5
+        },
+        "en": {
+          "language": "en",
+          "sampleCount": 2,
+          "nonEmptyRatio": 1,
+          "validUtf8Ratio": 0.5,
+          "cjkRatio": 0.5,
+          "collapsedRatio": 0,
+          "mergedTokenRatio": 1
+        },
+        "mixed": {
+          "language": "mixed",
+          "sampleCount": 1,
+          "nonEmptyRatio": 1,
+          "validUtf8Ratio": 0,
+          "cjkRatio": 1,
+          "collapsedRatio": 0,
+          "mergedTokenRatio": 1
+        }
+      }
+    },
+    "utf8DegradationCurve": {
+      "steps": [
+        {
+          "step": 0,
+          "invalid": 3,
+          "total": 3,
+          "invalidRate": 1
+        },
+        {
+          "step": 1,
+          "invalid": 2,
+          "total": 3,
+          "invalidRate": 0.6666666666666666
+        },
+        {
+          "step": 2,
+          "invalid": 1,
+          "total": 3,
+          "invalidRate": 0.3333333333333333
+        },
+        {
+          "step": 3,
+          "invalid": 3,
+          "total": 3,
+          "invalidRate": 1
+        },
+        {
+          "step": 4,
+          "invalid": 2,
+          "total": 3,
+          "invalidRate": 0.6666666666666666
+        },
+        {
+          "step": 5,
+          "invalid": 3,
+          "total": 3,
+          "invalidRate": 1
+        },
+        {
+          "step": 6,
+          "invalid": 3,
+          "total": 3,
+          "invalidRate": 1
+        },
+        {
+          "step": 7,
+          "invalid": 2,
+          "total": 3,
+          "invalidRate": 0.6666666666666666
+        },
+        {
+          "step": 8,
+          "invalid": 3,
+          "total": 3,
+          "invalidRate": 1
+        },
+        {
+          "step": 9,
+          "invalid": 3,
+          "total": 3,
+          "invalidRate": 1
+        },
+        {
+          "step": 10,
+          "invalid": 2,
+          "total": 3,
+          "invalidRate": 0.6666666666666666
+        },
+        {
+          "step": 11,
+          "invalid": 3,
+          "total": 3,
+          "invalidRate": 1
+        },
+        {
+          "step": 12,
+          "invalid": 2,
+          "total": 3,
+          "invalidRate": 0.6666666666666666
+        },
+        {
+          "step": 13,
+          "invalid": 3,
+          "total": 3,
+          "invalidRate": 1
+        },
+        {
+          "step": 14,
+          "invalid": 2,
+          "total": 3,
+          "invalidRate": 0.6666666666666666
+        },
+        {
+          "step": 15,
+          "invalid": 3,
+          "total": 3,
+          "invalidRate": 1
+        },
+        {
+          "step": 16,
+          "invalid": 3,
+          "total": 3,
+          "invalidRate": 1
+        },
+        {
+          "step": 17,
+          "invalid": 2,
+          "total": 3,
+          "invalidRate": 0.6666666666666666
+        },
+        {
+          "step": 18,
+          "invalid": 3,
+          "total": 3,
+          "invalidRate": 1
+        },
+        {
+          "step": 19,
+          "invalid": 3,
+          "total": 3,
+          "invalidRate": 1
+        },
+        {
+          "step": 20,
+          "invalid": 2,
+          "total": 3,
+          "invalidRate": 0.6666666666666666
+        },
+        {
+          "step": 21,
+          "invalid": 3,
+          "total": 3,
+          "invalidRate": 1
+        },
+        {
+          "step": 22,
+          "invalid": 3,
+          "total": 3,
+          "invalidRate": 1
+        },
+        {
+          "step": 23,
+          "invalid": 2,
+          "total": 3,
+          "invalidRate": 0.6666666666666666
+        }
+      ]
+    },
+    "rollout": {
+      "steps": [
+        {
+          "step": 1,
+          "correct": 21,
+          "total": 60,
+          "accuracy": 0.35
+        },
+        {
+          "step": 2,
+          "correct": 19,
+          "total": 60,
+          "accuracy": 0.31666666666666665
+        },
+        {
+          "step": 3,
+          "correct": 11,
+          "total": 60,
+          "accuracy": 0.18333333333333332
+        },
+        {
+          "step": 4,
+          "correct": 10,
+          "total": 60,
+          "accuracy": 0.16666666666666666
+        },
+        {
+          "step": 5,
+          "correct": 11,
+          "total": 60,
+          "accuracy": 0.18333333333333332
+        },
+        {
+          "step": 6,
+          "correct": 7,
+          "total": 60,
+          "accuracy": 0.11666666666666667
+        },
+        {
+          "step": 7,
+          "correct": 6,
+          "total": 60,
+          "accuracy": 0.1
+        },
+        {
+          "step": 8,
+          "correct": 6,
+          "total": 60,
+          "accuracy": 0.1
+        },
+        {
+          "step": 9,
+          "correct": 7,
+          "total": 60,
+          "accuracy": 0.11666666666666667
+        },
+        {
+          "step": 10,
+          "correct": 6,
+          "total": 60,
+          "accuracy": 0.1
+        },
+        {
+          "step": 11,
+          "correct": 6,
+          "total": 60,
+          "accuracy": 0.1
+        },
+        {
+          "step": 12,
+          "correct": 7,
+          "total": 60,
+          "accuracy": 0.11666666666666667
+        },
+        {
+          "step": 13,
+          "correct": 6,
+          "total": 60,
+          "accuracy": 0.1
+        },
+        {
+          "step": 14,
+          "correct": 7,
+          "total": 60,
+          "accuracy": 0.11666666666666667
+        },
+        {
+          "step": 15,
+          "correct": 3,
+          "total": 60,
+          "accuracy": 0.05
+        },
+        {
+          "step": 16,
+          "correct": 4,
+          "total": 60,
+          "accuracy": 0.06666666666666667
+        },
+        {
+          "step": 17,
+          "correct": 3,
+          "total": 60,
+          "accuracy": 0.05
+        },
+        {
+          "step": 18,
+          "correct": 6,
+          "total": 60,
+          "accuracy": 0.1
+        },
+        {
+          "step": 19,
+          "correct": 7,
+          "total": 60,
+          "accuracy": 0.11666666666666667
+        },
+        {
+          "step": 20,
+          "correct": 3,
+          "total": 60,
+          "accuracy": 0.05
+        },
+        {
+          "step": 21,
+          "correct": 3,
+          "total": 60,
+          "accuracy": 0.05
+        },
+        {
+          "step": 22,
+          "correct": 3,
+          "total": 60,
+          "accuracy": 0.05
+        },
+        {
+          "step": 23,
+          "correct": 4,
+          "total": 60,
+          "accuracy": 0.06666666666666667
+        },
+        {
+          "step": 24,
+          "correct": 5,
+          "total": 59,
+          "accuracy": 0.0847457627118644
+        }
+      ],
+      "skippedTooLong": 0
+    }
+  },
+  "reproducibility": {
+    "identical": true,
+    "steps": 300,
+    "lossHistory": [
+      5.8254,
+      5.9678,
+      5.9847,
+      5.9459,
+      5.9676,
+      5.9595,
+      5.9562,
+      5.9597,
+      5.9576,
+      5.9495,
+      5.9433,
+      5.9297,
+      5.9166,
+      5.9041,
+      5.8734,
+      5.861,
+      5.8321,
+      5.8114,
+      5.798,
+      5.7792,
+      5.7523,
+      5.733,
+      5.7151,
+      5.6914,
+      5.6731,
+      5.6525,
+      5.6248,
+      5.6082,
+      5.5873,
+      5.563,
+      5.5423,
+      5.5189,
+      5.497,
+      5.4759,
+      5.4496,
+      5.4285,
+      5.4053,
+      5.3829,
+      5.3594,
+      5.3408,
+      5.3233,
+      5.3012,
+      5.2799,
+      5.2624,
+      5.245,
+      5.2215,
+      5.2034,
+      5.192,
+      5.1789,
+      5.1662,
+      5.1502,
+      5.1309,
+      5.1201,
+      5.1032,
+      5.0909,
+      5.0764,
+      5.0626,
+      5.0501,
+      5.0366,
+      5.0244,
+      5.0135,
+      4.9994,
+      4.9876,
+      4.9761,
+      4.9655,
+      4.9519,
+      4.9439,
+      4.9335,
+      4.9237,
+      4.9112,
+      4.8975,
+      4.8879,
+      4.8733,
+      4.8637,
+      4.852,
+      4.8444,
+      4.8367,
+      4.8279,
+      4.8174,
+      4.8084,
+      4.7967,
+      4.7887,
+      4.7794,
+      4.7713,
+      4.7656,
+      4.7572,
+      4.7489,
+      4.743,
+      4.7352,
+      4.7269,
+      4.7203,
+      4.7139,
+      4.7047,
+      4.6964,
+      4.689,
+      4.6819,
+      4.6748,
+      4.6683,
+      4.6621,
+      4.6545,
+      4.6369,
+      4.6141,
+      4.5957,
+      4.5766,
+      4.5543,
+      4.5359,
+      4.5177,
+      4.4975,
+      4.4766,
+      4.4574,
+      4.4393,
+      4.4216,
+      4.4028,
+      4.3851,
+      4.3709,
+      4.3543,
+      4.3349,
+      4.3199,
+      4.3035,
+      4.2875,
+      4.2728,
+      4.2584,
+      4.2405,
+      4.2278,
+      4.2158,
+      4.2009,
+      4.1901,
+      4.1789,
+      4.1654,
+      4.1549,
+      4.1441,
+      4.134,
+      4.1234,
+      4.1144,
+      4.1085,
+      4.0984,
+      4.0911,
+      4.0831,
+      4.076,
+      4.0668,
+      4.0577,
+      4.0505,
+      4.0419,
+      4.0343,
+      4.0269,
+      4.0225,
+      4.0153,
+      4.0082,
+      4.0013,
+      3.9924,
+      3.986,
+      3.9826,
+      3.9755,
+      3.9706,
+      3.9631,
+      3.9566,
+      3.9513,
+      3.939,
+      3.9323,
+      3.9249,
+      3.9183,
+      3.9151,
+      3.9098,
+      3.9042,
+      3.8949,
+      3.8913,
+      3.8809,
+      3.8754,
+      3.8699,
+      3.8635,
+      3.8603,
+      3.8519,
+      3.8481,
+      3.8435,
+      3.8389,
+      3.832,
+      3.8255,
+      3.8191,
+      3.8137,
+      3.8092,
+      3.8083,
+      3.8005,
+      3.796,
+      3.7912,
+      3.7827,
+      3.7774,
+      3.7709,
+      3.7648,
+      3.7609,
+      3.7557,
+      3.7509,
+      3.7444,
+      3.7384,
+      3.7322,
+      3.7254,
+      3.719,
+      3.7148,
+      3.7132,
+      3.7073,
+      3.7009,
+      3.6952,
+      3.6901,
+      3.6831,
+      3.6796,
+      3.6768,
+      3.6708,
+      3.6626,
+      3.6588,
+      3.6549,
+      3.6532,
+      3.6479,
+      3.6408,
+      3.6368,
+      3.6306,
+      3.6256,
+      3.62,
+      3.6217,
+      3.617,
+      3.6139,
+      3.6113,
+      3.6089,
+      3.6046,
+      3.6037,
+      3.6021,
+      3.5971,
+      3.5956,
+      3.5897,
+      3.5845,
+      3.5827,
+      3.5777,
+      3.5727,
+      3.568,
+      3.5641,
+      3.56,
+      3.556,
+      3.5527,
+      3.5489,
+      3.5465,
+      3.5433,
+      3.5418,
+      3.5388,
+      3.5366,
+      3.5355,
+      3.5284,
+      3.5239,
+      3.52,
+      3.518,
+      3.5126,
+      3.5098,
+      3.5062,
+      3.5026,
+      3.496,
+      3.4912,
+      3.4884,
+      3.4871,
+      3.486,
+      3.4823,
+      3.485,
+      3.4831,
+      3.4812,
+      3.4778,
+      3.4739,
+      3.4675,
+      3.465,
+      3.467,
+      3.4648,
+      3.4602,
+      3.4573,
+      3.4542,
+      3.4539,
+      3.4495,
+      3.45,
+      3.445,
+      3.4417,
+      3.4427,
+      3.4376,
+      3.433,
+      3.4341,
+      3.4325,
+      3.4293,
+      3.4252,
+      3.4234,
+      3.4205,
+      3.4182,
+      3.4192,
+      3.4172,
+      3.4165,
+      3.4141,
+      3.4106,
+      3.4076,
+      3.4016,
+      3.399,
+      3.3969,
+      3.397,
+      3.397,
+      3.3968,
+      3.3927,
+      3.388,
+      3.3887,
+      3.3878
+    ],
+    "source": "Phase 90 probe-results.json (identical path, vocab 300)"
+  }
+}

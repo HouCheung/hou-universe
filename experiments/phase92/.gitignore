@@ -1,0 +1,2 @@
+# Large trained checkpoints are excluded from git (Phase 88 pattern).
+*.ckpt.json
