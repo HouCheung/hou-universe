@@ -1,0 +1,637 @@
+{
+  "key": "B94",
+  "label": "Phase 94 cell B (k=8, s0 in [8,63-k]) — historical reference, NOT retrained",
+  "k": 8,
+  "trainedByThisPhase": false,
+  "training": {
+    "trained": false,
+    "source": "experiments/phase94/phase94-b.ckpt.json (Phase 94 cell B, fresh k=8 run)",
+    "augmentated": true,
+    "augK": 8,
+    "augS0Min": 8
+  },
+  "checkpoint": {
+    "path": "D:\\123\\HOU Universe\\experiments\\phase94\\phase94-b.ckpt.json",
+    "exists": true,
+    "sizeBytes": 27951440,
+    "readOnly": true
+  },
+  "integrity": {
+    "expectedParamCount": 1126528,
+    "actualParamCount": 1126528,
+    "paramCountMatches": true,
+    "nanCount": 0,
+    "infinityCount": 0,
+    "finite": true,
+    "parameterOverwriteProven": true,
+    "reload": {
+      "namesCompared": 39,
+      "missingInModel": [],
+      "lengthMismatches": [],
+      "valueMismatches": [],
+      "allMatch": true,
+      "maxAbsDelta": 0
+    }
+  },
+  "historical": {
+    "strictValidUtf8Ratio": {
+      "zh": 0.5,
+      "en": 1,
+      "mixed": 0
+    },
+    "nonEmptyRatio": {
+      "zh": 1,
+      "en": 1,
+      "mixed": 1
+    },
+    "collapsedRatio": {
+      "zh": 0,
+      "en": 0,
+      "mixed": 0
+    },
+    "mergedTokenRatio": {
+      "zh": 0.5,
+      "en": 1,
+      "mixed": 1
+    },
+    "cjkRatio": {
+      "zh": 1,
+      "en": 0.5,
+      "mixed": 1
+    },
+    "memorizationTop1": 0.9618320610687023,
+    "memorizationPredictions": 262,
+    "memorizationChance": 0.0033333333333333335,
+    "memorizationExceedsChance": true,
+    "level": 3,
+    "levelText": "Level 3",
+    "note": "DIAGNOSTIC ONLY — never the primary capability decision"
+  },
+  "repaired": {
+    "validUtf8TolerantRatio": {
+      "zh": 0.5,
+      "en": 1,
+      "mixed": 0
+    },
+    "charIntegrityRate": {
+      "zh": 0.6842105263157895,
+      "en": 1,
+      "mixed": 0.7222222222222222
+    },
+    "charIntegrityRateMin": {
+      "zh": 0.45454545454545453,
+      "en": 1,
+      "mixed": 0.7222222222222222
+    },
+    "charIntegrityNumerator": {
+      "zh": 13,
+      "en": 55,
+      "mixed": 13
+    },
+    "charIntegrityDenominator": {
+      "zh": 19,
+      "en": 55,
+      "mixed": 18
+    },
+    "tokensToFirstInvalidMin": {
+      "zh": 2,
+      "en": -1,
+      "mixed": 3
+    },
+    "tokensToFirstInvalidMean": {
+      "zh": 2,
+      "en": -1,
+      "mixed": 3
+    },
+    "invalidSampleCount": {
+      "zh": 1,
+      "en": 0,
+      "mixed": 1
+    },
+    "trailingIncompleteCount": {
+      "zh": 0,
+      "en": 0,
+      "mixed": 0
+    },
+    "evaluationDeterministic": true,
+    "level": 3,
+    "levelText": "Level 3",
+    "levels": [
+      {
+        "level": 0,
+        "name": "Pipeline works",
+        "criterion": "Training loop runs to completion; checkpoint saves and loads",
+        "achieved": true,
+        "reasons": [
+          "training loop completes",
+          "checkpoint save/load succeeds"
+        ]
+      },
+      {
+        "level": 1,
+        "name": "Bilingual tokenizer",
+        "criterion": "zh/en/mixed encode→decode round-trip is lossless",
+        "achieved": true,
+        "reasons": [
+          "tokenizer round-trips all language classes"
+        ]
+      },
+      {
+        "level": 2,
+        "name": "Training signal",
+        "criterion": "Loss decreases and parameters change during training",
+        "achieved": true,
+        "reasons": [
+          "loss decreases",
+          "parameters change"
+        ]
+      },
+      {
+        "level": 3,
+        "name": "Memorization",
+        "criterion": "Model reproduces training patterns (top-1 >= 0.5)",
+        "achieved": true,
+        "reasons": [
+          "next-token top-1 accuracy >= 0.5 (actual reproduction, not merely above chance)"
+        ]
+      },
+      {
+        "level": 4,
+        "name": "Coherent bilingual generation",
+        "criterion": "Generated text is valid UTF-8, non-empty, non-collapsed, uses learned vocab",
+        "achieved": false,
+        "reasons": [
+          "generation is valid UTF-8",
+          "generation is non-empty",
+          "generation is not repetition-collapsed",
+          "generation uses learned (merged) subword tokens",
+          "lower gate not met"
+        ]
+      },
+      {
+        "level": 5,
+        "name": "Bilingual Q&A",
+        "criterion": "Model answers zh/en questions coherently",
+        "achieved": false,
+        "reasons": [
+          "requires instruction tuning + Q&A evaluation set (not present)",
+          "lower gate not met"
+        ]
+      }
+    ],
+    "evidence": {
+      "pipelineRuns": true,
+      "tokenizerRoundTrip": true,
+      "lossDecreases": true,
+      "paramsChange": true,
+      "memorizationSignal": true,
+      "coherentGeneration": false,
+      "qaCapability": false
+    },
+    "reportText": "Capability gates:\n  [✔] Level 0 — Pipeline works: Training loop runs to completion; checkpoint saves and loads\n        - training loop completes\n        - checkpoint save/load succeeds\n  [✔] Level 1 — Bilingual tokenizer: zh/en/mixed encode→decode round-trip is lossless\n        - tokenizer round-trips all language classes\n  [✔] Level 2 — Training signal: Loss decreases and parameters change during training\n        - loss decreases\n        - parameters change\n  [✔] Level 3 — Memorization: Model reproduces training patterns (top-1 >= 0.5)\n        - next-token top-1 accuracy >= 0.5 (actual reproduction, not merely above chance)\n  [✘] Level 4 — Coherent bilingual generation: Generated text is valid UTF-8, non-empty, non-collapsed, uses learned vocab\n        - generation is valid UTF-8\n        - generation is non-empty\n        - generation is not repetition-collapsed\n        - generation uses learned (merged) subword tokens\n        - lower gate not met\n  [✘] Level 5 — Bilingual Q&A: Model answers zh/en questions coherently\n        - requires instruction tuning + Q&A evaluation set (not present)\n        - lower gate not met\nHighest achieved level: 3"
+  },
+  "roundTrip": {
+    "allRoundTrip": true,
+    "counts": {
+      "zh": 200,
+      "en": 200,
+      "mixed": 200
+    },
+    "failures": {
+      "zh": 0,
+      "en": 0,
+      "mixed": 0
+    }
+  },
+  "samples": [
+    {
+      "prompt": "the sun rises",
+      "language": "en",
+      "continuation": "es over the quiet valleach morningatt",
+      "generatedIds": [
+        295,
+        115,
+        122,
+        287,
+        277,
+        117,
+        121,
+        109,
+        105,
+        269,
+        122,
+        291,
+        112,
+        105,
+        101,
+        103,
+        108,
+        36,
+        113,
+        274,
+        114,
+        281,
+        272,
+        120
+      ],
+      "tokenCount": 24,
+      "strictValidUtf8": true,
+      "validUtf8Tolerant": true,
+      "tokensToFirstInvalid": -1,
+      "trailingIncomplete": false,
+      "charIntegrityRate": 1,
+      "usesMergedTokens": true
+    },
+    {
+      "prompt": "machine learning is",
+      "language": "en",
+      "continuation": "tjearning 的中文是机器学习",
+      "generatedIds": [
+        120,
+        110,
+        105,
+        276,
+        114,
+        294,
+        265,
+        262,
+        177,
+        292,
+        139,
+        275,
+        234,
+        160,
+        190,
+        233,
+        157,
+        172,
+        233,
+        177,
+        170,
+        232,
+        189,
+        164
+      ],
+      "tokenCount": 24,
+      "strictValidUtf8": true,
+      "validUtf8Tolerant": true,
+      "tokensToFirstInvalid": -1,
+      "trailingIncomplete": false,
+      "charIntegrityRate": 1,
+      "usesMergedTokens": true
+    },
+    {
+      "prompt": "太阳",
+      "language": "zh",
+      "continuation": "从山谷后霷后面缓",
+      "generatedIds": [
+        232,
+        191,
+        146,
+        233,
+        181,
+        181,
+        236,
+        180,
+        187,
+        233,
+        148,
+        146,
+        237,
+        160,
+        187,
+        233,
+        148,
+        146,
+        237,
+        161,
+        166,
+        235,
+        192,
+        151
+      ],
+      "tokenCount": 24,
+      "strictValidUtf8": true,
+      "validUtf8Tolerant": true,
+      "tokensToFirstInvalid": -1,
+      "trailingIncomplete": false,
+      "charIntegrityRate": 1,
+      "usesMergedTokens": false
+    },
+    {
+      "prompt": "机器学习是",
+      "language": "zh",
+      "continuation": "一����点数�点抛�",
+      "generatedIds": [
+        262,
+        132,
+        138,
+        236,
+        140,
+        234,
+        164,
+        235,
+        134,
+        235,
+        134,
+        189,
+        234,
+        153,
+        180,
+        234,
+        188,
+        235,
+        134,
+        189,
+        234,
+        142,
+        159,
+        233
+      ],
+      "tokenCount": 24,
+      "strictValidUtf8": false,
+      "validUtf8Tolerant": false,
+      "tokensToFirstInvalid": 2,
+      "trailingIncomplete": false,
+      "charIntegrityRate": 0.45454545454545453,
+      "usesMergedTokens": true
+    },
+    {
+      "prompt": "什么是 machine learning",
+      "language": "mixed",
+      "continuation": "？��是 learning？澓���",
+      "generatedIds": [
+        243,
+        192,
+        163,
+        145,
+        234,
+        135,
+        275,
+        36,
+        112,
+        105,
+        276,
+        114,
+        281,
+        243,
+        192,
+        163,
+        234,
+        194,
+        151,
+        233,
+        190,
+        233,
+        190,
+        233
+      ],
+      "tokenCount": 24,
+      "strictValidUtf8": false,
+      "validUtf8Tolerant": false,
+      "tokensToFirstInvalid": 3,
+      "trailingIncomplete": false,
+      "charIntegrityRate": 0.7222222222222222,
+      "usesMergedTokens": true
+    }
+  ],
+  "greedy": {
+    "repairedTolerant": {
+      "byLanguage": {
+        "zh": {
+          "strictValidUtf8Ratio": 0.5,
+          "validUtf8TolerantRatio": 0.5,
+          "charIntegrityRate": 0.7619047619047619,
+          "tokensToFirstInvalidMin": 2,
+          "tokensToFirstInvalidMean": 2,
+          "invalidSampleCount": 1,
+          "trailingIncompleteCount": 0
+        },
+        "en": {
+          "strictValidUtf8Ratio": 1,
+          "validUtf8TolerantRatio": 1,
+          "charIntegrityRate": 1,
+          "tokensToFirstInvalidMin": -1,
+          "tokensToFirstInvalidMean": -1,
+          "invalidSampleCount": 0,
+          "trailingIncompleteCount": 0
+        },
+        "mixed": {
+          "strictValidUtf8Ratio": 0,
+          "validUtf8TolerantRatio": 0,
+          "charIntegrityRate": 0.9,
+          "tokensToFirstInvalidMin": 13,
+          "tokensToFirstInvalidMean": 13,
+          "invalidSampleCount": 1,
+          "trailingIncompleteCount": 0
+        }
+      },
+      "sampleInvalidCount": 2,
+      "sampleCount": 5
+    },
+    "samples": [
+      {
+        "prompt": "the sun rises",
+        "language": "en",
+        "continuation": "es over the quiet valley each morning",
+        "strictValidUtf8": true,
+        "validUtf8Tolerant": true,
+        "tokensToFirstInvalid": -1,
+        "charIntegrityRate": 1
+      },
+      {
+        "prompt": "machine learning is",
+        "language": "en",
+        "continuation": "e learning 的中文是机器学习",
+        "strictValidUtf8": true,
+        "validUtf8Tolerant": true,
+        "tokensToFirstInvalid": -1,
+        "charIntegrityRate": 1
+      },
+      {
+        "prompt": "太阳",
+        "language": "zh",
+        "continuation": "通过核聚变产生能量",
+        "strictValidUtf8": true,
+        "validUtf8Tolerant": true,
+        "tokensToFirstInvalid": -1,
+        "charIntegrityRate": 1
+      },
+      {
+        "prompt": "机器学习是",
+        "language": "zh",
+        "continuation": "一���迗��讌的数抩抛",
+        "strictValidUtf8": false,
+        "validUtf8Tolerant": false,
+        "tokensToFirstInvalid": 2,
+        "charIntegrityRate": 0.5833333333333334
+      },
+      {
+        "prompt": "什么是 machine learning",
+        "language": "mixed",
+        "continuation": "？dearning？�是�是挶 tpor",
+        "strictValidUtf8": false,
+        "validUtf8Tolerant": false,
+        "tokensToFirstInvalid": 13,
+        "charIntegrityRate": 0.9
+      }
+    ]
+  },
+  "rollout": {
+    "steps": [
+      {
+        "step": 1,
+        "correct": 21,
+        "total": 60,
+        "accuracy": 0.35
+      },
+      {
+        "step": 2,
+        "correct": 12,
+        "total": 60,
+        "accuracy": 0.2
+      },
+      {
+        "step": 3,
+        "correct": 11,
+        "total": 60,
+        "accuracy": 0.18333333333333332
+      },
+      {
+        "step": 4,
+        "correct": 11,
+        "total": 60,
+        "accuracy": 0.18333333333333332
+      },
+      {
+        "step": 5,
+        "correct": 9,
+        "total": 60,
+        "accuracy": 0.15
+      },
+      {
+        "step": 6,
+        "correct": 8,
+        "total": 60,
+        "accuracy": 0.13333333333333333
+      },
+      {
+        "step": 7,
+        "correct": 5,
+        "total": 60,
+        "accuracy": 0.08333333333333333
+      },
+      {
+        "step": 8,
+        "correct": 5,
+        "total": 60,
+        "accuracy": 0.08333333333333333
+      },
+      {
+        "step": 9,
+        "correct": 5,
+        "total": 60,
+        "accuracy": 0.08333333333333333
+      },
+      {
+        "step": 10,
+        "correct": 5,
+        "total": 60,
+        "accuracy": 0.08333333333333333
+      },
+      {
+        "step": 11,
+        "correct": 5,
+        "total": 60,
+        "accuracy": 0.08333333333333333
+      },
+      {
+        "step": 12,
+        "correct": 4,
+        "total": 60,
+        "accuracy": 0.06666666666666667
+      },
+      {
+        "step": 13,
+        "correct": 5,
+        "total": 60,
+        "accuracy": 0.08333333333333333
+      },
+      {
+        "step": 14,
+        "correct": 5,
+        "total": 60,
+        "accuracy": 0.08333333333333333
+      },
+      {
+        "step": 15,
+        "correct": 4,
+        "total": 60,
+        "accuracy": 0.06666666666666667
+      },
+      {
+        "step": 16,
+        "correct": 5,
+        "total": 60,
+        "accuracy": 0.08333333333333333
+      },
+      {
+        "step": 17,
+        "correct": 3,
+        "total": 60,
+        "accuracy": 0.05
+      },
+      {
+        "step": 18,
+        "correct": 5,
+        "total": 60,
+        "accuracy": 0.08333333333333333
+      },
+      {
+        "step": 19,
+        "correct": 6,
+        "total": 60,
+        "accuracy": 0.1
+      },
+      {
+        "step": 20,
+        "correct": 3,
+        "total": 60,
+        "accuracy": 0.05
+      },
+      {
+        "step": 21,
+        "correct": 5,
+        "total": 60,
+        "accuracy": 0.08333333333333333
+      },
+      {
+        "step": 22,
+        "correct": 3,
+        "total": 60,
+        "accuracy": 0.05
+      },
+      {
+        "step": 23,
+        "correct": 4,
+        "total": 60,
+        "accuracy": 0.06666666666666667
+      },
+      {
+        "step": 24,
+        "correct": 4,
+        "total": 59,
+        "accuracy": 0.06779661016949153
+      }
+    ],
+    "skippedTooLong": 0,
+    "meanAccuracy24": 0.10629708097928435,
+    "accuracyAtStep24": 0.06779661016949153
+  },
+  "crossCheck": {
+    "recordedPath": "D:\\123\\HOU Universe\\experiments\\phase94\\candidate-B.json",
+    "recordedLevel": 3,
+    "observedLevel": 3,
+    "recordedFinalLoss": 0.46315164842986567
+  }
+}

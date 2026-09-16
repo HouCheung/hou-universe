@@ -1,0 +1,7 @@
+# Large trained checkpoints are excluded from git (Phase 88/92 pattern).
+# The Phase 96 treatment checkpoint is ~28 MB of raw float JSON.
+*.ckpt.json
+
+# Run logs are environment output, not experiment artifacts.
+probe.log
+build.log

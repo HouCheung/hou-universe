@@ -1,0 +1,144 @@
+{
+  "$comment": "Phase 96 provenance manifest. This file is the EXPERIMENT SPECIFICATION, written before the run. probe.ts exports the same values as code constants and phase96-transfer-experiment.test.ts asserts manifest<->code agreement, so any silent drift in the harness fails the suite rather than going unnoticed. It is not a source of metrics.",
+  "phase": "phase96",
+  "experimentName": "Augmentation transfer experiment — s0 matched to the short evaluation prompts",
+  "designOrigin": "Phase 94 §13 item 1, adopted by Phase 95 §14 item 1",
+  "singleVariable": "augmentation (enabled, k=8, s0 in [1,5]) — everything else pinned to the Phase 89/90/94 production recipe",
+
+  "arms": {
+    "baseline": {
+      "key": "A",
+      "label": "baseline (k=0, no augmentation)",
+      "augmentationEnabled": false,
+      "k": 0,
+      "s0Range": null,
+      "trained": false,
+      "source": "experiments/phase90/phase90-aligned.ckpt.json",
+      "sourceNote": "Phase 90 condition B, bit-identical per the Phase 90 reproducibility contract. Reused, not retrained, exactly as Phase 94 cell A did."
+    },
+    "treatment": {
+      "key": "T",
+      "label": "augment own-context k=8, s0 in [1,5]",
+      "augmentationEnabled": true,
+      "k": 8,
+      "s0Range": [1, 5],
+      "trained": true,
+      "source": "trained by this probe",
+      "sourceNote": "Identical to Phase 94 cell B except AUG_S0_MIN 8 -> 1 and the new AUG_S0_MAX=5 cap. Init is bit-identical to Phase 94 cell B by construction (see initializationOrdering)."
+    },
+    "isolationReference": {
+      "key": "B94",
+      "label": "Phase 94 cell B (k=8, s0 in [8, 63-k]) — historical, NOT retrained",
+      "artifact": "experiments/phase94/phase94-b.ckpt.json",
+      "result": "experiments/phase94/candidate-B.json",
+      "purpose": "One-constant isolation: T vs B94 differs only in the s0 range. Reported as a secondary comparison; it is not the primary baseline."
+    }
+  },
+
+  "dataset": {
+    "id": "bilingual",
+    "version": "0.3.0",
+    "schemaVersion": 1,
+    "purpose": "pretraining",
+    "documentCount": 600,
+    "loader": "loadProductionDataset() / getDatasetTexts()"
+  },
+
+  "tokenizer": {
+    "implementation": "src/lib/minimind/tokenizer/BPETokenizer.ts",
+    "vocabTarget": 300,
+    "rebuiltBy": "buildTokenizer(): Random.setSeed(42) then tokenizer.train(corpus, 300)",
+    "modified": false
+  },
+
+  "model": {
+    "implementation": "src/lib/minimind/model/TensorMiniMindModel.ts",
+    "configSource": "getProductionModelConfig()",
+    "dModel": 128,
+    "numHeads": 4,
+    "dFF": 512,
+    "numLayers": 4,
+    "parameterCount": 1126528,
+    "modified": false
+  },
+
+  "recipe": {
+    "objective": "masked corrected 1-step causal CE (Phase 89), document-aligned layout (Phase 90)",
+    "blockSize": 64,
+    "batchSize": 4,
+    "epochs": 20,
+    "reproEpochs": 2,
+    "optimizer": "AdamW",
+    "learningRate": 0.001,
+    "weightDecay": 0.01,
+    "scheduler": "cosine (10% warmup -> 1% min)",
+    "gradClip": 1.0,
+    "seed": 42
+  },
+
+  "augmentation": {
+    "mechanism": "Phase 94 §4.1 — true prefix x[0..s0] + model-own argmax tail (<= k, noGrad) + padding; CE targets are the TRUE document tokens aligned to the window",
+    "enabled": true,
+    "k": 8,
+    "s0Range": [1, 5],
+    "s0EffectiveRule": "min(AUG_S0_MAX, blockSize-1-k, docLen-2-k); AUG_S0_MAX=5 is the Phase 96 change",
+    "r": 4,
+    "rNote": "Every 4th optimizer step uses augmented windows (step % 4 === 3). Unchanged from Phase 94.",
+    "predictedAugmentedSteps": 750,
+    "predictedAugmentedWindows": 3000,
+    "syntheticData": false
+  },
+
+  "initializationOrdering": {
+    "claim": "The treatment arm's initial weights are bit-identical to Phase 94 cells B and C.",
+    "mechanism": "buildModel() does not call Random.setSeed. A model built immediately after buildTokenizer() sits at the same global-RNG stream position Phase 94's cells B and C did. DataLoader/BatchSampler shuffle is isolated (Random.seededShuffle) and does not consume the global stream.",
+    "verification": "probe.ts --stage=preflight reproduces Phase 94's recorded initialLoss 5.977156484441439 exactly.",
+    "knownWart": "Phase 94 §12.5 / §13.4 recommend Random.setSeed(SEED) inside buildModel. DELIBERATELY NOT FIXED in Phase 96: fixing it would change the init and break the one-constant isolation against Phase 94 cell B. Recorded, not silently changed.",
+    "reseedIsProvenNoop": "probe.ts calls Random.setSeed(SEED) before the official buildModel (the Phase 90/94 fresh-run convention). This is a PROVEN no-op: BPETokenizer contains no reference to Random at all (grep-verified), so buildTokenizer() sets the stream origin and consumes nothing. A first-50-weights hash of the model built with and without the reseed is identical, and preflight independently reproduces 5.977156484441439. The reseed therefore cannot perturb the init.",
+    "baselineInitVariance": {
+      "finding": "The mandated baseline arm A is NOT init-matched to the treatment arm.",
+      "evidence": "Phase 94 candidate-A.json records cell A training.initialLoss = 6.0273 (that value is Phase 90's own recorded initial loss). Phase 94 cell B and Phase 96 arm T both re-derive 5.977156484441439 via --stage=preflight.",
+      "consequence": "A vs T therefore varies initialization AND augmentation together, so it is not a clean single-variable contrast. B94 vs T is the only init-matched one-constant comparison available in this experiment.",
+      "handling": "The baseline is kept exactly as mandated (Phase 94-defined, reused not retrained, per §5). The confound is disclosed in PHASE96-TRANSFER-EXPERIMENT-REPORT.md rather than corrected, because correcting it would require retraining the baseline and would redefine the frozen Phase 94/95 baseline.",
+      "discoveredBy": "inspection of Phase 94 candidate-A.json during the run; no experimental condition was altered as a result"
+    }
+  },
+
+  "evaluation": {
+    "evaluator": "src/lib/minimind/research/capability-eval (Phase 95 SSOT) — USED UNCHANGED",
+    "evaluatorVersion": "phase95-tolerant-utf8",
+    "utf8Gate": "tolerant",
+    "strictUtf8Role": "historical / diagnostic only — never the primary decision",
+    "promptSetId": "phase90-5prompt-v1",
+    "promptSet": [
+      { "prompt": "the sun rises", "language": "en" },
+      { "prompt": "machine learning is", "language": "en" },
+      { "prompt": "太阳", "language": "zh" },
+      { "prompt": "机器学习是", "language": "zh" },
+      { "prompt": "什么是 machine learning", "language": "mixed" }
+    ],
+    "maxTokens": 24,
+    "temperature": 0.8,
+    "greedyTemperature": 0,
+    "seed": 42,
+    "horizonModified": false,
+    "rolloutMetric": "greedy argmax next-token accuracy vs the true document, 60 docs x 24 steps (re-derived, Phase 94 probe.ts:933 algorithm)",
+    "memorizationMetric": "measureMemorization(model, tokenizer, corpus, 8)"
+  },
+
+  "endpoints": {
+    "primary": "Phase-95 repaired capability level (tolerant UTF-8 gate)",
+    "secondaryContinuous": [
+      "pooled charIntegrityRate (per language class)",
+      "tokensToFirstInvalid (min/mean, per language class)",
+      "rollout@24 accuracy"
+    ],
+    "diagnosticOnly": ["strictValidUtf8Ratio"]
+  },
+
+  "repetition": {
+    "strategy": "one deterministic seed (42), one official run — reported as a one-run experiment",
+    "reproDeterminismCheck": "2 x fresh 2-epoch runs with Random.setSeed(42) reset before each, per the Phase 90/94 convention. This is a determinism check, NOT statistical replication.",
+    "confidenceIntervals": "not applicable — none are computed or claimed"
+  }
+}

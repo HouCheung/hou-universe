@@ -1,0 +1,189 @@
+{
+  "phase": "phase96",
+  "audit": "augmentation",
+  "batchesInspected": 4,
+  "windowsInspected": 16,
+  "k": 8,
+  "s0Range": [
+    1,
+    5
+  ],
+  "draws": [
+    {
+      "docIndex": 168,
+      "s0": 5,
+      "ownLen": 8
+    },
+    {
+      "docIndex": 269,
+      "s0": 4,
+      "ownLen": 8
+    },
+    {
+      "docIndex": 311,
+      "s0": 4,
+      "ownLen": 8
+    },
+    {
+      "docIndex": 72,
+      "s0": 2,
+      "ownLen": 8
+    },
+    {
+      "docIndex": 411,
+      "s0": 5,
+      "ownLen": 8
+    },
+    {
+      "docIndex": 201,
+      "s0": 5,
+      "ownLen": 8
+    },
+    {
+      "docIndex": 198,
+      "s0": 5,
+      "ownLen": 8
+    },
+    {
+      "docIndex": 563,
+      "s0": 2,
+      "ownLen": 8
+    },
+    {
+      "docIndex": 81,
+      "s0": 1,
+      "ownLen": 8
+    },
+    {
+      "docIndex": 200,
+      "s0": 2,
+      "ownLen": 8
+    },
+    {
+      "docIndex": 230,
+      "s0": 1,
+      "ownLen": 8
+    },
+    {
+      "docIndex": 426,
+      "s0": 1,
+      "ownLen": 8
+    },
+    {
+      "docIndex": 127,
+      "s0": 2,
+      "ownLen": 8
+    },
+    {
+      "docIndex": 412,
+      "s0": 4,
+      "ownLen": 8
+    },
+    {
+      "docIndex": 121,
+      "s0": 4,
+      "ownLen": 8
+    },
+    {
+      "docIndex": 598,
+      "s0": 4,
+      "ownLen": 8
+    }
+  ],
+  "predictedAugmentedSteps": 750,
+  "predictedAugmentedWindows": 3000,
+  "findings": [
+    {
+      "check": "k === 8 (fixed; the dose that did the least harm in Phase 94)",
+      "ok": true,
+      "detail": "AUG_K=8, manifest=8"
+    },
+    {
+      "check": "k is NOT the Phase 94 s0 axis changed alongside it",
+      "ok": true,
+      "detail": "AUG_K=8 (Phase 94 cells were k=0/8/24)"
+    },
+    {
+      "check": "every doc's effective s0 range is a subset of [1,5]",
+      "ok": true,
+      "detail": "distinct hi values: [3, 4, 5]"
+    },
+    {
+      "check": "every drawn s0 in [1,5]",
+      "ok": true,
+      "detail": "drew 16 windows, s0 = [5, 4, 4, 2, 5, 5, 5, 2, 1, 2, 1, 1, 2, 4, 4, 4]"
+    },
+    {
+      "check": "no augmentation example was skipped/invalid",
+      "ok": true,
+      "detail": "skipped: 0"
+    },
+    {
+      "check": "window shape is blockSize for input/target/mask",
+      "ok": true,
+      "detail": "all windows length 64"
+    },
+    {
+      "check": "every id is a valid tokenizer id",
+      "ok": true,
+      "detail": "ids in [0, 300)"
+    },
+    {
+      "check": "mask is a contiguous 1-prefix with a 0 tail",
+      "ok": true,
+      "detail": "no 1 after the first 0; final position always 0"
+    },
+    {
+      "check": "input opens with the TRUE document prefix x[0..s0]",
+      "ok": true,
+      "detail": "prefix bytes match the source document exactly"
+    },
+    {
+      "check": "corpus text is byte-identical before and after augmentation",
+      "ok": true,
+      "detail": "600 docs compared"
+    },
+    {
+      "check": "document tokenizations are unchanged",
+      "ok": true,
+      "detail": "re-encoded all docs, identical id sequences"
+    },
+    {
+      "check": "prompt set matches the manifest, unchanged from Phase 90/94/95",
+      "ok": true,
+      "detail": "\"the sun rises\"(en) \"machine learning is\"(en) \"太阳\"(zh) \"机器学习是\"(zh) \"什么是 machine learning\"(mixed)"
+    },
+    {
+      "check": "evaluation horizon unchanged at 24",
+      "ok": true,
+      "detail": "MAX_TOKENS=24"
+    },
+    {
+      "check": "predicted augmented steps == manifest",
+      "ok": true,
+      "detail": "computed 750, manifest 750 (3000 total steps / R=4)"
+    },
+    {
+      "check": "predicted augmented windows == manifest",
+      "ok": true,
+      "detail": "computed 3000, manifest 3000 (steps x batchSize)"
+    },
+    {
+      "check": "R matches the manifest",
+      "ok": true,
+      "detail": "AUG_R=4, manifest=4"
+    },
+    {
+      "check": "same seed -> same (doc, s0) draw sequence",
+      "ok": true,
+      "detail": "16 draws compared element-wise"
+    },
+    {
+      "check": "same seed -> byte-identical augmented inputs",
+      "ok": true,
+      "detail": "16 windows compared element-wise"
+    }
+  ],
+  "passed": 18,
+  "failed": 0
+}
