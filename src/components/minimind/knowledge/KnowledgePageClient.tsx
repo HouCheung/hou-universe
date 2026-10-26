@@ -46,12 +46,18 @@ const DEFAULT_VIEWPORT = { width: 1200, height: 800, padding: 60 };
 // KnowledgePageClient
 // ============================================================
 
-export function KnowledgePageClient() {
+export function KnowledgePageClient({
+  focusNodeId,
+}: {
+  focusNodeId?: string;
+}) {
   const { t } = useTranslation();
   const containerRef = useRef<HTMLDivElement>(null);
 
   // ── State ──
-  const [selectedNodeId, setSelectedNodeId] = useState<string | null>(null);
+  const [selectedNodeId, setSelectedNodeId] = useState<string | null>(
+    focusNodeId ?? null
+  );
   const [filters, setFilters] = useState<Set<KnowledgeNodeType>>(
     new Set([
       "module",

@@ -94,7 +94,7 @@ export function TrainingStageCard({
           </span>
           {isBlocked && (
             <span className="shrink-0 rounded-full border border-amber-500/20 bg-amber-500/[0.08] px-1.5 py-px font-mono text-[0.55rem] text-amber-600/80 dark:border-amber-500/15 dark:text-amber-500/70">
-              TODO
+              Planned
             </span>
           )}
         </div>

@@ -2,6 +2,7 @@
 
 import { useEffect, useRef, useState } from "react";
 import { Type } from "lucide-react";
+import { useTranslation } from "react-i18next";
 
 interface InputPanelProps {
   value: string;
@@ -9,6 +10,7 @@ interface InputPanelProps {
 }
 
 export function InputPanel({ value, onChange }: InputPanelProps) {
+  const { t } = useTranslation();
   const [localValue, setLocalValue] = useState(value);
   const debounceRef = useRef<ReturnType<typeof setTimeout> | null>(null);
 
@@ -44,7 +46,7 @@ export function InputPanel({ value, onChange }: InputPanelProps) {
       <div className="flex items-center gap-2.5 border-b border-brand/[0.06] px-5 py-3 dark:border-white/[0.04]">
         <Type className="size-3.5 text-brand/70" />
         <span className="font-mono text-[0.6rem] tracking-[0.2em] uppercase text-slate-500 dark:text-slate-400/60">
-          Input Text
+          {t("minimind.playground.tokenizer.inputHeader")}
         </span>
       </div>
 
@@ -53,7 +55,7 @@ export function InputPanel({ value, onChange }: InputPanelProps) {
         <textarea
           value={localValue}
           onChange={(e) => handleChange(e.target.value)}
-          placeholder="Type something to tokenize…"
+          placeholder={t("minimind.playground.tokenizer.inputPlaceholder")}
           className="w-full resize-none rounded-lg border border-slate-500/[0.1] bg-slate-500/[0.03] px-4 py-3 font-mono text-sm leading-relaxed text-foreground placeholder:text-slate-500/50 focus:border-brand/30 focus:outline-none focus:ring-1 focus:ring-brand/20 dark:border-white/[0.04] dark:bg-white/[0.02] dark:placeholder:text-slate-600"
           rows={3}
           spellCheck={false}

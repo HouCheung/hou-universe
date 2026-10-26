@@ -1,0 +1,48 @@
+{
+  "version": 1,
+  "name": "checkpoint-resume",
+  "description": "Golden validation experiment 3: Checkpoint save and resume test. Proves that the checkpoint system correctly serializes and restores model state, optimizer state, and training state. After resume, logits must match exactly (within floating-point tolerance).",
+  "seed": 42,
+  "model": {
+    "preset": "tiny",
+    "vocabSize": 512,
+    "dModel": 64,
+    "numHeads": 2,
+    "dFF": 256,
+    "numLayers": 2,
+    "maxSeqLen": 32
+  },
+  "dataset": {
+    "type": "inline",
+    "blockSize": 16,
+    "batchSize": 2
+  },
+  "tokenizer": {
+    "type": "bpe",
+    "vocabSize": 512
+  },
+  "optimizer": {
+    "type": "adamw",
+    "lr": 0.001,
+    "weightDecay": 0.01
+  },
+  "scheduler": {
+    "type": "cosine",
+    "warmupSteps": 5,
+    "minLR": 0.00001
+  },
+  "training": {
+    "epochs": 10,
+    "gradientAccumulationSteps": 1,
+    "gradientClipNorm": 1.0,
+    "logInterval": 5
+  },
+  "output": {
+    "dir": ".cache/minimind/golden/checkpoint-resume"
+  },
+  "golden": {
+    "type": "resume",
+    "checkpointStep": 5,
+    "successCriteria": "Logits after resume must match original logits within 1e-6 tolerance. Loss must continue decreasing after resume."
+  }
+}

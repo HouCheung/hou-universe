@@ -23,7 +23,6 @@ import { motion, useScroll, useMotionValueEvent } from "framer-motion";
 import { useState, useCallback } from "react";
 import { useTranslation } from "react-i18next";
 import {
-  Home,
   Map,
   Brain,
   Layers,
@@ -31,16 +30,17 @@ import {
   Gamepad2,
   Cpu,
   GraduationCap,
+  Microscope,
   type LucideIcon,
 } from "lucide-react";
-import { AI_LAB_NAV_ITEMS, AI_LAB_DOCK_ROUTES, type NavItem } from "./nav-config";
+import { AI_LAB_PRIMARY_NAV_ITEMS, AI_LAB_DOCK_ROUTES, type NavItem } from "./nav-config";
 
 // ============================================================
 // Icon map (icon name string → LucideIcon component)
 // ============================================================
 
 const ICON_MAP: Record<NavItem["icon"], LucideIcon> = {
-  Home,
+  Home: Map,
   Map,
   Brain,
   Layers,
@@ -48,6 +48,7 @@ const ICON_MAP: Record<NavItem["icon"], LucideIcon> = {
   Gamepad2,
   Cpu,
   GraduationCap,
+  Microscope,
 };
 
 // ============================================================
@@ -90,9 +91,12 @@ export function FloatingNavDock() {
       // ── Responsive position ──
       // Mobile:  fixed bottom-6, always visible
       // Desktop: fixed top-6, auto-hide (slides up)
-      className="fixed bottom-6 left-1/2 z-40 -translate-x-1/2 sm:bottom-auto sm:top-6"
-      initial={{ y: 0, opacity: 1 }}
+      className="fixed bottom-6 left-1/2 z-40 sm:bottom-auto sm:top-[5.25rem]"
+      initial={{ x: "-50%", y: 0, opacity: 1 }}
       animate={{
+        // Keep the dock centered without a CSS transform: Framer Motion's
+        // inline transform would otherwise overwrite -translate-x-1/2.
+        x: "-50%",
         // Desktop (top dock): slide up out of view when hidden
         // Mobile: always y=0 (hidden stays false per scroll guard)
         y: hidden ? -24 : 0,
@@ -102,7 +106,7 @@ export function FloatingNavDock() {
       aria-label="AI Lab section navigation"
     >
       <div className="flex items-center gap-0.5 rounded-2xl border border-white/[0.08] bg-background/60 px-1.5 py-1.5 backdrop-blur-xl shadow-[0_0_40px_rgba(var(--brand-rgb),0.06)] dark:border-white/[0.06] sm:gap-1 sm:px-2">
-        {AI_LAB_NAV_ITEMS.map((item) => {
+        {AI_LAB_PRIMARY_NAV_ITEMS.map((item) => {
           const Icon = ICON_MAP[item.icon];
           const isActive =
             item.href === "/ai-lab"
@@ -115,7 +119,7 @@ export function FloatingNavDock() {
               href={item.href}
               title={t(item.labelKey)}
               aria-label={t(item.labelKey)}
-              className="group relative flex items-center justify-center rounded-xl px-3 py-2 transition-colors sm:px-3.5"
+              className="group relative flex items-center justify-center rounded-xl px-3 py-2 whitespace-nowrap transition-colors sm:px-3.5"
             >
               {/* Active indicator pill */}
               {isActive && (

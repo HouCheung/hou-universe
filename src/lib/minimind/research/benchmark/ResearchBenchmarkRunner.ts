@@ -114,6 +114,27 @@ export interface ResearchBenchmarkRunResult {
   /** Per-step learning rate history */
   learningRateHistory: Array<{ step: number; learningRate: number }>;
 
+  /** Per-step gradient norm history (post-clip) */
+  gradientNormHistory: Array<{ step: number; norm: number }>;
+
+  /** Mean gradient norm across all steps */
+  meanGradientNorm: number;
+
+  /** Maximum gradient norm observed */
+  maxGradientNorm: number;
+
+  /** Variance of gradient norms */
+  gradientNormVariance: number;
+
+  /** Whether divergence was detected (finalLoss > initialLoss * 1.2) */
+  divergenceDetected: boolean;
+
+  /** Whether instability was detected (loss spikes or high variance) */
+  instabilityDetected: boolean;
+
+  /** Total model parameter count */
+  parameterCount: number;
+
   /** Generation samples after training */
   generationSamples: Array<{ prompt: string; generatedText: string }>;
 }
@@ -382,6 +403,7 @@ async function executeSingleBenchmarkRun(
     { Trainer },
     { GenerationEvaluator },
     { Random },
+    { GradientNormTracker },
   ] = await Promise.all([
     import("../../tokenizer/BPETokenizer"),
     import("../../data/TextDataset"),
@@ -392,6 +414,7 @@ async function executeSingleBenchmarkRun(
     import("../../training/Trainer"),
     import("../../evaluation/GenerationEvaluator"),
     import("../../core/random/Random"),
+    import("../../experiments/campaign/GradientNormTracker"),
   ]);
 
   // Set seed for reproducibility
@@ -441,14 +464,20 @@ async function executeSingleBenchmarkRun(
   // Build optimizer
   const tc = profile.trainingConfig;
   const lr = tc.optimizer.lr;
-  const optimizer = new AdamWOptimizer(model.parameters(), {
+  const baseOptimizer = new AdamWOptimizer(model.parameters(), {
     lr,
     weightDecay: tc.optimizer.weightDecay ?? 0.01,
   });
 
+  // Wrap in GradientNormTracker for stability metrics
+  const gradNormTracker = new GradientNormTracker(
+    baseOptimizer,
+    model.parameters(),
+  );
+
   // Build scheduler
   const totalSteps = tc.epochs * trainLoader.numBatches;
-  const scheduler = new CosineScheduler(optimizer, {
+  const scheduler = new CosineScheduler(baseOptimizer, {
     baseLR: lr,
     minLR: lr * 0.01,
     warmupSteps: Math.floor(totalSteps * 0.1),
@@ -469,7 +498,7 @@ async function executeSingleBenchmarkRun(
   // Run Trainer
   const trainer = new Trainer({
     model,
-    optimizer,
+    optimizer: gradNormTracker,
     trainLoader,
     config: {
       epochs: tc.epochs,
@@ -529,6 +558,62 @@ async function executeSingleBenchmarkRun(
     }
   );
 
+  // ── Compute gradient norm statistics ──
+  const gradNorms = gradNormTracker.normHistory.map((e) => e.norm);
+  const gradNormCount = gradNorms.length;
+  const meanGradientNorm =
+    gradNormCount > 0
+      ? gradNorms.reduce((a, b) => a + b, 0) / gradNormCount
+      : 0;
+  const maxGradientNorm =
+    gradNormCount > 0 ? Math.max(...gradNorms) : 0;
+  const gradientNormVariance =
+    gradNormCount > 1
+      ? (() => {
+          const mean = meanGradientNorm;
+          const sqDiffs = gradNorms.map((n) => (n - mean) ** 2);
+          return sqDiffs.reduce((a, b) => a + b, 0) / (gradNormCount - 1);
+        })()
+      : 0;
+
+  // ── Detect divergence: final loss > 1.2× initial loss ──
+  const divergenceDetected =
+    initialLoss > 0 && finalLoss > initialLoss * 1.2;
+
+  // ── Detect instability: loss spikes or high CV ──
+  const losses = lossHistory.map((p) => p.loss);
+  let instabilityDetected = false;
+  if (losses.length >= 5) {
+    // Check for spikes: any loss > 2× the running average of previous 5
+    for (let i = 5; i < losses.length; i++) {
+      const runningAvg =
+        losses.slice(i - 5, i).reduce((a, b) => a + b, 0) / 5;
+      if (runningAvg > 0 && losses[i] > runningAvg * 2.0) {
+        instabilityDetected = true;
+        break;
+      }
+    }
+    // Also check if coefficient of variation of deltas is high
+    if (!instabilityDetected) {
+      const deltas: number[] = [];
+      for (let i = 1; i < losses.length; i++) {
+        deltas.push(losses[i] - losses[i - 1]);
+      }
+      const deltaMean =
+        deltas.reduce((a, b) => a + Math.abs(b), 0) / deltas.length;
+      if (deltaMean > 0) {
+        const deltaVar =
+          deltas.reduce((s, d) => s + (d - deltaMean) ** 2, 0) /
+          (deltas.length - 1);
+        const deltaStd = Math.sqrt(deltaVar);
+        const deltaCV = deltaStd / deltaMean;
+        if (deltaCV > 1.5) {
+          instabilityDetected = true;
+        }
+      }
+    }
+  }
+
   return {
     runIndex,
     seed,
@@ -542,6 +627,16 @@ async function executeSingleBenchmarkRun(
     durationMs,
     lossHistory,
     learningRateHistory,
+    gradientNormHistory: gradNormTracker.normHistory.map((e) => ({
+      step: e.step,
+      norm: e.norm,
+    })),
+    meanGradientNorm,
+    maxGradientNorm,
+    gradientNormVariance,
+    divergenceDetected,
+    instabilityDetected,
+    parameterCount: totalParams,
     generationSamples: generationSamples.map((g) => ({
       prompt: g.prompt,
       generatedText: g.generatedText,

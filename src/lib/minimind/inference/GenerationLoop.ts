@@ -33,6 +33,7 @@ import type {
 } from "./types";
 import { KVCache } from "./KVCache";
 import { Sampler } from "./Sampler";
+import { SeededRandom } from "../core/random/SeededRandom";
 import { splitIntoHeads, mergeFromHeads } from "./utils";
 import {
   matrixMultiply,
@@ -90,6 +91,11 @@ export class GenerationLoop {
     // 清空缓存（新生成）
     this.kvCache.clear();
 
+    // Phase 74: 创建本次生成的随机数源。提供 seed 时使用可复现的
+    // SeededRandom，否则回退到非确定性的 Math.random。RNG 在每次
+    // generate() 调用时重建，保证相同 seed → 相同输出。
+    const random = this.createRandom(config.seed);
+
     const tokenizer = this.model.getTokenizer();
 
     // ── Step 0: Prompt Processing ──
@@ -104,7 +110,8 @@ export class GenerationLoop {
     const firstSample = this.sampler.sample(
       promptResult.logits,
       config.sampling,
-      tokenLabels
+      tokenLabels,
+      random
     );
 
     const firstToken = tokenizer.decode([firstSample.tokenId]);
@@ -151,7 +158,8 @@ export class GenerationLoop {
       const sample = this.sampler.sample(
         logits,
         config.sampling,
-        tokenLabels
+        tokenLabels,
+        random
       );
 
       const token = tokenizer.decode([sample.tokenId]);
@@ -217,6 +225,18 @@ export class GenerationLoop {
    */
   getStopReason(): string | null {
     return this.lastStopReason;
+  }
+
+  /**
+   * createRandom(seed) — 创建本次生成的随机数源
+   *
+   * 提供 seed 时返回基于 SeededRandom 的可复现 RNG；
+   * 否则返回非确定性的 Math.random。
+   */
+  private createRandom(seed: number | undefined): () => number {
+    if (seed === undefined) return Math.random;
+    const rng = new SeededRandom(seed);
+    return () => rng.next();
   }
 
   // ============================================================

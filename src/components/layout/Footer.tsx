@@ -4,6 +4,7 @@ import Link from "next/link";
 import { useTranslation } from "react-i18next";
 import { Github, Mail } from "lucide-react";
 import { useVisitorStats } from "@/lib/useVisitorStats";
+import { SITE_VERSION } from "@/lib/site";
 
 const FOOTER_KEY_MAP = [
   { href: "/", key: "nav.home" },
@@ -98,6 +99,7 @@ export function Footer() {
         <div className="mx-auto max-w-6xl px-4 py-4 text-center sm:px-6 lg:px-8 max-sm:px-5 max-sm:py-3">
           <p className="text-xs text-slate-500 dark:text-slate-600 max-sm:leading-relaxed">
             &copy; {new Date().getFullYear()} HOU Universe. All rights reserved.
+            <span className="ml-1.5 text-slate-500/60 dark:text-slate-600/60">v{SITE_VERSION}</span>
             {" "}
             <span className="text-slate-500/70 dark:text-slate-600/70">
               ｜ {t("footer.visitors")}

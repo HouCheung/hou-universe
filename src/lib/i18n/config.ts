@@ -45,7 +45,10 @@ i18n.init({
   // SSR hydration mismatches.
   detection: {
     order: [],
-    caches: ["localStorage"],
+    // Persistence is handled manually below. The built-in cache writes the
+    // default language during init, which would overwrite a saved choice
+    // before the deferred detection can read it.
+    caches: [],
     lookupLocalStorage: "hou-universe-lang",
   },
   returnObjects: true,
@@ -66,6 +69,11 @@ if (isBrowser) {
       i18n.changeLanguage(stored);
     }
   }, 0);
+
+  // Persist explicit changes made through the language switcher.
+  i18n.on("languageChanged", (lng) => {
+    localStorage.setItem("hou-universe-lang", lng === "en" ? "en" : "zh-CN");
+  });
 }
 
 export function syncHtmlLang(lng: string) {

@@ -1,6 +1,7 @@
 "use client";
 
 import type { TokenInfo } from "@/lib/minimind/tokenizer";
+import { useTranslation } from "react-i18next";
 import { cn } from "@/lib/utils";
 
 interface TokenListProps {
@@ -10,16 +11,18 @@ interface TokenListProps {
 }
 
 export function TokenList({ tokens, selectedIndex, onSelect }: TokenListProps) {
+  const { t } = useTranslation();
+
   if (tokens.length === 0) {
     return (
       <div className="rounded-xl border border-brand/10 bg-brand/[0.03] backdrop-blur-sm dark:border-white/[0.06] dark:bg-[rgba(var(--brand-rgb),0.04)]">
         <div className="flex items-center gap-2.5 border-b border-brand/[0.06] px-5 py-3 dark:border-white/[0.04]">
           <span className="font-mono text-[0.6rem] tracking-[0.2em] uppercase text-slate-500 dark:text-slate-400/60">
-            Tokens
+            {t("minimind.playground.tokenizer.tokensHeader")}
           </span>
         </div>
         <div className="px-5 py-6 text-center text-xs text-slate-500/60 dark:text-slate-600">
-          Type something to see tokens
+          {t("minimind.playground.tokenizer.tokensEmpty")}
         </div>
       </div>
     );
@@ -30,7 +33,7 @@ export function TokenList({ tokens, selectedIndex, onSelect }: TokenListProps) {
       {/* Header */}
       <div className="flex items-center gap-2.5 border-b border-brand/[0.06] px-5 py-3 dark:border-white/[0.04]">
         <span className="font-mono text-[0.6rem] tracking-[0.2em] uppercase text-slate-500 dark:text-slate-400/60">
-          Tokens
+          {t("minimind.playground.tokenizer.tokensHeader")}
         </span>
         <span className="rounded-full border border-slate-500/[0.1] px-1.5 py-0.5 text-[0.55rem] text-slate-500/70 dark:border-white/[0.04] dark:text-slate-500">
           {tokens.length}
@@ -99,22 +102,30 @@ function TokenDetail({
   tokenInfo: TokenInfo;
   index: number;
 }) {
+  const { t } = useTranslation();
+
   return (
     <div className="border-t border-brand/[0.06] px-5 py-3 dark:border-white/[0.04]">
       <span className="font-mono text-[0.55rem] tracking-[0.15em] uppercase text-slate-500/60 dark:text-slate-500">
-        Token Detail
+        {t("minimind.playground.tokenizer.tokensDetail")}
       </span>
       <div className="mt-2 grid grid-cols-2 gap-x-6 gap-y-1 sm:grid-cols-4">
         <div>
-          <span className="text-[0.6rem] text-slate-500/60">Token</span>
+          <span className="text-[0.6rem] text-slate-500/60">
+            {t("minimind.playground.tokenizer.tokensDetailToken")}
+          </span>
           <p className="font-mono text-sm text-foreground">{tokenInfo.token}</p>
         </div>
         <div>
-          <span className="text-[0.6rem] text-slate-500/60">ID</span>
+          <span className="text-[0.6rem] text-slate-500/60">
+            {t("minimind.playground.tokenizer.tokensDetailId")}
+          </span>
           <p className="font-mono text-sm text-foreground">{tokenInfo.id}</p>
         </div>
         <div>
-          <span className="text-[0.6rem] text-slate-500/60">Exists</span>
+          <span className="text-[0.6rem] text-slate-500/60">
+            {t("minimind.playground.tokenizer.tokensDetailExists")}
+          </span>
           <p
             className={cn(
               "font-mono text-sm",
@@ -125,7 +136,9 @@ function TokenDetail({
           </p>
         </div>
         <div>
-          <span className="text-[0.6rem] text-slate-500/60">Index</span>
+          <span className="text-[0.6rem] text-slate-500/60">
+            {t("minimind.playground.tokenizer.tokensDetailIndex")}
+          </span>
           <p className="font-mono text-sm text-foreground">{index}</p>
         </div>
       </div>

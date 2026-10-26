@@ -5,7 +5,9 @@
 // ============================================================
 
 export { MiniRMSNorm } from "./RMSNorm";
+export { TensorRMSNorm } from "./TensorRMSNorm";
 export { MiniTransformerBlock } from "./TransformerBlock";
+export { TensorTransformerBlock } from "./TensorTransformerBlock";
 export type {
   TransformerConfig,
   TransformerInput,

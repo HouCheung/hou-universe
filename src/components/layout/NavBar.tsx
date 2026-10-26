@@ -230,7 +230,7 @@ export function NavBar() {
           </Link>
 
           {/* Desktop links + language switcher */}
-          <div className="hidden items-center gap-0.5 text-sm md:flex">
+          <div className="hidden items-center gap-0.5 text-sm lg:flex">
             <ul className="flex items-center gap-0.5">
               {NAV_KEYS.map(({ href, key }) => {
                 const isActive =
@@ -277,7 +277,7 @@ export function NavBar() {
           <Button
             variant="ghost"
             size="icon"
-            className="relative md:hidden"
+            className="relative lg:hidden"
             aria-label={mobileOpen ? t("nav.menuClose") : t("nav.menuOpen")}
             onClick={() => setMobileOpen((prev) => !prev)}
           >
@@ -302,7 +302,7 @@ export function NavBar() {
                 Visibility binary toggle: instant-on, delayed-off
                 (stays visible while drawer slides out 300ms). */}
             <div
-              className="md:hidden"
+              className="lg:hidden"
               style={{
                 position: "fixed",
                 inset: 0,
@@ -323,7 +323,7 @@ export function NavBar() {
                 will-change for GPU compositing, zero opacity animation. */}
             <div
               ref={drawerRef}
-              className="md:hidden"
+              className="lg:hidden"
               style={{
                 position: "fixed",
                 top: 0,

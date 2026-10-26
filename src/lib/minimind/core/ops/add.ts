@@ -47,6 +47,18 @@ export function add(a: Tensor, b: Tensor): Tensor {
     return _addScalarTensor(b, a);
   }
 
+  // ── Bias broadcast: [M, K] + [K] (or swapped) ──
+  if (a.shape.length === 2 && b.shape.length === 1) {
+    if (a.shape[1] === b.shape[0]) {
+      return _addBiasBroadcast(a, b);
+    }
+  }
+  if (b.shape.length === 2 && a.shape.length === 1) {
+    if (b.shape[1] === a.shape[0]) {
+      return _addBiasBroadcast(b, a);
+    }
+  }
+
   // ── Same shape ──
   if (a.shape.length !== b.shape.length) {
     throw new Error(
@@ -111,6 +123,59 @@ function _addScalarTensor(scalar: Tensor, tensor: Tensor): Tensor {
         }
         // Tensor grad: same as gradOutput
         tensor.accumulateGrad(new Float64Array(gradOutput));
+      },
+    };
+  }
+
+  return out;
+}
+
+/**
+ * Bias broadcast: [M, K] + [K] → result [M, K]
+ *
+ * Adds the 1D bias vector to every row of the 2D matrix.
+ * This is the standard linear layer bias addition pattern.
+ *
+ * Backward:
+ *   grad_matrix = gradOutput (same shape, element-wise through add)
+ *   grad_bias   = sum of gradOutput over rows (bias[j] affects all rows)
+ */
+function _addBiasBroadcast(matrix: Tensor, bias: Tensor): Tensor {
+  const M = matrix.shape[0];
+  const K = matrix.shape[1];
+
+  const size = M * K;
+  const result = new Float64Array(size);
+  const biasData = bias.data;
+
+  for (let i = 0; i < M; i++) {
+    const rowOffset = i * K;
+    for (let j = 0; j < K; j++) {
+      result[rowOffset + j] = matrix.data[rowOffset + j] + biasData[j];
+    }
+  }
+
+  const out = new Tensor(result, [M, K], matrix.requiresGrad || bias.requiresGrad);
+
+  if (out.requiresGrad) {
+    out._ctx = {
+      parents: [matrix, bias],
+      backwardFn: (gradOutput: Float64Array) => {
+        // dL/d_matrix[i][j] = gradOutput[i][j] (pass-through)
+        if (matrix.requiresGrad) {
+          matrix.accumulateGrad(new Float64Array(gradOutput));
+        }
+        // dL/d_bias[j] = Σ_i gradOutput[i][j] (sum over batch dim)
+        if (bias.requiresGrad) {
+          const gradBias = new Float64Array(K);
+          for (let i = 0; i < M; i++) {
+            const rowOffset = i * K;
+            for (let j = 0; j < K; j++) {
+              gradBias[j] += gradOutput[rowOffset + j];
+            }
+          }
+          bias.accumulateGrad(gradBias);
+        }
       },
     };
   }

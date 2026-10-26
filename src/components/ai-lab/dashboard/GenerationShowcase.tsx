@@ -14,7 +14,7 @@
 // Design: glass UI + Framer Motion + cosmic theme
 // ============================================================
 
-import { useState, useEffect, useMemo } from "react";
+import { useState, useEffect } from "react";
 import { motion, type Variants } from "framer-motion";
 import {
   MessageSquare,

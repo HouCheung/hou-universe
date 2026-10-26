@@ -14,7 +14,7 @@ const variants: Variants = {
   },
 };
 
-const placeholderResources = [
+const featuredResources = [
   { labelKey: "roadmap.nodes.tokenizer.title", descKey: "roadmap.nodes.tokenizer.description" },
   { labelKey: "roadmap.nodes.attention.title", descKey: "roadmap.nodes.attention.description" },
   { labelKey: "roadmap.nodes.transformer.title", descKey: "roadmap.nodes.transformer.description" },
@@ -34,7 +34,7 @@ export function ResourcesSection() {
       <SectionHeader titleKey="aiLab.sections.resources" />
 
       <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-        {placeholderResources.map((res, i) => (
+        {featuredResources.map((res, i) => (
           <motion.div
             key={res.labelKey}
             initial={{ opacity: 0, y: 12 }}

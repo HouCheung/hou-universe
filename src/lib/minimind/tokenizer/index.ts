@@ -24,3 +24,7 @@ export {
   getFeaturesByVersion,
 } from "./comparison";
 export type { TokenizerFeature } from "./comparison";
+
+// Phase 43: BPE Tokenizer
+export { BPETokenizer } from "./BPETokenizer";
+export type { BPETokenizerState } from "./BPETokenizer";

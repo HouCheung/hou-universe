@@ -13,7 +13,7 @@ export const linkItems: LinkItem[] = [
     name: "HOU Universe",
     description: "个人开发者全功能平台，探索数据科学、AI 工程化与全栈开发的无限可能",
     descriptionKey: "links.siteDescHou",
-    url: "https://hou-universe.vercel.app",
+    url: "https://hou-universe.netlify.app",
     category: "friend",
   },
 

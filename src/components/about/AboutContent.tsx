@@ -3,10 +3,12 @@
 import { useTranslation } from "react-i18next";
 import { StarSkillTree } from "@/components/about/StarSkillTree";
 import { GitHubContributions } from "@/components/about/GitHubContributions";
+import { WorkExperienceCard } from "@/components/about/WorkExperienceCard";
 import { skillLevelData } from "@/data/about";
+import { workExperiences } from "@/data/work-experience";
 
 const courseKeys = Array.from({ length: 9 }, (_, i) => `about.courses.${i}`);
-const projectKeys = ["p0", "p1", "p2", "p3", "p4"];
+const projectKeys = ["p0", "p5", "p6", "p1", "p2", "p3", "p4"];
 const aiSkillKeys = ["0", "1", "2"];
 
 function SectionDivider({ titleKey, icon }: { titleKey: string; icon: string }) {
@@ -83,7 +85,21 @@ export function AboutContent() {
           </div>
         </section>
 
-        {/* ② Projects */}
+        {/* ② Internship / Work Experience */}
+        <section className="mb-20 sm:mb-32 max-sm:mb-14">
+          <SectionDivider titleKey="about.internship" icon="🏢" />
+          <div className="flex flex-col gap-5 sm:gap-6">
+            {workExperiences.map((experience, index) => (
+              <WorkExperienceCard
+                key={experience.id}
+                experience={experience}
+                index={index}
+              />
+            ))}
+          </div>
+        </section>
+
+        {/* ③ Projects */}
         <section className="mb-20 sm:mb-32 max-sm:mb-14">
           <SectionDivider titleKey="about.projects" icon="💼" />
           <div className="relative">
@@ -114,7 +130,7 @@ export function AboutContent() {
           </div>
         </section>
 
-        {/* ③ AI Engineering */}
+        {/* ④ AI Engineering */}
         <section className="mb-20 sm:mb-32 max-sm:mb-14">
           <SectionDivider titleKey="about.aiEngineering" icon="🤖" />
           <div className="grid gap-4 sm:grid-cols-3">
@@ -133,7 +149,7 @@ export function AboutContent() {
           </div>
         </section>
 
-        {/* ④ Campus */}
+        {/* ⑤ Campus */}
         <section className="mb-20 sm:mb-32 max-sm:mb-14">
           <SectionDivider titleKey="about.campus" icon="🎭" />
           <div className="flex flex-col gap-6">
@@ -153,13 +169,13 @@ export function AboutContent() {
           </div>
         </section>
 
-        {/* ⑤ Skills */}
+        {/* ⑥ Skills */}
         <section>
           <SectionDivider titleKey="about.skills" icon="🛠" />
           <StarSkillTree categories={skillLevelData} />
         </section>
 
-        {/* ⑥ GitHub 开源贡献 */}
+        {/* ⑦ GitHub 开源贡献 */}
         <GitHubContributions />
       </div>
     </div>

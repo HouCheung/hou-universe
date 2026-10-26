@@ -18,11 +18,11 @@ export async function generateMetadata({
   const project = getProjectById(slug);
 
   if (!project) {
-    return { title: "Project Not Found - HOU Universe" };
+    return { title: "Project Not Found" };
   }
 
   return {
-    title: `${project.title} - HOU Universe`,
+    title: project.title,
     description: project.description,
   };
 }

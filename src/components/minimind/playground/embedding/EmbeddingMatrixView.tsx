@@ -3,27 +3,14 @@
 import { useMemo, useState, useCallback } from "react";
 import { motion, type Variants } from "framer-motion";
 import { Grid3X3, ChevronLeft, ChevronRight } from "lucide-react";
+import { useTranslation } from "react-i18next";
 
 // ============================================================
 // EmbeddingMatrixView — Embedding matrix heatmap slice
 // ============================================================
-//
-// Renders a portion of the embedding matrix as a heatmap grid.
-// Each row = one token's embedding vector.
-// The currently-selected token row is highlighted with a glow.
-//
-// Paginated — shows ROWS_PER_PAGE rows at a time for performance.
-// ============================================================
 
-// ── Constants ────────────────────────────────────────────────
-
-/** Number of token rows to render per page */
 const ROWS_PER_PAGE = 32;
-
-/** Number of columns (dimensions) to display — first N dims */
 const COLS_TO_SHOW = 64;
-
-// ── Animation ────────────────────────────────────────────────
 
 const rowVariants: Variants = {
   hidden: { opacity: 0, x: -6 },
@@ -34,22 +21,14 @@ const rowVariants: Variants = {
   }),
 };
 
-// ── Helpers ──────────────────────────────────────────────────
-
-/** Map a float value in [-maxAbs, +maxAbs] to a heat color */
 function heatColor(value: number, maxAbs: number): string {
   if (maxAbs === 0) return "rgb(100 116 139 / 0.08)";
-
-  // Sigmoid-like compression for better visual range
-  const t = value / maxAbs; // [-1, 1]
+  const t = value / maxAbs;
   const clamped = Math.max(-1, Math.min(1, t));
-
   if (clamped >= 0) {
-    // Positive → brand/warm
     const alpha = 0.06 + clamped * 0.85;
     return `rgb(var(--brand-rgb) / ${alpha.toFixed(2)})`;
   }
-  // Negative → cool/slate
   const alpha = 0.06 + Math.abs(clamped) * 0.75;
   return `rgb(100 116 139 / ${alpha.toFixed(2)})`;
 }
@@ -59,14 +38,9 @@ function formatCellValue(v: number): string {
   return v > 0 ? `+${v.toFixed(3)}` : v.toFixed(3);
 }
 
-// ── Component ────────────────────────────────────────────────
-
 interface EmbeddingMatrixViewProps {
-  /** Full embedding matrix — Float64Array[] from MiniEmbedding.getRawMatrix() */
   matrix: ReadonlyArray<Float64Array>;
-  /** Currently selected token ID — highlighted row */
   selectedTokenId: number;
-  /** Callback when user clicks a row to select a different token */
   onSelectToken: (tokenId: number) => void;
 }
 
@@ -75,10 +49,10 @@ export function EmbeddingMatrixView({
   selectedTokenId,
   onSelectToken,
 }: EmbeddingMatrixViewProps) {
+  const { t } = useTranslation();
   const totalRows = matrix.length;
   const totalPages = Math.ceil(totalRows / ROWS_PER_PAGE);
 
-  // Start on the page containing the selected token
   const [page, setPage] = useState(() =>
     Math.floor(selectedTokenId / ROWS_PER_PAGE)
   );
@@ -87,7 +61,6 @@ export function EmbeddingMatrixView({
   const endRow = Math.min(startRow + ROWS_PER_PAGE, totalRows);
   const visibleRows = endRow - startRow;
 
-  // Compute maxAbs across visible rows + visible cols for consistent color scale
   const maxAbs = useMemo(() => {
     let m = 0;
     for (let r = startRow; r < endRow; r++) {
@@ -98,7 +71,6 @@ export function EmbeddingMatrixView({
         if (abs > m) m = abs;
       }
     }
-    // Guard against all-zero pages
     return m === 0 ? 0.001 : m;
   }, [matrix, startRow, endRow]);
 
@@ -110,7 +82,6 @@ export function EmbeddingMatrixView({
     setPage((p) => Math.min(totalPages - 1, p + 1));
   }, [totalPages]);
 
-  // Navigate to the page containing a given token
   const goToTokenPage = useCallback(
     (tokenId: number) => {
       const targetPage = Math.floor(tokenId / ROWS_PER_PAGE);
@@ -122,18 +93,16 @@ export function EmbeddingMatrixView({
 
   return (
     <div className="rounded-xl border border-brand/10 bg-brand/[0.03] backdrop-blur-sm dark:border-white/[0.06] dark:bg-[rgba(var(--brand-rgb),0.04)]">
-      {/* Header */}
       <div className="flex items-center gap-2.5 border-b border-brand/[0.06] px-5 py-3 dark:border-white/[0.04]">
         <Grid3X3 className="size-3.5 text-brand/70" />
         <span className="font-mono text-[0.6rem] tracking-[0.2em] uppercase text-slate-500 dark:text-slate-400/60">
-          Embedding Matrix
+          {t("minimind.playground.embedding.matrixHeader")}
         </span>
         <span className="ml-auto font-mono text-[0.55rem] text-slate-500/60 dark:text-slate-500/50">
           {totalRows}×{COLS_TO_SHOW} (first {COLS_TO_SHOW} dims)
         </span>
       </div>
 
-      {/* Color scale legend */}
       <div className="flex items-center gap-2 border-b border-brand/[0.04] px-5 py-2 dark:border-white/[0.03]">
         <span className="font-mono text-[0.5rem] text-slate-500/60 dark:text-slate-500/50">
           −{maxAbs.toFixed(3)}
@@ -144,9 +113,7 @@ export function EmbeddingMatrixView({
         </span>
       </div>
 
-      {/* Column headers (dimension indices) */}
       <div className="flex border-b border-brand/[0.03] dark:border-white/[0.02]">
-        {/* Row label gutter */}
         <div className="w-12 shrink-0 px-1 py-1" />
         {Array.from({ length: COLS_TO_SHOW }, (_, c) => (
           <div
@@ -159,7 +126,6 @@ export function EmbeddingMatrixView({
         ))}
       </div>
 
-      {/* Matrix rows */}
       <div className="max-h-[420px] overflow-y-auto">
         {Array.from({ length: visibleRows }, (_, i) => {
           const rowIndex = startRow + i;
@@ -180,7 +146,6 @@ export function EmbeddingMatrixView({
                   : ""
               }`}
             >
-              {/* Row label */}
               <div
                 className={`w-12 shrink-0 px-1.5 py-0.5 text-right font-mono text-[0.5rem] leading-relaxed ${
                   isSelected
@@ -191,11 +156,9 @@ export function EmbeddingMatrixView({
                 {rowIndex}
               </div>
 
-              {/* Cells */}
               {Array.from({ length: COLS_TO_SHOW }, (_, c) => {
                 const value = row[c];
                 const bg = heatColor(value, maxAbs);
-
                 return (
                   <div
                     key={c}
@@ -214,10 +177,13 @@ export function EmbeddingMatrixView({
         })}
       </div>
 
-      {/* Pagination controls */}
       <div className="flex items-center justify-between border-t border-brand/[0.06] px-5 py-2.5 dark:border-white/[0.04]">
         <span className="font-mono text-[0.55rem] text-slate-500/60 dark:text-slate-500/50">
-          Rows {startRow}–{endRow - 1} of {totalRows}
+          {t("minimind.playground.embedding.matrixRows", {
+            start: startRow,
+            end: endRow - 1,
+            total: totalRows,
+          })}
         </span>
         <div className="flex items-center gap-1">
           <button

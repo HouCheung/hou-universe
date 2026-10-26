@@ -56,3 +56,100 @@ export {
 export { TokenizerComparisonRunner } from "./runners/TokenizerComparisonRunner";
 export { EmbeddingExplorerRunner } from "./runners/EmbeddingExplorerRunner";
 export { AttentionHeatmapRunner } from "./runners/AttentionHeatmapRunner";
+
+// ── Phase 50: Model Registry ──
+export {
+  getModelConfig,
+  listModels,
+  createModel,
+  registerModel,
+  hasModel,
+  modelCount,
+  toTensorConfig,
+} from "./ModelRegistry";
+export type { ModelConfigEntry } from "./ModelRegistry";
+
+// ── Phase 50: Training Recipe ──
+export {
+  loadRecipe,
+  saveRecipe,
+  listRecipes,
+  listRecipeNames,
+  hasRecipe,
+  summarizeRecipe,
+  diffRecipes,
+  validateRecipe,
+  recipeToJSON,
+  recipeFromJSON,
+} from "./TrainingRecipe";
+export type {
+  TrainingRecipe,
+  RecipeOptimizerConfig,
+  RecipeSchedulerConfig,
+  RecipeDatasetConfig,
+} from "./TrainingRecipe";
+
+// ── Phase 50: Ablation ──
+export { Ablation } from "./Ablation";
+export type {
+  AblationVariant,
+  AblationConfig,
+  AblationTrainingConfig,
+  AblationVariantResult,
+  AblationReport,
+  AblationComparisonRow,
+} from "./Ablation";
+
+// ── Phase 51: Experiment History ──
+export type {
+  ExperimentRecord,
+  ExperimentMetrics,
+  ExperimentStatus,
+} from "./history/ExperimentRecord";
+
+export {
+  createExperimentRecord,
+  isExperimentRecord,
+  validateExperimentRecord,
+  compareByDate,
+  compareByBestLoss,
+  summarizeRecord,
+} from "./history/ExperimentRecord";
+
+export {
+  save as saveExperimentRecord,
+  get as getExperimentRecord,
+  list as listExperimentRecords,
+  listByStatus as listExperimentRecordsByStatus,
+  update as updateExperimentRecord,
+  deleteRecord as deleteExperimentRecord,
+  clear as clearExperimentHistory,
+  count as experimentRecordCount,
+  has as hasExperimentRecord,
+  latest as latestExperimentRecord,
+  stats as experimentHistoryStats,
+} from "./history/ExperimentStore";
+
+export {
+  compareRecords as compareExperimentRecords,
+  buildComparisonTable as buildExperimentComparisonTable,
+  diffTrainingConfigs as diffExperimentTrainingConfigs,
+  diffModelConfigs as diffExperimentModelConfigs,
+  rankByMetric as rankExperimentsByMetric,
+  summarizeComparison as summarizeExperimentComparison,
+} from "./history/ExperimentComparison";
+export type {
+  MetricDelta,
+  RecordPairComparison,
+  ComparisonTable,
+  ComparisonTableRow,
+  TrainingDiff,
+  ModelDiff,
+  RankedRecord,
+} from "./history/ExperimentComparison";
+
+// ── Phase 46: Node-only exports ──
+// ExperimentConfig, TrainingExperimentRunner, and BenchmarkReport use
+// Node.js fs/path — they are NOT browser-safe.
+// Import them from "@/lib/minimind/experiments/node" (or "@/lib/minimind/node")
+// for CLI / server-side use.

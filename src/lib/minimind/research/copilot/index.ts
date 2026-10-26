@@ -47,3 +47,7 @@ export type {
   BenchmarkInsights,
   BenchmarkRecommendation,
 } from "./BenchmarkCopilot";
+
+// ── Phase 63: Study Copilot ──
+export { StudyCopilot } from "./StudyCopilot";
+export type { StudyCopilotResult } from "./StudyCopilot";

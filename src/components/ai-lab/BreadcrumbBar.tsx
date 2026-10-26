@@ -32,6 +32,7 @@ const SEGMENT_LABELS: Record<string, string> = {
   forward: "Forward",
   inference: "Inference",
   training: "Training",
+  research: "Research",
 };
 
 // ============================================================
@@ -60,7 +61,7 @@ export function BreadcrumbBar() {
   return (
     <nav
       aria-label="Breadcrumb"
-      className="mx-auto max-w-7xl px-4 pt-6 sm:px-6 sm:pt-8 lg:px-8 max-sm:px-5 max-sm:pt-5"
+      className="mx-auto max-w-7xl px-4 pt-20 sm:px-6 sm:pt-36 lg:px-8 lg:pt-20 max-sm:px-5 max-sm:pt-20"
     >
       <ol className="flex items-center gap-1.5 text-sm">
         {breadcrumbs.map((crumb, i) => (
@@ -77,7 +78,7 @@ export function BreadcrumbBar() {
             ) : (
               <Link
                 href={crumb.href}
-                className="text-slate-500 transition-colors hover:text-brand dark:text-slate-400 dark:hover:text-brand-light"
+                className="inline-flex items-center text-slate-500 transition-colors hover:text-brand dark:text-slate-400 dark:hover:text-brand-light"
               >
                 {crumb.label}
               </Link>

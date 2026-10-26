@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { KnowledgePageClient } from "@/components/minimind/knowledge/KnowledgePageClient";
+import { KnowledgePageClientWrapper } from "./KnowledgePageClientWrapper";
 
 export const metadata: Metadata = {
   title: "Knowledge Graph",
@@ -8,5 +8,5 @@ export const metadata: Metadata = {
 };
 
 export default function KnowledgePage() {
-  return <KnowledgePageClient />;
+  return <KnowledgePageClientWrapper />;
 }

@@ -13,6 +13,7 @@ import { ForwardVisualAdapter } from "@/lib/minimind/visualization";
 import type { ModelConfig } from "@/lib/minimind/model";
 import type { VisualTrace } from "@/lib/minimind/visualization";
 import type { StageId } from "@/data/minimind/visualization-capabilities";
+import { CrossRefButton } from "@/components/ai-lab/CrossRefButton";
 import { ForwardHeader } from "./ForwardHeader";
 import { InputPanel } from "./InputPanel";
 import { PipelineTimeline } from "./PipelineTimeline";
@@ -195,6 +196,20 @@ export function ForwardPlayground() {
           </p>
         </div>
       )}
+
+      {/* Cross-Reference Navigation */}
+      <div className="mt-8 flex flex-wrap items-center justify-center gap-3">
+        <CrossRefButton
+          variant="playground"
+          targetId="tokenizer"
+          label="Back to Playground"
+        />
+        <CrossRefButton
+          variant="inference"
+          targetId="inference"
+          label="Explore Inference"
+        />
+      </div>
     </div>
   );
 }

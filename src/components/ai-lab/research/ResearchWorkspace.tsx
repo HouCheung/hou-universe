@@ -22,8 +22,8 @@
 // Data: through researchWorkspaceAdapter + liveTrainingAdapter
 // ============================================================
 
-import { useState, useEffect, useMemo } from "react";
-import { motion, AnimatePresence, type Variants } from "framer-motion";
+import { useState, useEffect } from "react";
+import { motion, type Variants } from "framer-motion";
 import {
   Microscope,
   Activity,
@@ -32,22 +32,19 @@ import {
   Clock,
   Target,
   Save,
-  RotateCcw,
   CheckCircle2,
   XCircle,
   Circle,
-  Play,
   Pause,
-  Square,
-  ChevronRight,
   Sparkles,
-  AlertTriangle,
   BarChart3,
   Hash,
   Fingerprint,
   FlaskConical,
   Gauge,
+  MessageSquare,
 } from "lucide-react";
+import Link from "next/link";
 import {
   getWorkspaceSessions,
   getActiveSession,
@@ -59,16 +56,18 @@ import {
   type SessionTimeline,
   type WorkspaceStats,
 } from "@/lib/ai-lab/adapters/researchWorkspaceAdapter";
+import { getCheckpointList, type CheckpointSummary } from "@/lib/ai-lab/adapters/liveTrainingAdapter";
 import { LiveTrainingPanel } from "./LiveTrainingPanel";
 import { ResearchCopilot } from "./ResearchCopilot";
+import { StudyPanel } from "./StudyPanel";
 import { trainingRuntime } from "@/lib/minimind/research";
 import {
   extractExperimentIdentity,
   createExperimentFingerprint,
-  formatFingerprint,
 } from "@/lib/minimind/research";
-import { listExperiments, experimentCount } from "@/lib/minimind/research";
-import type { ExperimentFingerprint } from "@/lib/minimind/research";
+import { listExperiments } from "@/lib/minimind/research";
+import type { ExperimentFingerprint, SessionConfig } from "@/lib/minimind/research";
+import { getModelConfig } from "@/lib/minimind/experiments/ModelRegistry";
 
 // ============================================================
 // Animation variants
@@ -123,21 +122,45 @@ function getStatusIcon(status: string) {
   }
 }
 
-function getStatusColor(status: string): string {
-  switch (status) {
-    case "running":
-      return "text-emerald-400";
-    case "paused":
-      return "text-amber-400";
-    case "completed":
-      return "text-emerald-400";
-    case "failed":
-      return "text-red-400";
-    case "queued":
-      return "text-blue-400";
-    default:
-      return "text-slate-400";
-  }
+// ============================================================
+// Shared config factory — single source of truth for session configs.
+// Replaces the 3× duplicated config blocks in onStart/onNewRun/onRetry.
+// ============================================================
+
+function buildDefaultSessionConfig(
+  modelLabel: string,
+  recipeLabel: string
+): SessionConfig {
+  return {
+    name: `Training — ${modelLabel}`,
+    modelConfig: {
+      ...getModelConfig("tiny"),
+      name: "tiny",
+      label: modelLabel,
+      description: "",
+    },
+    trainingConfig: {
+      name: "tiny-overfit-test",
+      label: recipeLabel,
+      description: "",
+      version: 1 as const,
+      model: "tiny",
+      dataset: {
+        dataset: "synthetic" as const,
+        blockSize: 16,
+        batchSize: 4,
+      },
+      optimizer: { type: "adamw", lr: 0.001 },
+      scheduler: { type: "none" },
+      epochs: 5,
+      gradientAccumulation: 1,
+      warmupSteps: 0,
+      seed: 42,
+      gradientClipNorm: 1.0,
+    },
+    dataset: "synthetic",
+    seed: 42,
+  };
 }
 
 // ============================================================
@@ -405,9 +428,26 @@ export function ResearchWorkspace() {
   const [timeline, setTimeline] = useState<SessionTimeline | null>(null);
   const [stats, setStats] = useState<WorkspaceStats | null>(null);
   const [selectedSessionId, setSelectedSessionId] = useState<string | null>(null);
+  const [trainingError, setTrainingError] = useState<string | null>(null);
+  const [checkpoints, setCheckpoints] = useState<CheckpointSummary[]>([]);
+
+  // ── Shared error handler for all training operations ──
+  function handleTrainingError(operation: string, err: Error) {
+    console.error(`TrainingRuntime: ${operation} failed`, err);
+    setTrainingError(`${operation} failed: ${err.message}`);
+    setTimeout(() => setTrainingError(null), 8000);
+  }
 
   // ── Data refresh ──
   useEffect(() => {
+    // Recover any session that was interrupted by a page refresh before the
+    // first read, so the UI never shows a stale "running" state for a dead
+    // worker. Best-effort: a failure here must not block the read below.
+    try {
+      trainingRuntime.recoverFromPageRefresh();
+    } catch {
+      // Ignore — the workspace read below still proceeds with raw state.
+    }
     function refresh() {
       setSessions(getWorkspaceSessions());
       setActiveSession(getActiveSession());
@@ -426,6 +466,23 @@ export function ResearchWorkspace() {
       setTimeline(getExperimentTimeline(id));
     }
   }, [selectedSessionId, activeSession, sessions]);
+
+  // ── Checkpoints for selected session ──
+  useEffect(() => {
+    const id = selectedSessionId ?? activeSession?.id;
+    if (id) {
+      const list = getCheckpointList(id);
+      setCheckpoints(list.checkpoints);
+    } else {
+      setCheckpoints([]);
+    }
+  }, [selectedSessionId, activeSession, sessions]);
+
+  // ── Derived checkpoint data ──
+  const bestCheckpoint = checkpoints.length > 0
+    ? checkpoints.reduce((best, c) => (c.loss < best.loss ? c : best), checkpoints[0])
+    : null;
+  const latestCheckpoint = checkpoints.length > 0 ? checkpoints[checkpoints.length - 1] : null;
 
   const displaySessionId = selectedSessionId ?? activeSession?.id;
   const displayTimeline = timeline;
@@ -464,6 +521,29 @@ export function ResearchWorkspace() {
           </div>
         </div>
       </motion.div>
+
+      {/* ── Training Error Toast ── */}
+      {trainingError && (
+        <motion.div
+          initial={{ opacity: 0, y: -12 }}
+          animate={{ opacity: 1, y: 0 }}
+          exit={{ opacity: 0, y: -12 }}
+          className="mb-6 flex items-start gap-3 rounded-xl border border-red-400/20 bg-red-500/[0.06] px-4 py-3 backdrop-blur-sm"
+        >
+          <XCircle className="mt-0.5 size-4 shrink-0 text-red-400" />
+          <div className="flex-1">
+            <p className="text-sm font-medium text-red-300">Training Error</p>
+            <p className="text-xs text-red-400/80">{trainingError}</p>
+          </div>
+          <button
+            onClick={() => setTrainingError(null)}
+            className="shrink-0 text-red-400/60 hover:text-red-400"
+            aria-label="Dismiss error"
+          >
+            <XCircle className="size-4" />
+          </button>
+        </motion.div>
+      )}
 
       {!hasSessions ? (
         <EmptyState message="No research sessions yet. Launch an experiment from the Experiments page to see it here." />
@@ -573,68 +653,79 @@ export function ResearchWorkspace() {
                     (s) => s.id === displaySessionId
                   );
                   if (session) {
+                    const config = buildDefaultSessionConfig(
+                      session.modelLabel,
+                      session.recipeLabel
+                    );
                     trainingRuntime
-                      .start(displaySessionId, {
-                        name: session.name,
-                        modelConfig: {
-                          name: "tiny",
-                          label: session.modelLabel,
-                          description: "",
-                          vocabSize: 32000,
-                          dModel: 128,
-                          numHeads: 4,
-                          dFF: 512,
-                          numLayers: 4,
-                          maxSeqLen: 256,
-                          eps: 1e-6,
-                          estimatedParams: 600000,
-                        },
-                        trainingConfig: {
-                          name: "tiny-overfit-test",
-                          label: session.recipeLabel,
-                          description: "",
-                          version: 1 as const,
-                          model: "tiny",
-                          dataset: {
-                            dataset: "synthetic" as const,
-                            blockSize: 16,
-                            batchSize: 4,
-                          },
-                          optimizer: { type: "adamw", lr: 0.001 },
-                          scheduler: { type: "none" },
-                          epochs: 5,
-                          gradientAccumulation: 1,
-                          warmupSteps: 0,
-                          seed: 42,
-                          gradientClipNorm: 1.0,
-                        },
-                        dataset: "synthetic",
-                        seed: 42,
-                      })
-                      .catch((err: Error) => {
-                        console.error("TrainingRuntime: start failed", err);
-                      });
+                      .start(displaySessionId, { ...config, name: session.name })
+                      .catch((err: Error) => handleTrainingError("Start", err));
                   }
                 }}
                 onPause={() => {
                   try {
                     trainingRuntime.pause(displaySessionId);
                   } catch (err) {
-                    console.error("TrainingRuntime: pause failed", err);
+                    handleTrainingError("Pause", err as Error);
                   }
                 }}
                 onResume={() => {
                   trainingRuntime
                     .resume(displaySessionId)
-                    .catch((err: Error) => {
-                      console.error("TrainingRuntime: resume failed", err);
-                    });
+                    .catch((err: Error) => handleTrainingError("Resume", err));
                 }}
                 onStop={() => {
                   try {
                     trainingRuntime.stop(displaySessionId);
                   } catch (err) {
-                    console.error("TrainingRuntime: stop failed", err);
+                    handleTrainingError("Stop", err as Error);
+                  }
+                }}
+                onSaveCheckpoint={() => {
+                  try {
+                    trainingRuntime.saveCheckpoint(displaySessionId);
+                  } catch (err) {
+                    handleTrainingError("Save checkpoint", err as Error);
+                  }
+                }}
+                onRestore={(checkpointId: string) => {
+                  trainingRuntime
+                    .restoreFromCheckpoint(displaySessionId, checkpointId)
+                    .catch((err: Error) => handleTrainingError("Restore", err));
+                }}
+                onNewRun={() => {
+                  const session = sessions.find(
+                    (s) => s.id === displaySessionId
+                  );
+                  if (session) {
+                    const config = buildDefaultSessionConfig(
+                      session.modelLabel,
+                      session.recipeLabel
+                    );
+                    trainingRuntime
+                      .newRun(displaySessionId, { ...config, name: session.name })
+                      .catch((err: Error) => handleTrainingError("New run", err));
+                  }
+                }}
+                onRetry={() => {
+                  const session = sessions.find(
+                    (s) => s.id === displaySessionId
+                  );
+                  if (session) {
+                    const config = buildDefaultSessionConfig(
+                      session.modelLabel,
+                      session.recipeLabel
+                    );
+                    trainingRuntime
+                      .start(displaySessionId, { ...config, name: session.name })
+                      .catch((err: Error) => handleTrainingError("Retry", err));
+                  }
+                }}
+                onDiscard={() => {
+                  try {
+                    trainingRuntime.discardSession(displaySessionId);
+                  } catch (err) {
+                    handleTrainingError("Discard", err as Error);
                   }
                 }}
               />
@@ -708,7 +799,7 @@ export function ResearchWorkspace() {
               )}
             </motion.div>
 
-            {/* Checkpoint Panel */}
+            {/* Checkpoint Timeline */}
             <motion.div
               variants={cardVariants}
               className="rounded-2xl border border-white/[0.06] bg-white/[0.02] p-5 backdrop-blur-sm"
@@ -718,45 +809,129 @@ export function ResearchWorkspace() {
                 <h3 className="text-xs font-semibold uppercase tracking-widest text-slate-500">
                   Checkpoints
                 </h3>
+                {checkpoints.length > 0 && (
+                  <span className="ml-auto rounded-full bg-white/[0.04] px-2 py-0.5 text-[0.6rem] tabular-nums text-slate-500">
+                    {checkpoints.length}
+                  </span>
+                )}
               </div>
 
-              {activeSession && activeSession.status === "paused" ? (
-                <div className="flex items-center justify-between rounded-xl border border-amber-400/10 bg-amber-500/[0.04] px-4 py-3">
+              {/* Status banner */}
+              {activeSession && activeSession.status === "paused" && (
+                <div className="mb-3 flex items-center justify-between rounded-xl border border-amber-400/10 bg-amber-500/[0.04] px-4 py-3">
                   <div className="flex items-center gap-3">
-                    <Pause className="size-5 text-amber-400" />
+                    <Pause className="size-4 text-amber-400" />
+                    <p className="text-sm font-medium text-amber-300">Training Paused</p>
+                  </div>
+                </div>
+              )}
+              {activeSession && activeSession.status === "completed" && (
+                <div className="mb-3 space-y-3">
+                  <div className="flex items-center gap-3 rounded-xl border border-emerald-400/10 bg-emerald-500/[0.04] px-4 py-3">
+                    <CheckCircle2 className="size-4 text-emerald-400" />
                     <div>
-                      <p className="text-sm font-medium text-amber-300">
-                        Training Paused
-                      </p>
+                      <p className="text-sm font-medium text-emerald-300">Training Complete</p>
                       <p className="text-xs text-slate-500">
-                        Latest checkpoint at loss{" "}
-                        {activeSession.currentLoss?.toFixed(4) ?? "—"}
+                        Best loss: {activeSession.bestLoss?.toFixed(4) ?? "—"} · Ready for generation
                       </p>
                     </div>
                   </div>
-                  <button
-                    className="flex items-center gap-1.5 rounded-lg bg-amber-500/10 px-3 py-1.5 text-xs font-medium text-amber-400 transition-colors hover:bg-amber-500/20"
-                    aria-label="Resume training"
+                  <Link
+                    href={[
+                      `/ai-lab/generation?session=${activeSession.id}`,
+                      activeSession.experimentId ? `experiment=${activeSession.experimentId}` : "",
+                      activeSession.runId ? `run=${activeSession.runId}` : "",
+                    ].filter(Boolean).join("&")}
+                    className="flex items-center justify-center gap-2 rounded-xl bg-brand/10 px-4 py-2.5 text-sm font-medium text-brand transition-all hover:bg-brand/20"
                   >
-                    <RotateCcw className="size-3" />
-                    Resume
-                  </button>
+                    <MessageSquare className="size-4" />
+                    Generate with this model
+                  </Link>
+                  {activeSession.experimentId && (
+                    <Link
+                      href={`/ai-lab/lab/experiments/${activeSession.experimentId}`}
+                      className="flex items-center justify-center gap-2 rounded-xl border border-white/[0.06] bg-white/[0.02] px-4 py-2 text-xs text-slate-400 transition-all hover:bg-white/[0.04] hover:text-slate-300"
+                    >
+                      <FlaskConical className="size-3.5" />
+                      View Experiment
+                    </Link>
+                  )}
                 </div>
-              ) : activeSession && activeSession.status === "completed" ? (
-                <div className="flex items-center gap-3 rounded-xl border border-emerald-400/10 bg-emerald-500/[0.04] px-4 py-3">
-                  <CheckCircle2 className="size-5 text-emerald-400" />
-                  <div>
-                    <p className="text-sm font-medium text-emerald-300">
-                      Training Complete
-                    </p>
-                    <p className="text-xs text-slate-500">
-                      Checkpoint saved — ready for analysis
-                    </p>
-                  </div>
+              )}
+
+              {/* Checkpoint cards */}
+              {checkpoints.length > 0 ? (
+                <div className="space-y-2">
+                  {checkpoints.map((cp) => {
+                    const isBest = bestCheckpoint?.id === cp.id;
+                    const isLatest = latestCheckpoint?.id === cp.id;
+                    const isActive = cp.isActive;
+                    return (
+                      <div
+                        key={cp.id}
+                        className={`flex items-center gap-3 rounded-lg border px-3 py-2.5 transition-colors ${
+                          isActive
+                            ? "border-brand/20 bg-brand/[0.04]"
+                            : "border-white/[0.04] bg-white/[0.01] hover:bg-white/[0.03]"
+                        }`}
+                      >
+                        {/* Step */}
+                        <div className="flex size-8 shrink-0 items-center justify-center rounded-md bg-white/[0.04]">
+                          <span className="text-xs font-bold tabular-nums text-slate-300">
+                            {cp.step}
+                          </span>
+                        </div>
+                        {/* Metrics */}
+                        <div className="flex-1 min-w-0">
+                          <div className="flex items-center gap-2">
+                            <span className="text-sm font-medium text-slate-300">
+                              Step {cp.step}
+                            </span>
+                            <span className="text-[0.6rem] text-slate-600">
+                              {cp.relativeTime}
+                            </span>
+                          </div>
+                          <div className="mt-0.5 flex items-center gap-3 text-[0.65rem]">
+                            <span className="text-slate-500">
+                              Loss <span className="tabular-nums text-slate-400">{cp.loss.toFixed(4)}</span>
+                            </span>
+                            {cp.perplexity !== null && (
+                              <span className="text-slate-500">
+                                PPL <span className="tabular-nums text-slate-400">{cp.perplexity.toFixed(2)}</span>
+                              </span>
+                            )}
+                            {cp.sizeBytes !== null && (
+                              <span className="text-slate-600">
+                                {(cp.sizeBytes / 1024).toFixed(1)}KB
+                              </span>
+                            )}
+                          </div>
+                        </div>
+                        {/* Badges */}
+                        <div className="flex shrink-0 items-center gap-1">
+                          {isBest && (
+                            <span className="rounded-full bg-emerald-500/10 px-1.5 py-0.5 text-[0.55rem] font-semibold uppercase text-emerald-400">
+                              Best
+                            </span>
+                          )}
+                          {isLatest && (
+                            <span className="rounded-full bg-blue-500/10 px-1.5 py-0.5 text-[0.55rem] font-semibold uppercase text-blue-400">
+                              Latest
+                            </span>
+                          )}
+                          {isActive && (
+                            <span className="rounded-full bg-brand/10 px-1.5 py-0.5 text-[0.55rem] font-semibold uppercase text-brand">
+                              Active
+                            </span>
+                          )}
+                        </div>
+                      </div>
+                    );
+                  })}
                 </div>
               ) : (
                 <p className="py-4 text-center text-sm text-slate-600">
-                  No checkpoints available. Training has not been paused or completed yet.
+                  No checkpoints saved yet. Checkpoints will appear as training progresses.
                 </p>
               )}
             </motion.div>
@@ -887,6 +1062,9 @@ export function ResearchWorkspace() {
 
             {/* ── Phase 62: Benchmark & Fingerprint Section ── */}
             <BenchmarkSection activeSession={activeSession} />
+
+            {/* ── Phase 63: Research Study Section ── */}
+            <StudyPanel />
           </div>
         </div>
       )}

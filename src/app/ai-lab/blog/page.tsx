@@ -1,10 +1,5 @@
-import type { Metadata } from "next";
-import { SubRoutePlaceholder } from "@/components/ai-lab/SubRoutePlaceholder";
-
-export const metadata: Metadata = {
-  title: "Learning Notes",
-};
+import { permanentRedirect } from "next/navigation";
 
 export default function BlogPage() {
-  return <SubRoutePlaceholder sectionNameKey="aiLab.sections.blog" />;
+  permanentRedirect("/ai-lab");
 }

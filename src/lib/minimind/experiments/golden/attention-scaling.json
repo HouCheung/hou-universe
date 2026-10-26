@@ -1,0 +1,52 @@
+{
+  "version": 1,
+  "name": "attention-scaling",
+  "description": "Golden validation experiment 2: Attention head scaling comparison. Compares model behavior with different numbers of attention heads (2, 4, 8) to verify that the multi-head attention mechanism works correctly and that more heads do not degrade training stability.",
+  "seed": 42,
+  "model": {
+    "preset": "custom",
+    "vocabSize": 1024,
+    "dModel": 128,
+    "numHeads": 4,
+    "dFF": 512,
+    "numLayers": 2,
+    "maxSeqLen": 64
+  },
+  "dataset": {
+    "type": "inline",
+    "blockSize": 32,
+    "batchSize": 4
+  },
+  "tokenizer": {
+    "type": "bpe",
+    "vocabSize": 1024
+  },
+  "optimizer": {
+    "type": "adamw",
+    "lr": 0.001,
+    "weightDecay": 0.01
+  },
+  "scheduler": {
+    "type": "cosine",
+    "warmupSteps": 20,
+    "minLR": 0.00001
+  },
+  "training": {
+    "epochs": 5,
+    "gradientAccumulationSteps": 1,
+    "gradientClipNorm": 1.0,
+    "logInterval": 10
+  },
+  "output": {
+    "dir": ".cache/minimind/golden/attention-scaling"
+  },
+  "golden": {
+    "type": "scaling",
+    "ablations": [
+      { "name": "heads-2", "numHeads": 2 },
+      { "name": "heads-4", "numHeads": 4 },
+      { "name": "heads-8", "numHeads": 8 }
+    ],
+    "successCriteria": "All head configurations must train without NaN. Loss should decrease for all variants."
+  }
+}

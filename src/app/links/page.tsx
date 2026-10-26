@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { LinksPageContent } from "@/components/links/LinksPageContent";
 
 export const metadata: Metadata = {
-  title: "Links - HOU Universe",
+  title: "Links",
   description:
     "Links wall — friendly links and technical tool navigation, discover more great developer sites and useful resources.",
 };

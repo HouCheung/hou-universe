@@ -6,6 +6,7 @@
 // ============================================================
 
 import { BackwardContext, executeBackward } from "./autograd";
+import { Random } from "./random/Random";
 
 /**
  * Index calculation helper for flat Float64Array access.
@@ -167,28 +168,22 @@ export class Tensor {
 
   /**
    * Create a Tensor with random values from N(0, 1).
-   * Uses Box-Muller transform.
+   * Delegates to Random.randn() for deterministic reproducibility.
+   * Call Random.setSeed(n) before this to get reproducible results.
    */
   static randn(shape: number[], requiresGrad: boolean = false): Tensor {
     const size = shapeSize(shape);
     const data = new Float64Array(size);
-    for (let i = 0; i < size; i += 2) {
-      const u1 = Math.random();
-      const u2 = Math.random();
-      // Box-Muller: avoid log(0) by using 1 - u1 (u1 is never exactly 1 in practice,
-      // but this guards against the theoretical edge case)
-      const r = Math.sqrt(-2 * Math.log(u1 || 1e-15));
-      const theta = 2 * Math.PI * u2;
-      data[i] = r * Math.cos(theta);
-      if (i + 1 < size) {
-        data[i + 1] = r * Math.sin(theta);
-      }
+    for (let i = 0; i < size; i++) {
+      data[i] = Random.randn();
     }
     return new Tensor(data, shape, requiresGrad);
   }
 
   /**
    * Create a Tensor with random values from U(low, high).
+   * Delegates to Random.uniform() for deterministic reproducibility.
+   * Call Random.setSeed(n) before this to get reproducible results.
    */
   static uniform(
     shape: number[],
@@ -198,9 +193,8 @@ export class Tensor {
   ): Tensor {
     const size = shapeSize(shape);
     const data = new Float64Array(size);
-    const range = high - low;
     for (let i = 0; i < size; i++) {
-      data[i] = low + Math.random() * range;
+      data[i] = Random.uniform(low, high);
     }
     return new Tensor(data, shape, requiresGrad);
   }
@@ -402,6 +396,56 @@ export class Tensor {
       }
     }
     return t;
+  }
+
+  // ──────────────────────────────────────
+  // Static methods — noGrad context
+  // ──────────────────────────────────────
+
+  /**
+   * Execute a function with gradient tracking disabled for specified parameters.
+   *
+   * Temporarily sets requiresGrad=false on the given parameters (or all
+   * tensors created within the callback, if no parameters are specified).
+   * Restores the original requiresGrad values after the callback completes,
+   * even if the callback throws.
+   *
+   * When requiresGrad=false on all inputs to an operation, the operation
+   * does not build a computation graph (_ctx is null), making forward
+   * passes efficient for evaluation/inference.
+   *
+   * Usage:
+   *   // Disable grad on model parameters during evaluation:
+   *   Tensor.noGrad(() => {
+   *     const logits = model.forward(inputIds);
+   *     const loss = crossEntropyLoss(logits, targets);
+   *     return loss.item();
+   *   }, model.parameters());
+   *
+   * @param fn         - Function to execute without gradient tracking
+   * @param parameters - Parameters to temporarily disable requiresGrad on
+   * @returns The return value of fn
+   */
+  static noGrad<T>(fn: () => T, parameters?: { requiresGrad: boolean }[]): T {
+    // Save and disable requiresGrad on specified parameters
+    const saved: boolean[] = [];
+    if (parameters) {
+      for (const p of parameters) {
+        saved.push(p.requiresGrad);
+        p.requiresGrad = false;
+      }
+    }
+
+    try {
+      return fn();
+    } finally {
+      // Restore requiresGrad — always runs, even if fn throws
+      if (parameters) {
+        for (let i = 0; i < parameters.length; i++) {
+          parameters[i].requiresGrad = saved[i];
+        }
+      }
+    }
   }
 
   /** Pretty-print for debugging */

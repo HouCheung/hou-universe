@@ -1,0 +1,1046 @@
+{
+  "dataset": "chat-sft",
+  "version": "1.0.0",
+  "schemaVersion": 1,
+  "purpose": "instruction",
+  "template": {
+    "user": "User: ",
+    "assistant": "Assistant: ",
+    "separator": "\n"
+  },
+  "createdAt": "2026-10-20",
+  "samples": [
+    {
+      "id": "sft-en-train-001",
+      "language": "en",
+      "split": "train",
+      "category": "factual",
+      "turns": [{ "user": "What is the capital of Japan?", "assistant": "Tokyo." }]
+    },
+    {
+      "id": "sft-en-train-002",
+      "language": "en",
+      "split": "train",
+      "category": "factual",
+      "turns": [{ "user": "What is the capital of Italy?", "assistant": "Rome." }]
+    },
+    {
+      "id": "sft-en-train-003",
+      "language": "en",
+      "split": "train",
+      "category": "factual",
+      "turns": [{ "user": "Which planet is known as the Red Planet?", "assistant": "Mars." }]
+    },
+    {
+      "id": "sft-en-train-004",
+      "language": "en",
+      "split": "train",
+      "category": "factual",
+      "turns": [{ "user": "How many legs does a spider have?", "assistant": "Eight legs." }]
+    },
+    {
+      "id": "sft-en-train-005",
+      "language": "en",
+      "split": "train",
+      "category": "definition",
+      "turns": [{ "user": "What is a dog?", "assistant": "A dog is a domestic animal." }]
+    },
+    {
+      "id": "sft-en-train-006",
+      "language": "en",
+      "split": "train",
+      "category": "definition",
+      "turns": [{ "user": "What is the sun?", "assistant": "The sun is a star." }]
+    },
+    {
+      "id": "sft-en-train-007",
+      "language": "en",
+      "split": "train",
+      "category": "definition",
+      "turns": [{ "user": "What is a book?", "assistant": "A book is a collection of pages." }]
+    },
+    {
+      "id": "sft-en-train-008",
+      "language": "en",
+      "split": "train",
+      "category": "arithmetic",
+      "turns": [{ "user": "What is 2 plus 3?", "assistant": "5." }]
+    },
+    {
+      "id": "sft-en-train-009",
+      "language": "en",
+      "split": "train",
+      "category": "arithmetic",
+      "turns": [{ "user": "What is 6 plus 4?", "assistant": "10." }]
+    },
+    {
+      "id": "sft-en-train-010",
+      "language": "en",
+      "split": "train",
+      "category": "arithmetic",
+      "turns": [{ "user": "What is 10 minus 4?", "assistant": "6." }]
+    },
+    {
+      "id": "sft-en-train-011",
+      "language": "en",
+      "split": "train",
+      "category": "translation",
+      "turns": [{ "user": "How do you say thank you in Spanish?", "assistant": "Gracias." }]
+    },
+    {
+      "id": "sft-en-train-012",
+      "language": "en",
+      "split": "train",
+      "category": "translation",
+      "turns": [{ "user": "How do you say good morning in French?", "assistant": "Bonjour." }]
+    },
+    {
+      "id": "sft-en-train-013",
+      "language": "en",
+      "split": "train",
+      "category": "daily",
+      "turns": [{ "user": "What should I eat for breakfast?", "assistant": "Eggs and toast." }]
+    },
+    {
+      "id": "sft-en-train-014",
+      "language": "en",
+      "split": "train",
+      "category": "daily",
+      "turns": [{ "user": "How often should I wash my hands?", "assistant": "Wash them often." }]
+    },
+    {
+      "id": "sft-en-train-015",
+      "language": "en",
+      "split": "train",
+      "category": "daily",
+      "turns": [{ "user": "What should I wear when it rains?", "assistant": "A raincoat." }]
+    },
+    {
+      "id": "sft-en-train-016",
+      "language": "en",
+      "split": "train",
+      "category": "technology",
+      "turns": [{ "user": "What is a keyboard used for?", "assistant": "Typing text." }]
+    },
+    {
+      "id": "sft-en-train-017",
+      "language": "en",
+      "split": "train",
+      "category": "technology",
+      "turns": [{ "user": "What does a battery store?", "assistant": "Electrical energy." }]
+    },
+    {
+      "id": "sft-en-train-018",
+      "language": "en",
+      "split": "train",
+      "category": "technology",
+      "turns": [{ "user": "What is an email?", "assistant": "An electronic message." }]
+    },
+    {
+      "id": "sft-en-train-019",
+      "language": "en",
+      "split": "train",
+      "category": "factual",
+      "turns": [
+        { "user": "I like Egypt.", "assistant": "Egypt is old." },
+        { "user": "Capital of Egypt?", "assistant": "Cairo." }
+      ]
+    },
+    {
+      "id": "sft-en-train-020",
+      "language": "en",
+      "split": "train",
+      "category": "factual",
+      "turns": [
+        { "user": "I saw Australia.", "assistant": "It is large." },
+        { "user": "Capital of Australia?", "assistant": "Canberra." }
+      ]
+    },
+    {
+      "id": "sft-en-train-021",
+      "language": "en",
+      "split": "train",
+      "category": "definition",
+      "turns": [
+        { "user": "I saw a rainbow.", "assistant": "How pretty." },
+        { "user": "What is a rainbow?", "assistant": "Colored light." }
+      ]
+    },
+    {
+      "id": "sft-en-train-022",
+      "language": "en",
+      "split": "train",
+      "category": "arithmetic",
+      "turns": [
+        { "user": "I have apples.", "assistant": "Fruit is good." },
+        { "user": "What is 8 plus 9?", "assistant": "17." }
+      ]
+    },
+    {
+      "id": "sft-en-train-023",
+      "language": "en",
+      "split": "train",
+      "category": "arithmetic",
+      "turns": [
+        { "user": "I count coins.", "assistant": "Coins are useful." },
+        { "user": "What is 5 times 6?", "assistant": "30." }
+      ]
+    },
+    {
+      "id": "sft-en-train-024",
+      "language": "en",
+      "split": "train",
+      "category": "translation",
+      "turns": [
+        { "user": "I learn German.", "assistant": "German is fun." },
+        { "user": "Hello in German?", "assistant": "Hallo." }
+      ]
+    },
+    {
+      "id": "sft-en-train-025",
+      "language": "en",
+      "split": "train",
+      "category": "translation",
+      "turns": [
+        { "user": "I visit Spain.", "assistant": "Spain is warm." },
+        { "user": "Goodbye in Spanish?", "assistant": "Adios." }
+      ]
+    },
+    {
+      "id": "sft-en-train-026",
+      "language": "en",
+      "split": "train",
+      "category": "daily",
+      "turns": [
+        { "user": "I feel tired.", "assistant": "Please rest." },
+        { "user": "Before bed?", "assistant": "Brush teeth." }
+      ]
+    },
+    {
+      "id": "sft-en-train-027",
+      "language": "en",
+      "split": "train",
+      "category": "daily",
+      "turns": [
+        { "user": "I go shopping.", "assistant": "Buy food." },
+        { "user": "Lunch idea?", "assistant": "A sandwich." }
+      ]
+    },
+    {
+      "id": "sft-en-train-028",
+      "language": "en",
+      "split": "train",
+      "category": "technology",
+      "turns": [
+        { "user": "My phone is slow.", "assistant": "Try restarting." },
+        { "user": "What is a phone?", "assistant": "A small computer." }
+      ]
+    },
+    {
+      "id": "sft-en-validation-001",
+      "language": "en",
+      "split": "validation",
+      "category": "factual",
+      "turns": [{ "user": "What is the capital of Canada?", "assistant": "Ottawa." }]
+    },
+    {
+      "id": "sft-en-validation-002",
+      "language": "en",
+      "split": "validation",
+      "category": "factual",
+      "turns": [{ "user": "What is the capital of Spain?", "assistant": "Madrid." }]
+    },
+    {
+      "id": "sft-en-validation-003",
+      "language": "en",
+      "split": "validation",
+      "category": "definition",
+      "turns": [{ "user": "What is the moon?", "assistant": "The moon is a natural satellite." }]
+    },
+    {
+      "id": "sft-en-validation-004",
+      "language": "en",
+      "split": "validation",
+      "category": "arithmetic",
+      "turns": [{ "user": "What is 12 minus 5?", "assistant": "7." }]
+    },
+    {
+      "id": "sft-en-validation-005",
+      "language": "en",
+      "split": "validation",
+      "category": "translation",
+      "turns": [{ "user": "How do you say good night in French?", "assistant": "Bonne nuit." }]
+    },
+    {
+      "id": "sft-en-validation-006",
+      "language": "en",
+      "split": "validation",
+      "category": "daily",
+      "turns": [
+        { "user": "I have a headache.", "assistant": "Drink water." },
+        { "user": "How to feel better?", "assistant": "Get some rest." }
+      ]
+    },
+    {
+      "id": "sft-en-validation-007",
+      "language": "en",
+      "split": "validation",
+      "category": "technology",
+      "turns": [
+        { "user": "My computer is hot.", "assistant": "Use a fan." },
+        { "user": "What is a laptop?", "assistant": "A portable computer." }
+      ]
+    },
+    {
+      "id": "sft-zh-train-001",
+      "language": "zh",
+      "split": "train",
+      "category": "factual",
+      "turns": [{ "user": "日本的首都是哪里？", "assistant": "东京。" }]
+    },
+    {
+      "id": "sft-zh-train-002",
+      "language": "zh",
+      "split": "train",
+      "category": "factual",
+      "turns": [{ "user": "意大利的首都是哪里？", "assistant": "罗马。" }]
+    },
+    {
+      "id": "sft-zh-train-003",
+      "language": "zh",
+      "split": "train",
+      "category": "factual",
+      "turns": [{ "user": "中国的首都是哪里？", "assistant": "北京。" }]
+    },
+    {
+      "id": "sft-zh-train-004",
+      "language": "zh",
+      "split": "train",
+      "category": "factual",
+      "turns": [{ "user": "世界上最大的海洋是哪个？", "assistant": "太平洋。" }]
+    },
+    {
+      "id": "sft-zh-train-005",
+      "language": "zh",
+      "split": "train",
+      "category": "definition",
+      "turns": [{ "user": "狗是什么？", "assistant": "狗是一种动物。" }]
+    },
+    {
+      "id": "sft-zh-train-006",
+      "language": "zh",
+      "split": "train",
+      "category": "definition",
+      "turns": [{ "user": "太阳是什么？", "assistant": "太阳是一颗恒星。" }]
+    },
+    {
+      "id": "sft-zh-train-007",
+      "language": "zh",
+      "split": "train",
+      "category": "definition",
+      "turns": [{ "user": "书是什么？", "assistant": "书是很多页的集合。" }]
+    },
+    {
+      "id": "sft-zh-train-008",
+      "language": "zh",
+      "split": "train",
+      "category": "arithmetic",
+      "turns": [{ "user": "二加三等于多少？", "assistant": "五。" }]
+    },
+    {
+      "id": "sft-zh-train-009",
+      "language": "zh",
+      "split": "train",
+      "category": "arithmetic",
+      "turns": [{ "user": "六加四等于多少？", "assistant": "十。" }]
+    },
+    {
+      "id": "sft-zh-train-010",
+      "language": "zh",
+      "split": "train",
+      "category": "arithmetic",
+      "turns": [{ "user": "十减四等于多少？", "assistant": "六。" }]
+    },
+    {
+      "id": "sft-zh-train-011",
+      "language": "zh",
+      "split": "train",
+      "category": "translation",
+      "turns": [{ "user": "用日语怎么说水？", "assistant": "Mizu。" }]
+    },
+    {
+      "id": "sft-zh-train-012",
+      "language": "zh",
+      "split": "train",
+      "category": "translation",
+      "turns": [{ "user": "用德语怎么说谢谢？", "assistant": "Danke。" }]
+    },
+    {
+      "id": "sft-zh-train-013",
+      "language": "zh",
+      "split": "train",
+      "category": "daily",
+      "turns": [{ "user": "早餐应该吃什么？", "assistant": "鸡蛋和面包。" }]
+    },
+    {
+      "id": "sft-zh-train-014",
+      "language": "zh",
+      "split": "train",
+      "category": "daily",
+      "turns": [{ "user": "我应该多久洗一次手？", "assistant": "经常洗手。" }]
+    },
+    {
+      "id": "sft-zh-train-015",
+      "language": "zh",
+      "split": "train",
+      "category": "daily",
+      "turns": [{ "user": "下雨天应该穿什么？", "assistant": "穿雨衣。" }]
+    },
+    {
+      "id": "sft-zh-train-016",
+      "language": "zh",
+      "split": "train",
+      "category": "technology",
+      "turns": [{ "user": "键盘是用来做什么的？", "assistant": "用来打字。" }]
+    },
+    {
+      "id": "sft-zh-train-017",
+      "language": "zh",
+      "split": "train",
+      "category": "technology",
+      "turns": [{ "user": "电池储存什么？", "assistant": "储存电能。" }]
+    },
+    {
+      "id": "sft-zh-train-018",
+      "language": "zh",
+      "split": "train",
+      "category": "technology",
+      "turns": [{ "user": "电子邮件是什么？", "assistant": "一种电子消息。" }]
+    },
+    {
+      "id": "sft-zh-train-019",
+      "language": "zh",
+      "split": "train",
+      "category": "factual",
+      "turns": [
+        { "user": "我去过埃及。", "assistant": "那里历史悠久。" },
+        { "user": "埃及首都是？", "assistant": "开罗。" }
+      ]
+    },
+    {
+      "id": "sft-zh-train-020",
+      "language": "zh",
+      "split": "train",
+      "category": "factual",
+      "turns": [
+        { "user": "我去了澳洲。", "assistant": "那里很大。" },
+        { "user": "澳洲首都是？", "assistant": "堪培拉。" }
+      ]
+    },
+    {
+      "id": "sft-zh-train-021",
+      "language": "zh",
+      "split": "train",
+      "category": "definition",
+      "turns": [
+        { "user": "我看见了彩虹。", "assistant": "很好看。" },
+        { "user": "彩虹是什么？", "assistant": "天空的光。" }
+      ]
+    },
+    {
+      "id": "sft-zh-train-022",
+      "language": "zh",
+      "split": "train",
+      "category": "arithmetic",
+      "turns": [
+        { "user": "我有苹果。", "assistant": "水果很好。" },
+        { "user": "八加九等于？", "assistant": "十七。" }
+      ]
+    },
+    {
+      "id": "sft-zh-train-023",
+      "language": "zh",
+      "split": "train",
+      "category": "arithmetic",
+      "turns": [
+        { "user": "我在数硬币。", "assistant": "硬币有用。" },
+        { "user": "五乘六等于？", "assistant": "三十。" }
+      ]
+    },
+    {
+      "id": "sft-zh-train-024",
+      "language": "zh",
+      "split": "train",
+      "category": "translation",
+      "turns": [
+        { "user": "我学德语。", "assistant": "德语很有趣。" },
+        { "user": "德语怎么说你好？", "assistant": "Guten Tag。" }
+      ]
+    },
+    {
+      "id": "sft-zh-train-025",
+      "language": "zh",
+      "split": "train",
+      "category": "translation",
+      "turns": [
+        { "user": "我想去西班牙。", "assistant": "那里很美。" },
+        { "user": "西班牙语道别？", "assistant": "Hasta luego。" }
+      ]
+    },
+    {
+      "id": "sft-zh-train-026",
+      "language": "zh",
+      "split": "train",
+      "category": "daily",
+      "turns": [
+        { "user": "我很累。", "assistant": "你应该休息。" },
+        { "user": "睡前做什么？", "assistant": "刷牙。" }
+      ]
+    },
+    {
+      "id": "sft-zh-train-027",
+      "language": "zh",
+      "split": "train",
+      "category": "daily",
+      "turns": [
+        { "user": "我去商店。", "assistant": "买需要的东西。" },
+        { "user": "午饭买什么？", "assistant": "三明治。" }
+      ]
+    },
+    {
+      "id": "sft-zh-train-028",
+      "language": "zh",
+      "split": "train",
+      "category": "technology",
+      "turns": [
+        { "user": "我的手机慢。", "assistant": "重启试试。" },
+        { "user": "手机是什么？", "assistant": "一台电脑。" }
+      ]
+    },
+    {
+      "id": "sft-zh-validation-001",
+      "language": "zh",
+      "split": "validation",
+      "category": "factual",
+      "turns": [{ "user": "加拿大的首都是哪里？", "assistant": "渥太华。" }]
+    },
+    {
+      "id": "sft-zh-validation-002",
+      "language": "zh",
+      "split": "validation",
+      "category": "factual",
+      "turns": [{ "user": "西班牙的首都是哪里？", "assistant": "马德里。" }]
+    },
+    {
+      "id": "sft-zh-validation-003",
+      "language": "zh",
+      "split": "validation",
+      "category": "definition",
+      "turns": [{ "user": "月亮是什么？", "assistant": "月亮是地球的卫星。" }]
+    },
+    {
+      "id": "sft-zh-validation-004",
+      "language": "zh",
+      "split": "validation",
+      "category": "arithmetic",
+      "turns": [{ "user": "十二减五等于多少？", "assistant": "七。" }]
+    },
+    {
+      "id": "sft-zh-validation-005",
+      "language": "zh",
+      "split": "validation",
+      "category": "translation",
+      "turns": [{ "user": "用德语怎么说早上好？", "assistant": "Guten Morgen。" }]
+    },
+    {
+      "id": "sft-zh-validation-006",
+      "language": "zh",
+      "split": "validation",
+      "category": "daily",
+      "turns": [
+        { "user": "我头疼。", "assistant": "喝点水。" },
+        { "user": "怎样变好？", "assistant": "休息一下。" }
+      ]
+    },
+    {
+      "id": "sft-zh-validation-007",
+      "language": "zh",
+      "split": "validation",
+      "category": "technology",
+      "turns": [
+        { "user": "电脑很热。", "assistant": "用风扇。" },
+        { "user": "便携电脑是什么？", "assistant": "一种便携电脑。" }
+      ]
+    },
+    {
+      "id": "sft-mixed-train-001",
+      "language": "mixed",
+      "split": "train",
+      "category": "factual",
+      "turns": [{ "user": "What is 日本的首都?", "assistant": "日本的首都是东京。" }]
+    },
+    {
+      "id": "sft-mixed-train-002",
+      "language": "mixed",
+      "split": "train",
+      "category": "factual",
+      "turns": [{ "user": "What is 意大利的首都?", "assistant": "意大利的首都是罗马。" }]
+    },
+    {
+      "id": "sft-mixed-train-003",
+      "language": "mixed",
+      "split": "train",
+      "category": "factual",
+      "turns": [{ "user": "Which planet 被称为红色星球?", "assistant": "Mars 被称为红色星球。" }]
+    },
+    {
+      "id": "sft-mixed-train-004",
+      "language": "mixed",
+      "split": "train",
+      "category": "factual",
+      "turns": [{ "user": "Where is 中国?", "assistant": "中国在亚洲。" }]
+    },
+    {
+      "id": "sft-mixed-train-005",
+      "language": "mixed",
+      "split": "train",
+      "category": "definition",
+      "turns": [{ "user": "What is 狗?", "assistant": "狗是一种常见的动物。" }]
+    },
+    {
+      "id": "sft-mixed-train-006",
+      "language": "mixed",
+      "split": "train",
+      "category": "definition",
+      "turns": [{ "user": "What is 太阳?", "assistant": "太阳是一颗发光的恒星。" }]
+    },
+    {
+      "id": "sft-mixed-train-007",
+      "language": "mixed",
+      "split": "train",
+      "category": "definition",
+      "turns": [{ "user": "What is 书?", "assistant": "书是写满文字的纸张集合。" }]
+    },
+    {
+      "id": "sft-mixed-train-008",
+      "language": "mixed",
+      "split": "train",
+      "category": "arithmetic",
+      "turns": [{ "user": "What is 二加三?", "assistant": "等于 5。" }]
+    },
+    {
+      "id": "sft-mixed-train-009",
+      "language": "mixed",
+      "split": "train",
+      "category": "arithmetic",
+      "turns": [{ "user": "What is 六加四?", "assistant": "等于 10。" }]
+    },
+    {
+      "id": "sft-mixed-train-010",
+      "language": "mixed",
+      "split": "train",
+      "category": "arithmetic",
+      "turns": [{ "user": "What is 十减四?", "assistant": "等于 6。" }]
+    },
+    {
+      "id": "sft-mixed-train-011",
+      "language": "mixed",
+      "split": "train",
+      "category": "translation",
+      "turns": [{ "user": "用 English 说书。", "assistant": "Book." }]
+    },
+    {
+      "id": "sft-mixed-train-012",
+      "language": "mixed",
+      "split": "train",
+      "category": "translation",
+      "turns": [{ "user": "Please 用法语说谢谢。", "assistant": "Merci." }]
+    },
+    {
+      "id": "sft-mixed-train-013",
+      "language": "mixed",
+      "split": "train",
+      "category": "daily",
+      "turns": [{ "user": "What should I eat 早餐?", "assistant": "早餐可以吃鸡蛋。" }]
+    },
+    {
+      "id": "sft-mixed-train-014",
+      "language": "mixed",
+      "split": "train",
+      "category": "daily",
+      "turns": [{ "user": "How often 应该洗手?", "assistant": "要经常洗手。" }]
+    },
+    {
+      "id": "sft-mixed-train-015",
+      "language": "mixed",
+      "split": "train",
+      "category": "daily",
+      "turns": [{ "user": "What to wear 下雨天?", "assistant": "下雨天要穿雨衣。" }]
+    },
+    {
+      "id": "sft-mixed-train-016",
+      "language": "mixed",
+      "split": "train",
+      "category": "technology",
+      "turns": [{ "user": "What is 键盘 used for?", "assistant": "键盘用来打字。" }]
+    },
+    {
+      "id": "sft-mixed-train-017",
+      "language": "mixed",
+      "split": "train",
+      "category": "technology",
+      "turns": [{ "user": "电池 stores what?", "assistant": "电池储存电能。" }]
+    },
+    {
+      "id": "sft-mixed-train-018",
+      "language": "mixed",
+      "split": "train",
+      "category": "technology",
+      "turns": [{ "user": "What is 电子邮件?", "assistant": "电子邮件是一种电子消息。" }]
+    },
+    {
+      "id": "sft-mixed-train-019",
+      "language": "mixed",
+      "split": "train",
+      "category": "factual",
+      "turns": [
+        { "user": "I am in 埃及。", "assistant": "那里很古老。" },
+        { "user": "What is 埃及首都?", "assistant": "首都是开罗。" }
+      ]
+    },
+    {
+      "id": "sft-mixed-train-020",
+      "language": "mixed",
+      "split": "train",
+      "category": "factual",
+      "turns": [
+        { "user": "I went to 澳大利亚。", "assistant": "Australia 很大。" },
+        { "user": "What is 澳大利亚首都?", "assistant": "首都是堪培拉。" }
+      ]
+    },
+    {
+      "id": "sft-mixed-train-021",
+      "language": "mixed",
+      "split": "train",
+      "category": "definition",
+      "turns": [
+        { "user": "I saw a 彩虹。", "assistant": "彩虹看起来很美。" },
+        { "user": "What is 彩虹?", "assistant": "天空中的彩色光。" }
+      ]
+    },
+    {
+      "id": "sft-mixed-train-022",
+      "language": "mixed",
+      "split": "train",
+      "category": "arithmetic",
+      "turns": [
+        { "user": "I have 苹果。", "assistant": "苹果是好水果。" },
+        { "user": "What is 八加九?", "assistant": "等于 17。" }
+      ]
+    },
+    {
+      "id": "sft-mixed-train-023",
+      "language": "mixed",
+      "split": "train",
+      "category": "arithmetic",
+      "turns": [
+        { "user": "I count 硬币。", "assistant": "数硬币很有趣。" },
+        { "user": "What is 五乘以六?", "assistant": "等于 30。" }
+      ]
+    },
+    {
+      "id": "sft-mixed-train-024",
+      "language": "mixed",
+      "split": "train",
+      "category": "translation",
+      "turns": [
+        { "user": "I study 德语。", "assistant": "学习德语需要时间。" },
+        { "user": "How to say 你好 in German?", "assistant": "Servus。" }
+      ]
+    },
+    {
+      "id": "sft-mixed-train-025",
+      "language": "mixed",
+      "split": "train",
+      "category": "translation",
+      "turns": [
+        { "user": "I visit 西班牙。", "assistant": "那里值得一去。" },
+        { "user": "How to say 再见 in Spanish?", "assistant": "Hasta mañana。" }
+      ]
+    },
+    {
+      "id": "sft-mixed-train-026",
+      "language": "mixed",
+      "split": "train",
+      "category": "daily",
+      "turns": [
+        { "user": "I feel 累 today。", "assistant": "好好休息。" },
+        { "user": "What should I do 睡觉前?", "assistant": "睡前应该刷牙。" }
+      ]
+    },
+    {
+      "id": "sft-mixed-train-027",
+      "language": "mixed",
+      "split": "train",
+      "category": "daily",
+      "turns": [
+        { "user": "I go to 商店。", "assistant": "列一个清单。" },
+        { "user": "What to buy 午饭?", "assistant": "买三明治。" }
+      ]
+    },
+    {
+      "id": "sft-mixed-train-028",
+      "language": "mixed",
+      "split": "train",
+      "category": "technology",
+      "turns": [
+        { "user": "我的 phone 慢。", "assistant": "重启 phone 试试。" },
+        { "user": "What is 智能手机?", "assistant": "一台小型电脑。" }
+      ]
+    },
+    {
+      "id": "sft-mixed-validation-001",
+      "language": "mixed",
+      "split": "validation",
+      "category": "factual",
+      "turns": [{ "user": "What is 加拿大首都?", "assistant": "加拿大的首都是渥太华。" }]
+    },
+    {
+      "id": "sft-mixed-validation-002",
+      "language": "mixed",
+      "split": "validation",
+      "category": "factual",
+      "turns": [{ "user": "What is 西班牙首都?", "assistant": "西班牙的首都是马德里。" }]
+    },
+    {
+      "id": "sft-mixed-validation-003",
+      "language": "mixed",
+      "split": "validation",
+      "category": "definition",
+      "turns": [{ "user": "What is 月亮?", "assistant": "月亮是地球的天然卫星。" }]
+    },
+    {
+      "id": "sft-mixed-validation-004",
+      "language": "mixed",
+      "split": "validation",
+      "category": "arithmetic",
+      "turns": [{ "user": "What is 十二减五?", "assistant": "等于 7。" }]
+    },
+    {
+      "id": "sft-mixed-validation-005",
+      "language": "mixed",
+      "split": "validation",
+      "category": "translation",
+      "turns": [{ "user": "Please 用法语说晚安。", "assistant": "Bonne soirée。" }]
+    },
+    {
+      "id": "sft-mixed-validation-006",
+      "language": "mixed",
+      "split": "validation",
+      "category": "daily",
+      "turns": [
+        { "user": "I have a 头疼。", "assistant": "你应该喝点水。" },
+        { "user": "What should I do 才会好?", "assistant": "休息就好。" }
+      ]
+    },
+    {
+      "id": "sft-mixed-validation-007",
+      "language": "mixed",
+      "split": "validation",
+      "category": "technology",
+      "turns": [
+        { "user": "我的 computer 热。", "assistant": "可能需要风扇。" },
+        { "user": "What is 笔记本?", "assistant": "一种便携式电脑。" }
+      ]
+    },
+    {
+      "id": "sft-en-test-001",
+      "language": "en",
+      "split": "test",
+      "category": "factual",
+      "turns": [{ "user": "What is the capital of France?", "assistant": "Paris." }]
+    },
+    {
+      "id": "sft-en-test-002",
+      "language": "en",
+      "split": "test",
+      "category": "factual",
+      "turns": [{ "user": "How many days are in a week?", "assistant": "Seven." }]
+    },
+    {
+      "id": "sft-en-test-003",
+      "language": "en",
+      "split": "test",
+      "category": "definition",
+      "turns": [{ "user": "What is water?", "assistant": "Water is a liquid." }]
+    },
+    {
+      "id": "sft-en-test-004",
+      "language": "en",
+      "split": "test",
+      "category": "arithmetic",
+      "turns": [{ "user": "What is 7 plus 5?", "assistant": "12." }]
+    },
+    {
+      "id": "sft-en-test-005",
+      "language": "en",
+      "split": "test",
+      "category": "arithmetic",
+      "turns": [{ "user": "What is 9 times 3?", "assistant": "27." }]
+    },
+    {
+      "id": "sft-en-test-006",
+      "language": "en",
+      "split": "test",
+      "category": "translation",
+      "turns": [{ "user": "How do you say hello in Chinese?", "assistant": "你好." }]
+    },
+    {
+      "id": "sft-en-test-007",
+      "language": "en",
+      "split": "test",
+      "category": "daily",
+      "turns": [{ "user": "What should I drink when I am thirsty?", "assistant": "Water." }]
+    },
+    {
+      "id": "sft-en-test-008",
+      "language": "en",
+      "split": "test",
+      "category": "daily",
+      "turns": [{ "user": "When should I go to sleep?", "assistant": "At night." }]
+    },
+    {
+      "id": "sft-en-test-009",
+      "language": "en",
+      "split": "test",
+      "category": "technology",
+      "turns": [{ "user": "What does a computer do?", "assistant": "It processes information." }]
+    },
+    {
+      "id": "sft-zh-test-001",
+      "language": "zh",
+      "split": "test",
+      "category": "factual",
+      "turns": [{ "user": "法国的首都是哪里？", "assistant": "巴黎。" }]
+    },
+    {
+      "id": "sft-zh-test-002",
+      "language": "zh",
+      "split": "test",
+      "category": "factual",
+      "turns": [{ "user": "一周有几天？", "assistant": "七天。" }]
+    },
+    {
+      "id": "sft-zh-test-003",
+      "language": "zh",
+      "split": "test",
+      "category": "definition",
+      "turns": [{ "user": "水是什么？", "assistant": "水是一种液体。" }]
+    },
+    {
+      "id": "sft-zh-test-004",
+      "language": "zh",
+      "split": "test",
+      "category": "arithmetic",
+      "turns": [{ "user": "七加五等于多少？", "assistant": "十二。" }]
+    },
+    {
+      "id": "sft-zh-test-005",
+      "language": "zh",
+      "split": "test",
+      "category": "arithmetic",
+      "turns": [{ "user": "九乘以三等于多少？", "assistant": "二十七。" }]
+    },
+    {
+      "id": "sft-zh-test-006",
+      "language": "zh",
+      "split": "test",
+      "category": "translation",
+      "turns": [{ "user": "用英语怎么说你好？", "assistant": "Hello." }]
+    },
+    {
+      "id": "sft-zh-test-007",
+      "language": "zh",
+      "split": "test",
+      "category": "daily",
+      "turns": [{ "user": "口渴的时候应该喝什么？", "assistant": "喝水。" }]
+    },
+    {
+      "id": "sft-zh-test-008",
+      "language": "zh",
+      "split": "test",
+      "category": "daily",
+      "turns": [{ "user": "什么时候应该睡觉？", "assistant": "晚上。" }]
+    },
+    {
+      "id": "sft-zh-test-009",
+      "language": "zh",
+      "split": "test",
+      "category": "technology",
+      "turns": [{ "user": "电脑是用来做什么的？", "assistant": "电脑用来处理信息。" }]
+    },
+    {
+      "id": "sft-mixed-test-001",
+      "language": "mixed",
+      "split": "test",
+      "category": "factual",
+      "turns": [{ "user": "法国的首都 Paris 是哪个国家的？", "assistant": "法国。" }]
+    },
+    {
+      "id": "sft-mixed-test-002",
+      "language": "mixed",
+      "split": "test",
+      "category": "factual",
+      "turns": [{ "user": "What is 一星期 in English?", "assistant": "A week." }]
+    },
+    {
+      "id": "sft-mixed-test-003",
+      "language": "mixed",
+      "split": "test",
+      "category": "definition",
+      "turns": [{ "user": "什么是 CPU?", "assistant": "CPU 是中央处理器。" }]
+    },
+    {
+      "id": "sft-mixed-test-004",
+      "language": "mixed",
+      "split": "test",
+      "category": "arithmetic",
+      "turns": [{ "user": "What is 六加七?", "assistant": "13." }]
+    },
+    {
+      "id": "sft-mixed-test-005",
+      "language": "mixed",
+      "split": "test",
+      "category": "arithmetic",
+      "turns": [{ "user": "十二 divided by 三等于多少?", "assistant": "4." }]
+    },
+    {
+      "id": "sft-mixed-test-006",
+      "language": "mixed",
+      "split": "test",
+      "category": "translation",
+      "turns": [{ "user": "用 English 说“谢谢”。", "assistant": "Thank you." }]
+    },
+    {
+      "id": "sft-mixed-test-007",
+      "language": "mixed",
+      "split": "test",
+      "category": "daily",
+      "turns": [{ "user": "我 thirsty 的时候喝什么？", "assistant": "Water." }]
+    },
+    {
+      "id": "sft-mixed-test-008",
+      "language": "mixed",
+      "split": "test",
+      "category": "daily",
+      "turns": [{ "user": "What time 应该睡觉?", "assistant": "At night." }]
+    },
+    {
+      "id": "sft-mixed-test-009",
+      "language": "mixed",
+      "split": "test",
+      "category": "technology",
+      "turns": [{ "user": "What does 电脑 do?", "assistant": "It processes information." }]
+    }
+  ]
+}

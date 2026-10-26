@@ -3,23 +3,12 @@
 import { useMemo } from "react";
 import { motion, type Variants } from "framer-motion";
 import { BarChart3 } from "lucide-react";
+import { useTranslation } from "react-i18next";
 import type { EmbeddingVector } from "@/lib/minimind/embedding";
 
 // ============================================================
 // EmbeddingVectorView — Single token's dense vector visualization
 // ============================================================
-//
-// Displays every dimension value of an embedding vector in a
-// compact strip chart so users can see the distribution of values
-// that encodes a token's semantic meaning.
-//
-// Design: each dimension rendered as a thin vertical bar whose
-// height and color encode the value (positive = warm, negative = cool).
-// This is deliberately NOT a bar chart library — we want raw
-// geometric rendering to keep the "educational" feel.
-// ============================================================
-
-// ── Animation ────────────────────────────────────────────────
 
 const containerVariants: Variants = {
   hidden: { opacity: 0 },
@@ -38,27 +27,20 @@ const barVariants: Variants = {
   },
 };
 
-// ── Helpers ──────────────────────────────────────────────────
-
-/** Map a value in [-maxAbs, +maxAbs] to a percentage height (0–100) */
 function valueToHeightPercent(value: number, maxAbs: number): number {
   if (maxAbs === 0) return 50;
   return Math.round((Math.abs(value) / maxAbs) * 100);
 }
 
-/** Map a value to a color — warm (brand) for positive, cool (slate) for negative */
 function valueToColor(value: number, maxAbs: number): string {
   if (maxAbs === 0) return "rgb(var(--brand-rgb) / 0.3)";
   const intensity = Math.abs(value) / maxAbs;
   if (value >= 0) {
-    // Warm: brand color, opacity proportional to intensity
     return `rgb(var(--brand-rgb) / ${(0.25 + intensity * 0.7).toFixed(2)})`;
   }
-  // Cool: slate/blue-gray
   return `rgb(100 116 139 / ${(0.25 + intensity * 0.65).toFixed(2)})`;
 }
 
-/** Format a float for the tooltip / label — show 4 significant digits */
 function formatValue(v: number): string {
   if (v === 0) return "0";
   const abs = Math.abs(v);
@@ -67,12 +49,8 @@ function formatValue(v: number): string {
   return v.toExponential(2);
 }
 
-// ── Component ────────────────────────────────────────────────
-
 interface EmbeddingVectorViewProps {
-  /** The embedding vector to display */
   vector: EmbeddingVector;
-  /** Token ID this vector belongs to (for labeling) */
   tokenId: number;
 }
 
@@ -80,6 +58,8 @@ export function EmbeddingVectorView({
   vector,
   tokenId,
 }: EmbeddingVectorViewProps) {
+  const { t } = useTranslation();
+
   const maxAbs = useMemo(() => {
     let m = 0;
     for (let i = 0; i < vector.length; i++) {
@@ -103,29 +83,26 @@ export function EmbeddingVectorView({
     return { min, max, mean: sum / vector.length };
   }, [vector]);
 
-  // How many bars to show — cap at 256 for performance / readability
   const displayDim = Math.min(vector.length, 256);
   const step = Math.max(1, Math.floor(vector.length / displayDim));
 
   return (
     <div className="rounded-xl border border-brand/10 bg-brand/[0.03] backdrop-blur-sm dark:border-white/[0.06] dark:bg-[rgba(var(--brand-rgb),0.04)]">
-      {/* Header */}
       <div className="flex items-center gap-2.5 border-b border-brand/[0.06] px-5 py-3 dark:border-white/[0.04]">
         <BarChart3 className="size-3.5 text-brand/70" />
         <span className="font-mono text-[0.6rem] tracking-[0.2em] uppercase text-slate-500 dark:text-slate-400/60">
-          Embedding Vector
+          {t("minimind.playground.embedding.vectorHeader")}
         </span>
         <span className="ml-auto font-mono text-[0.55rem] text-slate-500/60 dark:text-slate-500/50">
           Token #{tokenId} · {vector.length}d
         </span>
       </div>
 
-      {/* Stats row */}
       <div className="flex items-center gap-4 border-b border-brand/[0.04] px-5 py-2.5 dark:border-white/[0.03]">
         {[
-          { label: "Min", value: formatValue(stats.min) },
-          { label: "Max", value: formatValue(stats.max) },
-          { label: "Mean", value: formatValue(stats.mean) },
+          { label: t("minimind.playground.embedding.vectorMin"), value: formatValue(stats.min) },
+          { label: t("minimind.playground.embedding.vectorMax"), value: formatValue(stats.max) },
+          { label: t("minimind.playground.embedding.vectorMean"), value: formatValue(stats.mean) },
         ].map((s) => (
           <div key={s.label} className="flex items-center gap-1.5">
             <span className="font-mono text-[0.55rem] text-slate-500/60 dark:text-slate-500/50">
@@ -138,7 +115,6 @@ export function EmbeddingVectorView({
         ))}
       </div>
 
-      {/* Bars */}
       <motion.div
         variants={containerVariants}
         initial="hidden"
@@ -170,7 +146,6 @@ export function EmbeddingVectorView({
         })}
       </motion.div>
 
-      {/* Axis labels */}
       <div className="flex justify-between px-5 pb-3">
         <span className="font-mono text-[0.5rem] text-slate-500/50 dark:text-slate-500/50">
           d₀

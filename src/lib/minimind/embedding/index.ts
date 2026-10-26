@@ -5,6 +5,7 @@
 // ============================================================
 
 export { MiniEmbedding } from "./Embedding";
+export { TensorEmbedding } from "./TensorEmbedding";
 export type { MatrixInfo } from "./Embedding";
 
 export type { EmbeddingConfig, EmbeddingVector, EmbeddingMatrix } from "./types";

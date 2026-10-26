@@ -4,7 +4,7 @@
 // ProjectEvolutionPageClient — MiniMind Project Evolution Timeline
 // ============================================================
 
-import { useMemo } from "react";
+import { useMemo, useEffect, useRef } from "react";
 import { useTranslation } from "react-i18next";
 import { motion, type Variants } from "framer-motion";
 import {
@@ -161,6 +161,7 @@ function ModuleCard({
 
   return (
     <motion.div
+      id={`module-${mod.id}`}
       custom={index}
       initial="hidden"
       animate="visible"
@@ -297,8 +298,29 @@ function PhaseSection({
 // Page-level component
 // ============================================================
 
-export function ProjectEvolutionPageClient() {
+export function ProjectEvolutionPageClient({
+  highlightModule,
+}: {
+  highlightModule?: string;
+}) {
   const { t } = useTranslation();
+  const highlightRef = useRef<HTMLDivElement>(null);
+
+  // ── Cross-reference: scroll highlighted module into view ──
+  useEffect(() => {
+    if (highlightModule) {
+      const el = document.getElementById(`module-${highlightModule}`);
+      if (el) {
+        el.scrollIntoView({ behavior: "smooth", block: "center" });
+        // Add a temporary highlight class
+        el.classList.add("ring-2", "ring-brand/30");
+        const timeout = setTimeout(() => {
+          el.classList.remove("ring-2", "ring-brand/30");
+        }, 2000);
+        return () => clearTimeout(timeout);
+      }
+    }
+  }, [highlightModule]);
 
   // Group modules by phase, sorted by order
   const phaseGroups = useMemo(() => {

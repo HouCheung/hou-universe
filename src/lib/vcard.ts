@@ -3,6 +3,8 @@
  * Supports bilingual (zh-CN / en) content.
  */
 
+import { SITE_URL } from "@/lib/site";
+
 interface VCardData {
   fullName: string;
   email: string;
@@ -15,14 +17,14 @@ const vcardData: Record<"zh-CN" | "en", VCardData> = {
   "zh-CN": {
     fullName: "HOU (侯)",
     email: "zhang13714579875@163.com",
-    website: "https://hou-universe.vercel.app",
+    website: SITE_URL,
     organization: "广东技术师范大学",
     title: "全栈开发者 / 数据工程师",
   },
   en: {
     fullName: "HOU (Cheung)",
     email: "zhang13714579875@163.com",
-    website: "https://hou-universe.vercel.app",
+    website: SITE_URL,
     organization: "Guangdong Polytechnic Normal University",
     title: "Full-Stack Developer / Data Engineer",
   },

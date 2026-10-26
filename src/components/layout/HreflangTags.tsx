@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from "react";
 import i18n from "@/lib/i18n/config";
+import { SITE_URL } from "@/lib/site";
 
 export function HreflangTags() {
   const [lang, setLang] = useState("zh-CN");
@@ -13,7 +14,7 @@ export function HreflangTags() {
     return () => i18n.off("languageChanged", handler);
   }, []);
 
-  const baseUrl = "https://hou-universe.vercel.app";
+  const baseUrl = SITE_URL;
 
   return (
     <>

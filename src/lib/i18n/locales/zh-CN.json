@@ -89,7 +89,8 @@
     "projects": "项目经历",
     "aiEngineering": "AI 工程化能力",
     "campus": "校园实践",
-    "skills": "专业技能"
+    "skills": "专业技能",
+    "internship": "实习经历"
   },
   "aboutProjects": {
     "p0": {
@@ -121,6 +122,18 @@
       "role": "项目成员",
       "period": "2025.12",
       "desc": "面向中小仓储场景，设计四张核心数据表并建立外键关联，开发仓库、货物、库存、出入库四大管理模块，使用事务机制保障多仓库调拨的数据一致性。"
+    },
+    "p5": {
+      "title": "基于多算法对比的水稻产量预测与特征影响研究",
+      "role": "独立开发（课程设计）",
+      "period": "2026.06 — 2026.07",
+      "desc": "基于 UCI 水稻品种数据集（2790 条样本、45 维混合特征），构建 SVR、MLP、CART 三种回归模型，完成 5 折交叉验证与网格搜索调优；最优 CART 模型 R² 达 0.9918，5 项核心特征累计解释 99.96% 的产量变异。"
+    },
+    "p6": {
+      "title": "基于 MVC 架构的校园文具电商购物系统",
+      "role": "独立开发（个人实训）",
+      "period": "2026.06 — 2026.07",
+      "desc": "采用 Java Swing + MySQL 开发桌面端电商系统，覆盖用户选购、购物车、订单结算与管理员后台；实践 MVC 三层架构与策略 / 单例 / DAO 设计模式，使用 JDBC 事务与行锁保障订单及库存一致性。"
     }
   },
   "aiSkills": [
@@ -221,6 +234,16 @@
       ],
       "updateLog": [
         {
+          "version": "v0.8.0",
+          "date": "2026-10-26",
+          "changes": [
+            "更新个人项目经历：新增水稻产量预测课程设计与校园文具电商个人实训",
+            "新增嘉环科技网优测试工程师实习经历",
+            "整理 MiniMind 模型架构、实验发现、限制与研究路线公开展示",
+            "同步中英文内容，更新站点版本至 v0.8"
+          ]
+        },
+        {
           "version": "v1.3.0",
           "date": "2026-07-14",
           "changes": [
@@ -310,6 +333,66 @@
             "首个版本上线，基于 XGBoost + SHAP 构建端到端流失归因决策系统",
             "实现流失预测模型（AUC > 0.85）、SHAP 特征归因可视化与策略 ROI 模拟三大核心模块",
             "覆盖 7043 名用户全量流失风险预测，支持 Streamlit 本地一键运行"
+          ]
+        }
+      ]
+    },
+    "rice-yield-prediction": {
+      "title": "基于多算法对比的水稻产量预测与特征影响研究",
+      "category": "数据分析",
+      "description": "面向精准农业产量预估，基于 UCI 水稻品种数据集（2790 条样本、45 维混合特征）构建 SVR、MLP、CART 三种回归模型，横向对比算法性能并识别产量核心驱动因素；最优 CART 模型 R² 达 0.9918。",
+      "fullDescription": "本项目是面向精准农业产量预估需求的独立课程设计。基于 UCI 公开水稻品种数据集（2790 条样本、45 维混合特征），完成缺失值校验、异常值处理、类别特征编码与差异化标准化，构建 SVR、MLP、CART 三种回归模型，并通过 5 折交叉验证与网格搜索进行调优。评估阶段统一使用 MSE、RMSE、MAE、R² 四项指标横向对比，结合残差分析验证模型无系统偏差；特征重要性分析识别出育苗面积、钾肥用量等 5 项核心影响因素，累计解释 99.96% 的产量变异。最终从育苗管理、精准施肥、病虫害防控、群体调控四个维度输出可落地的生产建议，形成完整研究报告。以上结果均为课程设计中的离线实验结果，不代表模型已在真实农场部署。",
+      "background": "面向精准农业产量预估需求，基于 UCI 公开水稻品种数据集（2790 条样本、45 维混合特征），构建多组回归预测模型，横向对比算法性能，挖掘产量核心驱动因素，为农业生产优化提供数据化支撑。",
+      "coreFeatures": [
+        "全流程数据建模：完成缺失值校验、异常值处理、类别特征编码等数据清洗工作，针对不同算法采用差异化标准化策略；通过 5 折交叉验证与网格搜索调优，完成 SVR、MLP、CART 决策树三种回归模型构建，最优 CART 模型 R² 达 0.9918。",
+        "多维度性能评估：以 MSE、RMSE、MAE、R² 四项核心指标横向对比三类算法优劣，结合残差分析验证模型无系统偏差；基于特征重要性分析识别出育苗面积、钾肥用量等 5 项核心影响因素，累计解释 99.96% 的产量变异。",
+        "落地性结论输出：基于建模结论，从育苗管理、精准施肥、病虫害防控、群体调控四个维度提出可落地生产建议，形成完整研究报告，验证机器学习在农业场景的应用价值。"
+      ],
+      "techSolution": "以 UCI 水稻品种数据集（2790 条样本、45 维混合特征）为输入，先完成缺失值校验、异常值处理与类别特征编码，并针对 SVR、MLP、CART 采用差异化标准化策略。模型训练采用 5 折交叉验证与网格搜索调参，统一以 MSE、RMSE、MAE、R² 评估；随后通过残差分析检查系统偏差，并基于特征重要性识别核心影响因素。结果为课程设计中的离线实验结果，不代表真实农场部署。",
+      "highlights": [
+        "最优 CART 模型 R² = 0.9918",
+        "5 项核心特征累计解释 99.96% 的产量变异",
+        "SVR / MLP / CART 三模型横向对比，统一使用 MSE / RMSE / MAE / R²",
+        "输出育苗管理、精准施肥、病虫害防控、群体调控四类生产建议"
+      ],
+      "updateLog": [
+        {
+          "version": "v1.0.0",
+          "date": "2026-07-15",
+          "changes": [
+            "完成缺失值校验、异常值处理、类别特征编码与差异化标准化流程",
+            "构建 SVR、MLP、CART 三种回归模型，完成 5 折交叉验证与网格搜索调优",
+            "完成 MSE、RMSE、MAE、R² 四项指标评估、残差分析与特征重要性分析，形成研究报告"
+          ]
+        }
+      ]
+    },
+    "campus-stationery-ecommerce": {
+      "title": "基于 MVC 架构的校园文具电商购物系统",
+      "category": "全栈开发",
+      "description": "面向高校校园文具消费场景，采用 Java Swing + MySQL 开发桌面端电商系统，覆盖用户选购、购物车、订单结算与管理员后台全业务闭环，实践 MVC 分层架构与设计模式。",
+      "fullDescription": "本项目是面向高校校园文具消费场景的个人实训项目。系统采用 Java Swing + MySQL 开发桌面端电商应用，覆盖用户选购、购物车、订单结算、管理员后台全业务闭环。架构上采用经典 MVC 三层设计，划分视图层、业务逻辑层与数据访问层；应用策略模式实现分层满减优惠计算，单例模式封装数据库连接工具，DAO 模式统一数据访问逻辑。订单提交通过 JDBC 事务保障原子性，库存扣减加入行锁逻辑防止超卖，查询使用 PreparedStatement 防止 SQL 注入，用户密码以 MD5 摘要形式存储。项目完成了全场景功能测试与问题调优，修复历史数据空指针异常与优惠策略匹配偏差。系统为本地桌面课程项目，未进行商业部署；MD5 为项目历史实现，未升级为现代密码哈希方案。",
+      "background": "面向高校校园文具消费场景，采用 Java Swing + MySQL 开发桌面端电商系统，覆盖用户选购、购物车、订单结算、管理员后台全业务闭环，实践软件工程分层设计思想与设计模式应用。",
+      "coreFeatures": [
+        "采用经典 MVC 三层架构设计，划分视图层、业务逻辑层、数据访问层，实现模块解耦；应用策略模式实现分层满减优惠计算、单例模式封装数据库连接工具、DAO 模式统一数据访问逻辑，提升代码可扩展性与可维护性。",
+        "实现多角色用户体系、商品全生命周期管理、购物车实时结算、订单事务提交四大核心模块；基于 JDBC 事务保障订单提交原子性，库存扣减加入行锁逻辑防止超卖，使用 PreparedStatement 防止 SQL 注入，采用 MD5 摘要存储用户密码。",
+        "完成全场景功能测试与问题调优，解决历史数据空指针异常、优惠策略匹配偏差等问题；覆盖需求分析、架构设计、编码实现、测试优化的软件工程流程。"
+      ],
+      "techSolution": "系统采用 Java Swing 构建桌面端界面，MySQL 存储用户、商品、购物车与订单数据，按 MVC 三层架构组织代码。订单提交通过 JDBC 事务保证原子性，库存扣减使用行锁避免超卖，数据访问统一走 DAO 层，SQL 使用 PreparedStatement 参数化；用户密码以 MD5 摘要形式存储（历史课程项目做法，未升级为现代密码哈希方案）。优惠计算通过策略模式实现分层满减。项目为本地桌面系统，未进行商业部署。",
+      "highlights": [
+        "MVC 三层架构，结合策略模式、单例模式与 DAO 模式",
+        "JDBC 事务 + 行锁保障订单提交与库存扣减一致性",
+        "PreparedStatement 参数化查询防止 SQL 注入",
+        "覆盖用户选购、购物车、订单结算、管理员后台完整业务闭环"
+      ],
+      "updateLog": [
+        {
+          "version": "v1.0.0",
+          "date": "2026-07-15",
+          "changes": [
+            "完成 MVC 三层架构设计与策略 / 单例 / DAO 设计模式落地",
+            "实现多角色用户、商品管理、购物车结算、订单事务四大核心模块",
+            "完成全场景功能测试，修复历史数据空指针异常与优惠策略匹配偏差"
           ]
         }
       ]
@@ -539,7 +622,7 @@
     "switchToLight": "切换到日间模式",
     "switchToDark": "切换到夜间模式"
   },
-"terminal": {
+  "terminal": {
     "welcome": "欢迎来到 HOU Universe 终端",
     "typeHelpHint": "输入 \"help\" 查看可用命令",
     "close": "关闭终端",
@@ -682,6 +765,42 @@
         "achievements": [
           "支持出入库记录按时间范围查询与报表生成，实现仓储业务全流程数字化管理"
         ]
+      },
+      "rice-yield-prediction": {
+        "title": "基于多算法对比的水稻产量预测与特征影响研究",
+        "role": "独立开发（课程设计）",
+        "description": "基于 UCI 水稻品种数据集（2790 条样本、45 维混合特征），构建 SVR、MLP、CART 三种回归模型并横向对比，识别产量核心驱动因素，最优 CART 模型 R² 达 0.9918。",
+        "background": "面向精准农业产量预估需求，基于 UCI 公开水稻品种数据集完成全流程数据建模、多算法对比与特征影响分析，为农业生产优化提供数据化支撑。",
+        "coreWork": [
+          "完成缺失值校验、异常值处理、类别特征编码等数据清洗工作，针对不同算法采用差异化标准化策略",
+          "通过 5 折交叉验证与网格搜索调优，构建 SVR、MLP、CART 三种回归模型，最优 CART 模型 R² 达 0.9918",
+          "以 MSE、RMSE、MAE、R² 四项指标横向对比算法表现，结合残差分析验证模型无系统偏差",
+          "基于特征重要性分析识别育苗面积、钾肥用量等 5 项核心影响因素，累计解释 99.96% 的产量变异",
+          "从育苗管理、精准施肥、病虫害防控、群体调控四个维度输出可落地生产建议，形成完整研究报告"
+        ],
+        "achievements": [
+          "最优 CART 模型 R² = 0.9918",
+          "5 项核心特征累计解释 99.96% 的产量变异",
+          "形成覆盖建模、评估、归因与生产建议的完整课程设计报告"
+        ]
+      },
+      "campus-stationery-ecommerce": {
+        "title": "基于 MVC 架构的校园文具电商购物系统",
+        "role": "独立开发（个人实训）",
+        "description": "采用 Java Swing + MySQL 开发桌面端电商系统，覆盖用户选购、购物车、订单结算与管理员后台全业务闭环，实践 MVC 分层架构与策略 / 单例 / DAO 设计模式。",
+        "background": "面向高校校园文具消费场景，开发集用户选购、购物车、订单结算、管理员后台于一体的桌面端电商系统，实践软件工程分层设计思想与设计模式应用。",
+        "coreWork": [
+          "采用经典 MVC 三层架构，划分视图层、业务逻辑层、数据访问层，实现模块解耦",
+          "应用策略模式实现分层满减优惠计算，单例模式封装数据库连接工具，DAO 模式统一数据访问逻辑",
+          "实现多角色用户体系、商品全生命周期管理、购物车实时结算、订单事务提交四大核心模块",
+          "基于 JDBC 事务保障订单提交原子性，库存扣减加入行锁逻辑防止超卖，使用 PreparedStatement 防止 SQL 注入",
+          "采用 MD5 摘要存储用户密码；完成全场景功能测试，修复历史数据空指针异常与优惠策略匹配偏差"
+        ],
+        "achievements": [
+          "完成覆盖选购、购物车、结算与后台管理的完整业务闭环",
+          "通过 JDBC 事务与行锁保障订单提交原子性与库存一致性",
+          "形成从需求分析、架构设计、编码实现到测试优化的完整实训记录"
+        ]
       }
     }
   },
@@ -737,7 +856,7 @@
       "roadmap": "学习路线图",
       "timeline": "学习时间轴",
       "knowledgeMap": "知识图谱",
-	      "learningJourney": "学习旅程",
+      "learningJourney": "学习旅程",
       "progress": "最新进度",
       "moduleProgress": "学习模块进度",
       "resources": "学习资源",
@@ -754,7 +873,8 @@
       "playground": "演练场",
       "forward": "前向模型",
       "inference": "推理",
-      "training": "训练"
+      "training": "训练",
+      "research": "研究"
     },
     "forwardPlayground": {
       "title": "前向模型浏览器",
@@ -852,6 +972,156 @@
     "backToLab": "返回 AI Lab",
     "viewOnGithub": "在 GitHub 上查看",
     "readBlog": "阅读笔记",
+    "chat": {
+      "title": "MiniMind",
+      "subtitle": "从零构建的语言模型。",
+      "modelBadge": "真实模型",
+      "modelSize": "基础版",
+      "modelParams": "约110万参数",
+      "modelInference": "本地推理",
+      "newConversation": "新建对话",
+      "clearConversation": "清空",
+      "composerPlaceholder": "向 MiniMind 发送消息...",
+      "send": "发送",
+      "stop": "停止生成",
+      "generating": "生成中...",
+      "thinking": "MiniMind 正在思考...",
+      "generationStopped": "生成已停止",
+      "generationComplete": "生成完成",
+      "generationFailed": "生成失败",
+      "emptyResponse": "空响应",
+      "retry": "重试",
+      "regenerate": "重新生成",
+      "stopping": "停止中…",
+      "unableToGenerate": "无法生成回复",
+      "generationInterrupted": "生成已中断",
+      "unknownError": "发生了意外错误，请重试。",
+      "modelTrained": "MiniMind（已训练）",
+      "modelBaseline": "MiniMind（未训练）",
+      "trainCheckpoint": "训练一个检查点",
+      "openLab": "AI 实验室",
+      "newChat": "新对话",
+      "status": {
+        "untrained": "未训练（基线）",
+        "trained": "已训练",
+        "training": "训练中",
+        "generating": "生成中…"
+      },
+      "contextUsage": "上下文: {percent}%",
+      "contextNearLimit": "上下文窗口即将耗尽",
+      "emptyState": "发送消息，开始与 MiniMind 对话。",
+      "emptyStateHint": "这是一个在浏览器本地运行的真实模型。所有回复均来自实际的神经网络推理。",
+      "welcome": {
+        "subtitle": "本地 AI 研究模型",
+        "tagline": "运行真实的神经网络推理 — 无 API 调用、无云端、仅在你的浏览器中。",
+        "tryAsking": "试试这样问",
+        "baselineNotice": "模型尚未训练——在训练实验室训练 checkpoint 之前，回复会是乱码。",
+        "trainCheckpointCta": "训练一个检查点 →",
+        "prompts": {
+          "explainMiniMind": "解释 MiniMind 是如何工作的",
+          "attention": "帮我理解注意力机制",
+          "pythonExample": "生成一个简短的 Python 示例",
+          "whatAmILookingAt": "解释我当前正在查看的内容"
+        },
+        "stats": {
+          "parameters": "参数量",
+          "layers": "层数",
+          "heads": "注意力头",
+          "dModel": "模型维度",
+          "context": "上下文",
+          "vocabSize": "词表"
+        }
+      },
+      "sidebar": {
+        "title": "对话记录",
+        "empty": "暂无对话",
+        "delete": "删除对话"
+      },
+      "controls": {
+        "model": "模型",
+        "checkpoint": "检查点",
+        "temperature": "温度",
+        "maxTokens": "最大Token数",
+        "topK": "Top-K",
+        "topP": "Top-P",
+        "advanced": "高级",
+        "precise": "精确",
+        "balanced": "平衡",
+        "creative": "创意",
+        "baseline": "未训练（基线）",
+        "latestCheckpoint": "最新检查点",
+        "seed": "随机种子",
+        "importCheckpoint": "导入检查点",
+        "importValidating": "正在校验检查点…",
+        "importSuccess": "已激活 {{name}}",
+        "importActivationFailed": "检查点已存储但无法激活，之前的检查点仍然有效。",
+        "baselineStatus": "基线",
+        "trainedStatus": "已训练"
+      },
+      "lab": {
+        "title": "探索 MiniMind",
+        "subtitle": "深入了解模型的架构、训练和研究能力。",
+        "narrative": "MiniMind 是一个从零构建的实验性语言模型。训练它、用它生成、检查实验，并探索其架构。",
+        "model": {
+          "title": "模型",
+          "description": "探索 Transformer 架构——注意力机制、嵌入和层组合。"
+        },
+        "training": {
+          "title": "训练",
+          "description": "观察训练管线的运行——前向传播、损失计算和优化器。"
+        },
+        "generation": {
+          "title": "生成",
+          "description": "分析生成质量——对比训练前后的输出及详细指标。"
+        },
+        "evaluation": {
+          "title": "评估",
+          "description": "基准测试模型性能——困惑度、损失曲线和吞吐量分析。"
+        },
+        "experiments": {
+          "title": "实验",
+          "description": "设计和运行对照实验——以可复现的工作流验证假设。"
+        },
+        "research": {
+          "title": "研究",
+          "description": "完整研究工作室——会话管理、副驾分析和消融研究。"
+        },
+        "architecture": {
+          "title": "架构",
+          "description": "交互式模型可视化——追踪前向传播的每一层。"
+        },
+        "gettingStarted": {
+          "title": "MiniMind 入门指南",
+          "step1": {
+            "title": "与 MiniMind 对话",
+            "description": "在上方开始对话——向 MiniMind 提问，观看 Transformer 模型逐 Token 生成回复。"
+          },
+          "step2": {
+            "title": "训练模型",
+            "description": "前往训练页面运行真实训练任务。Web Worker 在你选择的数据集上训练 MiniMind，观察损失曲线收敛。"
+          },
+          "step3": {
+            "title": "生成与评估",
+            "description": "访问生成页面，使用训练好的 Checkpoint 生成文本。通过详细指标对比训练前后的生成质量。"
+          },
+          "step4": {
+            "title": "运行实验",
+            "description": "在实验中心设计对照实验——验证假设、运行消融研究，并通过研究副驾追踪结果。"
+          }
+        },
+        "stats": {
+          "experiments": "实验",
+          "training": "训练",
+          "generations": "生成",
+          "chats": "对话",
+          "idle": "空闲"
+        },
+        "badges": {
+          "experiments": "个实验",
+          "generations": "次生成"
+        }
+      }
+    },
     "dashboard": {
       "currentMission": "当前任务",
       "continueLearning": "继续学习",
@@ -880,7 +1150,400 @@
       "researchOverviewLabel": "研究概览",
       "architectureExplorerLabel": "架构浏览器",
       "leaderboardLabel": "实验排行榜",
-      "generationShowcaseLabel": "生成效果展示"
+      "generationShowcaseLabel": "生成效果展示",
+      "exploreInKnowledge": "在知识图谱中探索",
+      "tryExperiment": "尝试实验",
+      "startJourneyTitle": "开始你的 MiniMind 学习之旅",
+      "startJourneyDesc": "从 Tokenizer 模块开始——所有语言模型的基础。逐步学习文本如何变成 token。",
+      "beginLearning": "开始学习",
+      "mastered": "已掌握",
+      "learning": "学习中",
+      "started": "已开始",
+      "locked": "未解锁",
+      "conceptsLabel": "个概念",
+      "completePrerequisites": "完成前置模块",
+      "reviewExperiment": "复习与实验",
+      "continueLearningAction": "继续学习"
+    },
+    "trainingLifecycle": {
+      "running": "运行中",
+      "paused": "已暂停",
+      "stopped": "已停止",
+      "completed": "已完成",
+      "failed": "已失败",
+      "restored": "已恢复",
+      "idle": "空闲",
+      "start": "开始",
+      "pause": "暂停",
+      "resume": "继续",
+      "stop": "停止",
+      "saveCheckpoint": "保存",
+      "restore": "恢复",
+      "newRun": "新运行",
+      "retry": "重试",
+      "discard": "丢弃",
+      "checkpoint": "检查点",
+      "checkpoints": "检查点",
+      "checkpointSaved": "检查点已保存于步骤 {step}",
+      "checkpointRestored": "已从步骤 {step} 的检查点恢复",
+      "noCheckpoints": "暂无保存的检查点。",
+      "checkpointHint": "训练过程中保存的检查点将显示在此处。",
+      "trainingProgress": "训练进度",
+      "trainingTimeline": "训练时间线",
+      "liveTraining": "实时训练",
+      "noMetrics": "暂无实时指标",
+      "recovery": {
+        "title": "训练会话中断",
+        "message": "训练在步骤 {step} 处中断。最新检查点在步骤 {checkpointStep}，可用于恢复。",
+        "noCheckpointMessage": "训练在步骤 {step} 处中断。无可用检查点 — 必须丢弃会话。",
+        "restoreLatest": "恢复最新检查点",
+        "discardSession": "丢弃会话"
+      },
+      "progress": {
+        "step": "步骤",
+        "epoch": "轮次",
+        "elapsed": "已用时间",
+        "estimatedRemaining": "预计剩余",
+        "loss": "损失",
+        "perplexity": "困惑度",
+        "learningRate": "学习率",
+        "tokensPerSec": "令牌/秒",
+        "gradientNorm": "梯度范数"
+      }
+    },
+    "studio": {
+      "hero": {
+        "title": "训练并探索你自己的 GPT 模型",
+        "subtitle": "专业的 AI 研究工作室，用于从零构建、训练和分析小型语言模型。理解每一行代码、每一个张量运算和每一个设计决策。",
+        "mission": "从分词器到 Transformer——逐行构建你自己的 GPT。",
+        "startTraining": "开始训练",
+        "openPlayground": "打开演练场",
+        "researchWorkspace": "研究工作区",
+        "modulesStat": "模块",
+        "phaseStat": "阶段",
+        "experimentsStat": "活跃实验"
+      },
+      "nav": {
+        "playgroundLabel": "演练场",
+        "playgroundDesc": "直接与每个 MiniMind 模块交互。调整参数、可视化内部结构，查看全管线实时结果。",
+        "trainingLabel": "训练工作室",
+        "trainingDesc": "配置并运行训练实验。实时监控损失曲线、学习率、吞吐量和生成质量。",
+        "experimentsLabel": "实验工坊",
+        "experimentsDesc": "对比分词器、探索嵌入、检查注意力模式，并通过交互式可视化运行消融研究。",
+        "researchLabel": "研究",
+        "researchDesc": "Copilot 驱动的训练智能分析。分析实验、对比运行，生成带有证据支持建议的研究报告。",
+        "generationLabel": "生成实验室",
+        "generationDesc": "从训练好的检查点生成文本，对比训练前后的输出。"
+      }
+    },
+    "generation": {
+      "title": "生成实验室",
+      "subtitle": "评估你的 MiniMind 模型学到了什么。",
+      "checkpoint": "检查点",
+      "noSessions": "未找到有检查点的会话。请先完成一次训练运行。",
+      "prompt": "提示词",
+      "promptPlaceholder": "输入提示词...",
+      "parameters": "参数",
+      "temperature": "温度",
+      "maxTokens": "最大 Token 数",
+      "topK": "Top-K",
+      "topP": "Top-P",
+      "seed": "随机种子",
+      "generate": "生成",
+      "generating": "生成中...",
+      "compare": "对比",
+      "cancel": "取消",
+      "elapsed": "已用时",
+      "generatedOutput": "生成输出",
+      "readyToGenerate": "准备生成",
+      "readyHint": "选择一个检查点，输入提示词，点击生成按钮来查看模型学到了什么。",
+      "tokens": "Token 数",
+      "logProb": "对数概率",
+      "perplexity": "困惑度",
+      "duration": "耗时",
+      "stopReason": "停止原因",
+      "beforeAfter": "训练前/后对比",
+      "beforeTraining": "训练前",
+      "afterTraining": "训练后",
+      "baseline": "基线",
+      "trained": "已训练",
+      "changed": "已改变",
+      "unchanged": "未改变",
+      "metricComparison": "指标对比",
+      "history": "历史记录",
+      "noHistory": "暂无生成历史。",
+      "exportJSON": "导出 JSON",
+      "exportMarkdown": "导出 Markdown",
+      "copyToClipboard": "复制到剪贴板",
+      "status": {
+        "idle": "就绪",
+        "generating": "生成中",
+        "completed": "已完成",
+        "error": "错误",
+        "cancelled": "已取消"
+      },
+      "summary": {
+        "improved": "生成结果与训练语料更加一致",
+        "changed": "生成输出已改变",
+        "unchanged": "生成输出未改变"
+      }
+    },
+    "publicResearch": {
+      "eyebrow": "MiniMind / 研究进展",
+      "title": "小模型，有边界的结论",
+      "subtitle": "一份关于 1.13M 参数 MiniMind 能学会什么、不能学会什么的公开记录——包括失败的实验、削弱了早期结论的审计，以及仍被阻断的工作。",
+      "updated": "证据更新至 2026-10-25",
+      "disclaimer": "以下所有结论都限定在闭域事实集、作者撰写的提示与单一小模型之内，不构成对通用语言理解能力的声明。",
+      "stats": {
+        "params": {
+          "label": "模型参数",
+          "value": "~1.13M"
+        },
+        "vocab": {
+          "label": "词表目标",
+          "value": "300"
+        },
+        "facts": {
+          "label": "事实簇",
+          "value": "16"
+        },
+        "seeds": {
+          "label": "Batch-order seed",
+          "value": "3"
+        },
+        "note": "三个 seed 共用同一初始化，仅 DataLoader 顺序不同，因此弱于独立重训。"
+      },
+      "status": {
+        "title": "如何阅读这些标签",
+        "intro": "状态描述工作进展；判定引用各阶段冻结规则的原始标签，不跨阶段传递。",
+        "items": {
+          "completed": {
+            "label": "已完成",
+            "description": "实验已结束并有冻结判定，包括负向与不确定结果。"
+          },
+          "experimental": {
+            "label": "实验性",
+            "description": "正向但非确认性的结果，仍待独立复制。"
+          },
+          "in-progress": {
+            "label": "进行中",
+            "description": "设计或数据工作正在进行，尚无正式结果。"
+          },
+          "blocked": {
+            "label": "受阻",
+            "description": "在仪器或门槛修复前无法继续。"
+          },
+          "planned": {
+            "label": "计划中",
+            "description": "已明确写出，但尚未开始。"
+          }
+        }
+      },
+      "architecture": {
+        "title": "模型架构",
+        "intro": "所有已报告实验共用同一个可在浏览器训练的 decoder-only Transformer。",
+        "configTitle": "生产配置",
+        "labels": {
+          "parameters": "参数量",
+          "vocabSize": "词表",
+          "dModel": "隐藏维度",
+          "numHeads": "注意力头",
+          "dFF": "FFN 维度",
+          "numLayers": "层数",
+          "maxSeqLen": "上下文长度",
+          "tokenizer": "分词器"
+        },
+        "tokenizerValue": "Byte-level BPE · 4 个特殊 token",
+        "pipelineTitle": "前向路径",
+        "pipeline": [
+          "文本",
+          "Byte-level BPE",
+          "Embedding · 128",
+          "4× Transformer · 4 heads · FFN 512",
+          "LM head → 下一个 token"
+        ],
+        "note": "数值取自训练模型注册表，并与 Phase 123-v2 的训练配置一致。参考用的 tiny / small / base 预设不是这些结果所使用的模型。"
+      },
+      "phases": {
+        "title": "研究记录",
+        "intro": "按时间顺序列出 13 个阶段。负向与不确定的结果被保留，而不是隐藏。",
+        "filterAll": "全部",
+        "resultLabel": "结果",
+        "limitationLabel": "限制",
+        "empty": "该分类下暂无阶段。",
+        "items": {
+          "p113": {
+            "verdict": "Outcome C — 不支持",
+            "question": "Chat SFT 能否让 1.13M 参数模型答对留出对话题？",
+            "result": "三臂均为 0/27 精确匹配。SFT 臂学会了 EOS 停止（18/27），但没有产生正确答案。",
+            "limitation": "单一 seed、132 条作者编写样本。0/27 无法区分数据、容量、优化与评估严格度。"
+          },
+          "p114": {
+            "verdict": "诊断 — 早停解释被否定",
+            "question": "Phase 113 的失败是否因为评估了早停快照？",
+            "result": "最终快照在训练集为 79/84，验证集 0/21，测试集 0/27。训练更久没有帮助。",
+            "limitation": "单一 seed；未做容量或数据量扫描。"
+          },
+          "p115": {
+            "verdict": "Grade A — 支持（单 seed）",
+            "question": "模型能否回答训练中出现过的事实的未见措辞？",
+            "result": "已见措辞 71/72；新措辞 25/48；未见事实 0/24。baseline 在三类上均为 0。",
+            "limitation": "12 个训练事实、单一 seed。成功可能依赖与训练提示共享的词汇。"
+          },
+          "p116": {
+            "verdict": "Grade B — 部分可复现",
+            "question": "释义迁移能否在独立事实集与三个 seed 上重现？",
+            "result": "新措辞 20/19/19（/64）；已见措辞 95/96、96/96、93/96。仅 9/16 个事实在三个 seed 上稳定。",
+            "limitation": "事实级稳定性未达到冻结的 Grade A 规则；未见事实仍接近 0。"
+          },
+          "p117": {
+            "verdict": "观察性 — 不作因果声明",
+            "question": "词面重叠是否与正确答案相关？",
+            "result": "正确项的同事实 Jaccard 更高：Phase 116 pooled +0.0677（point-biserial 0.282），Phase 115 +0.0598。",
+            "limitation": "Jaccard 不是语义重叠的完整度量，且该分析仅为相关性。"
+          },
+          "h118": {
+            "verdict": "支持",
+            "question": "控制重叠后，高重叠提示是否更容易答对？",
+            "result": "高重叠 86/96 vs 低重叠 28/96；D +60.42 pp，95% CI [+48.96, +72.92]。",
+            "limitation": "低重叠提示平均多 5.69 个 formatted token，这一混杂在 H119 中被处理。"
+          },
+          "h119": {
+            "verdict": "INCONCLUSIVE (SENSITIVITY)",
+            "question": "匹配提示长度与直接度后，重叠效应是否仍在？",
+            "result": "高 70/96 vs 低 23/96；D +48.96 pp，95% CI [+36.46, +61.46]。最严格敏感性仅 2 簇且 D = 0。",
+            "limitation": "H120 因冻结规则要求最严格敏感性保持为正，将该结果重新归类。"
+          },
+          "h120": {
+            "verdict": "规则审计 — INCONCLUSIVE",
+            "question": "H119 的 SUPPORTED 标签是否真的由冻结判定规则推出？",
+            "result": "C1–C5 通过；最严格敏感性 D = 0 时 C6 不通过。主估计未改变。",
+            "limitation": "问题在标签推导与敏感性功效不足，而不是效应方向反转。"
+          },
+          "h121": {
+            "verdict": "PROMISING",
+            "question": "释义增强能否提高低重叠留出提示的精确匹配？",
+            "result": "低重叠 23/96 → 42/96；Δ +19.79 pp，95% CI [+9.38, +31.25]；相对匹配对照 +18.75 pp。",
+            "limitation": "16 个事实簇、三个 batch-order seed、固定 144 步。PROMISING 是预注册标签，不是外部确认。"
+          },
+          "h122": {
+            "verdict": "VALIDATION-METRIC ISSUE",
+            "question": "验证指标能否用于为该任务选择检查点？",
+            "result": "无代码 bug。验证集使用 4 个未见事实，12 个检查点全部 0/24 EM；loss-best step 96 只拟合 51–55/96 训练探针，而最终步为 93–96/96。",
+            "limitation": "验证集测量的是不同目标。对该任务而言，基于它做早停不成立。"
+          },
+          "h123": {
+            "verdict": "BLOCKED",
+            "question": "任务对齐选择下，增强能否在一次性最终集上胜过对照？",
+            "result": "六组均选择 step 144。最终评估因一条提示 89 > 88 token 被阻断，未产生确认性终点。",
+            "limitation": "这是仪器阻断，不是结果。Phase 123-v2 仅修复了一条提示的 token 计数。"
+          },
+          "h123v2": {
+            "verdict": "PROMISING — 审计 PASS WITH CAVEATS",
+            "question": "只修复该条提示的 token 计数后，一次性最终评估显示什么？",
+            "result": "干预 117/288 vs 对照 92/288；D +0.0868，95% CI [+0.0486, +0.1354]；13/16 个事实为正、3 个为零、0 个为负。",
+            "limitation": "高重叠与英文分层的 CI 跨 0；16 个簇；单一 1.13M 模型。这不是确认性或投稿级结果。"
+          },
+          "p124": {
+            "verdict": "Under Review — 仅设计",
+            "question": "增强效应能否在全新事实与两阶段同事实设计上复制？",
+            "result": "尚未运行任何正式事实、提示、训练、评估或 bootstrap。Gate A 为 READY FOR HUMAN REVIEW；Gate B、C 为 BLOCKED；Gate D 为 DESIGN-LEVEL ONLY；Gate E 为 PARTIAL。",
+            "limitation": "在全部门槛通过前，设计禁止训练。下一步是人工审阅，而不是生成数据。"
+          }
+        }
+      },
+      "tags": {
+        "chatSft": "Chat SFT",
+        "diagnostic": "诊断",
+        "paraphrase": "释义",
+        "replication": "复制",
+        "overlap": "词面重叠",
+        "matching": "提示匹配",
+        "audit": "审计",
+        "augmentation": "数据增强",
+        "selection": "检查点选择"
+      },
+      "findings": {
+        "title": "证据真正支持什么",
+        "intro": "以下四项发现在上述限制内成立。",
+        "items": {
+          "memory": {
+            "title": "闭域记忆是可靠的",
+            "body": "训练拟合达到 79/84；已见措辞准确率在 Phase 115 为 71/72，在 Phase 116 为 93–96/96。模型确实能记住训练映射。",
+            "metric": "79/84"
+          },
+          "paraphrase": {
+            "title": "释义迁移是部分的",
+            "body": "新措辞在 Phase 115 为 25/48，在 Phase 116 为 19–20/64。仅 9/16 个事实在三个 seed 上稳定。",
+            "metric": "25/48"
+          },
+          "unseen": {
+            "title": "未见事实不发生迁移",
+            "body": "Phase 115 的未见事实为 0/24，Phase 116 仍接近 0。这些结果不是开放域泛化。",
+            "metric": "0/24"
+          },
+          "augmentation": {
+            "title": "增强有希望，但未确认",
+            "body": "Phase 123-v2 在 16 个事实簇上测得 +8.68 pp，独立审计为 PASS WITH CAVEATS。",
+            "metric": "+8.68 pp"
+          }
+        }
+      },
+      "limitations": {
+        "title": "限制与未决问题",
+        "intro": "以下约束适用于本页的每一项结果。",
+        "items": [
+          "规模：1.13M 参数、byte-level BPE、词表 300、16 个事实簇、3 个 batch-order seed、144 步。不能外推到更大模型或自然流量。",
+          "簇数少：16 个事实级簇使 bootstrap 区间较粗。它们是不确定性范围，不是精确显著性检验。",
+          "Seed 非独立：三个 seed 共用同一初始化，仅 DataLoader 顺序不同。",
+          "提示作者单一：提示与释义由同一位作者撰写，对真实用户措辞的覆盖程度未知。",
+          "重叠只是代理：词面 Jaccard 不等于语义重叠；匹配后的提示在句法、语域与推理路线上仍有差异。",
+          "PROMISING 是预注册标签：H121 与 Phase 123-v2 不是独立复制或投稿级确认。",
+          "Phase 124 没有正式数据：目录中只有空占位，不存在候选事实集。"
+        ]
+      },
+      "roadmap": {
+        "title": "下一步",
+        "intro": "三个预注册方向，按优先级排列。均为计划中，尚未开始。",
+        "items": {
+          "independent-facts": {
+            "title": "独立事实复制",
+            "body": "在至少 32 个新撰写的事实上运行同一配方，使用 3 个 seed；在选择冻结前保持 final 提示不可见。"
+          },
+          "english-coverage": {
+            "title": "英文覆盖与语言平衡",
+            "body": "增加并多样化英文释义，同时匹配总样本呈现与步数；检验中文不出现回退。"
+          },
+          "author-generalization": {
+            "title": "作者泛化",
+            "body": "用独立作者或冻结模板库替换单一作者提示，检验效应是否只是提示风格伪影。"
+          }
+        }
+      },
+      "phase124": {
+        "title": "Phase 124-A1 门槛状态",
+        "intro": "仅设计的复制实验。五个门槛全部通过前不允许训练。",
+        "gates": {
+          "a": "设计完整性",
+          "b": "事实质量",
+          "c": "泄漏审计",
+          "d": "实验公平性",
+          "e": "可复现性"
+        },
+        "note": "Gate E 细节：仪器检查通过；由于没有正式数据与清单，冻结数据重放仍受阻。来源：Phase 124 决策门槛审计。"
+      },
+      "source": {
+        "title": "源代码",
+        "body": "训练、评估与审计代码尚未以公开仓库形式发布。这里不展示源码链接，而不是指向一个未经验证的仓库。",
+        "comingSoon": "Coming Soon",
+        "note": "本页的模型配置、实验计数与判定均来自冻结报告与审计记录。"
+      },
+      "cta": {
+        "back": "返回 AI Lab",
+        "architecture": "查看架构实验",
+        "experiments": "浏览实验工作台",
+        "view": "查看公开研究进展"
+      }
     }
   },
   "minimind": {
@@ -1135,6 +1798,10 @@
         "fullVectorTitle": "完整概率向量（T={{temp}}，词汇表大小={{vocab}}）",
         "fullVectorFooter": "所有 {{vocab}} 个词元概率。更高的柱子 = 在 T={{temp}} 下更可能被采样。"
       }
+    },
+    "training": {
+      "title": "训练流水线",
+      "subtitle": "观察 MiniMind 的学习过程 — 数据集加载、前向传播、交叉熵损失与优化器更新，实时可视化各项指标。"
     }
   },
   "roadmap": {
@@ -1202,6 +1869,57 @@
       "completed": "已完成",
       "inProgress": "进行中",
       "upcoming": "待探索"
+    }
+  },
+  "workExperience": {
+    "items": {
+      "jiahuan-network-optimization-intern": {
+        "company": "嘉环科技股份有限公司",
+        "role": "网优测试工程师实习生",
+        "period": "2026.07 — 2026.09",
+        "description": "参与华为项目组与中国移动项目协作，支持深圳 APEC 会议及大型演唱会 4G/5G 通信保障，并完成高校、地铁、商圈、景区、地下停车场等多场景外场测试。",
+        "tags": [
+          "4G/5G",
+          "CQT",
+          "RSRP",
+          "SINR",
+          "PHU Smart",
+          "Cellular-Z",
+          "PCI Locking",
+          "Field Testing",
+          "Data Handover"
+        ],
+        "sections": {
+          "major-events": {
+            "title": "重大活动网络保障",
+            "points": [
+              "对接华为项目组及中国移动甲方，参与深圳 APEC 会议及深圳大运中心薛之谦、邓紫棋大型演唱会 4G/5G 通信保障。",
+              "开展现场定点 CQT 测试，采集 RSRP、SINR、上下行速率等无线指标，整点反馈现场网络测试数据并记录网络状态，支撑重大活动通信保障工作。"
+            ]
+          },
+          "field-testing": {
+            "title": "多场景 5G 外场测试",
+            "points": [
+              "使用 PHU Smart、Cellular-Z、路测分析软件，参与高校、深圳地铁 4 号线、商圈、景区、地下停车场等多场景测试。",
+              "执行锁频锁 PCI、点位踏勘与现场测试操作，完成测试文件导出、分类归档、数据打包传输交付全流程，积累高移动、高人流密度场景的测试经验。"
+            ]
+          },
+          "coordination": {
+            "title": "现场协同与问题排查",
+            "points": [
+              "跟随华为工程师开展现场踏勘与点位摸排，在测试过程中进行基础故障排查。",
+              "与移动侧同步现场测试情况，规范完成测试资料整理归档，保障外场测试任务有序执行。"
+            ]
+          },
+          "learning": {
+            "title": "实习收获",
+            "points": [
+              "结合大数据专业的数据分析思维，逐步建立无线指标、现场环境与业务体验之间的逻辑关联。",
+              "参与重点专项保障及多场景外场测试，理解大型活动通信保障的流程，并在华为、中国移动等多方协作中提升现场沟通和任务协调能力。"
+            ]
+          }
+        }
+      }
     }
   }
 }

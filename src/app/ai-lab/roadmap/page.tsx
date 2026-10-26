@@ -1,10 +1,5 @@
-import type { Metadata } from "next";
-import { SubRoutePlaceholder } from "@/components/ai-lab/SubRoutePlaceholder";
-
-export const metadata: Metadata = {
-  title: "Full Roadmap",
-};
+import { permanentRedirect } from "next/navigation";
 
 export default function RoadmapPage() {
-  return <SubRoutePlaceholder sectionNameKey="aiLab.sections.roadmap" />;
+  permanentRedirect("/ai-lab");
 }

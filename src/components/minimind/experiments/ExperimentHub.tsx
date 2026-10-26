@@ -3,6 +3,7 @@
 import { motion, type Variants } from "framer-motion";
 import { FlaskConical } from "lucide-react";
 import { useTranslation } from "react-i18next";
+import { CrossRefButton } from "@/components/ai-lab/CrossRefButton";
 import { getActiveExperiments, getPlannedExperiments } from "@/data/minimind/experiment-registry";
 import { ExperimentCard } from "./ExperimentCard";
 
@@ -85,6 +86,15 @@ export function ExperimentHub({ onSelectExperiment }: ExperimentHubProps) {
           )}
         </div>
       )}
+
+      {/* Cross-Reference Navigation */}
+      <div className="mt-8 flex flex-wrap items-center justify-center gap-3">
+        <CrossRefButton
+          variant="playground"
+          targetId="tokenizer"
+          label="Open Playground"
+        />
+      </div>
     </div>
   );
 }

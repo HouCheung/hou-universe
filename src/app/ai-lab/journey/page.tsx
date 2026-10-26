@@ -1,12 +1,5 @@
-import type { Metadata } from "next";
-import { ProjectEvolutionPageClient } from "@/components/minimind/evolution";
-
-export const metadata: Metadata = {
-  title: "Project Evolution — MiniMind",
-  description:
-    "Track the evolution of the MiniMind project — from tokenization through inference, each module building on the last.",
-};
+import { permanentRedirect } from "next/navigation";
 
 export default function JourneyPage() {
-  return <ProjectEvolutionPageClient />;
+  permanentRedirect("/ai-lab/lab/model");
 }

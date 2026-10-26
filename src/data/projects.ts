@@ -39,14 +39,24 @@ export const projects: Project[] = [
       "Base UI",
       "shadcn/ui",
       "Lucide Icons",
-      "Vercel",
+      "Netlify",
     ],
     liveUrl: "/",
-    downloadUrl: "/downloads/hou-universe.zip",
-    demoUrl: "https://hou-universe.vercel.app",
-    githubUrl: "https://github.com/hou-universe/hou-universe",
+    downloadUrl: "",
+    demoUrl: "https://hou-universe.netlify.app",
+    githubUrl: "https://github.com/HouCheung/hou-universe",
     createdAt: "2026-05-01",
     updateLog: [
+      {
+        version: "v0.8.0",
+        date: "2026-10-26",
+        changes: [
+          "新增水稻产量预测课程设计与校园文具电商个人实训项目",
+          "新增嘉环科技网优测试工程师实习经历",
+          "整理 MiniMind 模型架构、实验发现、限制与研究路线公开展示",
+          "同步中英文内容，更新站点版本至 v0.8",
+        ],
+      },
       {
         version: "v1.3.0",
         date: "2026-07-14",
@@ -72,6 +82,112 @@ export const projects: Project[] = [
           "平台首个版本上线，包含首页 Hero 区域与星空背景",
           "实现导航栏、页脚等全局布局组件",
           "完成 Contact 联系页面基础结构",
+        ],
+      },
+    ],
+  },
+  {
+    id: "rice-yield-prediction",
+    title: "基于多算法对比的水稻产量预测与特征影响研究",
+    category: "data",
+    description:
+      "面向精准农业产量预估，基于 UCI 水稻品种数据集（2790 条样本、45 维混合特征）构建 SVR、MLP、CART 三种回归模型，横向对比算法性能并识别产量核心驱动因素；最优 CART 模型 R² 达 0.9918。",
+    fullDescription:
+      "本项目是面向精准农业产量预估需求的独立课程设计。基于 UCI 公开水稻品种数据集（2790 条样本、45 维混合特征），完成缺失值校验、异常值处理、类别特征编码与差异化标准化，构建 SVR、MLP、CART 三种回归模型，并通过 5 折交叉验证与网格搜索进行调优。评估阶段统一使用 MSE、RMSE、MAE、R² 四项指标横向对比，结合残差分析验证模型无系统偏差；特征重要性分析识别出育苗面积、钾肥用量等 5 项核心影响因素，累计解释 99.96% 的产量变异。最终从育苗管理、精准施肥、病虫害防控、群体调控四个维度输出可落地的生产建议，形成完整研究报告。以上结果均为课程设计中的离线实验结果，不代表模型已在真实农场部署。",
+    detail: {
+      background:
+        "面向精准农业产量预估需求，基于 UCI 公开水稻品种数据集（2790 条样本、45 维混合特征），构建多组回归预测模型，横向对比算法性能，挖掘产量核心驱动因素，为农业生产优化提供数据化支撑。",
+      coreFeatures: [
+        "全流程数据建模：完成缺失值校验、异常值处理、类别特征编码等数据清洗工作，针对不同算法采用差异化标准化策略；通过 5 折交叉验证与网格搜索调优，完成 SVR、MLP、CART 决策树三种回归模型构建，最优 CART 模型 R² 达 0.9918。",
+        "多维度性能评估：以 MSE、RMSE、MAE、R² 四项核心指标横向对比三类算法优劣，结合残差分析验证模型无系统偏差；基于特征重要性分析识别出育苗面积、钾肥用量等 5 项核心影响因素，累计解释 99.96% 的产量变异。",
+        "落地性结论输出：基于建模结论，从育苗管理、精准施肥、病虫害防控、群体调控四个维度提出可落地生产建议，形成完整研究报告，验证机器学习在农业场景的应用价值。",
+      ],
+      techSolution:
+        "以 UCI 水稻品种数据集（2790 条样本、45 维混合特征）为输入，先完成缺失值校验、异常值处理与类别特征编码，并针对 SVR、MLP、CART 采用差异化标准化策略。模型训练采用 5 折交叉验证与网格搜索调参，统一以 MSE、RMSE、MAE、R² 评估；随后通过残差分析检查系统偏差，并基于特征重要性识别核心影响因素。结果为课程设计中的离线实验结果，不代表真实农场部署。",
+      highlights: [
+        "最优 CART 模型 R² = 0.9918",
+        "5 项核心特征累计解释 99.96% 的产量变异",
+        "SVR / MLP / CART 三模型横向对比，统一使用 MSE / RMSE / MAE / R²",
+        "输出育苗管理、精准施肥、病虫害防控、群体调控四类生产建议",
+      ],
+    },
+    tags: ["Regression", "SVR", "MLP", "CART"],
+    coverImage: "/images/projects/rice-yield-prediction-cover.png",
+    techStack: [
+      "Data Cleaning",
+      "Regression",
+      "SVR",
+      "MLP",
+      "CART",
+      "Cross-Validation",
+      "Feature Importance",
+    ],
+    liveUrl: "",
+    downloadUrl: "",
+    demoUrl: "",
+    githubUrl: "",
+    createdAt: "2026-06-01",
+    updateLog: [
+      {
+        version: "v1.0.0",
+        date: "2026-07-15",
+        changes: [
+          "完成缺失值校验、异常值处理、类别特征编码与差异化标准化流程",
+          "构建 SVR、MLP、CART 三种回归模型，完成 5 折交叉验证与网格搜索调优",
+          "完成 MSE、RMSE、MAE、R² 四项指标评估、残差分析与特征重要性分析，形成研究报告",
+        ],
+      },
+    ],
+  },
+  {
+    id: "campus-stationery-ecommerce",
+    title: "基于 MVC 架构的校园文具电商购物系统",
+    category: "fullstack",
+    description:
+      "面向高校校园文具消费场景，采用 Java Swing + MySQL 开发桌面端电商系统，覆盖用户选购、购物车、订单结算与管理员后台全业务闭环，实践 MVC 分层架构与设计模式。",
+    fullDescription:
+      "本项目是面向高校校园文具消费场景的个人实训项目。系统采用 Java Swing + MySQL 开发桌面端电商应用，覆盖用户选购、购物车、订单结算、管理员后台全业务闭环。架构上采用经典 MVC 三层设计，划分视图层、业务逻辑层与数据访问层；应用策略模式实现分层满减优惠计算，单例模式封装数据库连接工具，DAO 模式统一数据访问逻辑。订单提交通过 JDBC 事务保障原子性，库存扣减加入行锁逻辑防止超卖，查询使用 PreparedStatement 防止 SQL 注入，用户密码以 MD5 摘要形式存储。项目完成了全场景功能测试与问题调优，修复历史数据空指针异常与优惠策略匹配偏差。系统为本地桌面课程项目，未进行商业部署；MD5 为项目历史实现，未升级为现代密码哈希方案。",
+    detail: {
+      background:
+        "面向高校校园文具消费场景，采用 Java Swing + MySQL 开发桌面端电商系统，覆盖用户选购、购物车、订单结算、管理员后台全业务闭环，实践软件工程分层设计思想与设计模式应用。",
+      coreFeatures: [
+        "采用经典 MVC 三层架构设计，划分视图层、业务逻辑层、数据访问层，实现模块解耦；应用策略模式实现分层满减优惠计算、单例模式封装数据库连接工具、DAO 模式统一数据访问逻辑，提升代码可扩展性与可维护性。",
+        "实现多角色用户体系、商品全生命周期管理、购物车实时结算、订单事务提交四大核心模块；基于 JDBC 事务保障订单提交原子性，库存扣减加入行锁逻辑防止超卖，使用 PreparedStatement 防止 SQL 注入，采用 MD5 摘要存储用户密码。",
+        "完成全场景功能测试与问题调优，解决历史数据空指针异常、优惠策略匹配偏差等问题；覆盖需求分析、架构设计、编码实现、测试优化的软件工程流程。",
+      ],
+      techSolution:
+        "系统采用 Java Swing 构建桌面端界面，MySQL 存储用户、商品、购物车与订单数据，按 MVC 三层架构组织代码。订单提交通过 JDBC 事务保证原子性，库存扣减使用行锁避免超卖，数据访问统一走 DAO 层，SQL 使用 PreparedStatement 参数化；用户密码以 MD5 摘要形式存储（历史课程项目做法，未升级为现代密码哈希方案）。优惠计算通过策略模式实现分层满减。项目为本地桌面系统，未进行商业部署。",
+      highlights: [
+        "MVC 三层架构，结合策略模式、单例模式与 DAO 模式",
+        "JDBC 事务 + 行锁保障订单提交与库存扣减一致性",
+        "PreparedStatement 参数化查询防止 SQL 注入",
+        "覆盖用户选购、购物车、订单结算、管理员后台完整业务闭环",
+      ],
+    },
+    tags: ["Java", "Java Swing", "MySQL", "MVC"],
+    coverImage: "/images/projects/campus-stationery-ecommerce-cover.png",
+    techStack: [
+      "Java",
+      "Java Swing",
+      "MySQL",
+      "MVC",
+      "JDBC",
+      "DAO",
+      "Design Patterns",
+    ],
+    liveUrl: "",
+    downloadUrl: "",
+    demoUrl: "",
+    githubUrl: "",
+    createdAt: "2026-06-01",
+    updateLog: [
+      {
+        version: "v1.0.0",
+        date: "2026-07-15",
+        changes: [
+          "完成 MVC 三层架构设计与策略 / 单例 / DAO 设计模式落地",
+          "实现多角色用户、商品管理、购物车结算、订单事务四大核心模块",
+          "完成全场景功能测试，修复历史数据空指针异常与优惠策略匹配偏差",
         ],
       },
     ],
@@ -117,7 +233,7 @@ export const projects: Project[] = [
     liveUrl: "",
     downloadUrl: "/downloads/online-judge-platform.zip",
     demoUrl: "",
-    githubUrl: "https://github.com/hou-universe/online-judge-platform",
+    githubUrl: "",
     createdAt: "2026-06-15",
     updateLog: [
       {

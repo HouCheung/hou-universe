@@ -1,0 +1,71 @@
+{
+  "id": "exp-gc-clipped",
+  "name": "Gradient Clipping Study — Clipped",
+  "description": "Variant experiment for the gradient clipping study. Trains with gradientClipNorm=1.0 to test whether gradient clipping reduces instability without damaging convergence.",
+  "hypothesis": "Gradient clipping reduces gradient explosion / instability without materially damaging convergence.",
+  "createdAt": 0,
+  "updatedAt": 0,
+  "seed": 42,
+  "modelConfig": {
+    "name": "gc-study-tiny",
+    "label": "GC Study Tiny (dModel=64, layers=3)",
+    "description": "Small model for gradient clipping study — large enough to exhibit gradient dynamics, small enough for rapid iteration.",
+    "vocabSize": 1000,
+    "dModel": 64,
+    "numHeads": 4,
+    "dFF": 128,
+    "numLayers": 3,
+    "maxSeqLen": 64,
+    "eps": 1e-6,
+    "estimatedParams": 0
+  },
+  "trainingConfig": {
+    "name": "gc-study-quick",
+    "label": "GC Study Quick Recipe",
+    "description": "Quick training recipe for gradient clipping study — 5 epochs, small batch, fast iteration.",
+    "version": 1,
+    "model": "gc-study-tiny",
+    "dataset": {
+      "dataset": "inline",
+      "blockSize": 32,
+      "batchSize": 4,
+      "shuffle": true
+    },
+    "optimizer": {
+      "type": "adamw",
+      "lr": 0.001,
+      "weightDecay": 0.01,
+      "betas": [0.9, 0.999]
+    },
+    "scheduler": {
+      "type": "cosine",
+      "minLRRatio": 0.01,
+      "warmupSteps": 10
+    },
+    "epochs": 5,
+    "gradientAccumulation": 1,
+    "warmupSteps": 10,
+    "seed": 42,
+    "gradientClipNorm": 1.0
+  },
+  "datasetConfig": {
+    "name": "gc-study-inline",
+    "blockSize": 32,
+    "batchSize": 4,
+    "shuffle": true,
+    "type": "inline"
+  },
+  "tokenizerConfig": {
+    "type": "bpe",
+    "vocabSize": 1000
+  },
+  "evaluationConfig": {
+    "generationPrompts": ["the cat", "once upon", "in the"],
+    "maxTokens": 30,
+    "temperature": 0.8,
+    "runGenerationComparison": true,
+    "runBenchmarks": false
+  },
+  "tags": ["gradient-clipping", "clipped", "phase-63"],
+  "status": "draft"
+}

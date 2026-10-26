@@ -1,0 +1,49 @@
+{
+  "version": 1,
+  "name": "tiny-overfit",
+  "description": "Golden validation experiment 1: Tiny model overfit test. Proves the training pipeline is functional by overfitting a tiny model on a small dataset. Expected: loss decreases >90% from initial value within 20 epochs.",
+  "seed": 42,
+  "model": {
+    "preset": "tiny",
+    "vocabSize": 1024,
+    "dModel": 64,
+    "numHeads": 2,
+    "dFF": 256,
+    "numLayers": 2,
+    "maxSeqLen": 32
+  },
+  "dataset": {
+    "type": "inline",
+    "blockSize": 16,
+    "batchSize": 2,
+    "maxDocuments": 5
+  },
+  "tokenizer": {
+    "type": "bpe",
+    "vocabSize": 1024
+  },
+  "optimizer": {
+    "type": "adamw",
+    "lr": 0.01,
+    "weightDecay": 0.0
+  },
+  "scheduler": {
+    "type": "cosine",
+    "warmupSteps": 5,
+    "minLR": 0.0001
+  },
+  "training": {
+    "epochs": 20,
+    "gradientAccumulationSteps": 1,
+    "gradientClipNorm": 1.0,
+    "logInterval": 5
+  },
+  "output": {
+    "dir": ".cache/minimind/golden/tiny-overfit"
+  },
+  "golden": {
+    "type": "overfit",
+    "expectedMinimumLossReduction": 0.9,
+    "successCriteria": "finalLoss < initialLoss * 0.1"
+  }
+}

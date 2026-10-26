@@ -4,10 +4,20 @@ import { useState, useCallback } from "react";
 import { motion, type Variants } from "framer-motion";
 import { Sparkles, Construction, ArrowRight, Layers } from "lucide-react";
 import Link from "next/link";
+import { useTranslation } from "react-i18next";
 import { cn } from "@/lib/utils";
 import { TokenizerPlayground } from "./tokenizer/TokenizerPlayground";
 import { EmbeddingPlayground } from "./embedding/EmbeddingPlayground";
+import { RoPEPlayground } from "./rope/RoPEPlayground";
+import { AttentionPlayground } from "./attention/AttentionPlayground";
+import { FFNPlayground } from "./ffn/FFNPlayground";
+import { TransformerPlayground } from "./transformer/TransformerPlayground";
 import { MINIMIND_MODULES } from "@/data/minimind/module-registry";
+import {
+  MODULE_TITLES,
+  MODULE_DESCRIPTIONS,
+  MODULE_VERSIONS,
+} from "@/data/minimind/playground-registry";
 import { CrossRefButton } from "@/components/ai-lab/CrossRefButton";
 
 // ============================================================
@@ -33,51 +43,15 @@ const sectionVariants: Variants = {
 };
 
 // ============================================================
-// Module display names
-// ============================================================
-
-const MODULE_TITLES: Record<string, string> = {
-  tokenizer: "Tokenizer",
-  embedding: "Embedding",
-  rope: "RoPE",
-  attention: "Attention",
-  transformer: "Transformer",
-};
-
-const MODULE_DESCRIPTIONS: Record<string, string> = {
-  tokenizer:
-    "Explore how text becomes tokens. Type anything and watch the full tokenization pipeline in real time — from whitespace split through vocabulary lookup to encode/decode round-trip.",
-  embedding:
-    "Inspect the embedding matrix. Enter a token ID to see its dense vector representation, browse the full matrix heatmap, and understand how discrete tokens map to continuous semantic space.",
-  rope:
-    "Rotary Position Embedding — frequency-based positional encoding. Coming soon.",
-  attention:
-    "Multi-head self-attention mechanism. Coming soon.",
-  transformer:
-    "Full decoder-only Transformer block. Coming soon.",
-};
-
-const MODULE_VERSIONS: Record<string, string> = {
-  tokenizer: "V1 Word Tokenizer",
-  embedding: "V1 Learned Embedding",
-  rope: "V4 — Coming Soon",
-  attention: "V3 — Coming Soon",
-  transformer: "V5 — Coming Soon",
-};
-
-// ============================================================
 // MiniMindPlayground
 // ============================================================
 
 export function MiniMindPlayground() {
+  const { t } = useTranslation();
   const [selectedModule, setSelectedModule] = useState<string>("tokenizer");
 
   const handleSelectModule = useCallback((moduleId: string) => {
-    // Only allow switching to implemented modules
-    const mod = MINIMIND_MODULES.find((m) => m.id === moduleId);
-    if (mod?.implemented) {
-      setSelectedModule(moduleId);
-    }
+    setSelectedModule(moduleId);
   }, []);
 
   const activeTitle = MODULE_TITLES[selectedModule] ?? "Tokenizer";
@@ -106,12 +80,12 @@ export function MiniMindPlayground() {
           <div className="inline-flex items-center gap-2 rounded-full border border-brand/10 bg-brand/[0.04] px-4 py-1.5 dark:border-white/[0.05] dark:bg-white/[0.02]">
             <Sparkles className="size-3.5 text-brand/70" />
             <span className="font-mono text-[0.65rem] tracking-[0.15em] uppercase text-slate-500 dark:text-slate-400/60">
-              MiniMind Learning Edition
+              {t("minimind.playground.headerBadge")}
             </span>
           </div>
 
           <h1 className="text-3xl font-black tracking-tight text-foreground sm:text-4xl lg:text-5xl">
-            {activeTitle} Playground
+            {activeTitle} {t("minimind.playground.titleSuffix")}
           </h1>
 
           <p className="max-w-2xl text-sm leading-relaxed text-slate-500 dark:text-slate-400 sm:text-base">
@@ -121,7 +95,7 @@ export function MiniMindPlayground() {
           {/* Version badge */}
           <div className="mt-1 inline-flex items-center gap-1.5 rounded-full border border-brand/10 bg-brand/[0.04] px-3 py-1 dark:border-white/[0.05] dark:bg-white/[0.02]">
             <span className="font-mono text-[0.6rem] tracking-[0.15em] uppercase text-slate-500/80 dark:text-slate-400/50">
-              Version
+              {t("minimind.playground.versionLabel")}
             </span>
             <span className="font-mono text-[0.6rem] font-semibold text-brand/80 dark:text-brand-light/80">
               {activeVersion}
@@ -143,7 +117,7 @@ export function MiniMindPlayground() {
         <div className="mb-6 flex items-center gap-5">
           <div className="h-8 w-1 shrink-0 rounded-full bg-gradient-to-b from-slate-500 via-slate-400 to-slate-600" />
           <h2 className="text-xl font-bold tracking-tight text-foreground sm:text-2xl">
-            Modules
+            {t("minimind.playground.modulesHeading")}
           </h2>
         </div>
 
@@ -221,14 +195,9 @@ export function MiniMindPlayground() {
                   </p>
 
                   {/* Status badge */}
-                  {mod.implemented && isSelected && (
+                  {mod.implemented && (
                     <span className="inline-block rounded-full border border-brand/25 bg-brand/[0.08] px-2 py-0.5 text-[0.55rem] font-mono text-brand/80 dark:text-brand-light/80">
-                      Active
-                    </span>
-                  )}
-                  {mod.implemented && !isSelected && (
-                    <span className="inline-block rounded-full border border-brand/15 bg-brand/[0.05] px-2 py-0.5 text-[0.55rem] font-mono text-brand/70 dark:text-brand-light/70">
-                      Active
+                      {t("minimind.playground.modulesActive")}
                     </span>
                   )}
                   {!mod.implemented && mod.futureVersion && (
@@ -265,18 +234,16 @@ export function MiniMindPlayground() {
           {/* Text */}
           <div className="min-w-0 flex-1">
             <h3 className="text-sm font-semibold text-foreground transition-colors group-hover:text-brand sm:text-base">
-              Ready for the full pipeline?
+              {t("minimind.playground.ctaTitle")}
             </h3>
             <p className="mt-1 text-xs leading-relaxed text-slate-500/80 dark:text-slate-400/70 sm:text-sm">
-              Trace text through every stage — Tokenizer, Embedding, RoPE,
-              Transformer, and LM Head — with real-time visualizations at each
-              step.
+              {t("minimind.playground.ctaDescription")}
             </p>
           </div>
 
           {/* Arrow */}
           <div className="hidden shrink-0 items-center gap-1.5 text-xs font-medium text-brand/60 transition-all duration-300 group-hover:text-brand group-hover:translate-x-0.5 sm:flex dark:text-brand/50 dark:group-hover:text-brand/70">
-            Open Forward Model Explorer
+            {t("minimind.playground.ctaLinkText")}
             <ArrowRight className="size-3.5" />
           </div>
         </Link>
@@ -304,6 +271,10 @@ export function MiniMindPlayground() {
 
         {selectedModule === "tokenizer" && <TokenizerPlayground />}
         {selectedModule === "embedding" && <EmbeddingPlayground />}
+        {selectedModule === "rope" && <RoPEPlayground />}
+        {selectedModule === "attention" && <AttentionPlayground />}
+        {selectedModule === "ffn" && <FFNPlayground />}
+        {selectedModule === "transformer" && <TransformerPlayground />}
       </motion.section>
 
       {/* ================================================================ */}
@@ -313,7 +284,9 @@ export function MiniMindPlayground() {
         <CrossRefButton
           variant="journey"
           targetId={selectedModule}
-          label={`Learn ${activeTitle} in Journey`}
+          label={t("minimind.playground.crossRefLabel", {
+            module: activeTitle,
+          })}
         />
       </div>
     </div>

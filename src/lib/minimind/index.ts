@@ -23,6 +23,8 @@ export {
   buildTopologicalOrder,
   indexFor,
   shapeSize,
+  Random,
+  SeededRandom,
 } from "./core";
 export type { BackwardContext } from "./core";
 
@@ -50,6 +52,7 @@ export type { TokenizerFeature } from "./tokenizer/comparison";
 
 // ── Embedding ──
 export { MiniEmbedding } from "./embedding/Embedding";
+export { TensorEmbedding } from "./embedding/TensorEmbedding";
 export type { MatrixInfo } from "./embedding/Embedding";
 export type { EmbeddingConfig, EmbeddingVector, EmbeddingMatrix } from "./embedding/types";
 
@@ -74,7 +77,7 @@ export {
 } from "./rope/math";
 
 // ── Attention (Multi-Head Self-Attention) ──
-export { MiniAttention } from "./attention/Attention";
+export { MiniAttention, TensorAttention } from "./attention";
 export type {
   AttentionConfig,
   AttentionInput,
@@ -94,6 +97,7 @@ export {
 
 // ── FFN (Feed-Forward Network / SwiGLU) ──
 export { MiniFeedForward } from "./ffn/FeedForward";
+export { TensorFeedForward } from "./ffn/TensorFeedForward";
 export type {
   FFNConfig,
   FFNInput,
@@ -112,7 +116,9 @@ export {
 
 // ── Transformer Block ──
 export { MiniRMSNorm } from "./transformer/RMSNorm";
+export { TensorRMSNorm } from "./transformer/TensorRMSNorm";
 export { MiniTransformerBlock } from "./transformer/TransformerBlock";
+export { TensorTransformerBlock } from "./transformer/TensorTransformerBlock";
 export type {
   TransformerConfig,
   TransformerInput,
@@ -122,7 +128,10 @@ export type {
 
 // ── Model (Full Forward) ──
 export { MiniLMHead } from "./model/LMHead";
+export { TensorLMHead } from "./model/TensorLMHead";
 export { MiniMindModel } from "./model/MiniMindModel";
+export { TensorMiniMindModel } from "./model/TensorMiniMindModel";
+export type { TensorMiniMindConfig } from "./model/TensorMiniMindModel";
 export { runForwardExample } from "./model/examples";
 export type {
   ModelConfig,
@@ -197,3 +206,152 @@ export type {
   SamplingStrategy,
   LogitsTransformResult,
 } from "./inference/types";
+
+// ── Phase 43: Real GPT Training Validation Layer ──
+
+// Tokenizer
+export { BPETokenizer } from "./tokenizer/BPETokenizer";
+export type { BPETokenizerState } from "./tokenizer/BPETokenizer";
+
+// Data
+export type { ITokenizer } from "./data/ITokenizer";
+
+// ── Node-only data exports ──
+// TextCorpus, TinyStoriesDataset, and the streaming engine use
+// Node.js fs/path — import from "@/lib/minimind/node" instead:
+//   import { TextCorpus, TinyStoriesDataset } from "@/lib/minimind/node";
+//   import { TextShardReader, StreamingDataset } from "@/lib/minimind/node";
+
+// Tensor-based generation
+export { TensorGenerator } from "./inference/TensorGenerator";
+export type { GenerationOptions, GenerationResult as TensorGenerationResult } from "./inference/TensorGenerator";
+
+// Training stability
+export { clipGradients, computeGlobalNorm, clipGradientsByValue } from "./core/GradientClipper";
+export { Initialization } from "./core/Initialization";
+export type { Initializer } from "./core/Initialization";
+
+// ── Node-only: BenchmarkReport, TrainingConfig ──
+// These use Node.js fs — import from "@/lib/minimind/node" instead:
+//   import { BenchmarkReport } from "@/lib/minimind/node";
+//   import { TrainingConfig, TINY_TRAINING_CONFIG } from "@/lib/minimind/node";
+
+// ── Phase 44: Real Training Validation ──
+
+// ── Node-only: TrainingLogger ──
+// Uses Node.js fs — import from "@/lib/minimind/node" instead:
+//   import { TrainingLogger } from "@/lib/minimind/node";
+
+// Throughput meter
+export { ThroughputMeter } from "./training/ThroughputMeter";
+
+// Training monitor
+export { TrainingMonitor } from "./training/TrainingMonitor";
+export type {
+  AlertLevel,
+  MonitorAlert,
+  MonitorOptions,
+  MonitorSummary,
+} from "./training/TrainingMonitor";
+
+// Generation evaluation
+export { GenerationEvaluator } from "./evaluation/GenerationEvaluator";
+export type {
+  GenerationEvalResult,
+  GenerationComparison,
+  GenerationEvalOptions,
+} from "./evaluation/GenerationEvaluator";
+
+// ── Phase 46: Real GPT Training Validation & Benchmark ──
+
+// ── Node-only: ExperimentConfig, TrainingExperimentRunner, TrainingReport ──
+// These use Node.js fs — import from "@/lib/minimind/node" instead:
+//   import { ExperimentConfig, DEFAULT_EXPERIMENT_CONFIG } from "@/lib/minimind/node";
+//   import { runTrainingExperiment, runExperimentFromConfigFile } from "@/lib/minimind/node";
+//   import { TrainingReport } from "@/lib/minimind/node";
+
+// Generation benchmark
+export { GenerationBenchmark } from "./evaluation/GenerationBenchmark";
+export type {
+  GenerationBenchmarkResult,
+  GenerationBenchmarkAggregate,
+  GenerationBenchmarkComparison,
+  GenerationBenchmarkOptions,
+} from "./evaluation/GenerationBenchmark";
+
+// Prompt suites
+export {
+  DEFAULT_PROMPTS,
+  STORY_PROMPTS,
+  SIMPLE_PROMPTS,
+  GPT2_PROMPTS,
+  PROMPT_SUITES,
+  getPromptSuite,
+  getAvailablePromptSuites,
+} from "./evaluation/PromptSuite";
+export type { PromptSuiteName } from "./evaluation/PromptSuite";
+
+// ── Phase 50: Research Validation & Benchmark Layer ──
+
+// Model Registry
+export {
+  getModelConfig,
+  listModels,
+  createModel,
+  registerModel,
+  hasModel,
+  modelCount,
+  toTensorConfig,
+} from "./experiments/ModelRegistry";
+export type { ModelConfigEntry } from "./experiments/ModelRegistry";
+
+// Training Recipe
+export {
+  loadRecipe,
+  saveRecipe,
+  listRecipes,
+  listRecipeNames,
+  hasRecipe,
+  summarizeRecipe,
+  diffRecipes,
+  validateRecipe,
+  recipeToJSON,
+  recipeFromJSON,
+} from "./experiments/TrainingRecipe";
+export type {
+  TrainingRecipe,
+  RecipeOptimizerConfig,
+  RecipeSchedulerConfig,
+  RecipeDatasetConfig,
+} from "./experiments/TrainingRecipe";
+
+// Ablation
+export { Ablation } from "./experiments/Ablation";
+export type {
+  AblationVariant,
+  AblationConfig,
+  AblationTrainingConfig,
+  AblationVariantResult,
+  AblationReport,
+  AblationComparisonRow,
+} from "./experiments/Ablation";
+
+// Benchmark Runner
+export { BenchmarkRunner } from "./evaluation/BenchmarkRunner";
+export type {
+  TrainingBenchmarkConfig,
+  TrainingBenchmarkResult,
+  GenerationBenchmarkConfig,
+  GenerationMetrics,
+  BenchmarkResult,
+} from "./evaluation/BenchmarkRunner";
+
+// Model Statistics
+export { ModelStats } from "./evaluation/ModelStats";
+export type {
+  LayerStats,
+  ParameterDetail,
+  MemoryEstimate,
+  ModelStatsReport,
+  ArchitectureSummary,
+} from "./evaluation/ModelStats";

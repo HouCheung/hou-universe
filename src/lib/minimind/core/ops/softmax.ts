@@ -2,6 +2,7 @@
 // softmax — Softmax activation along a dimension
 // ============================================================
 // Phase 30 supports 1D and 2D tensors with softmax along last dim.
+// Phase 35 extends to N-D tensors along the last dimension.
 //
 // Forward:  s_i = exp(x_i - max(x)) / Σ_j exp(x_j - max(x))
 //
@@ -49,9 +50,16 @@ export function softmax(x: Tensor, dim: number = -1): Tensor {
     return _softmax2DLastDim(x);
   }
 
+  // ── N-D softmax along last dim (Phase 35) ──
+  // Generalizes to any number of dimensions by treating all dims
+  // except the last as batch (row) dimensions.
+  if (resolvedDim === ndim - 1) {
+    return _softmaxNDLastDim(x);
+  }
+
   throw new Error(
-    `softmax: Phase 30 only supports 1D tensors and 2D tensors along last dim. ` +
-      `Got shape [${x.shape}] with dim=${dim}.`
+    `softmax: unsupported configuration — shape [${x.shape}] with dim=${dim}. ` +
+      `Only softmax along the last dimension is supported for 3D+ tensors.`
   );
 }
 
@@ -156,6 +164,84 @@ function _softmax2DLastDim(x: Tensor): Tensor {
 
           // gradInput = softmaxOut * (gradOutput - dot)
           for (let c = 0; c < cols; c++) {
+            gradInput[rowOffset + c] =
+              softmaxOut[rowOffset + c] * (gradOutput[rowOffset + c] - dot);
+          }
+        }
+
+        x.accumulateGrad(gradInput);
+      },
+    };
+  }
+
+  return out;
+}
+
+/**
+ * N-D softmax along last dimension.
+ *
+ * Treats all dimensions except the last as batch dimensions.
+ * For shape [D1, D2, ..., Dn], applies softmax independently along
+ * each "row" of size Dn. There are (D1 * D2 * ... * D_{n-1}) such rows.
+ */
+function _softmaxNDLastDim(x: Tensor): Tensor {
+  const shape = x.shape;
+  const ndim = shape.length;
+  const lastDim = shape[ndim - 1];
+
+  // Number of "rows" = product of all dims except last
+  let numRows = 1;
+  for (let i = 0; i < ndim - 1; i++) {
+    numRows *= shape[i];
+  }
+
+  const totalSize = numRows * lastDim;
+  const result = new Float64Array(totalSize);
+
+  for (let r = 0; r < numRows; r++) {
+    const rowOffset = r * lastDim;
+
+    // Find max in this row
+    let maxVal = x.data[rowOffset];
+    for (let c = 1; c < lastDim; c++) {
+      if (x.data[rowOffset + c] > maxVal) maxVal = x.data[rowOffset + c];
+    }
+
+    // Compute exp and sum
+    let sumExp = 0;
+    const expVals = new Float64Array(lastDim);
+    for (let c = 0; c < lastDim; c++) {
+      expVals[c] = Math.exp(x.data[rowOffset + c] - maxVal);
+      sumExp += expVals[c];
+    }
+
+    // Normalize
+    for (let c = 0; c < lastDim; c++) {
+      result[rowOffset + c] = expVals[c] / sumExp;
+    }
+  }
+
+  const out = new Tensor(result, [...shape], x.requiresGrad);
+
+  if (out.requiresGrad) {
+    const softmaxOut = new Float64Array(result);
+
+    out._ctx = {
+      parents: [x],
+      backwardFn: (gradOutput: Float64Array) => {
+        const gradInput = new Float64Array(totalSize);
+
+        for (let r = 0; r < numRows; r++) {
+          const rowOffset = r * lastDim;
+
+          // Compute dot(softmaxOut[row], gradOutput[row])
+          let dot = 0;
+          for (let c = 0; c < lastDim; c++) {
+            dot += softmaxOut[rowOffset + c] * gradOutput[rowOffset + c];
+          }
+
+          // gradInput = softmaxOut * (gradOutput - dot)
+          for (let c = 0; c < lastDim; c++) {
             gradInput[rowOffset + c] =
               softmaxOut[rowOffset + c] * (gradOutput[rowOffset + c] - dot);
           }

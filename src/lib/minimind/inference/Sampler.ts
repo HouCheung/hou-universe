@@ -69,12 +69,15 @@ export class Sampler {
    * @param logits      — 原始 logits 向量 [vocabSize]
    * @param config      — 采样配置
    * @param tokenLabels — token ID → token 字符串的映射（用于构建 alternatives）
+   * @param random      — 随机数源 [0, 1)。默认 Math.random。
+   *                      注入 seeded RNG 可实现可复现采样。
    * @returns             选择结果
    */
   sample(
     logits: number[],
     config: SamplingConfig,
-    tokenLabels?: Map<number, string>
+    tokenLabels?: Map<number, string>,
+    random: () => number = Math.random
   ): {
     tokenId: number;
     probability: number;
@@ -111,7 +114,7 @@ export class Sampler {
       tokenId = this.argmax(current);
     } else {
       // 从概率分布中采样
-      tokenId = this.sampleFromDistribution(probs);
+      tokenId = this.sampleFromDistribution(probs, random);
     }
 
     // ── 构建备选列表（top-K alternatives） ──
@@ -169,11 +172,12 @@ export class Sampler {
   /**
    * sampleFromDistribution — 从概率分布中加权随机采样
    *
-   * @param probs — 概率分布（和应为 1）
-   * @returns       采样到的索引
+   * @param probs  — 概率分布（和应为 1）
+   * @param random — 随机数源 [0, 1)。注入 seeded RNG 可实现可复现采样。
+   * @returns        采样到的索引
    */
-  private sampleFromDistribution(probs: number[]): number {
-    const r = Math.random();
+  private sampleFromDistribution(probs: number[], random: () => number): number {
+    const r = random();
     let cumsum = 0;
     for (let i = 0; i < probs.length; i++) {
       cumsum += probs[i];

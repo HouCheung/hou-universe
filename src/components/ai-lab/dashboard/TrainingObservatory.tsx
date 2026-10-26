@@ -30,9 +30,7 @@ import {
   BarChart3,
   LineChart,
   MessageSquare,
-  ArrowRight,
   Sparkles,
-  AlertTriangle,
 } from "lucide-react";
 import { SectionHeader } from "@/components/home/SectionHeader";
 import {
@@ -42,7 +40,6 @@ import {
   getTrainingSummary,
   getGenerationComparison,
   hasObservatoryData,
-  getObservatoryStats,
   type LossCurveData,
   type LearningRateCurveData,
   type ThroughputData,

@@ -9,6 +9,7 @@
 
 // ── 主类 ──
 export { MiniAttention } from "./Attention";
+export { TensorAttention } from "./TensorAttention";
 
 // ── 类型 ──
 export type {

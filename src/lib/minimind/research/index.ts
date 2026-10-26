@@ -31,11 +31,40 @@ export type {
   ResearchTimelineEvent,
 } from "./ResearchState";
 
+// ── Training Lifecycle State Machine (Phase 66) ──
+export {
+  canTransition,
+  transitionState,
+  allowedFrom,
+  isTerminal,
+  isActive,
+  isRestartable,
+  getAvailableActions,
+  toLifecycleStatus,
+  scanForInterruptedSessions,
+  LIFECYCLE_STATE_LABELS,
+  TERMINAL_STATES,
+  ACTIVE_STATES,
+  TrainingLifecycleError,
+} from "./TrainingLifecycleState";
+
+export type {
+  TrainingLifecycleStatus,
+  LifecycleAction,
+  RecoveryScanResult,
+} from "./TrainingLifecycleState";
+
 // ── Research Workspace (localStorage CRUD) ──
 export {
   ResearchWorkspace,
   workspace,
 } from "./ResearchWorkspace";
+
+// ── Checkpoint Store (Phase 85: IndexedDB + memory fallback) ──
+export {
+  CheckpointStore,
+  checkpointStore,
+} from "./CheckpointStore";
 
 // ── Experiment Controller (pipeline orchestrator) ──
 export {
@@ -84,6 +113,7 @@ export {
   ComparisonInsightEngine,
   ResearchReport,
   BenchmarkCopilot,
+  StudyCopilot,
 } from "./copilot";
 
 export type {
@@ -102,6 +132,7 @@ export type {
   BenchmarkInsight,
   BenchmarkInsights,
   BenchmarkRecommendation,
+  StudyCopilotResult,
 } from "./copilot";
 
 // ── Phase 60: Research Experiment Loop ──
@@ -182,6 +213,14 @@ export {
   totalRuns,
   hasRun,
   hasExperiment,
+  validateResearchIdentityGraph,
+  validateCurrentIdentityGraph,
+} from "./ResearchExperimentStore";
+
+export type {
+  IdentityGraphDiagnostic,
+  IdentityGraphDiagnosticEntry,
+  IdentityGraphErrorSeverity,
 } from "./ResearchExperimentStore";
 
 // Research Experiment Runner
@@ -277,3 +316,97 @@ export type {
   PrefilledExperiment,
   NextExperimentResult,
 } from "./NextExperimentGenerator";
+
+// ── Phase 63: Research Study ──
+
+// Research Study Types
+export {
+  createResearchStudy,
+  generateStudyId,
+  computeMetricSummary,
+  compareMetricSummaries,
+  buildComparisonSummary,
+  serializeStudy,
+  deserializeStudy,
+  serializeStudyResult,
+  GRADIENT_CLIPPING_METRICS,
+} from "./ResearchStudy";
+
+export type {
+  ResearchStudy,
+  ResearchStudyResult,
+  StudyExperimentResult,
+  StudyRunResult,
+  StudyMetricSpec,
+  StudyMetricSummary,
+  StudyMetricComparison,
+  StudyComparison,
+  StudyConclusion,
+  StudyConclusionVerdict,
+} from "./ResearchStudy";
+
+// Controlled Variable Validator
+export {
+  verifyControlledVariables,
+  validateStudyControlledVariables,
+} from "./ControlledVariableValidator";
+
+export type {
+  ControlledVariableValidationResult,
+} from "./ControlledVariableValidator";
+
+// ── Phase 67: Generation & Evaluation ──
+
+// Generation Result Types
+export {
+  generateRequestId,
+  generateComparisonId,
+  generateHistoryEntryId,
+  createBaselineResult,
+  createTrainedResult,
+  createComparison,
+} from "./GenerationResult";
+
+export type {
+  GenerationStatus,
+  GenerationConfig,
+  GenerationRequest,
+  GenerationModelConfig,
+  GenerationMetrics,
+  GenerationResult,
+  GenerationComparisonResult,
+  GenerationHistoryEntry,
+  GenerationExportJSON,
+} from "./GenerationResult";
+
+// Generation Runtime
+export {
+  GenerationRuntime,
+  generationRuntime,
+} from "./GenerationRuntime";
+
+export type {
+  GenerationRuntimeStatus,
+  GenerationRuntimeState,
+  GenerateOptions,
+} from "./GenerationRuntime";
+
+// Generation History Store
+export {
+  GenerationHistoryStore,
+  generationHistory,
+} from "./GenerationHistoryStore";
+
+// Chat History Store (Phase 69)
+export {
+  ChatHistoryStore,
+  chatHistory,
+} from "./ChatHistoryStore";
+
+export type {
+  ChatMessage,
+  ChatConversation,
+  ChatModelConfig,
+  ChatConversationSummary,
+  ChatGenerationStatus,
+} from "./ChatHistoryStore";

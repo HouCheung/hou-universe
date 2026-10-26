@@ -3,6 +3,7 @@
 import { TokenizerPipeline } from "@/lib/minimind/tokenizer";
 import type { PipelineStep } from "@/lib/minimind/tokenizer";
 import { CheckCircle2, Circle, Clock } from "lucide-react";
+import { useTranslation } from "react-i18next";
 import { cn } from "@/lib/utils";
 
 function StageIcon({ step }: { step: PipelineStep }) {
@@ -16,12 +17,14 @@ function StageIcon({ step }: { step: PipelineStep }) {
 }
 
 export function PipelinePanel() {
+  const { t } = useTranslation();
+
   return (
     <div className="rounded-xl border border-brand/10 bg-brand/[0.03] backdrop-blur-sm dark:border-white/[0.06] dark:bg-[rgba(var(--brand-rgb),0.04)]">
       {/* Header */}
       <div className="flex items-center gap-2.5 border-b border-brand/[0.06] px-5 py-3 dark:border-white/[0.04]">
         <span className="font-mono text-[0.6rem] tracking-[0.2em] uppercase text-slate-500 dark:text-slate-400/60">
-          Pipeline
+          {t("minimind.playground.tokenizer.pipelineHeader")}
         </span>
       </div>
 
@@ -65,12 +68,12 @@ export function PipelinePanel() {
         <p className="mt-3 text-[0.7rem] leading-relaxed text-slate-500/70 dark:text-slate-500/60">
           <span className="inline-flex items-center gap-1">
             <CheckCircle2 className="size-2.5 text-emerald-400" />
-            <span>Implemented</span>
+            <span>{t("minimind.playground.tokenizer.pipelineImplemented")}</span>
           </span>
           <span className="mx-2 text-slate-500/30">•</span>
           <span className="inline-flex items-center gap-1">
             <Clock className="size-2.5 text-slate-500/50" />
-            <span>Planned</span>
+            <span>{t("minimind.playground.tokenizer.pipelinePlanned")}</span>
           </span>
           <span className="mx-2 text-slate-500/30">•</span>
           <span>Normalize → V2 (punctuation & case normalization)</span>

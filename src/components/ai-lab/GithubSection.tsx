@@ -4,7 +4,7 @@ import { useTranslation } from "react-i18next";
 import { motion, type Variants } from "framer-motion";
 import Link from "next/link";
 import { SectionHeader } from "@/components/home/SectionHeader";
-import { Github, ExternalLink, Star, GitFork } from "lucide-react";
+import { Github, ExternalLink } from "lucide-react";
 
 const variants: Variants = {
   hidden: { opacity: 0, y: 40 },
@@ -29,7 +29,7 @@ export function GithubSection() {
       <SectionHeader titleKey="aiLab.sections.github" />
 
       <Link
-        href="https://github.com"
+        href="https://github.com/HouCheung/hou-universe"
         target="_blank"
         rel="noopener noreferrer"
         className="group mx-auto block max-w-lg rounded-xl border border-slate-500/[0.1] bg-slate-500/[0.02] px-6 py-7 transition-all duration-300 hover:border-brand/20 hover:bg-brand/[0.03] dark:border-white/[0.04] dark:bg-white/[0.01] dark:hover:border-white/[0.08] dark:hover:bg-[rgba(var(--brand-rgb),0.04)]"
@@ -50,14 +50,9 @@ export function GithubSection() {
         </div>
 
         <div className="mt-5 flex items-center gap-5">
-          <div className="flex items-center gap-1.5">
-            <Star className="size-3.5 text-slate-400/70" />
-            <span className="text-xs tabular-nums text-slate-500">—</span>
-          </div>
-          <div className="flex items-center gap-1.5">
-            <GitFork className="size-3.5 text-slate-400/70" />
-            <span className="text-xs tabular-nums text-slate-500">—</span>
-          </div>
+          <span className="text-xs text-slate-400/60">
+            {t("aiLab.viewOnGithub")}
+          </span>
           <span className="ml-auto text-xs text-brand/60 opacity-0 transition-opacity duration-200 group-hover:opacity-100">
             {t("aiLab.viewOnGithub")} →
           </span>

@@ -15,6 +15,7 @@ import { EntranceSequence } from "@/components/shared/EntranceSequence";
 import { HreflangTags } from "@/components/layout/HreflangTags";
 import { UmamiAnalytics } from "@/components/layout/UmamiAnalytics";
 import { ThemeProvider } from "@/components/layout/ThemeProvider";
+import { SITE_URL } from "@/lib/site";
 import "./globals.css";
 import { Geist } from "next/font/google";
 
@@ -38,19 +39,19 @@ export const metadata: Metadata = {
     "TypeScript",
     "React",
   ],
-  authors: [{ name: "HOU", url: "https://hou-universe.vercel.app" }],
+  authors: [{ name: "HOU", url: SITE_URL }],
   creator: "HOU",
-  metadataBase: new URL("https://hou-universe.vercel.app"),
+  metadataBase: new URL(SITE_URL),
   alternates: {
     languages: {
-      "zh-CN": "https://hou-universe.vercel.app",
-      en: "https://hou-universe.vercel.app",
+      "zh-CN": SITE_URL,
+      en: SITE_URL,
     },
   },
   openGraph: {
     type: "website",
     locale: "zh_CN",
-    url: "https://hou-universe.vercel.app",
+    url: SITE_URL,
     siteName: "HOU Universe",
     title: "HOU Universe",
     description:

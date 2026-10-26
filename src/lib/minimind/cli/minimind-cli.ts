@@ -805,10 +805,278 @@ class MiniMindCLI {
       case "fingerprint":
         await this.researchFingerprint();
         break;
+      case "study":
+        await this.researchStudy();
+        break;
       default:
         this.printResearchUsage();
         break;
     }
+  }
+
+  // ── research study ──
+
+  private async researchStudy(): Promise<void> {
+    const studyName = this.args.options["study"] ?? "gradient-clipping";
+    const outputDir = this.args.options["output"] ?? "docs/research/studies";
+    const numRuns = parseInt(this.args.options["runs"] ?? "2", 10);
+    const seed = parseInt(this.args.options["seed"] ?? "42", 10);
+    const skipValidation = this.args.options["skip-validation"] === "true";
+
+    if (studyName !== "gradient-clipping") {
+      console.error(
+        `Error: unknown study "${studyName}". Available: gradient-clipping`,
+      );
+      process.exit(1);
+    }
+
+    // Lazy-load the gradient clipping study
+    const {
+      baselineExperiment,
+      clippedExperiment,
+      gradientClippingStudy,
+      STUDY_CORPUS,
+    } = await import(
+      "../research/studies/gradient-clipping/study"
+    );
+
+    this.printHeader(
+      `Research Study: ${gradientClippingStudy.name}`,
+    );
+    console.log(`Research Question: ${gradientClippingStudy.researchQuestion}`);
+    console.log(`Hypothesis: ${gradientClippingStudy.hypothesis}`);
+    console.log(
+      `Independent Variable: ${gradientClippingStudy.independentVariable.name}` +
+        ` (${gradientClippingStudy.independentVariable.baselineValue} → ${gradientClippingStudy.independentVariable.variantValue})`,
+    );
+    console.log(`Runs per condition: ${numRuns}`);
+    console.log(`Seed: ${seed}`);
+    console.log(
+      `${"=".repeat(60)}\n`,
+    );
+
+    // Step 1: Validate controlled variables
+    if (!skipValidation) {
+      console.log("[1/4] Validating controlled variables...");
+      const { verifyControlledVariables } = await import(
+        "../research/ControlledVariableValidator"
+      );
+      const validation = verifyControlledVariables(
+        baselineExperiment,
+        clippedExperiment,
+        "gradientClipNorm",
+      );
+      if (!validation.valid) {
+        console.error("❌ Controlled variable validation FAILED:");
+        console.error(`   ${validation.error}`);
+        console.error("");
+        console.error(
+          "To skip validation, use --skip-validation true",
+        );
+        process.exit(1);
+      }
+      console.log("✅ All controlled variables are identical");
+      console.log(`   ${validation.summary}`);
+    } else {
+      console.log("[1/4] Skipping validation (--skip-validation)");
+    }
+
+    // Step 2: Run experiments
+    console.log("\n[2/4] Running experiments (this may take 30-60s)...");
+
+    const { ResearchBenchmarkRunner } = await import(
+      "../research/benchmark/ResearchBenchmarkRunner"
+    );
+    const { BenchmarkSuite } = await import(
+      "../research/benchmark/BenchmarkSuite"
+    );
+
+    const runner = new ResearchBenchmarkRunner();
+
+    const baselineProfile = {
+      name: "Baseline (no clip)",
+      modelConfig: baselineExperiment.modelConfig,
+      trainingConfig: baselineExperiment.trainingConfig,
+      datasetConfig: baselineExperiment.datasetConfig,
+      tokenizerConfig: baselineExperiment.tokenizerConfig,
+      evaluationConfig: baselineExperiment.evaluationConfig,
+      numRuns,
+      seed,
+      corpus: STUDY_CORPUS,
+    };
+
+    const clippedProfile = {
+      name: "Clipped (norm=1.0)",
+      modelConfig: clippedExperiment.modelConfig,
+      trainingConfig: clippedExperiment.trainingConfig,
+      datasetConfig: clippedExperiment.datasetConfig,
+      tokenizerConfig: clippedExperiment.tokenizerConfig,
+      evaluationConfig: clippedExperiment.evaluationConfig,
+      numRuns,
+      seed,
+      corpus: STUDY_CORPUS,
+    };
+
+    const suite = new BenchmarkSuite("Gradient Clipping Study");
+    suite.addProfile("baseline", baselineProfile, {
+      label: "Baseline (no clip)",
+      isBaseline: true,
+    });
+    suite.addProfile("clipped", clippedProfile, {
+      label: "Clipped (norm=1.0)",
+    });
+
+    const suiteResult = await suite.runAll(runner, {
+      name: "Gradient Clipping Study",
+      numRuns,
+      baseSeed: seed,
+    });
+
+    const baselineResult = suiteResult.members.find(
+      (m) => m.member.key === "baseline",
+    )!;
+    const clippedResult = suiteResult.members.find(
+      (m) => m.member.key === "clipped",
+    )!;
+
+    console.log(
+      `  ✅ Baseline: best loss=${baselineResult.report.metrics.bestLoss.mean.toFixed(4)}`,
+    );
+    console.log(
+      `  ✅ Clipped:  best loss=${clippedResult.report.metrics.bestLoss.mean.toFixed(4)}`,
+    );
+
+    // Step 3: Generate report
+    console.log("\n[3/4] Generating research report...");
+
+    const { createBenchmarkResearchReport, reportToJSON, reportToMarkdown } =
+      await import("../research/benchmark/ResearchBenchmarkReport");
+
+    // Build standard benchmark report
+    const benchmarkReport = createBenchmarkResearchReport(
+      suiteResult,
+      "Gradient Clipping Study — MiniMind Research Phase 63",
+    );
+
+    // Enhance with gradient-specific analysis
+    const blRuns = baselineResult.result.runs;
+    const clRuns = clippedResult.result.runs;
+
+    const gradientAnalysis: Record<string, unknown> = {};
+    for (const metric of [
+      "meanGradientNorm",
+      "maxGradientNorm",
+      "gradientNormVariance",
+    ]) {
+      const blVals = blRuns.map((r) => r[metric as keyof typeof r] as number);
+      const clVals = clRuns.map((r) => r[metric as keyof typeof r] as number);
+      const blMean = blVals.reduce((a, b) => a + b, 0) / blVals.length;
+      const clMean = clVals.reduce((a, b) => a + b, 0) / clVals.length;
+      const pctChange =
+        blMean !== 0 ? ((clMean - blMean) / Math.abs(blMean)) * 100 : 0;
+
+      gradientAnalysis[metric] = {
+        baseline: { mean: blMean, values: blVals },
+        clipped: { mean: clMean, values: clVals },
+        changePercent: pctChange,
+      };
+    }
+
+    // Compute conclusion
+    const baselineLoss = baselineResult.report.metrics.bestLoss;
+    const clippedLoss = clippedResult.report.metrics.bestLoss;
+    const lossChangePct =
+      baselineLoss.mean > 0
+        ? ((clippedLoss.mean - baselineLoss.mean) / baselineLoss.mean) * 100
+        : 0;
+
+    const maxNormBl =
+      (gradientAnalysis["maxGradientNorm"] as Record<string, { mean: number }>)
+        ?.baseline?.mean ?? 0;
+    const maxNormCl =
+      (gradientAnalysis["maxGradientNorm"] as Record<string, { mean: number }>)
+        ?.clipped?.mean ?? 0;
+    const baselineDiv = blRuns.filter((r) => r.divergenceDetected).length;
+    const clippedDiv = clRuns.filter((r) => r.divergenceDetected).length;
+
+    let verdict: string;
+    if (
+      maxNormCl < maxNormBl * 0.8 &&
+      clippedLoss.mean <= baselineLoss.mean * 1.02 &&
+      clippedDiv === 0
+    ) {
+      verdict = "SUPPORTED ✅";
+    } else if (clippedLoss.mean > baselineLoss.mean * 1.05) {
+      verdict = "REJECTED ❌";
+    } else {
+      verdict = "INCONCLUSIVE ⚠️";
+    }
+
+    const enhancedReport = {
+      ...benchmarkReport,
+      study: {
+        id: gradientClippingStudy.id,
+        researchQuestion: gradientClippingStudy.researchQuestion,
+        hypothesis: gradientClippingStudy.hypothesis,
+      },
+      gradientAnalysis,
+      conclusion: {
+        verdict,
+        lossChangePercent: lossChangePct,
+        baselineBestLoss: baselineLoss.mean,
+        clippedBestLoss: clippedLoss.mean,
+        baselineMaxNorm: maxNormBl,
+        clippedMaxNorm: maxNormCl,
+        baselineDivergences: baselineDiv,
+        clippedDivergences: clippedDiv,
+      },
+    };
+
+    // Ensure output directory exists
+    if (!fs.existsSync(outputDir)) {
+      fs.mkdirSync(outputDir, { recursive: true });
+    }
+
+    const ts = new Date().toISOString().replace(/[:.]/g, "-");
+    const jsonPath = path.join(
+      outputDir,
+      `gradient-clipping-study-${ts}.json`,
+    );
+    const mdPath = path.join(
+      outputDir,
+      `gradient-clipping-study-${ts}.md`,
+    );
+
+    fs.writeFileSync(
+      jsonPath,
+      JSON.stringify(enhancedReport, null, 2),
+      "utf-8",
+    );
+    fs.writeFileSync(mdPath, reportToMarkdown(benchmarkReport), "utf-8");
+
+    console.log(`  ✅ JSON report: ${jsonPath}`);
+    console.log(`  ✅ Markdown report: ${mdPath}`);
+
+    // Step 4: Print results
+    console.log(`\n[4/4] Study Results`);
+    console.log("-".repeat(40));
+    console.log(suite.formatResults(suiteResult));
+    console.log("");
+    console.log(`Conclusion: ${verdict}`);
+    console.log(
+      `Loss change: ${lossChangePct > 0 ? "+" : ""}${lossChangePct.toFixed(1)}%`,
+    );
+    console.log(
+      `Max gradient norm: ${maxNormBl.toFixed(2)} → ${maxNormCl.toFixed(2)} ` +
+        `(${(((maxNormCl - maxNormBl) / Math.max(Math.abs(maxNormBl), 1e-8)) * 100).toFixed(1)}%)`,
+    );
+
+    const totalDuration = (
+      (suiteResult.completedAt - suiteResult.startedAt) /
+      1000
+    ).toFixed(1);
+    console.log(`Total duration: ${totalDuration}s`);
+    console.log("\n✅ Study complete. Reports saved to disk.");
   }
 
   // ── research benchmark ──
@@ -1170,11 +1438,18 @@ Sub-commands:
   fingerprint --model <name> --recipe <name>    Generate experiment fingerprint
              [--compare-with <path>]             Compare with existing fingerprint
 
+  study       [--study <name>]                  Reproduce a research study
+             [--runs N] [--seed N]               Runs per condition (default: 2)
+             [--output <dir>]                    Output directory
+             [--skip-validation]                 Skip controlled variable check
+
 Examples:
   npx tsx src/lib/minimind/cli/minimind-cli.ts research benchmark --model tiny --recipe tiny-overfit-test
   npx tsx src/lib/minimind/cli/minimind-cli.ts research benchmark --suite lr --runs 3
   npx tsx src/lib/minimind/cli/minimind-cli.ts research compare --a report-a.json --b report-b.json
   npx tsx src/lib/minimind/cli/minimind-cli.ts research fingerprint --model small --recipe tinystories-small
+  npx tsx src/lib/minimind/cli/minimind-cli.ts research study --study gradient-clipping --runs 2
+  npx tsx src/lib/minimind/cli/minimind-cli.ts research study --output ./my-results
 `);
   }
 
@@ -1210,6 +1485,7 @@ Commands:
     benchmark        --model <name> --recipe <name> Run benchmark suite
     compare          --a <path> --b <path>          Compare benchmark reports
     fingerprint      --model <name> --recipe <name> Generate config fingerprint
+    study            [--study <name>]               Reproduce a research study
 
 Examples:
   npx tsx src/lib/minimind/cli/minimind-cli.ts train --config train-config.json

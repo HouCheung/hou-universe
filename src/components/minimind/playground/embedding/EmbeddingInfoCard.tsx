@@ -2,20 +2,12 @@
 
 import { motion, type Variants } from "framer-motion";
 import { Info } from "lucide-react";
+import { useTranslation } from "react-i18next";
 import type { MatrixInfo } from "@/lib/minimind/embedding";
 
 // ============================================================
 // EmbeddingInfoCard — Module metadata display
 // ============================================================
-//
-// Shows the core dimensional parameters of the embedding layer:
-// vocabSize, embeddingDim, and total parameter count.
-//
-// Helps users understand the scale and cost of the embedding
-// layer within a Transformer architecture.
-// ============================================================
-
-// ── Animation ────────────────────────────────────────────────
 
 const cardVariants: Variants = {
   hidden: { opacity: 0, y: 12 },
@@ -26,42 +18,37 @@ const cardVariants: Variants = {
   },
 };
 
-// ── Helpers ──────────────────────────────────────────────────
-
-/** Format large integers with commas (e.g. 3276800 → "3,276,800") */
 function formatInt(n: number): string {
   return n.toLocaleString("en-US");
 }
 
-/** Compute a rough percentage of 26M (MiniMind total params) */
 function percentOfMiniMind(n: number): string {
   const pct = (n / 26_000_000) * 100;
   return pct.toFixed(1);
 }
 
-// ── Component ────────────────────────────────────────────────
-
 interface EmbeddingInfoCardProps {
-  /** Matrix metadata from MiniEmbedding.getMatrixInfo() */
   info: MatrixInfo;
 }
 
 export function EmbeddingInfoCard({ info }: EmbeddingInfoCardProps) {
+  const { t } = useTranslation();
+
   const stats = [
     {
-      label: "Vocabulary Size",
+      label: t("minimind.playground.embedding.infoVocabSize"),
       value: formatInt(info.vocabSize),
-      detail: "rows in the embedding matrix",
+      detail: t("minimind.playground.embedding.infoVocabSizeDetail"),
       emoji: "📚",
     },
     {
-      label: "Embedding Dimension",
+      label: t("minimind.playground.embedding.infoEmbeddingDim"),
       value: info.embeddingDim.toString(),
-      detail: `d_model — width of each token vector`,
+      detail: t("minimind.playground.embedding.infoEmbeddingDimDetail"),
       emoji: "📐",
     },
     {
-      label: "Total Parameters",
+      label: t("minimind.playground.embedding.infoTotalParams"),
       value: formatInt(info.totalParameters),
       detail: `vocabSize × d_model = ${formatInt(info.totalParameters)}`,
       emoji: "⚙️",
@@ -75,18 +62,16 @@ export function EmbeddingInfoCard({ info }: EmbeddingInfoCardProps) {
       animate="visible"
       className="rounded-xl border border-brand/10 bg-brand/[0.03] backdrop-blur-sm dark:border-white/[0.06] dark:bg-[rgba(var(--brand-rgb),0.04)]"
     >
-      {/* Header */}
       <div className="flex items-center gap-2.5 border-b border-brand/[0.06] px-5 py-3 dark:border-white/[0.04]">
         <Info className="size-3.5 text-brand/70" />
         <span className="font-mono text-[0.6rem] tracking-[0.2em] uppercase text-slate-500 dark:text-slate-400/60">
-          Module Info
+          {t("minimind.playground.embedding.infoHeader")}
         </span>
         <span className="ml-auto rounded-full border border-brand/15 bg-brand/[0.05] px-2 py-0.5 font-mono text-[0.55rem] text-brand/70 dark:text-brand-light/70">
-          V1
+          {t("minimind.playground.embedding.infoVersion")}
         </span>
       </div>
 
-      {/* Stat cards */}
       <div className="grid grid-cols-3 gap-3 px-5 py-4">
         {stats.map((stat) => (
           <div
@@ -109,14 +94,11 @@ export function EmbeddingInfoCard({ info }: EmbeddingInfoCardProps) {
         ))}
       </div>
 
-      {/* MiniMind context */}
       <div className="border-t border-brand/[0.04] px-5 py-3 dark:border-white/[0.03]">
         <p className="text-center font-mono text-[0.55rem] leading-relaxed text-slate-500/70 dark:text-slate-500/60">
-          This embedding layer accounts for ~
-          <span className="font-semibold text-brand/80 dark:text-brand-light/80">
-            {percentOfMiniMind(info.totalParameters)}%
-          </span>{" "}
-          of MiniMind&apos;s ~26M parameters
+          {t("minimind.playground.embedding.infoContext", {
+            pct: percentOfMiniMind(info.totalParameters),
+          })}
         </p>
       </div>
     </motion.div>

@@ -89,7 +89,8 @@
     "projects": "Projects",
     "aiEngineering": "AI Engineering",
     "campus": "Campus Activities",
-    "skills": "Skills"
+    "skills": "Skills",
+    "internship": "Internship"
   },
   "aboutProjects": {
     "p0": {
@@ -121,6 +122,18 @@
       "role": "Project Member",
       "period": "2025.12",
       "desc": "Designed for small-to-medium warehousing scenarios, created four core data tables with foreign key relationships. Developed four major management modules — warehouse, goods, inventory, and inbound/outbound — using transaction mechanisms to ensure data consistency across multi-warehouse transfers."
+    },
+    "p5": {
+      "title": "Rice Yield Prediction and Feature Impact Analysis via Multi-Algorithm Comparison",
+      "role": "Independent Developer (Course Project)",
+      "period": "2026.06 — 2026.07",
+      "desc": "Built SVR, MLP, and CART regression models on the UCI rice variety dataset (2,790 samples, 45 mixed features) with 5-fold cross-validation and grid search; the best CART model reached R² = 0.9918, and five key features explained 99.96% of yield variance."
+    },
+    "p6": {
+      "title": "Campus Stationery E-Commerce System Based on MVC Architecture",
+      "role": "Independent Developer (Practical Project)",
+      "period": "2026.06 — 2026.07",
+      "desc": "Developed a Java Swing + MySQL desktop e-commerce system covering browsing, cart, checkout, and admin back office; applied MVC, Strategy, Singleton, and DAO patterns, with JDBC transactions and row locking for order and stock consistency."
     }
   },
   "aiSkills": [
@@ -221,6 +234,16 @@
       ],
       "updateLog": [
         {
+          "version": "v0.8.0",
+          "date": "2026-10-26",
+          "changes": [
+            "Updated the project portfolio with a rice-yield prediction course project and a campus stationery e-commerce practical project",
+            "Added a network optimization testing internship at Jiahuan Technology",
+            "Published MiniMind architecture, experiment findings, limitations, and research roadmap",
+            "Synchronized bilingual content and bumped the site to v0.8"
+          ]
+        },
+        {
           "version": "v1.3.0",
           "date": "2026-07-14",
           "changes": [
@@ -310,6 +333,66 @@
             "First version launched, end-to-end churn attribution decision system built on XGBoost + SHAP",
             "Implemented three core modules: churn prediction model (AUC > 0.85), SHAP feature attribution visualization, and strategy ROI simulation",
             "Covered full churn risk prediction for 7,043 users, supporting one-click Streamlit local operation"
+          ]
+        }
+      ]
+    },
+    "rice-yield-prediction": {
+      "title": "Rice Yield Prediction and Feature Impact Analysis via Multi-Algorithm Comparison",
+      "category": "Data Analysis",
+      "description": "Independent course project on precision-agriculture yield estimation. Using the UCI rice variety dataset (2,790 samples, 45 mixed features), it builds and compares SVR, MLP, and CART regression models; the best CART model reaches R² = 0.9918.",
+      "fullDescription": "This independent course project addresses yield estimation for precision agriculture. Starting from the UCI rice variety dataset (2,790 samples, 45 mixed features), the pipeline performs missing-value checks, outlier treatment, categorical encoding, and algorithm-specific standardization, then builds SVR, MLP, and CART regression models tuned with 5-fold cross-validation and grid search. Models are compared on MSE, RMSE, MAE, and R², with residual analysis used to check for systematic bias. Feature-importance analysis identifies five key factors, including seedling area and potassium fertilizer application, which together explain 99.96% of yield variance. The project concludes with production recommendations across seedling management, precise fertilization, pest and disease control, and population regulation. All results are offline course-project experiments and do not imply deployment on a real farm.",
+      "background": "Precision agriculture needs data-driven yield estimates. The project uses the public UCI rice variety dataset (2,790 samples, 45 mixed features) to build and compare regression models, identify the main drivers of yield, and translate the findings into practical production guidance.",
+      "coreFeatures": [
+        "End-to-end data modeling: missing-value checks, outlier treatment, categorical encoding, and algorithm-specific standardization; SVR, MLP, and CART models tuned with 5-fold cross-validation and grid search, with the best CART model reaching R² = 0.9918.",
+        "Multi-metric evaluation: MSE, RMSE, MAE, and R² comparison across all three algorithms, with residual analysis confirming no systematic bias; feature-importance analysis identifies five key factors, including seedling area and potassium fertilizer use, explaining 99.96% of yield variance.",
+        "Actionable conclusions: production recommendations across seedling management, precise fertilization, pest and disease control, and population regulation, documented in a complete research report."
+      ],
+      "techSolution": "Using the UCI rice variety dataset (2,790 samples, 45 mixed features) as input, the pipeline performs missing-value checks, outlier treatment, and categorical encoding, with algorithm-specific standardization for SVR, MLP, and CART. Models are tuned with 5-fold cross-validation and grid search and evaluated uniformly on MSE, RMSE, MAE, and R²; residual analysis checks for systematic bias, and feature importance identifies the key drivers. These are offline course-project results, not a real-farm deployment.",
+      "highlights": [
+        "Best CART model: R² = 0.9918",
+        "Five key features explain 99.96% of yield variance",
+        "SVR / MLP / CART compared on MSE / RMSE / MAE / R²",
+        "Recommendations across seedling management, fertilization, pest control, and population regulation"
+      ],
+      "updateLog": [
+        {
+          "version": "v1.0.0",
+          "date": "2026-07-15",
+          "changes": [
+            "Completed missing-value checks, outlier treatment, categorical encoding, and algorithm-specific standardization",
+            "Built SVR, MLP, and CART regression models with 5-fold cross-validation and grid search",
+            "Completed MSE / RMSE / MAE / R² evaluation, residual analysis, and feature-importance analysis; produced the research report"
+          ]
+        }
+      ]
+    },
+    "campus-stationery-ecommerce": {
+      "title": "Campus Stationery E-Commerce System Based on MVC Architecture",
+      "category": "Full-Stack Development",
+      "description": "Independent practical project: a Java Swing + MySQL desktop e-commerce system for campus stationery, covering browsing, cart, checkout, and an admin back office across a complete MVC-layered architecture.",
+      "fullDescription": "This independent practical project is a desktop e-commerce system for campus stationery consumption. Built with Java Swing and MySQL, it covers the full business loop: user browsing, shopping cart, order checkout, and administrator back office. The codebase follows a classic three-layer MVC design separating view, business logic, and data access. A Strategy pattern implements tiered discount calculation, a Singleton encapsulates the database connection utility, and a DAO layer centralizes data access. Order submission uses JDBC transactions for atomicity; stock deduction uses row locking to prevent overselling; queries use PreparedStatement to prevent SQL injection; and user passwords are stored as MD5 digests. The project includes full-scenario functional testing and fixes for null-pointer issues in historical data and discount-strategy matching errors. It is a local desktop course project and has not been commercially deployed; MD5 is a legacy implementation and has not been upgraded to a modern password-hashing scheme.",
+      "background": "A desktop e-commerce system for campus stationery, built with Java Swing + MySQL. The project covers user browsing, cart, checkout, and an administrator back office, and practices layered software design and design patterns.",
+      "coreFeatures": [
+        "Classic MVC three-layer architecture separating view, business logic, and data access; Strategy pattern for tiered discounts, Singleton for database connections, and DAO for data access.",
+        "Four core modules: multi-role users, full product lifecycle management, real-time cart settlement, and transactional order submission; JDBC transactions preserve order atomicity and row locking prevents stock overselling.",
+        "Security and testing: PreparedStatement prevents SQL injection and MD5 digests store passwords; full-scenario testing fixes null-pointer issues in historical data and discount-strategy matching errors."
+      ],
+      "techSolution": "The system uses Java Swing for the desktop UI and MySQL for users, products, carts, and orders, organized in a three-layer MVC architecture. Order submission uses JDBC transactions for atomicity, stock deduction uses row locking to avoid overselling, data access goes through a DAO layer, and SQL uses PreparedStatement parameters. Passwords are stored as MD5 digests (a legacy course-project implementation, not upgraded to a modern password-hashing scheme). Tiered discounts use the Strategy pattern. The system is a local desktop project and has not been commercially deployed.",
+      "highlights": [
+        "MVC three-layer architecture with Strategy, Singleton, and DAO patterns",
+        "JDBC transactions + row locking for order atomicity and stock consistency",
+        "PreparedStatement parameterized queries prevent SQL injection",
+        "Complete business loop from browsing and cart to checkout and admin back office"
+      ],
+      "updateLog": [
+        {
+          "version": "v1.0.0",
+          "date": "2026-07-15",
+          "changes": [
+            "Completed the MVC three-layer design and applied Strategy / Singleton / DAO patterns",
+            "Implemented multi-role users, product management, cart settlement, and transactional orders",
+            "Completed full-scenario testing and fixed null-pointer issues in historical data and discount-strategy matching errors"
           ]
         }
       ]
@@ -539,7 +622,7 @@
     "switchToLight": "Switch to light mode",
     "switchToDark": "Switch to dark mode"
   },
-"terminal": {
+  "terminal": {
     "welcome": "Welcome to HOU Universe Terminal",
     "typeHelpHint": "Type \"help\" to get started",
     "close": "Close terminal",
@@ -682,6 +765,42 @@
         "achievements": [
           "Realized time-range query and report generation for inbound/outbound records; digitized full warehouse workflow"
         ]
+      },
+      "rice-yield-prediction": {
+        "title": "Rice Yield Prediction and Feature Impact Analysis via Multi-Algorithm Comparison",
+        "role": "Independent Developer (Course Project)",
+        "description": "Built and compared SVR, MLP, and CART regression models on the UCI rice variety dataset (2,790 samples, 45 mixed features) to identify the main drivers of yield; the best CART model reached R² = 0.9918.",
+        "background": "An independent course project on precision-agriculture yield estimation: end-to-end data modeling, multi-algorithm comparison, and feature-impact analysis on the public UCI rice variety dataset.",
+        "coreWork": [
+          "Performed missing-value checks, outlier treatment, categorical encoding, and algorithm-specific standardization",
+          "Tuned SVR, MLP, and CART models with 5-fold cross-validation and grid search; the best CART model reached R² = 0.9918",
+          "Compared all three algorithms on MSE, RMSE, MAE, and R²; residual analysis confirmed no systematic bias",
+          "Feature-importance analysis identified five key factors, including seedling area and potassium fertilizer use, explaining 99.96% of yield variance",
+          "Produced recommendations across seedling management, precise fertilization, pest control, and population regulation in a complete research report"
+        ],
+        "achievements": [
+          "Best CART model: R² = 0.9918",
+          "Five key features explain 99.96% of yield variance",
+          "Delivered a complete course-project report covering modeling, evaluation, attribution, and production recommendations"
+        ]
+      },
+      "campus-stationery-ecommerce": {
+        "title": "Campus Stationery E-Commerce System Based on MVC Architecture",
+        "role": "Independent Developer (Practical Project)",
+        "description": "Developed a Java Swing + MySQL desktop e-commerce system covering browsing, cart, checkout, and admin back office, with an MVC layered architecture and Strategy / Singleton / DAO patterns.",
+        "background": "A desktop e-commerce system for campus stationery that implements the full business loop — browsing, cart, checkout, and administrator back office — while practicing layered software design and design patterns.",
+        "coreWork": [
+          "Designed a classic MVC three-layer architecture separating view, business logic, and data access",
+          "Applied Strategy for tiered discounts, Singleton for database connections, and DAO for unified data access",
+          "Implemented multi-role users, full product lifecycle management, real-time cart settlement, and transactional order submission",
+          "Used JDBC transactions for order atomicity, row locking for stock deduction, and PreparedStatement to prevent SQL injection",
+          "Stored passwords as MD5 digests; completed full-scenario testing and fixed null-pointer issues and discount-strategy matching errors"
+        ],
+        "achievements": [
+          "Delivered a complete business loop from browsing and cart to checkout and admin back office",
+          "Used JDBC transactions and row locking to preserve order atomicity and stock consistency",
+          "Documented the full practical workflow from requirements and architecture to implementation and testing"
+        ]
       }
     }
   },
@@ -737,7 +856,7 @@
       "roadmap": "Learning Roadmap",
       "timeline": "Learning Timeline",
       "knowledgeMap": "Knowledge Map",
-	      "learningJourney": "Learning Journey",
+      "learningJourney": "Learning Journey",
       "progress": "Latest Progress",
       "moduleProgress": "Module Progress",
       "resources": "Resources",
@@ -754,7 +873,8 @@
       "playground": "Playground",
       "forward": "Forward",
       "inference": "Inference",
-      "training": "Training"
+      "training": "Training",
+      "research": "Research"
     },
     "forwardPlayground": {
       "title": "Forward Model Explorer",
@@ -852,6 +972,156 @@
     "backToLab": "Back to AI Lab",
     "viewOnGithub": "View on GitHub",
     "readBlog": "Read Notes",
+    "chat": {
+      "title": "MiniMind",
+      "subtitle": "A language model built from scratch.",
+      "modelBadge": "REAL MODEL",
+      "modelSize": "Foundation",
+      "modelParams": "~1.1M parameters",
+      "modelInference": "Local inference",
+      "newConversation": "New conversation",
+      "clearConversation": "Clear",
+      "composerPlaceholder": "Message MiniMind...",
+      "send": "Send",
+      "stop": "Stop generating",
+      "generating": "Generating...",
+      "thinking": "MiniMind is thinking...",
+      "generationStopped": "Generation stopped",
+      "generationComplete": "Generation complete",
+      "generationFailed": "Generation failed",
+      "emptyResponse": "Empty response",
+      "retry": "Retry",
+      "regenerate": "Regenerate",
+      "stopping": "Stopping…",
+      "unableToGenerate": "Unable to generate a response",
+      "generationInterrupted": "Generation interrupted",
+      "unknownError": "An unexpected error occurred. Please try again.",
+      "modelTrained": "MiniMind (trained)",
+      "modelBaseline": "MiniMind (baseline)",
+      "trainCheckpoint": "Train a checkpoint",
+      "openLab": "AI Lab",
+      "newChat": "New chat",
+      "status": {
+        "untrained": "Untrained (baseline)",
+        "trained": "Trained",
+        "training": "Training in progress",
+        "generating": "Generating…"
+      },
+      "contextUsage": "Context: {percent}%",
+      "contextNearLimit": "Context window nearly full",
+      "emptyState": "Send a message to start a conversation with MiniMind.",
+      "emptyStateHint": "This is a real model running locally in your browser. Responses are generated by actual neural network inference.",
+      "welcome": {
+        "subtitle": "Local AI Research Model",
+        "tagline": "Running real neural network inference — no API calls, no cloud, just your browser.",
+        "tryAsking": "Try asking",
+        "baselineNotice": "Model not trained yet — replies will be gibberish until you train a checkpoint in the Training Lab.",
+        "trainCheckpointCta": "Train a checkpoint →",
+        "prompts": {
+          "explainMiniMind": "Explain how MiniMind works",
+          "attention": "Help me understand attention",
+          "pythonExample": "Generate a short Python example",
+          "whatAmILookingAt": "Explain what I am currently looking at"
+        },
+        "stats": {
+          "parameters": "Parameters",
+          "layers": "Layers",
+          "heads": "Heads",
+          "dModel": "dModel",
+          "context": "Context",
+          "vocabSize": "Vocab"
+        }
+      },
+      "sidebar": {
+        "title": "Conversations",
+        "empty": "No conversations yet",
+        "delete": "Delete conversation"
+      },
+      "controls": {
+        "model": "Model",
+        "checkpoint": "Checkpoint",
+        "temperature": "Temperature",
+        "maxTokens": "Max Tokens",
+        "topK": "Top-K",
+        "topP": "Top-P",
+        "advanced": "Advanced",
+        "precise": "Precise",
+        "balanced": "Balanced",
+        "creative": "Creative",
+        "baseline": "Untrained (baseline)",
+        "latestCheckpoint": "Latest checkpoint",
+        "seed": "Seed",
+        "importCheckpoint": "Import checkpoint",
+        "importValidating": "Validating checkpoint…",
+        "importSuccess": "Activated {{name}}",
+        "importActivationFailed": "The checkpoint was stored but could not be activated. The previous checkpoint remains active.",
+        "baselineStatus": "baseline",
+        "trainedStatus": "trained"
+      },
+      "lab": {
+        "title": "Explore MiniMind",
+        "subtitle": "Dive deeper into the model's architecture, training, and research capabilities.",
+        "narrative": "MiniMind is an experimental language model built from the ground up. Train it, generate with it, inspect experiments, and explore the architecture.",
+        "model": {
+          "title": "Model",
+          "description": "Explore the Transformer architecture — attention, embeddings, and layer composition."
+        },
+        "training": {
+          "title": "Training",
+          "description": "Watch the training pipeline in action — forward pass, loss, and optimization."
+        },
+        "generation": {
+          "title": "Generation",
+          "description": "Analyze generation quality — compare before/after training output with detailed metrics."
+        },
+        "evaluation": {
+          "title": "Evaluation",
+          "description": "Benchmark model performance — perplexity, loss curves, and throughput analysis."
+        },
+        "experiments": {
+          "title": "Experiments",
+          "description": "Design and run controlled experiments — test hypotheses with reproducible workflows."
+        },
+        "research": {
+          "title": "Research",
+          "description": "Full research studio — sessions, copilot analysis, and ablation studies."
+        },
+        "architecture": {
+          "title": "Architecture",
+          "description": "Interactive model visualization — trace the forward pass through every layer."
+        },
+        "gettingStarted": {
+          "title": "Getting Started with MiniMind",
+          "step1": {
+            "title": "Chat with MiniMind",
+            "description": "Start a conversation above — ask MiniMind anything and see real token-by-token generation from the Transformer model."
+          },
+          "step2": {
+            "title": "Train the Model",
+            "description": "Head to Training to run a real training job. Watch loss curves converge as the Web Worker trains MiniMind on your chosen dataset."
+          },
+          "step3": {
+            "title": "Generate & Evaluate",
+            "description": "Visit Generation to produce text from your trained checkpoint. Compare before/after training quality with detailed metrics."
+          },
+          "step4": {
+            "title": "Run Experiments",
+            "description": "Design controlled experiments in the Experiments lab — test hypotheses, run ablations, and track results with the research copilot."
+          }
+        },
+        "stats": {
+          "experiments": "Experiments",
+          "training": "Training",
+          "generations": "Generations",
+          "chats": "Chats",
+          "idle": "Idle"
+        },
+        "badges": {
+          "experiments": "experiments",
+          "generations": "generations"
+        }
+      }
+    },
     "dashboard": {
       "currentMission": "Current Mission",
       "continueLearning": "Continue Learning",
@@ -880,7 +1150,400 @@
       "researchOverviewLabel": "Research Overview",
       "architectureExplorerLabel": "Architecture Explorer",
       "leaderboardLabel": "Experiment Leaderboard",
-      "generationShowcaseLabel": "Generation Showcase"
+      "generationShowcaseLabel": "Generation Showcase",
+      "exploreInKnowledge": "Explore in Knowledge Graph",
+      "tryExperiment": "Try Experiment",
+      "startJourneyTitle": "Start your MiniMind journey",
+      "startJourneyDesc": "Begin with the Tokenizer module — the foundation of all language models. Learn how text becomes tokens, one step at a time.",
+      "beginLearning": "Begin Learning",
+      "mastered": "Mastered",
+      "learning": "Learning",
+      "started": "Started",
+      "locked": "Locked",
+      "conceptsLabel": "concepts",
+      "completePrerequisites": "Complete prerequisites",
+      "reviewExperiment": "Review & experiment",
+      "continueLearningAction": "Continue learning"
+    },
+    "trainingLifecycle": {
+      "running": "Running",
+      "paused": "Paused",
+      "stopped": "Stopped",
+      "completed": "Completed",
+      "failed": "Failed",
+      "restored": "Restored",
+      "idle": "Idle",
+      "start": "Start",
+      "pause": "Pause",
+      "resume": "Resume",
+      "stop": "Stop",
+      "saveCheckpoint": "Save",
+      "restore": "Restore",
+      "newRun": "New Run",
+      "retry": "Retry",
+      "discard": "Discard",
+      "checkpoint": "Checkpoint",
+      "checkpoints": "Checkpoints",
+      "checkpointSaved": "Checkpoint saved at step {step}",
+      "checkpointRestored": "Restored from checkpoint at step {step}",
+      "noCheckpoints": "No checkpoints saved yet.",
+      "checkpointHint": "Checkpoints will appear as you save them during training.",
+      "trainingProgress": "Training Progress",
+      "trainingTimeline": "Training Timeline",
+      "liveTraining": "Live Training",
+      "noMetrics": "No live metrics available",
+      "recovery": {
+        "title": "Training Session Interrupted",
+        "message": "Training was interrupted at step {step}. Latest checkpoint at step {checkpointStep} is available for recovery.",
+        "noCheckpointMessage": "Training was interrupted at step {step}. No checkpoint available — session must be discarded.",
+        "restoreLatest": "Restore Latest Checkpoint",
+        "discardSession": "Discard Session"
+      },
+      "progress": {
+        "step": "Step",
+        "epoch": "Epoch",
+        "elapsed": "Elapsed",
+        "estimatedRemaining": "Est. Remaining",
+        "loss": "Loss",
+        "perplexity": "Perplexity",
+        "learningRate": "Learning Rate",
+        "tokensPerSec": "Tokens/sec",
+        "gradientNorm": "Gradient Norm"
+      }
+    },
+    "studio": {
+      "hero": {
+        "title": "Train & Explore Your Own GPT Model",
+        "subtitle": "A professional AI research studio for building, training, and analyzing small language models from scratch. Understand every line of code, every tensor operation, and every design decision.",
+        "mission": "From tokenizer to transformer — build your own GPT, line by line.",
+        "startTraining": "Start Training",
+        "openPlayground": "Open Playground",
+        "researchWorkspace": "Research Workspace",
+        "modulesStat": "modules",
+        "phaseStat": "phase",
+        "experimentsStat": "active experiments"
+      },
+      "nav": {
+        "playgroundLabel": "Playground",
+        "playgroundDesc": "Interact with every MiniMind module directly. Tweak parameters, visualize internals, and see real-time results across the full pipeline.",
+        "trainingLabel": "Training Studio",
+        "trainingDesc": "Configure and run training experiments. Monitor loss curves, learning rates, throughput, and generation quality in real time.",
+        "experimentsLabel": "Experiments",
+        "experimentsDesc": "Compare tokenizers, explore embeddings, inspect attention patterns, and run ablation studies with interactive visualizations.",
+        "researchLabel": "Research",
+        "researchDesc": "Copilot-powered training intelligence. Analyze experiments, compare runs, and generate research reports with evidence-backed recommendations.",
+        "generationLabel": "Generation Lab",
+        "generationDesc": "Generate text from trained checkpoints and compare before/after training output."
+      }
+    },
+    "generation": {
+      "title": "Generation Lab",
+      "subtitle": "Evaluate what your MiniMind model learned.",
+      "checkpoint": "Checkpoint",
+      "noSessions": "No sessions with checkpoints found. Complete a training run first.",
+      "prompt": "Prompt",
+      "promptPlaceholder": "Enter your prompt...",
+      "parameters": "Parameters",
+      "temperature": "Temperature",
+      "maxTokens": "Max Tokens",
+      "topK": "Top-K",
+      "topP": "Top-P",
+      "seed": "Seed",
+      "generate": "Generate",
+      "generating": "Generating...",
+      "compare": "Compare",
+      "cancel": "Cancel",
+      "elapsed": "Elapsed",
+      "generatedOutput": "Generated Output",
+      "readyToGenerate": "Ready to generate",
+      "readyHint": "Select a checkpoint, enter a prompt, and click Generate to see what your model learned.",
+      "tokens": "Tokens",
+      "logProb": "LogProb",
+      "perplexity": "Perplexity",
+      "duration": "Duration",
+      "stopReason": "Stop",
+      "beforeAfter": "Before / After Comparison",
+      "beforeTraining": "Before Training",
+      "afterTraining": "After Training",
+      "baseline": "Baseline",
+      "trained": "Trained",
+      "changed": "Changed",
+      "unchanged": "Unchanged",
+      "metricComparison": "Metric Comparison",
+      "history": "History",
+      "noHistory": "No generation history yet.",
+      "exportJSON": "Export JSON",
+      "exportMarkdown": "Export Markdown",
+      "copyToClipboard": "Copy to clipboard",
+      "status": {
+        "idle": "Ready",
+        "generating": "Generating",
+        "completed": "Completed",
+        "error": "Error",
+        "cancelled": "Cancelled"
+      },
+      "summary": {
+        "improved": "Generation became more consistent with training corpus",
+        "changed": "Generation output changed",
+        "unchanged": "Generation output unchanged"
+      }
+    },
+    "publicResearch": {
+      "eyebrow": "MiniMind / Research",
+      "title": "Small model, bounded claims",
+      "subtitle": "A public record of what a 1.13M-parameter MiniMind can and cannot learn — including the experiments that failed, the audits that weakened earlier conclusions, and the work still blocked.",
+      "updated": "Evidence current to 2026-10-25",
+      "disclaimer": "Every claim below is scoped to a closed-domain fact set, author-written prompts, and a single small model. None of it is a claim of general language understanding.",
+      "stats": {
+        "params": {
+          "label": "Parameters",
+          "value": "~1.13M"
+        },
+        "vocab": {
+          "label": "Vocabulary target",
+          "value": "300"
+        },
+        "facts": {
+          "label": "Fact clusters",
+          "value": "16"
+        },
+        "seeds": {
+          "label": "Batch-order seeds",
+          "value": "3"
+        },
+        "note": "The three seeds share one initialization; only DataLoader order differs, so they are weaker than independent retraining."
+      },
+      "status": {
+        "title": "How to read the labels",
+        "intro": "Status describes where the work stands. Verdicts quote each phase's frozen rule and do not transfer across phases.",
+        "items": {
+          "completed": {
+            "label": "Completed",
+            "description": "The experiment finished with a frozen verdict, including negative and inconclusive outcomes."
+          },
+          "experimental": {
+            "label": "Experimental",
+            "description": "A positive but non-confirmatory result that still needs independent replication."
+          },
+          "in-progress": {
+            "label": "In Progress",
+            "description": "Design or data work is underway; no formal result exists yet."
+          },
+          "blocked": {
+            "label": "Blocked",
+            "description": "Cannot proceed until an instrument or gate is fixed."
+          },
+          "planned": {
+            "label": "Planned",
+            "description": "Specified but not started."
+          }
+        }
+      },
+      "architecture": {
+        "title": "Architecture",
+        "intro": "One browser-trainable decoder-only Transformer is used across every reported experiment.",
+        "configTitle": "Production configuration",
+        "labels": {
+          "parameters": "Parameters",
+          "vocabSize": "Vocabulary",
+          "dModel": "Hidden dim",
+          "numHeads": "Attention heads",
+          "dFF": "FFN dim",
+          "numLayers": "Layers",
+          "maxSeqLen": "Context",
+          "tokenizer": "Tokenizer"
+        },
+        "tokenizerValue": "Byte-level BPE · 4 special tokens",
+        "pipelineTitle": "Forward path",
+        "pipeline": [
+          "Text",
+          "Byte-level BPE",
+          "Embedding · 128",
+          "4× Transformer · 4 heads · FFN 512",
+          "LM head → next token"
+        ],
+        "note": "Values come from the training model registry and match the Phase 123-v2 training configuration. The reference tiny / small / base presets are not the model behind these results."
+      },
+      "phases": {
+        "title": "Research log",
+        "intro": "Thirteen phases, in order. Negative and inconclusive results are kept rather than hidden.",
+        "filterAll": "All",
+        "resultLabel": "Result",
+        "limitationLabel": "Limitation",
+        "empty": "No phases in this category.",
+        "items": {
+          "p113": {
+            "verdict": "Outcome C — Not supported",
+            "question": "Can chat SFT teach a 1.13M-parameter model to answer held-out chat questions?",
+            "result": "All three arms scored 0/27 exact match. The SFT arm learned EOS stopping (18/27) but produced no correct answers.",
+            "limitation": "Single seed, 132 author-written samples. 0/27 cannot separate data, capacity, optimization, or evaluation strictness."
+          },
+          "p114": {
+            "verdict": "Diagnostic — early-stopping explanation rejected",
+            "question": "Was Phase 113's failure caused by evaluating an early-stopped snapshot?",
+            "result": "The final snapshot scored 79/84 on train, 0/21 on validation, and 0/27 on test. Training longer did not help.",
+            "limitation": "One seed; no capacity or data-size sweep."
+          },
+          "p115": {
+            "verdict": "Grade A — Supported (single seed)",
+            "question": "Can the model answer unseen phrasings of facts it saw in training?",
+            "result": "Seen phrasing 71/72; new phrasing 25/48; unseen facts 0/24. The baseline scored 0 on all three.",
+            "limitation": "12 training facts and one seed. Success may depend on vocabulary shared with the training prompts."
+          },
+          "p116": {
+            "verdict": "Grade B — Partially reproducible",
+            "question": "Does paraphrase transfer reproduce on an independent fact set with three seeds?",
+            "result": "New phrasing 20/19/19 of 64; seen phrasing 95/96, 96/96, 93/96. Only 9/16 facts were stable across all seeds.",
+            "limitation": "Fact-level stability falls short of the frozen Grade A rule; unseen facts remain near zero."
+          },
+          "p117": {
+            "verdict": "Observational — no causal claim",
+            "question": "Is lexical overlap associated with correct answers?",
+            "result": "Correct answers had higher same-fact Jaccard: pooled +0.0677 (point-biserial 0.282) in Phase 116 and +0.0598 in Phase 115.",
+            "limitation": "Jaccard is not a complete measure of semantic overlap, and the analysis is correlational."
+          },
+          "h118": {
+            "verdict": "Supported",
+            "question": "With overlap controlled, are high-overlap prompts easier?",
+            "result": "High overlap 86/96 vs low 28/96; D +60.42 pp, 95% CI [+48.96, +72.92].",
+            "limitation": "Low-overlap prompts were 5.69 formatted tokens longer, a confound addressed in H119."
+          },
+          "h119": {
+            "verdict": "INCONCLUSIVE (SENSITIVITY)",
+            "question": "Does the overlap effect survive matching prompt length and directness?",
+            "result": "High 70/96 vs low 23/96; D +48.96 pp, 95% CI [+36.46, +61.46]. The strictest sensitivity had only 2 clusters and D = 0.",
+            "limitation": "H120 reclassified the result because the frozen rule required the strictest sensitivity to stay positive."
+          },
+          "h120": {
+            "verdict": "Rule audit — INCONCLUSIVE",
+            "question": "Was H119's SUPPORTED label actually derived from its frozen decision rule?",
+            "result": "Criteria C1–C5 passed; C6 failed when the strictest sensitivity gave D = 0. The main estimate was unchanged.",
+            "limitation": "The issue is label derivation and an underpowered sensitivity analysis, not a reversed effect."
+          },
+          "h121": {
+            "verdict": "PROMISING",
+            "question": "Can paraphrase augmentation improve exact match on low-overlap held-out prompts?",
+            "result": "Low overlap 23/96 → 42/96; Δ +19.79 pp, 95% CI [+9.38, +31.25]; against the matched control +18.75 pp.",
+            "limitation": "16 fact clusters, three batch-order seeds, fixed 144 steps. PROMISING is a preregistered label, not external confirmation."
+          },
+          "h122": {
+            "verdict": "VALIDATION-METRIC ISSUE",
+            "question": "Can the validation metric be used to select checkpoints for this task?",
+            "result": "No code bug. Validation used 4 unseen facts and scored 0/24 EM at all 12 checkpoints; the loss-best step 96 fit only 51–55/96 training probes, versus 93–96/96 at the final step.",
+            "limitation": "The validation set measured a different target. Early stopping on it is not valid for this task."
+          },
+          "h123": {
+            "verdict": "BLOCKED",
+            "question": "With task-aligned selection, does augmentation beat the control on a one-shot final set?",
+            "result": "All six runs selected step 144. Final evaluation was blocked by one prompt at 89 > 88 tokens; no confirmatory endpoint was produced.",
+            "limitation": "An instrumentation block, not a result. Phase 123-v2 repaired exactly one prompt's token count."
+          },
+          "h123v2": {
+            "verdict": "PROMISING — audit PASS WITH CAVEATS",
+            "question": "After repairing only that prompt's token count, what does the one-shot final evaluation show?",
+            "result": "Intervention 117/288 vs control 92/288; D +0.0868, 95% CI [+0.0486, +0.1354]; 13/16 facts positive, 3 zero, 0 negative.",
+            "limitation": "High-overlap and English subgroup CIs cross zero; 16 clusters; one 1.13M model. This is not a confirmatory or publication-grade result."
+          },
+          "p124": {
+            "verdict": "Under Review — design only",
+            "question": "Can the augmentation effect replicate on entirely new facts with a two-stage within-fact design?",
+            "result": "No formal facts, prompts, training, evaluation, or bootstrap have run. Gate A is READY FOR HUMAN REVIEW; Gates B and C are BLOCKED; Gate D is DESIGN-LEVEL ONLY; Gate E is PARTIAL.",
+            "limitation": "The design prohibits training until every gate passes. The next step is human review, not data generation."
+          }
+        }
+      },
+      "tags": {
+        "chatSft": "Chat SFT",
+        "diagnostic": "Diagnostic",
+        "paraphrase": "Paraphrase",
+        "replication": "Replication",
+        "overlap": "Lexical overlap",
+        "matching": "Matched prompts",
+        "audit": "Audit",
+        "augmentation": "Augmentation",
+        "selection": "Checkpoint selection"
+      },
+      "findings": {
+        "title": "What the evidence supports",
+        "intro": "Four findings that survive the limitations below.",
+        "items": {
+          "memory": {
+            "title": "Closed-domain memory is reliable",
+            "body": "Train fit reached 79/84; seen-phrasing accuracy was 71/72 in Phase 115 and 93–96/96 in Phase 116. The model can memorize the trained mapping.",
+            "metric": "79/84"
+          },
+          "paraphrase": {
+            "title": "Paraphrase transfer is partial",
+            "body": "New phrasings scored 25/48 in Phase 115 and 19–20/64 in Phase 116. Only 9/16 facts were stable across all three seeds.",
+            "metric": "25/48"
+          },
+          "unseen": {
+            "title": "Unseen facts do not transfer",
+            "body": "Phase 115 scored 0/24 on unseen facts; Phase 116 stayed near zero. These results are not open-domain generalization.",
+            "metric": "0/24"
+          },
+          "augmentation": {
+            "title": "Augmentation is promising, not confirmed",
+            "body": "Phase 123-v2 measured +8.68 pp across 16 fact clusters, with an independent audit at PASS WITH CAVEATS.",
+            "metric": "+8.68 pp"
+          }
+        }
+      },
+      "limitations": {
+        "title": "Limits and open questions",
+        "intro": "These constraints apply to every result on this page.",
+        "items": [
+          "Scale: 1.13M parameters, byte-level BPE, vocabulary 300, 16 fact clusters, 3 batch-order seeds, and 144 steps. Nothing here extrapolates to larger models or natural traffic.",
+          "Few clusters: 16 fact-level clusters make bootstrap intervals coarse. They are uncertainty ranges, not precise significance tests.",
+          "Seeds are not independent: all three share one initialization; only DataLoader order changes.",
+          "Single prompt author: the prompts and paraphrases were written by one author, so coverage of real user phrasing is unknown.",
+          "Overlap is a proxy: lexical Jaccard is not semantic overlap, and matched prompts still differ in syntax, register, and reasoning route.",
+          "PROMISING is a preregistered label: H121 and Phase 123-v2 are not independent replications or publication-grade confirmation.",
+          "Phase 124 has no formal data: the directory contains empty placeholders, not a candidate fact set."
+        ]
+      },
+      "roadmap": {
+        "title": "What comes next",
+        "intro": "Three preregistered directions, in priority order. All are planned; none has started.",
+        "items": {
+          "independent-facts": {
+            "title": "Independent fact replication",
+            "body": "Run the same recipe on at least 32 newly written facts with 3 seeds, and keep the final prompts unseen until selection is frozen."
+          },
+          "english-coverage": {
+            "title": "English coverage and balance",
+            "body": "Increase and diversify English paraphrases while keeping total presentations and steps matched; test that Chinese does not regress."
+          },
+          "author-generalization": {
+            "title": "Author generalization",
+            "body": "Replace single-author prompts with an independent author or a frozen template library to test whether the effect is a prompt-style artifact."
+          }
+        }
+      },
+      "phase124": {
+        "title": "Phase 124-A1 gate status",
+        "intro": "A design-only replication. No training is permitted until all five gates pass.",
+        "gates": {
+          "a": "Design completeness",
+          "b": "Fact quality",
+          "c": "Leakage audit",
+          "d": "Experimental fairness",
+          "e": "Reproducibility"
+        },
+        "note": "Gate E detail: instrument checks pass; frozen-data replay is blocked because no formal data or manifest exists. Source: Phase 124 decision-gate audit."
+      },
+      "source": {
+        "title": "Source code",
+        "body": "The training, evaluation, and audit code is not yet published as a public repository. No source link is shown rather than pointing to an unverified repository.",
+        "comingSoon": "Coming Soon",
+        "note": "Model configuration, experiment counts, and verdicts on this page are taken from the frozen reports and audit records."
+      },
+      "cta": {
+        "back": "Back to AI Lab",
+        "architecture": "Explore the architecture",
+        "experiments": "Browse the experiment workspace",
+        "view": "View public research"
+      }
     }
   },
   "minimind": {
@@ -1135,6 +1798,10 @@
         "fullVectorTitle": "Full Probability Vector (T={{temp}}, vocab size={{vocab}})",
         "fullVectorFooter": "All {{vocab}} token probabilities. Higher bars = more likely to be sampled at T={{temp}}."
       }
+    },
+    "training": {
+      "title": "Training Pipeline",
+      "subtitle": "Watch MiniMind learn — dataset loading, forward pass, cross-entropy loss, and optimizer step with live metrics."
     }
   },
   "roadmap": {
@@ -1202,6 +1869,57 @@
       "completed": "Completed",
       "inProgress": "In Progress",
       "upcoming": "Upcoming"
+    }
+  },
+  "workExperience": {
+    "items": {
+      "jiahuan-network-optimization-intern": {
+        "company": "嘉环科技股份有限公司",
+        "role": "Network Optimization Testing Intern",
+        "period": "2026.07 — 2026.09",
+        "description": "Supported Huawei and China Mobile project teams on 4G/5G communications assurance for the Shenzhen APEC meeting and large concerts, and conducted multi-scenario field testing at universities, metro lines, commercial districts, scenic areas, and underground parking facilities.",
+        "tags": [
+          "4G/5G",
+          "CQT",
+          "RSRP",
+          "SINR",
+          "PHU Smart",
+          "Cellular-Z",
+          "PCI Locking",
+          "Field Testing",
+          "Data Handover"
+        ],
+        "sections": {
+          "major-events": {
+            "title": "Major Event Network Support",
+            "points": [
+              "Coordinated with the Huawei project team and China Mobile stakeholders on 4G/5G communications support for the Shenzhen APEC meeting and large concerts by Xue Zhiqian and G.E.M. at Shenzhen Universiade Center.",
+              "Performed on-site fixed-point CQT tests, collecting RSRP, SINR, uplink and downlink throughput and other radio metrics; reported test data hourly and recorded on-site network status to support event communications assurance."
+            ]
+          },
+          "field-testing": {
+            "title": "Multi-Scenario 5G Field Testing",
+            "points": [
+              "Used PHU Smart, Cellular-Z, and drive-test analysis software across universities, Shenzhen Metro Line 4, commercial districts, scenic areas, and underground parking facilities.",
+              "Performed frequency and PCI locking, site surveys, and on-site testing; completed the full workflow of test-file export, classification, archiving, packaging, and data handover, gaining experience in high-mobility and high-density scenarios."
+            ]
+          },
+          "coordination": {
+            "title": "On-Site Coordination and Troubleshooting",
+            "points": [
+              "Joined Huawei engineers for site surveys and point-by-point inspection, and performed basic troubleshooting during testing.",
+              "Synchronized on-site test status with the China Mobile side and maintained standardized test documentation to keep field-testing tasks on schedule."
+            ]
+          },
+          "learning": {
+            "title": "What I Learned",
+            "points": [
+              "Applied a data-science mindset to connect radio metrics, on-site conditions, and user experience.",
+              "Gained an understanding of major-event communications assurance workflows and strengthened on-site communication and coordination skills through multi-party collaboration with Huawei and China Mobile."
+            ]
+          }
+        }
+      }
     }
   }
 }

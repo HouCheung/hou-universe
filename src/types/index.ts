@@ -92,6 +92,22 @@ export interface ProjectExperience {
   achievements: string[];
 }
 
+export interface WorkExperienceSection {
+  id: string;
+  title: string;
+  points: string[];
+}
+
+export interface WorkExperience {
+  id: string;
+  company: string;
+  role: string;
+  period: string;
+  description: string;
+  sections: WorkExperienceSection[];
+  tags: string[];
+}
+
 export interface GuestbookMessage {
   id: string;
   nickname: string;

@@ -166,7 +166,7 @@ export const MINIMIND_EXPERIMENTS: MiniMindExperiment[] = [
     description:
       "Explore how temperature affects token prediction probabilities. Adjust temperature from 0.1 to 2.0, observe the probability distribution shift, and understand the exploration-exploitation trade-off in autoregressive generation.",
     relatedModule: "inference",
-    status: "planned",
+    status: "active",
     concepts: [
       "Temperature Sampling",
       "Softmax Sharpening",
@@ -174,7 +174,7 @@ export const MINIMIND_EXPERIMENTS: MiniMindExperiment[] = [
       "Top-K Filtering",
       "Exploration vs Exploitation",
     ],
-    componentPath: null,
+    componentPath: "src/components/minimind/experiments/results/SamplingTemperatureResult",
     requiredCapabilities: {
       visualization: ["logits-histogram", "top-k-ranking", "probability-distribution"],
       dataRequirements: [

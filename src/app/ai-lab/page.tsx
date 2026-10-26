@@ -1,12 +1,12 @@
 import type { Metadata } from "next";
-import { AiLabDashboard } from "@/components/ai-lab/dashboard/AiLabDashboard";
+import { MiniMindChatShell } from "@/components/ai-lab/chat";
 
 export const metadata: Metadata = {
-  title: "AI Lab · MiniMind Research",
+  title: "MiniMind Chat",
   description:
-    "AI Lab — Building MiniMind from scratch. A systematic exploration of LLM internals covering Tokenizer, Embedding, Attention, Transformer, Pretrain, SFT, LoRA, RLHF, RAG, and Agent.",
+    "MiniMind — a language model built from scratch. Chat with a real Transformer model running locally in your browser, powered by actual neural network inference.",
 };
 
 export default function AiLabPage() {
-  return <AiLabDashboard />;
+  return <MiniMindChatShell />;
 }

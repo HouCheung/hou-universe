@@ -27,8 +27,8 @@ export function ContactInfo() {
     {
       icon: Github,
       labelKey: "contact.info.github",
-      value: "github.com/hou-universe",
-      href: "https://github.com/hou-universe",
+      value: "github.com/HouCheung/hou-universe",
+      href: "https://github.com/HouCheung/hou-universe",
       external: true,
     },
     {

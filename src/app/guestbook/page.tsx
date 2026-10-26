@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { GuestbookPageContent } from "@/components/guestbook/GuestbookPageContent";
 
 export const metadata: Metadata = {
-  title: "Guestbook - HOU Universe",
+  title: "Guestbook",
   description: "Guestbook — leave your mark and share your thoughts and suggestions.",
 };
 

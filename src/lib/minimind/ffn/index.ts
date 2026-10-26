@@ -9,6 +9,7 @@
 
 // ── 主类 ──
 export { MiniFeedForward } from "./FeedForward";
+export { TensorFeedForward } from "./TensorFeedForward";
 
 // ── 类型 ──
 export type {

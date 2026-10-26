@@ -14,7 +14,7 @@ If you are interested in technical communication or link exchange, please contac
 
 ## 🧩 Main Modules
 - Home: Starry landing page with particle background
-- About: Personal introduction and project experience timeline
+- About: Personal introduction, project cards and internship experience
 - Projects: Featured project cards and detailed project records
 - Notes: Collection of technical articles and study notes
 - Toolbox: List of commonly used development tools and resources
@@ -36,4 +36,6 @@ All source code is protected by copyright.
 Code copying, secondary deployment and commercial use are prohibited without explicit written authorization from the author.
 
 ## 🔗 Official Website
-[Fill your online website address here]
+[https://hou-universe.netlify.app](https://hou-universe.netlify.app)
+
+Current version: v0.8.0

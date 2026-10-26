@@ -93,6 +93,27 @@ export class Vocabulary {
     return id;
   }
 
+  /**
+   * 使用指定 ID 强制注册 token
+   *
+   * 用于从序列化状态恢复 vocabulary。
+   * 如果 token 或 ID 已存在则抛出异常。
+   * 自动更新 nextId（如果 id >= nextId）。
+   */
+  set(token: string, id: number): void {
+    if (this.tokenToId.has(token)) {
+      throw new Error(`Vocabulary.set: token "${token}" already registered`);
+    }
+    if (this.idToToken.has(id)) {
+      throw new Error(`Vocabulary.set: id ${id} already in use by "${this.idToToken.get(id)}"`);
+    }
+    this.tokenToId.set(token, id);
+    this.idToToken.set(id, token);
+    if (id >= this.nextId) {
+      this.nextId = id + 1;
+    }
+  }
+
   /** 获取 <unk> token 的 id，用于未知词回退 */
   getUnkId(): number {
     return SPECIAL_TOKEN_TO_ID["<unk>"];

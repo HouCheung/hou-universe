@@ -36,7 +36,7 @@ import {
 } from "lucide-react";
 import Link from "next/link";
 import { SectionHeader } from "@/components/home/SectionHeader";
-import { listModels, type ModelConfigEntry } from "@/lib/minimind/experiments/ModelRegistry";
+import { listModels } from "@/lib/minimind/experiments/ModelRegistry";
 import {
   getTrainingMetrics,
   getTrainingStats,
@@ -140,15 +140,6 @@ function formatLoss(n: number): string {
 function formatPPL(n: number): string {
   if (!Number.isFinite(n) || n <= 0) return "—";
   return n.toFixed(2);
-}
-
-function formatDuration(ms: number): string {
-  if (!Number.isFinite(ms) || ms <= 0) return "—";
-  const totalSeconds = Math.floor(ms / 1000);
-  const hours = Math.floor(totalSeconds / 3600);
-  const minutes = Math.floor((totalSeconds % 3600) / 60);
-  if (hours > 0) return `${hours}h ${minutes}m`;
-  return `${minutes}m`;
 }
 
 // ============================================================
