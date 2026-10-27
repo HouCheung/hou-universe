@@ -5,6 +5,7 @@ import {
   useContext,
   useState,
   useEffect,
+  useLayoutEffect,
   useRef,
   useCallback,
   type ReactNode,
@@ -50,6 +51,14 @@ const SESSION_KEY = "hou-entrance-played";
    Helpers
    ═══════════════════════════════════════════════════════════ */
 
+/**
+ * `useLayoutEffect` warns during server rendering, so fall back to
+ * `useEffect` on the server. On the client the layout effect runs before
+ * paint, which lets us show the entrance overlay without a content flash.
+ */
+const useIsomorphicLayoutEffect =
+  typeof window !== "undefined" ? useLayoutEffect : useEffect;
+
 function isLowEndDevice(): boolean {
   if (typeof window === "undefined") return false;
   // Mobile devices
@@ -72,16 +81,23 @@ interface EntranceSequenceProps {
 
 export function EntranceSequence({ children }: EntranceSequenceProps) {
   const { theme } = useTheme();
-  const [phase, setPhase] = useState<EntrancePhase>(() => {
-    if (typeof window === "undefined") return "complete";
-    // Skip if already played this session
-    if (sessionStorage.getItem(SESSION_KEY) === "1") return "complete";
-    return "initial";
-  });
 
-  const [overlayOpacity, setOverlayOpacity] = useState(1);
+  // Server and the first client render must agree. Reading sessionStorage in
+  // the state initializer made the client render "initial" while the server
+  // rendered "complete", which triggered React #418 on every page. The
+  // session check now happens in a layout effect after hydration.
+  const [phase, setPhase] = useState<EntrancePhase>("complete");
+  const [overlayOpacity, setOverlayOpacity] = useState(0);
   const lowEndRef = useRef(false);
   const timersRef = useRef<ReturnType<typeof setTimeout>[]>([]);
+
+  /* ── Decide whether the entrance should play (client, before paint) ── */
+  useIsomorphicLayoutEffect(() => {
+    // Skip if already played this session
+    if (sessionStorage.getItem(SESSION_KEY) === "1") return;
+    setPhase("initial");
+    setOverlayOpacity(1);
+  }, []);
 
   /* ── Run entrance sequence ── */
   const runEntrance = useCallback(() => {

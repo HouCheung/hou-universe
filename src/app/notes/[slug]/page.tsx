@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { NoteDetailContent } from "@/components/notes/NoteDetailContent";
 import { getNoteBySlug, getNoteSlugs } from "@/lib/notes";
+import { pageMetadata } from "@/lib/seo";
 
 export function generateStaticParams() {
   return getNoteSlugs().map((slug) => ({ slug }));
@@ -21,10 +22,11 @@ export async function generateMetadata({
     return { title: "Note Not Found" };
   }
 
-  return {
+  return pageMetadata({
     title: note.title,
     description: note.summary,
-  };
+    path: `/notes/${slug}`,
+  });
 }
 
 export default async function NoteDetailPage({ params }: NotePageProps) {

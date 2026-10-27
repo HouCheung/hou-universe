@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { ProjectDetailContent } from "@/components/projects/ProjectDetailContent";
 import { getProjectById, getAllProjectIds } from "@/data/projects";
+import { pageMetadata } from "@/lib/seo";
 
 export function generateStaticParams() {
   return getAllProjectIds().map((id) => ({ slug: id }));
@@ -21,10 +22,11 @@ export async function generateMetadata({
     return { title: "Project Not Found" };
   }
 
-  return {
+  return pageMetadata({
     title: project.title,
     description: project.description,
-  };
+    path: `/projects/${slug}`,
+  });
 }
 
 export default async function ProjectDetailPage({ params }: ProjectPageProps) {

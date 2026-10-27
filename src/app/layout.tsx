@@ -12,7 +12,6 @@ import { CardClickRipple } from "@/components/shared/CardClickRipple";
 import { HoverStarParticles } from "@/components/shared/HoverStarParticles";
 import { Terminal } from "@/components/shared/Terminal";
 import { EntranceSequence } from "@/components/shared/EntranceSequence";
-import { HreflangTags } from "@/components/layout/HreflangTags";
 import { UmamiAnalytics } from "@/components/layout/UmamiAnalytics";
 import { ThemeProvider } from "@/components/layout/ThemeProvider";
 import { SITE_URL } from "@/lib/site";
@@ -42,12 +41,6 @@ export const metadata: Metadata = {
   authors: [{ name: "HOU", url: SITE_URL }],
   creator: "HOU",
   metadataBase: new URL(SITE_URL),
-  alternates: {
-    languages: {
-      "zh-CN": SITE_URL,
-      en: SITE_URL,
-    },
-  },
   openGraph: {
     type: "website",
     locale: "zh_CN",
@@ -90,9 +83,6 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="zh-CN" data-theme="dark" className={`dark font-sans ${geist.variable}`} suppressHydrationWarning>
-      <head>
-        <HreflangTags />
-      </head>
       <body className="min-h-screen bg-background font-sans antialiased flex flex-col overflow-x-hidden">
         <a href="#main-content" className="skip-to-main">
           Skip to main content

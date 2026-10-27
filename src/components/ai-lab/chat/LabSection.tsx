@@ -47,6 +47,15 @@ interface HubData {
   hasAnyData: boolean;
 }
 
+/** Deterministic state used by the server and the first client render. */
+const EMPTY_HUB_DATA: HubData = {
+  experiments: null,
+  training: null,
+  generationCount: 0,
+  chatCount: 0,
+  hasAnyData: false,
+};
+
 // ============================================================
 // Helpers
 // ============================================================
@@ -74,13 +83,7 @@ function loadHubData(): HubData {
       hasAnyData,
     };
   } catch {
-    return {
-      experiments: null,
-      training: null,
-      generationCount: 0,
-      chatCount: 0,
-      hasAnyData: false,
-    };
+    return EMPTY_HUB_DATA;
   }
 }
 
@@ -207,10 +210,15 @@ const LAB_ENTRIES: LabEntry[] = [
 
 export function LabSection() {
   const { t } = useTranslation();
-  const [data, setData] = useState<HubData>(() => loadHubData());
+  // localStorage-backed data cannot be read during the first client render:
+  // doing so makes the client tree differ from the server HTML (React #418).
+  // Start from the deterministic empty state and load after mount.
+  const [data, setData] = useState<HubData>(EMPTY_HUB_DATA);
 
-  // Refresh hub data every 30s so training/generation status stays current
   useEffect(() => {
+    setData(loadHubData());
+
+    // Refresh hub data every 30s so training/generation status stays current
     const interval = setInterval(() => {
       setData(loadHubData());
     }, 30000);

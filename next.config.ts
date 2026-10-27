@@ -11,10 +11,6 @@ const nextConfig: NextConfig = {
     remotePatterns: [
       {
         protocol: "https",
-        hostname: "hou-universe.vercel.app",
-      },
-      {
-        protocol: "https",
         hostname: "**.githubusercontent.com",
       },
       {
